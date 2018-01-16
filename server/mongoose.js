@@ -1,3 +1,3 @@
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/mean-app')
+mongoose.connect('mongodb://localhost/meanappdb')
