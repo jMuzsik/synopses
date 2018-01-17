@@ -1,3 +1,13 @@
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/meanappdb')
+var mongoDB = process.env.MONGO_CONNECTION;
+
+mongoose.connect(mongoDB, {
+    useMongoClient: true
+});
+
+mongoose.Promise = global.Promise;
+
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
