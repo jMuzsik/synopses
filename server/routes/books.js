@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-router.get('/books', (req, res) => {
+router.get('/api/books', (req, res) => {
   res.send('All the books')
 })
 
