@@ -1,12 +1,15 @@
-const express = require('express')
-const path = require('path')
-const http = require('http')
-const bodyParser = require('body-parser')
-const db = require('./server/mongoose.js');
+var express = require('express')
+var path = require('path')
+var http = require('http')
+var bodyParser = require('body-parser')
 
-const api = require('./server/routes/api')
+require('dotenv').config();
 
-const app = express()
+var db = require('./server/mongoose.js');
+
+var api = require('./server/routes/api');
+
+var app = express();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -19,9 +22,9 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/index.html'))
 })
 
-const port = process.env.PORT || '3000'
+var port = process.env.PORT || '3000'
 app.set('port', port)
 
-const server = http.createServer(app)
+var server = http.createServer(app)
 
 server.listen(port, () => console.log('Chilling on port ', + port))

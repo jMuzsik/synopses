@@ -3,6 +3,8 @@ const router = require('express').Router()
 const db = require('../mongoose.js');
 const Book = require('../book.js')
 
+const { getISBN } = require('../api-calls/index')
+
 router.get('/', (req, res) => {
     Book.find({}).then((books) => {
         res.json(books).status(200)
@@ -17,8 +19,9 @@ router.get('/:book', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const book = new Book(req.body)
-    book.save().then(res.status(201).json({ message: "Buenisimo!!!" })).catch(error => res.status(401).json({ message: error }))
+
+    const isbn = getISBN(req.body);
+    // book.save().then(res.status(201).json({ message: "Buenisimo!!!" })).catch(error => res.status(401).json({ message: error }))
 })
 
 module.exports = router

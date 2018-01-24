@@ -1,5 +1,5 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var bookSchema = new Schema({
     id: Number,
@@ -21,6 +21,6 @@ bookSchema.pre('save', function (next) {
     next();
 })
 
-var Book = mongoose.model('Book', bookSchema)
+var Book = mongoose.model('Book', bookSchema);
 
-module.exports = Book
+module.exports = Book;
