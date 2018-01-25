@@ -9,6 +9,9 @@ var db = require('./server/mongoose.js');
 
 var api = require('./server/routes/api');
 
+// var apiCalls = require('./server/api-calls/index');
+// apiCalls.getPenguinData('Marcel Proust');
+
 var app = express();
 
 app.use(bodyParser.json())

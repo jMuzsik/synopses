@@ -37,6 +37,4 @@ var getGoodreadsData = function(isbn) {
   })
 };
 
-var get
-
 module.exports = getGoodreadsData;
