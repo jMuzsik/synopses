@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Book } from '../book';
 
@@ -13,10 +14,17 @@ export class PostsComponent {
 
   submitted = false;
 
+  constructor(private http: HttpClient) { }
+
   onSubmit() { this.submitted = true; }
 
   newBook(incoming) {
-    this.model = new Book(/*need to do a lot of shit prior!*/)
+    var data = {
+      data: incoming.value
+    }
+    this.http.post('/api', data, {}).subscribe(data => {
+      console.log("SUCCESS!!!!!")
+    }).catch(console.error)
   }
 
 }

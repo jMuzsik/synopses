@@ -19,14 +19,18 @@ var getAmazonData = function (isbn) {
     itemId: isbn,
     responseGroup: 'EditorialReview,Images,Reviews,Similarities,'
   }).then(function (results) {
-    amazonData.front_cover = results[0].ImageSets[0].ImageSet[1].LargeImage[0].URL[0];
-    amazonData.back_cover = results[0].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
-    amazonData.amazon_reviews = results[0].CustomerReviews;
-    amazonData.amazon_editorial_review = results[0].EditorialReviews[0].EditorialReview[0].Content[0];
-    amazonData.amazon_similar_products = results[0].SimilarProducts[0].SimilarProduct;
-    return amazonData;
+    try {
+      amazonData.front_cover = results[0].ImageSets[0].ImageSet[1].LargeImage[0].URL[0];
+      amazonData.back_cover = results[0].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
+      amazonData.amazon_reviews = results[0].CustomerReviews;
+      amazonData.amazon_editorial_review = results[0].EditorialReviews[0].EditorialReview[0].Content[0];
+      amazonData.amazon_similar_products = results[0].SimilarProducts[0].SimilarProduct;
+      return amazonData;
+    } catch (e) {
+      return amazonData;
+    }
   }).catch(function (err) {
-    return "Amazon API call error:" + err;
+    console.error("Amazon API call error:", err);
   })
 }
 

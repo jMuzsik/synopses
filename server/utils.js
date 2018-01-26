@@ -27,8 +27,8 @@ var checkAllStrings = function (...possibilities) {
     var arrayOfPossibleStrings = possibilities;
 
     for (var el of arrayOfPossibleStrings) {
-        if (str) {
-            defaultString = str;
+        if (el) {
+            defaultString = el;
             break;
         }
     }

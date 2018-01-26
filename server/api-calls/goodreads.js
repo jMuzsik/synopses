@@ -24,7 +24,7 @@ var getGoodreadsData = function (query, callback) {
     else {
       var xml = response.body;
       parseString(xml, { trim: true }, (err, result) => {
-        if (err) console.log(err)
+        if (err) console.error('THIS IS A GOODREADS INNER ERROR:', err)
         goodreadsData.goodreads_description = result.GoodreadsResponse.book[0].description[0];
         goodreadsData.goodreads_reviews_widget = result.GoodreadsResponse.book[0].reviews_widget[0];
         goodreadsData.goodreads_author_image = result.GoodreadsResponse.book[0].authors[0].author[0].image_url[0]._;

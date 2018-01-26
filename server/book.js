@@ -23,11 +23,12 @@ var bookSchema = new Schema({
     isbn: String,
     wikipedia_text: String,
     title: String,
+    url_title: String,
     created_at: { type: Date, default: Date.now }
 })
 
 bookSchema.pre('save', function (next) {
-    // this.url_title = this.title.replace(/ /g, "_");
+    this.url_title = this.title.replace(/ /g, "_");
 
     //MAKE SURE WHAT IS SUPPOSED TO BE AN URL IS AN URL
     this.front_cover, this.back_cover, this.goodreads_author_image, this.goodreads_author_link = checkAllURLS(this.front_cover, this.back_cover, this.goodreads_author_image, this.goodreads_author_link);

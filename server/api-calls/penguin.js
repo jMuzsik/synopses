@@ -10,7 +10,7 @@ var getPenguinData = function (query, callback) {
   };
 
   return request.get(options, (error, response, body) => {
-    if (error) console.error(error)
+    if (error) console.error('THIS IS AN ERROR WITHIN PENGUIN:', error)
     else {
       //REFORMAT TO JSON
       response = JSON.parse(response.body);
