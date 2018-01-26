@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { Book } from '../book';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -10,11 +9,9 @@ import { Book } from '../book';
 })
 export class PostsComponent {
 
-  model = new Book(1, "front_cover", "back_cover", ["amazon_reviews", "amazon_reviews"], "amazon_editorial_review", ["amazon_similar_products", "amazon_similar_products"], "goodreads_description", "goodreads_reviews_widget,", "goodreads_author_image", "goodreads_author_link", ["goodreads_similar_books", "goodreads_similar_books"], ["penguin_data", "penguin_data"], "author_name", "isbn", "wikipedia_text", "title")
-
   submitted = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, router: Router) { }
 
   onSubmit() { this.submitted = true; }
 
@@ -22,9 +19,23 @@ export class PostsComponent {
     var data = {
       data: incoming.value
     }
-    this.http.post('/api', data, {}).subscribe(data => {
-      console.log("SUCCESS!!!!!")
-    }).catch(console.error)
+
+    this.http.post('/api', data, {})
+      .subscribe(
+      result => {
+        // Handle result
+        console.log(result)
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        // 'onCompleted' callback.
+        // No errors, route to new page here
+        var urlOfTitle = incoming.value.replace(/ /g, "_");
+        this.router.navigate([`/book/${urlOfTitle}`])
+        console.log('reroute')
+      }
   }
 
 }
