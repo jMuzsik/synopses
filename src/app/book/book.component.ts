@@ -1,17 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
+import "rxjs/add/operator/map";
 
 import { ActivatedRoute } from '@angular/router';
-
-
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css']
 })
+
 export class BookComponent implements OnInit {
 
+  //DO NOT RENDER PAGE UNLESS YOU'VE GOT DATA
+  isDataAvailable: boolean = false;
+
+  //DROPDOWNS
+  wikiVisible: boolean = false;
+  goodreadsVisible: boolean = false;
+
+  //WIKI HAS NO TITLES, MAKE IT SOMEWHAT READABLE
+  periods: number[];
+
+  //GOODREADS DESCRIPTION HAS <br /> AND <i>...</i>, FIX:
+  italicIndeces: number[];
+
+  //ALL THE DATA FROM API CALLS
   amazonReview: string;
   amazonCustomerReviews: string[];
   amazonSimilarProducts: string[];
@@ -25,33 +39,77 @@ export class BookComponent implements OnInit {
   goodreadsSimilarBooks: string[];
   penguinData: string[];
   bookTitle: string;
-  wikipedia: string;
+  wikipedia: string[];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
-    this.amazonReview = "";
-    this.amazonCustomerReviews = [];
-    this.amazonSimilarProducts = [];
-    this.author = "";
-    this.backCover = "";
-    this.frontCover = "";
-    this.authorImage = "";
-    this.authorLink = "";
-    this.goodreadsDescription = "";
-    this.goodreadsReviewsWidget = "";
-    this.goodreadsSimilarBooks = [];
-    this.penguinData = [];
-    this.bookTitle = "";
-    this.wikipedia = "";
-    this.init();
+  constructor(private route: ActivatedRoute, private http: Http) { }
+
+  getData() {
+    var bookPath = this.route.snapshot.url[1].path;
+    return this.http.get(`/api/${bookPath}`).map(x => {
+      x = JSON.parse(x._body)[0];
+
+      //TAKE CARE OF CONFUSION WITHIN WIKI TEXT
+      x['periods'] = [];
+      var periodCounter = 0;
+      x['wikipedia_text'] = x['wikipedia_text'].split('\n').filter((str, i) => {
+        if (str.length > 0) {
+          let period = str.indexOf('.');
+          x['periods'][periodCounter] = period;
+          periodCounter++;
+          return str;
+        }
+      });
+
+      //TAKE CARE OF CONFUSION WITHIN GOODREADS TEXT
+      x['goodreads_description'] = x['goodreads_description'].split('<br /><br />').filter(str => str);
+
+      x['italicIndeces'] = [];
+
+      x['goodreads_description'] = x['goodreads_description'].map((str, i) => {
+        x['italicIndeces'][i] = []
+        var p = 0;
+        if (str.indexOf('<i>') !== -1) {
+          for (let j = 0; j < 100; j++) {
+            x['italicIndeces'][i].push(str.indexOf('<i>'));
+            x['italicIndeces'][i].push(str.indexOf('</i>'));
+            if(p === 0) {
+              p = str.indexOf('</i>');
+              console.log(p)
+            } else p = str.slice(p).indexOf('</i>');
+            if(p === -1) break;
+          }
+        }
+        else {
+          x['italicIndeces'][i] = false;
+        }
+        str = str.replace('</i>', '<i>');
+        return str;
+      })
+      console.log()
+      return x;
+    });
+
   }
 
+  showWiki(): void {
+    if (!this.wikiVisible) {
+      this.wikiVisible = true;
+    } else {
+      this.wikiVisible = false;
+    }
+  }
 
+  showGoodreads(): void {
+    if (!this.goodreadsVisible) {
+      this.goodreadsVisible = true;
+    } else {
+      this.goodreadsVisible = false;
+    }
+  }
 
-  init(): void {
-    var bookPath = this.route.snapshot.url[1].path;
-    this.http.get(`/api/${bookPath}`)
-      .subscribe(function (data) {
-        data = data[0];
+  ngOnInit() {
+    this.getData()
+      .subscribe(data => {
         this.amazonReview = data['amazon_editorial_review'];
         this.amazonCustomerReviews = data['amazon_reviews'];
         this.amazonSimilarProducts = data['amazon_similar_products'];
@@ -64,10 +122,21 @@ export class BookComponent implements OnInit {
         this.goodreadsReviewsWidget = data['goodreads_reviews_widget'];
         this.goodreadsSimilarBooks = data['goodreads_similar_books'];
         this.penguinData = data['penguin_data'];
+
         this.bookTitle = data['title'];
+        //INPUT LOWERCASE LETTERS, MAKE FIRST LETTER UPPERCASE
+        this.bookTitle = this.bookTitle.split(' ').map(str => {
+          return str[0].toUpperCase() + str.slice(1)
+        }).join(' ');
+
+        //FIX ITALICS WITHIN GOODREADS DESCRIPTION
+        this.italicIndeces = data['italicIndeces']
         this.wikipedia = data['wikipedia_text'];
+        this.isDataAvailable = true;
+        this.periods = data['periods']
+        console.log(this.italicIndeces)
       },
       err => console.log(err),
-      () => console.log('GOOOOODDD!'))
+      () => console.log(this.goodreadsDescription))
   };
 }

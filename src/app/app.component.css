@@ -1,0 +1,40 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+h1 {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 23px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 23px;
+}
+h3 {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 23px;
+}
+p {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 23px;
+}
+
+/* 16px @ 480px increasing to 32px @ 1920px */
+@media (min-width: 480px) {
+  p {
+    font-size: calc(1rem + ((1vw - 4.8px) * 1.1111));
+    /* Where: * 1.1111 = 100 * font_Size_Difference / viewport_Width_Difference */
+  }
+}
+/* Prevent font scaling beyond this breakpoint */
+@media (min-width: 1920px) {
+  p {
+    font-size: 32px;
+  }
+}

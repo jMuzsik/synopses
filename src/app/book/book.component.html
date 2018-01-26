@@ -1,3 +1,33 @@
-<div>
-  {{this.wikipedia}}
+<div *ngIf="isDataAvailable">
+  <div>
+    <h1>
+      <b>
+        <u>{{bookTitle}}</u>
+      </b>
+      - {{author}}
+    </h1>
+    <button (click)="showWiki()">Wikipedia</button>
+    <button (click)="showGoodreads()">Goodreads</button>
+    <div *ngIf="wikiVisible">
+      <div *ngFor="let wiki of wikipedia; let i=index">
+        <p>
+          <b>{{wiki.slice(0, periods[i])}}</b>{{wiki.slice(periods[i], wiki.length)}}
+          <br />
+          <br />
+        </p>
+      </div>
+    </div>
+    <!-- <div *ngIf="goodreadsVisible">
+      <div *ngFor="let part of goodreadsDescription; let i=index">
+        <div *ngIf="italicIndeces[i]; else noithings">
+          <div *ngFor="let idx of italicIndeces[i]">
+          <div>{{part.slice(0, idx['start']) + part.slice(idx+3, italicIndeces[i]['end']) + }}</div>
+          </div>
+        </div>
+        <ng-template #noithings>
+          <p>{{part}}</p>
+        </ng-template>
+      </div>
+    </div>
+  </div> -->
 </div>
