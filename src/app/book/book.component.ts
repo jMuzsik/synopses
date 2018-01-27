@@ -40,6 +40,11 @@ export class BookComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: Http) { }
 
+  initialize() {
+    var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+    viewer.load('ISBN:0738531367');
+  }
+
   getData() {
     var bookPath = this.route.snapshot.url[1].path;
     return this.http.get(`/api/${bookPath}`).map(x => {
@@ -102,12 +107,12 @@ export class BookComponent implements OnInit {
 
         this.bookTitle = data['title'];
         //INPUT LOWERCASE LETTERS, MAKE FIRST LETTER UPPERCASE
-        this.bookTitle = this.bookTitle.split(' ').map(str => {
-          return str[0].toUpperCase() + str.slice(1)
-        }).join(' ');
+        function capitalizeFirstLetter(string) {
+          return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+        this.bookTitle = capitalizeFirstLetter(this.bookTitle);
 
         //FIX ITALICS WITHIN GOODREADS DESCRIPTION
-        this.italicIndeces = data['italicIndeces']
         this.wikipedia = data['wikipedia_text'];
         this.isDataAvailable = true;
         this.periods = data['periods']

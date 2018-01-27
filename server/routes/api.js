@@ -18,7 +18,10 @@ router.get('/:book', (req, res) => {
 
     const query = req.params.book;
 
+    console.log(query)
+
     Book.find({ url_title: query }).then((book) => {
+        console.log(book)
         res.json(book).status(200);
     }).catch(err => res.status(400).send(console.error));
 
