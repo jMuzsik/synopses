@@ -22,9 +22,6 @@ export class BookComponent implements OnInit {
   //WIKI HAS NO TITLES, MAKE IT SOMEWHAT READABLE
   periods: number[];
 
-  //GOODREADS DESCRIPTION HAS <br /> AND <i>...</i>, FIX:
-  italicIndeces: number[];
-
   //ALL THE DATA FROM API CALLS
   amazonReview: string;
   amazonCustomerReviews: string[];
@@ -61,31 +58,11 @@ export class BookComponent implements OnInit {
       });
 
       //TAKE CARE OF CONFUSION WITHIN GOODREADS TEXT
-      x['goodreads_description'] = x['goodreads_description'].split('<br /><br />').filter(str => str);
-
-      x['italicIndeces'] = [];
-
-      x['goodreads_description'] = x['goodreads_description'].map((str, i) => {
-        x['italicIndeces'][i] = []
-        var p = 0;
-        if (str.indexOf('<i>') !== -1) {
-          for (let j = 0; j < 100; j++) {
-            x['italicIndeces'][i].push(str.indexOf('<i>'));
-            x['italicIndeces'][i].push(str.indexOf('</i>'));
-            if(p === 0) {
-              p = str.indexOf('</i>');
-              console.log(p)
-            } else p = str.slice(p).indexOf('</i>');
-            if(p === -1) break;
-          }
-        }
-        else {
-          x['italicIndeces'][i] = false;
-        }
-        str = str.replace('</i>', '<i>');
+      x['goodreads_description'] = x['goodreads_description'].split('<br /><br />').filter(str => str).map((str, i) => {
+        str = str.replace(/<i>/g, '');
+        str = str.replace(/<\/i>/g, '');
         return str;
-      })
-      console.log()
+      });
       return x;
     });
 
@@ -134,9 +111,8 @@ export class BookComponent implements OnInit {
         this.wikipedia = data['wikipedia_text'];
         this.isDataAvailable = true;
         this.periods = data['periods']
-        console.log(this.italicIndeces)
       },
       err => console.log(err),
-      () => console.log(this.goodreadsDescription))
+      () => console.log('SUCCESS!!'))
   };
 }

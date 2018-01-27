@@ -1,11 +1,16 @@
 <div class="container">
   <!--Ought to go to a different route-->
   <!-- <div [hidden]="submitted"> -->
-    <h1>Enter a new book:</h1>
-      <div class="input-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" aria-describedby="basic-addon1" #name>
-      </div>
-      <button type="submit" class="btn btn-default" (click)="newBook(name)">New Book</button>
-  <!-- </div> -->
+  <h1>Enter a new book:</h1>
+  <div class="input-group">
+    <div class="col-md-5">
+      Title:
+      <input type="text" class="form-control" id="title" aria-describedby="basic-addon1" #title required>
+    </div>
+    <div class="col-md-5">
+      Author:
+      <input type="text" class="form-control" id="author" aria-describedby="basic-addon1" #author required>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default" (click)="newBook(title, author)">New Book</button>
 </div>

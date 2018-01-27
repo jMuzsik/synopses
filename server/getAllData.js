@@ -1,7 +1,6 @@
 var apiCalls = require('./api-calls/index');
 
-function getAllTheData(title, finalCallback) {
-
+function getAllTheData(title, author, finalCallback) {
     var allTheData = {
         front_cover: String,
         back_cover: String,
@@ -23,7 +22,7 @@ function getAllTheData(title, finalCallback) {
     allTheData.title = title;
 
     // FIRST GET THE ISBN
-    apiCalls.getISBN(allTheData.title, function (isbn) {
+    apiCalls.getISBN(allTheData.title, author, function (isbn) {
         allTheData.isbn = isbn;
         // THEN GET THE AMAZON DATA
         apiCalls.getAmazonData(allTheData.isbn).then(function (amazonData) {
@@ -33,7 +32,7 @@ function getAllTheData(title, finalCallback) {
             allTheData.front_cover = amazonData.front_cover;
             allTheData.back_cover = amazonData.back_cover;
             //THEN THE GOODREADS DATA
-            apiCalls.getGoodreadsData(allTheData.title, function (goodreadsData) {
+            apiCalls.getGoodreadsData(allTheData.isbn, function (goodreadsData) {
                 allTheData.goodreads_description = goodreadsData.goodreads_description;
                 allTheData.goodreads_reviews_widget = goodreadsData.goodreads_reviews_widget;
                 allTheData.goodreads_author_image = goodreadsData.goodreads_author_image;

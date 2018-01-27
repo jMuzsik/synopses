@@ -15,16 +15,17 @@ export class PostsComponent {
 
   onSubmit() { this.submitted = true; }
 
-  newBook(incoming) {
+  newBook(title, author) {
     var data = {
-      data: incoming.value
+      title: title.value,
+      author: author.value
     }
 
     this.http.post('/api', data, {})
       .subscribe(
       result => {
         // Handle result
-        console.log(result)
+        console.log("DOES THIS HAPPEN IN POST COMPONENT?", result)
       },
       error => {
         console.log(error);
@@ -32,7 +33,7 @@ export class PostsComponent {
       () => {
         // 'onCompleted' callback.
         // No errors, route to new page here
-        var urlOfTitle = incoming.value.replace(/ /g, "_");
+        var urlOfTitle = title.value.replace(/ /g, "_");
         this.router.navigate([`/book/${urlOfTitle}`])
         console.log('reroute')
       }

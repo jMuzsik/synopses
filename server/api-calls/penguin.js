@@ -3,7 +3,8 @@ var request = require('request');
 var getPenguinData = function (query, callback) {
 
   //The query necessitates + btw words!
-  query = query.split().join('+');
+  query = query.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+  query = query.split(' ').join('+');
 
   var options = {
     uri: `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${query}&api_key=${process.env.PENGUIN_API_KEY}`

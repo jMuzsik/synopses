@@ -1,10 +1,10 @@
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
-
-p, div {
-	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 23px;
+p,
+div {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 23px;
 }
