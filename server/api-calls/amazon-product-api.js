@@ -1,6 +1,6 @@
-var amazon = require('amazon-product-api');
+var amazon = require("amazon-product-api");
 
-var getAmazonData = function (isbn) {
+var getAmazonData = function(isbn) {
   var client = amazon.createClient({
     awsId: process.env.AWS_ACCESS_KEY_ID,
     awsSecret: process.env.AWS_SECRET_ACCESS_KEY,
@@ -13,26 +13,36 @@ var getAmazonData = function (isbn) {
     amazon_reviews: [],
     amazon_editorial_review: "",
     amazon_similar_products: []
-  }
-  return client.itemLookup({
-    idType: 'ISBN',
-    itemId: isbn,
-    responseGroup: 'EditorialReview,Images,Reviews,Similarities,'
-  }).then(function (results) {
-    console.log("THIS IS IN AMAZON:", results[0].ImageSets[0].ImageSet[0].LargeImage[0])
-    try {
-      amazonData.amazon_reviews = results[0].CustomerReviews;
-      amazonData.amazon_editorial_review = results[0].EditorialReviews[0].EditorialReview[0].Content[0];
-      amazonData.amazon_similar_products = results[0].SimilarProducts[0].SimilarProduct;
-      amazonData.back_cover = results[0].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
-      amazonData.front_cover = results[0].ImageSets[0].ImageSet[1].LargeImage[0].URL[0];
-      return amazonData;
-    } catch (e) {
-      return amazonData;
-    }
-  }).catch(function (err) {
-    console.error("Amazon API call error:", err);
-  })
-}
+  };
+  return client
+    .itemLookup({
+      idType: "ISBN",
+      itemId: isbn,
+      responseGroup: "EditorialReview,Images,Reviews,Similarities,"
+    })
+    .then(function(results) {
+      console.log(
+        "THIS IS IN AMAZON:",
+        results[0].ImageSets[0].ImageSet[0].LargeImage[0]
+      );
+      try {
+        amazonData.amazon_reviews = results[0].CustomerReviews;
+        amazonData.amazon_editorial_review =
+          results[0].EditorialReviews[0].EditorialReview[0].Content[0];
+        amazonData.amazon_similar_products =
+          results[0].SimilarProducts[0].SimilarProduct;
+        amazonData.back_cover =
+          results[0].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
+        amazonData.front_cover =
+          results[0].ImageSets[0].ImageSet[1].LargeImage[0].URL[0];
+        return amazonData;
+      } catch (e) {
+        return amazonData;
+      }
+    })
+    .catch(function(err) {
+      console.error("Amazon API call error:", err);
+    });
+};
 
 module.exports = getAmazonData;
