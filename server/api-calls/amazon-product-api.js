@@ -21,10 +21,6 @@ var getAmazonData = function(isbn) {
       responseGroup: "EditorialReview,Images,Reviews,Similarities,"
     })
     .then(function(results) {
-      console.log(
-        "THIS IS IN AMAZON:",
-        results[0].ImageSets[0].ImageSet[0].LargeImage[0]
-      );
       try {
         amazonData.amazon_reviews = results[0].CustomerReviews;
         amazonData.amazon_editorial_review =

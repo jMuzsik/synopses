@@ -39,4 +39,13 @@ var checkAllStrings = function(...possibilities) {
   return arrayOfPossibleStrings;
 };
 
-module.exports = { isURL, checkAllURLS, checkAllStrings };
+function checkIfUndefined(data) {
+  Object.values(data).forEach(function(val) {
+    if (val === undefined) {
+      return true;
+    }
+  });
+  return false;
+}
+
+module.exports = { isURL, checkAllURLS, checkAllStrings, checkIfUndefined };

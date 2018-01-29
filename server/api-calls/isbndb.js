@@ -23,6 +23,7 @@ var getISBN = function(query, author, callback) {
         let splitBook = book.title.toLowerCase().split(" ");
         let splitAuthor = book.authors[0].toLowerCase().split(" ");
         let splitAuthorQuery = author.toLowerCase().split(" ");
+        console.log(splitAuthor, splitAuthorQuery)
         level = 0;
         if (splitBook[0] === splitQuery[0]) level++;
         if (splitBook[1] === splitQuery[1]) level++;

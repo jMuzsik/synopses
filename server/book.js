@@ -29,33 +29,40 @@ var bookSchema = new Schema({
 
 bookSchema.pre("save", function(next) {
   this.url_title = this.title.replace(/ /g, "_");
-
+  if(this.url_title[this.url_title.length-1] === ' ') {
+    this.url_title = this.url_title.slice(0, -1);
+  }
+  console.log(this.url_title);
   //MAKE SURE WHAT IS SUPPOSED TO BE AN URL IS AN URL
-  this.front_cover,
+  [
+    this.front_cover,
     this.back_cover,
     this.goodreads_author_image,
-    (this.goodreads_author_link = checkAllURLS(
-      this.front_cover,
-      this.back_cover,
-      this.goodreads_author_image,
-      this.goodreads_author_link
-    ));
+    this.goodreads_author_link
+  ] = checkAllURLS(
+    this.front_cover,
+    this.back_cover,
+    this.goodreads_author_image,
+    this.goodreads_author_link
+  );
 
   //MAKE SURE WHAT IS A STRING IS NOT AN EMPTY STRING
-  this.amazon_editorial_review,
+  [
+    this.amazon_editorial_review,
     this.isbn,
     this.wikipedia,
     this.goodreads_description,
     this.author_name,
-    (this.penguin_data = checkAllStrings(
-      this.amazon_reviews,
-      this.amazon_editorial_review,
-      this.isbn,
-      this.wikipedia,
-      this.goodreads_description,
-      this.author_name,
-      this.penguin_data
-    ));
+    this.penguin_data
+  ] = checkAllStrings(
+    this.amazon_reviews,
+    this.amazon_editorial_review,
+    this.isbn,
+    this.wikipedia,
+    this.goodreads_description,
+    this.author_name,
+    this.penguin_data
+  );
 
   next();
 });
