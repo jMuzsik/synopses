@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 export class PostsComponent {
   submitted: boolean = false;
 
-  constructor(private http: HttpClient, router: Router) {}
+  constructor(private http: HttpClient, public router: Router) {}
 
   onSubmit(): void {
     this.submitted = true;
@@ -22,7 +22,7 @@ export class PostsComponent {
       author: String;
     }
 
-    const data = new ObjectConstructor();
+    const data: ObjectConstructor = new ObjectConstructor();
     data.title = title.value;
     data.author = author.value;
     this.http.post("/api", data, {}).subscribe(
@@ -33,7 +33,10 @@ export class PostsComponent {
         console.log("POST ERROR!!", error);
       },
       () => {
-        console.log("SUCCESS, HERE I SHOULD REROUTE!");
+        const urlTitle: string = data.title.split(" ").join("_");
+        setTimeout(() => {
+          this.router.navigate([`/book/${urlTitle}`]);
+        }, 5000);
       }
     );
   }

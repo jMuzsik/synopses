@@ -72,11 +72,13 @@ export function capitalizeFirstLetter(str: string): string {
 }
 
 export function grabIframe(str: string): string {
-  const splitWhereSrcIs: Array<string> = str.split('src="');
-  const idxOfEndOfHref: number = splitWhereSrcIs[1].indexOf('"');
-  console.log(splitWhereSrcIs, idxOfEndOfHref);
-  const iFrame: string = splitWhereSrcIs[1].slice(0, idxOfEndOfHref);
-  return iFrame;
+  if(str.split('src="').length > 1) {
+    const splitWhereSrcIs: Array<string> = str.split('src="');
+    const idxOfEndOfHref: number = splitWhereSrcIs[1].indexOf('"');
+    const iFrame: string = splitWhereSrcIs[1].slice(0, idxOfEndOfHref);
+    return iFrame;
+  }
+  return str;
 }
 
 export function alterASINtoHREF(arr: Array<any>): Array<any> {
@@ -87,9 +89,13 @@ export function alterASINtoHREF(arr: Array<any>): Array<any> {
 }
 
 export function alterAuthorAndUrl(arr: Array<any>): Array<any> {
-  return arr.map(data => {
-    const idxToSlice = data.author[0].indexOf("|") + 1;
-    data.author[0] = data.author[0].slice(idxToSlice);
+ return arr.map(data => {
+    if(data.author) {
+      if(data.author[0].indexOf('|') > -1) {
+        const idxToSlice = data.author[0].indexOf("|") + 1;
+        data.author[0] = data.author[0].slice(idxToSlice);
+      }
+    }
     data.url = "https://www.penguinrandomhouse.com" + data.url;
     return data;
   });

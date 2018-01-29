@@ -50,8 +50,6 @@ export class BookComponent implements OnInit {
   //IS THE DATA LOADING?
   dataLoading: boolean = true;
 
-  // @Input() book: Book;
-
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,

@@ -15,6 +15,7 @@ import {
   grabIframe,
   alterASINtoHREF
 } from "./utils";
+import { Response } from "@angular/http/src/static_response";
 
 @Injectable()
 export class BookService {
@@ -29,6 +30,7 @@ export class BookService {
       var storeWikiFuncResultsArr = makeWikiTextPresentable(
         res["wikipedia_text"]
       );
+
       res["wikipedia_text"] = storeWikiFuncResultsArr[0];
       res["periods"] = storeWikiFuncResultsArr[1];
 
@@ -50,16 +52,10 @@ export class BookService {
     });
   }
 
-  // private handleError<T>(operation = "operation", result?: T) {
-  //   return (error: any): Observable<T> => {
-  //     // TODO: send the error to remote logging infrastructure
-  //     console.error(error); // log to console instead
-
-  //     // TODO: better job of transforming error for user consumption
-  //     this.log(`${operation} failed: ${error.message}`);
-
-  //     // Let the app keep running by returning an empty result.
-  //     return of(result as T);
-  //   };
-  // }
+  getBooks(): Observable<Response> {
+    return this.http.get("/api").map(res => {
+      const convertToJSON: Response = res.json();
+      return convertToJSON;
+    });
+  }
 }

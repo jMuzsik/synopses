@@ -27,39 +27,7 @@ var bookSchema = new Schema({
 });
 
 bookSchema.pre("save", function(next) {
-  this.url_title = this.title.replace(/ /g, "_");
-  if(this.url_title[this.url_title.length-1] === ' ') {
-    this.url_title = this.url_title.slice(0, -1);
-  }
-  //MAKE SURE WHAT IS SUPPOSED TO BE AN URL IS AN URL
-  // [
-  //   this.front_cover,
-  //   this.goodreads_author_image,
-  //   this.goodreads_author_link
-  // ] = checkAllURLS(
-  //   this.front_cover,
-  //   this.goodreads_author_image,
-  //   this.goodreads_author_link
-  // );
-
-  // //MAKE SURE WHAT IS A STRING IS NOT AN EMPTY STRING
-  // [
-  //   this.amazon_editorial_review,
-  //   this.isbn,
-  //   this.wikipedia,
-  //   this.goodreads_description,
-  //   this.author_name,
-  //   this.penguin_data
-  // ] = checkAllStrings(
-  //   this.amazon_reviews,
-  //   this.amazon_editorial_review,
-  //   this.isbn,
-  //   this.wikipedia,
-  //   this.goodreads_description,
-  //   this.author_name,
-  //   this.penguin_data
-  // );
-
+  this.url_title = this.title.replace(/ /g, "_").trim();
   next();
 });
 

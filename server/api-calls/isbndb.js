@@ -19,12 +19,10 @@ var getISBN = function(query, author, callback) {
       let maxValue = 0;
 
       books.forEach((book, i) => {
-        console.log(query)
         let splitQuery = query.toLowerCase().split(" ");
         let splitBook = book.title.toLowerCase().split(" ");
         let splitAuthor = book.authors[0].toLowerCase().split(" ");
         let splitAuthorQuery = author.toLowerCase().split(" ");
-        console.log(splitAuthor, splitAuthorQuery)
         level = 0;
         if (splitBook[0] === splitQuery[0]) level++;
         if (splitBook[1] === splitQuery[1]) level++;
@@ -43,7 +41,7 @@ var getISBN = function(query, author, callback) {
         }
       });
       saved = books[desiredIdx];
-      callback(saved.isbn);
+      callback(saved);
     }
   });
 };

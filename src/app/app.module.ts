@@ -27,7 +27,7 @@ import { BookService } from "./book.service";
     HttpModule,
     HttpClientModule
   ],
-  providers: [ BookService ],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

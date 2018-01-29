@@ -39,11 +39,6 @@ var getGoodreadsData = function(query, callback) {
             process.env.GOODREADS_KEY
           }`
         };
-        console.log(
-          "THIS IS IN GOODREADS API 2ND REQUEST",
-          result,
-          secondQuery
-        );
 
         return request.get(secondOptions, (error, response, body) => {
           if (error) console.error("THIS IS GOODREADS API ERROR:", error);
@@ -71,13 +66,6 @@ var getGoodreadsData = function(query, callback) {
             });
           }
         });
-        // //EQUATES TO A LARGE ARRAY OF OBJECTS WITH DIFERENT BOOKS within each:
-        // console.log("BOOK TITLE")
-        // console.dir(result.GoodreadsResponse.book[0].similar_books[0].book[0].title[0])
-        // console.log("BOOK LINK")
-        // console.dir(result.GoodreadsResponse.book[0].similar_books[0].book[0].link[0])
-        // console.log("BOOK IMAGE")
-        // console.dir(result.GoodreadsResponse.book[0].similar_books[0].book[0].image_url[0])
       });
     }
   });

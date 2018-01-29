@@ -21,8 +21,9 @@ function getAllTheData(title, author, finalCallback) {
   allTheData.title = title;
 
   // FIRST GET THE ISBN
-  apiCalls.getISBN(allTheData.title, author, function(isbn) {
-    allTheData.isbn = isbn;
+  apiCalls.getISBN(allTheData.title, author, function(isbnData) {
+    allTheData.isbn = isbnData.isbn;
+    allTheData.front_cover = isbnData.image;
     // THEN GET THE AMAZON DATA
     apiCalls
       .getAmazonData(allTheData.isbn)
@@ -30,7 +31,6 @@ function getAllTheData(title, author, finalCallback) {
         allTheData.amazon_reviews = amazonData.amazon_reviews;
         allTheData.amazon_editorial_review = amazonData.amazon_editorial_review;
         allTheData.amazon_similar_products = amazonData.amazon_similar_products;
-        allTheData.front_cover = amazonData.front_cover;
         //THEN THE GOODREADS DATA
         apiCalls.getGoodreadsData(allTheData.isbn, function(goodreadsData) {
           allTheData.goodreads_description =

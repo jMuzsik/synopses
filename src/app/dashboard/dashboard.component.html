@@ -1,3 +1,5 @@
-<p>
-  dashboard works!
-</p>
+<div *ngIf="dataAvailable">
+  <div *ngFor="let book of books">
+    <button (click)="reroute([book.url_title])">{{book.title}}</button>
+  </div>
+</div>
