@@ -17,16 +17,28 @@ export function makeWikiTextPresentable(
   return [textToReturn, periodArrayToReturn];
 }
 
-export function fixGoodreadsDescription(text: String): String[] {
-  console.log(text)
-  return text
-    .split("<br /><br />")
-    .filter(str => str)
-    .map((str, i) => {
-      str = str.replace(/<i>/g, "");
-      str = str.replace(/<\/i>/g, "");
-      return str;
-    });
+export function fixTextContainingBrAndITags(text: String): String[] {
+  //AMAZON TEXT CONTAINS BR AND I
+  if(text.indexOf('<BR>')>-1) {
+    return text
+      .split("<BR><BR>")
+      .filter(str => str)
+      .map((str, i) => {
+        str = str.replace(/<I>/g, "");
+        str = str.replace(/<\/I>/g, "");
+        return str;
+      });
+  //GOODREADS TEXT CONTAINS br (lowercase) AND i
+  } else {
+    return text
+      .split("<br /><br />")
+      .filter(str => str)
+      .map((str, i) => {
+        str = str.replace(/<i>/g, "");
+        str = str.replace(/<\/i>/g, "");
+        return str;
+      });
+  }
 }
 
 export function createBookObject(data: Object): Book {
@@ -51,6 +63,14 @@ export function createBookObject(data: Object): Book {
   return book;
 }
 
-export function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+export function capitalizeFirstLetter(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function grabIframe (str: string): string {
+  const splitWhereSrcIs: Array<string> = str.split('src="');
+  const idxOfEndOfHref: number = splitWhereSrcIs[1].indexOf('"');
+  console.log(splitWhereSrcIs, idxOfEndOfHref)
+  const iFrame: string = splitWhereSrcIs[1].slice(0, idxOfEndOfHref);
+  return iFrame;
 }

@@ -1,33 +1,68 @@
 <div *ngIf="isDataAvailable">
+
+  <!-------------------INITIALDATA---------------->
   <div>
     <h1>
       <b>
-        <u>{{bookTitle}}</u>
+        <u>{{book.title}}</u>
       </b>
-      - {{author}}
-      <br />
-      <img src={{authorImage}} />
-      <img src={{backCover}} />
-      <img src={{frontCover}} />
+      - {{book.author}}
     </h1>
-    <button (click)="showWiki()">Wikipedia</button>
-    <button (click)="showGoodreads()">Goodreads</button>
-    <div *ngIf="wikiVisible">
-      <div *ngFor="let wiki of wikipedia; let i=index">
-        <p>
-          <b>{{wiki.slice(0, periods[i])}}</b>{{wiki.slice(periods[i], wiki.length)}}
-          <br />
-          <br />
-        </p>
-      </div>
+    <div *ngIf="book.authorLink.length > 5">
+      <h3>Author Link:
+        <a href={{book.authorLink}}>goodreads page</a>
+      </h3>
     </div>
-    <div *ngIf="goodreadsVisible">
-      <div *ngFor="let text of goodreadsDescription">
-        {{text}}
-        <br />
-        <br />
-      </div>
+    <br />
+    <img src={{book.authorImage}} alt="Image of author" />
+    <div *ngIf="book.backCover.length > 5">
+      <img src={{book.backCover}} alt="Back Cover of book" />
+    </div>
+    <div *ngIf="book.frontCover.length > 5">
+      <img src={{book.frontCover}} alt="Front cover of book" />
     </div>
   </div>
 
+  <!-- ----------------BUTTONS ------------------>
+
+  <button (click)="toggle('wikiVisible')">Wikipidea Author Article</button>
+  <button (click)="toggle('goodreadsVisible')">Goodreads Description</button>
+  <button (click)="toggle('amazonDescriptionVisible')">Amazon Description</button>
+  <button (click)="toggle('goodreadsReviewVisible')">Goodreads Reviews</button>
+
+  <!-------------------------WIKIPEDIA---------------------->
+
+  <div *ngIf="buttonToggle.wikiVisible">
+    <div *ngFor="let wiki of book.wikipedia; let i=index">
+      <p>
+        <b>{{wiki.slice(0, periods[i])}}</b>{{wiki.slice(periods[i], wiki.length)}}
+        <br />
+        <br />
+      </p>
+    </div>
+  </div>
+
+  <!-- ---------------GOODREADS DESCRIPTION --------------- -->
+
+  <div *ngIf="buttonToggle.goodreadsVisible">
+    <div *ngFor="let text of book.goodreadsDescription">
+      {{text}}
+      <br />
+      <br />
+    </div>
+  </div>
+
+  <!-- -----------------AMAZON DESCRIPTION------------------ -->
+
+  <div *ngIf="buttonToggle.amazonDescriptionVisible">
+    <div *ngFor="let text of book.amazonReview">
+      {{text}}
+      <br />
+      <br />
+    </div>
+  </div>
+
+  <div *ngIf="buttonToggle.goodreadsReviewVisible">
+    <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(book.goodreadsReviewsWidget)' width="565" height="400" frameborder="0"></iframe>
+  </div>
 </div>

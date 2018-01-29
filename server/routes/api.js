@@ -27,6 +27,7 @@ router.post("/", (req, res) => {
   var query = req.body;
   getAllTheData(query.title, query.author, function(bookData) {
     var book = bookData;
+    console.log(bookData)
     book = new Book(book);
     book
       .save(function(error) {

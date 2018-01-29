@@ -16,15 +16,25 @@ export class PostsComponent {
     this.submitted = true;
   }
 
-  newBook(title: any, author: any): void {
+  newBook(title, author): void {
     class ObjectConstructor {
-      constructor(title: String, author: String) {
-        title = title;
-        author = author;
-      }
+      title: String;
+      author: String;
     }
 
-    const data = new ObjectConstructor(title.data, author.data);
-    this.http.post("/api", data, {});
+    const data = new ObjectConstructor();
+    data.title = title.value;
+    data.author = author.value;
+    this.http.post("/api", data, {}).subscribe(
+      result => {
+        console.log("OH YES API ALL FINISHED:", result);
+      },
+      error => {
+        console.log("POST ERROR!!", error);
+      },
+      () => {
+        console.log("SUCCESS, HERE I SHOULD REROUTE!");
+      }
+    );
   }
 }

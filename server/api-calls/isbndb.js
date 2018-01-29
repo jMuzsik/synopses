@@ -19,6 +19,7 @@ var getISBN = function(query, author, callback) {
       let maxValue = 0;
 
       books.forEach((book, i) => {
+        console.log(query)
         let splitQuery = query.toLowerCase().split(" ");
         let splitBook = book.title.toLowerCase().split(" ");
         let splitAuthor = book.authors[0].toLowerCase().split(" ");
