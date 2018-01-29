@@ -9,7 +9,6 @@ var checkAllStrings = utils.checkAllStrings;
 var bookSchema = new Schema({
   id: Number,
   front_cover: String,
-  back_cover: String,
   amazon_reviews: Array,
   amazon_editorial_review: String,
   amazon_similar_products: Array,
@@ -35,12 +34,10 @@ bookSchema.pre("save", function(next) {
   //MAKE SURE WHAT IS SUPPOSED TO BE AN URL IS AN URL
   // [
   //   this.front_cover,
-  //   this.back_cover,
   //   this.goodreads_author_image,
   //   this.goodreads_author_link
   // ] = checkAllURLS(
   //   this.front_cover,
-  //   this.back_cover,
   //   this.goodreads_author_image,
   //   this.goodreads_author_link
   // );

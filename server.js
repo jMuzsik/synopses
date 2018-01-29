@@ -1,30 +1,30 @@
-var express = require('express')
-var path = require('path')
-var http = require('http')
-var bodyParser = require('body-parser')
+var express = require("express");
+var path = require("path");
+var http = require("http");
+var bodyParser = require("body-parser");
 
-require('dotenv').config();
+require("dotenv").config();
 
-var db = require('./server/mongoose.js');
+var db = require("./server/mongoose.js");
 
-var api = require('./server/routes/api');
+var api = require("./server/routes/api");
 
 var app = express();
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'src')))
+app.use(express.static(path.join(__dirname, "src")));
 
-app.use('/api', api)
+app.use("/api", api);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'src/index.html'))
-})
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "src/index.html"));
+});
 
-var port = process.env.PORT || '3000'
-app.set('port', port)
+var port = process.env.PORT || "3000";
+app.set("port", port);
 
-var server = http.createServer(app)
+var server = http.createServer(app);
 
-server.listen(port, () => console.log('Chilling on port ', + port))
+server.listen(port, () => console.log("Chilling on port ", +port));

@@ -10,9 +10,10 @@ import "rxjs/add/operator/map";
 
 import {
   makeWikiTextPresentable,
-  fixTextContainingBrAndITags,
+  alterAuthorAndUrl,
   capitalizeFirstLetter,
-  grabIframe
+  grabIframe,
+  alterASINtoHREF
 } from "./utils";
 
 @Injectable()
@@ -34,17 +35,17 @@ export class BookService {
       //INPUT LOWERCASE LETTERS, MAKE FIRST LETTER UPPERCASE
       res["bookTitle"] = capitalizeFirstLetter(res["title"]);
 
-      //GET RIDE OF <i> TAGS WITHIN GOODREADS DESCRIPTION AS THEY DO NOT TURN INTO HTML
-      res["goodreads_description"] = fixTextContainingBrAndITags(
-        res["goodreads_description"]
-      );
-      res["amazon_editorial_review"] = fixTextContainingBrAndITags(
-        res["amazon_editorial_review"]
-      );
+      //ONLY NEED IFRAME
       res["goodreads_reviews_widget"] = grabIframe(
         res["goodreads_reviews_widget"]
       );
-      console.log(res["goodreads_reviews_widget"])
+
+      res["amazon_similar_products"] = alterASINtoHREF(
+        res["amazon_similar_products"]
+      );
+
+      res["penguin_data"] = alterAuthorAndUrl(res["penguin_data"]);
+
       return res;
     });
   }

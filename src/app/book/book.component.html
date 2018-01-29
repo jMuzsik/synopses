@@ -15,9 +15,6 @@
     </div>
     <br />
     <img src={{book.authorImage}} alt="Image of author" />
-    <div *ngIf="book.backCover.length > 5">
-      <img src={{book.backCover}} alt="Back Cover of book" />
-    </div>
     <div *ngIf="book.frontCover.length > 5">
       <img src={{book.frontCover}} alt="Front cover of book" />
     </div>
@@ -29,6 +26,12 @@
   <button (click)="toggle('goodreadsVisible')">Goodreads Description</button>
   <button (click)="toggle('amazonDescriptionVisible')">Amazon Description</button>
   <button (click)="toggle('goodreadsReviewVisible')">Goodreads Reviews</button>
+  <button (click)="toggle('amazonReviewVisible')">Amazon Reviews</button>
+  <button (click)="toggle('amazonSimilarBooksVisible')">Amazon Similar Books</button>
+  <button (click)="toggle('goodreadsSimilarBooksVisible')">Goodreads Similar Books</button>
+  <button (click)="toggle('penguinDataVisible')">Penguin Info</button>
+
+
 
   <!-------------------------WIKIPEDIA---------------------->
 
@@ -45,24 +48,60 @@
   <!-- ---------------GOODREADS DESCRIPTION --------------- -->
 
   <div *ngIf="buttonToggle.goodreadsVisible">
-    <div *ngFor="let text of book.goodreadsDescription">
-      {{text}}
-      <br />
-      <br />
-    </div>
+    <div [innerHTML]="book.goodreadsDescription"></div>
   </div>
 
   <!-- -----------------AMAZON DESCRIPTION------------------ -->
 
   <div *ngIf="buttonToggle.amazonDescriptionVisible">
-    <div *ngFor="let text of book.amazonReview">
-      {{text}}
+    <div [innerHTML]="book.amazonReview"></div>
+  </div>
+
+  <!----------------------Goodreads Reviews iframe ------------- -->
+
+  <div *ngIf="buttonToggle.goodreadsReviewVisible">
+    <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(book.goodreadsReviewsWidget)' width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+
+  <!-- -----------------------AMAZON REVIEWS IFRAME------------------ -->
+
+  <div *ngIf="buttonToggle.amazonReviewVisible">
+    <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(book.amazonCustomerReviews)' width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+
+  <!-- ------------AMAZON SIMILAR BOOKS LINKS TO GOODREADS---------- -->
+  <div *ngIf="buttonToggle.amazonSimilarBooksVisible">
+    <div *ngFor="let book of book.amazonSimilarProducts">
+      <a href={{book.ASIN[0]}} alt="Link to similar book at goodreads" target="_blank">{{book.Title[0]}}</a>
       <br />
       <br />
     </div>
   </div>
 
-  <div *ngIf="buttonToggle.goodreadsReviewVisible">
-    <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(book.goodreadsReviewsWidget)' width="565" height="400" frameborder="0"></iframe>
+  <!-- ---------------------GOODREADS SIMILAR BOOKS-------------- -->
+
+  <div *ngIf="buttonToggle.goodreadsSimilarBooksVisible">
+    <div *ngFor="let book of book.goodreadsSimilarBooks">
+      <a href={{book.authors[0].author[0].link[0]}} target="_blank">{{book.authors[0].author[0].name[0]}}</a>
+      <div *ngIf="book.image_url[0].indexOf('nophoto') === -1">
+        <img src={{book.image_url[0]}} alt="image of goodreads similar book" />
+      </div>
+      <a href={{book.link[0]}} alt="Redirect to book (goodreads)" target="_blank">{{book.title[0]}}</a>
+      <br />
+      <br />
+    </div>
   </div>
+
+  <!-- -------------------------Penguin Data--------------------- -->
+
+  <div *ngIf="buttonToggle.penguinDataVisible">
+    <div *ngFor="let book of book.penguinData">
+      <a href={{book.url}} alt="url to book">{{book.name}}</a>
+      <p>{{book.author[0]}}</p>
+      <div [innerHTML]="book.description[0]"></div>
+      <br />
+      <br />
+    </div>
+  </div>
+
 </div>

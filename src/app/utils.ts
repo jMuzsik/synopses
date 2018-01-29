@@ -19,7 +19,7 @@ export function makeWikiTextPresentable(
 
 export function fixTextContainingBrAndITags(text: String): String[] {
   //AMAZON TEXT CONTAINS BR AND I
-  if(text.indexOf('<BR>')>-1) {
+  if (text.indexOf("<BR>") > -1) {
     return text
       .split("<BR><BR>")
       .filter(str => str)
@@ -28,7 +28,7 @@ export function fixTextContainingBrAndITags(text: String): String[] {
         str = str.replace(/<\/I>/g, "");
         return str;
       });
-  //GOODREADS TEXT CONTAINS br (lowercase) AND i
+    //GOODREADS TEXT CONTAINS br (lowercase) AND i
   } else {
     return text
       .split("<br /><br />")
@@ -45,11 +45,12 @@ export function createBookObject(data: Object): Book {
   const book = new Book();
 
   //SET ALL THE FIELDS OF BOOK
+
   book["amazonReview"] = data["amazon_editorial_review"];
-  book["amazonCustomerReviews"] = data["amazon_reviews"];
+  //IFRAME IS LOCATED WITHIN ARRAY
+  book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
   book["amazonSimilarProducts"] = data["amazon_similar_products"];
   book["author"] = data["author_name"];
-  book["backCover"] = data["back_cover"];
   book["frontCover"] = data["front_cover"];
   book["authorImage"] = data["goodreads_author_image"];
   book["authorLink"] = data["goodreads_author_link"];
@@ -64,13 +65,32 @@ export function createBookObject(data: Object): Book {
 }
 
 export function capitalizeFirstLetter(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return str
+    .split(" ")
+    .map(subStr => subStr.charAt(0).toUpperCase() + subStr.slice(1))
+    .join(" ");
 }
 
-export function grabIframe (str: string): string {
+export function grabIframe(str: string): string {
   const splitWhereSrcIs: Array<string> = str.split('src="');
   const idxOfEndOfHref: number = splitWhereSrcIs[1].indexOf('"');
-  console.log(splitWhereSrcIs, idxOfEndOfHref)
+  console.log(splitWhereSrcIs, idxOfEndOfHref);
   const iFrame: string = splitWhereSrcIs[1].slice(0, idxOfEndOfHref);
   return iFrame;
+}
+
+export function alterASINtoHREF(arr: Array<any>): Array<any> {
+  return arr.map(idxValue => {
+    idxValue.ASIN[0] = `http://www.goodreads.com/book/isbn/${idxValue.ASIN[0]}`;
+    return idxValue;
+  });
+}
+
+export function alterAuthorAndUrl(arr: Array<any>): Array<any> {
+  return arr.map(data => {
+    const idxToSlice = data.author[0].indexOf("|") + 1;
+    data.author[0] = data.author[0].slice(idxToSlice);
+    data.url = "https://www.penguinrandomhouse.com" + data.url;
+    return data;
+  });
 }

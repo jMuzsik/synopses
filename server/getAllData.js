@@ -3,7 +3,6 @@ var apiCalls = require("./api-calls/index");
 function getAllTheData(title, author, finalCallback) {
   var allTheData = {
     front_cover: String,
-    back_cover: String,
     amazon_reviews: Array,
     amazon_editorial_review: String,
     amazon_similar_products: Array,
@@ -32,7 +31,6 @@ function getAllTheData(title, author, finalCallback) {
         allTheData.amazon_editorial_review = amazonData.amazon_editorial_review;
         allTheData.amazon_similar_products = amazonData.amazon_similar_products;
         allTheData.front_cover = amazonData.front_cover;
-        allTheData.back_cover = amazonData.back_cover;
         //THEN THE GOODREADS DATA
         apiCalls.getGoodreadsData(allTheData.isbn, function(goodreadsData) {
           allTheData.goodreads_description =

@@ -3,7 +3,6 @@ export class Book {
   amazonCustomerReviews: string[];
   amazonSimilarProducts: string[];
   author: string;
-  backCover: string;
   frontCover: string;
   authorImage: string;
   authorLink: string;

@@ -7,8 +7,5 @@
     "types": []
   },
   "types": ["node"],
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["test.ts", "**/*.spec.ts"]
 }

@@ -10,10 +10,14 @@ import { BookService } from "../book.service";
 import { createBookObject } from "../utils";
 
 interface ToggleButton {
-  wikiVisible: boolean = false;
-  goodreadsVisible: boolean = false;
-  amazonDescriptionVisible: boolean = false;
-  goodreadsReviewVisible: boolean = false;
+  wikiVisible: boolean;
+  goodreadsVisible: boolean;
+  amazonDescriptionVisible: boolean;
+  goodreadsReviewVisible: boolean;
+  amazonReviewVisible: boolean;
+  amazonSimilarBooksVisible: boolean;
+  goodreadsSimilarBooksVisible: boolean;
+  penguinDataVisible: boolean;
 }
 
 @Component({
@@ -33,7 +37,11 @@ export class BookComponent implements OnInit {
     wikiVisible: false,
     goodreadsVisible: false,
     amazonDescriptionVisible: false,
-    goodreadsReviewVisible: false
+    goodreadsReviewVisible: false,
+    amazonReviewVisible: false,
+    amazonSimilarBooksVisible: false,
+    goodreadsSimilarBooksVisible: false,
+    penguinDataVisible: false
   };
 
   //WIKI HAS NO TITLES, MAKE IT SOMEWHAT READABLE
@@ -50,19 +58,21 @@ export class BookComponent implements OnInit {
     public sanitizer: DomSanitizer
   ) {}
 
-  // initialize() {
-  //   var viewer = new google.books.DefaultViewer(
-  //     document.getElementById("viewerCanvas")
-  //   );
-  //   viewer.load("ISBN:0738531367");
-  // }
-
   toggle(name: string): void {
     if (!this.buttonToggle[name]) {
+      this.turnOff();
       this.buttonToggle[name] = true;
     } else {
+      this.turnOff();
       this.buttonToggle[name] = false;
     }
+  }
+
+  turnOff(): void {
+    const keys = Object.keys(this.buttonToggle);
+    keys.forEach(key => {
+      this.buttonToggle[key] = false;
+    });
   }
 
   getBook(): void {
