@@ -1,11 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var utils = require("./utils");
-
-var checkAllURLS = utils.checkAllURLS;
-var checkAllStrings = utils.checkAllStrings;
-
 var bookSchema = new Schema({
   id: Number,
   front_cover: String,
@@ -19,15 +14,20 @@ var bookSchema = new Schema({
   goodreads_similar_books: Array,
   penguin_data: Array,
   author_name: String,
+  author: String,
   isbn: String,
   wikipedia_text: String,
   title: String,
   url_title: String,
-  created_at: { type: Date, default: Date.now }
+  exact_title: String,
+  created_at: { type: Date, default: Date.now },
+  url_author: String,
 });
 
 bookSchema.pre("save", function(next) {
-  this.url_title = this.title.replace(/ /g, "_").trim();
+  console.log(this.title, this.author)
+  this.url_title =
+    this.title.split(" ").join("_") + "_" + this.author.split(" ").join("_");
   next();
 });
 

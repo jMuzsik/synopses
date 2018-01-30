@@ -30,6 +30,7 @@
     "express": "^4.16.2",
     "fuse.js": "^3.2.0",
     "isbndbjs": "^1.0.2",
+    "method-override": "^2.3.10",
     "mongoose": "^4.13.9",
     "nodemon": "^1.14.11",
     "redux-saga": "^0.16.0",

@@ -1,10 +1,18 @@
-function grabTitleAndUrl(arr) {
-  var titleArr = [{ title: String, urlTitle: String }];
-  arr.forEach((book, i) => {
-    titleArr[i]["title"] = book["title"];
-    titleArr[i]["urlTitle"] = book["url_title"];
+const db = require("./mongoose.js");
+var Book = require("./book.js");
+
+function checkIfAlreadyCreated(isbn) {
+  var check = false;
+  console.log('IS BOOK ACTUALLY BEING RETURNED IN FUNCTION', Book)
+  Book.find({}).then(books => {
+      books.forEach(book => {
+        console.log('IS THIS EVER TRUE?', book.isbn, isbn, isbn ===b)
+        if (book.isbn === isbn) {
+          check = true;
+        }
+      });
   });
-  return titleArr;
+  return check;
 }
 
-module.exports = { grabTitleAndUrl };
+module.exports = { checkIfAlreadyCreated };

@@ -19,9 +19,11 @@ function getAllTheData(title, author, finalCallback) {
   };
 
   allTheData.title = title;
+  allTheData.author_name = author;
 
   // FIRST GET THE ISBN
   apiCalls.getISBN(allTheData.title, author, function(isbnData) {
+    console.log(isbnData)
     allTheData.isbn = isbnData.isbn;
     allTheData.front_cover = isbnData.image;
     // THEN GET THE AMAZON DATA
@@ -39,7 +41,6 @@ function getAllTheData(title, author, finalCallback) {
             goodreadsData.goodreads_reviews_widget;
           allTheData.goodreads_author_image =
             goodreadsData.goodreads_author_image;
-          allTheData.author_name = goodreadsData.author_name;
           allTheData.goodreads_author_link =
             goodreadsData.goodreads_author_link;
           allTheData.goodreads_similar_books =
@@ -49,7 +50,7 @@ function getAllTheData(title, author, finalCallback) {
             allTheData.penguin_data = penguinData;
 
             //WIKIPEDIA DATA
-            apiCalls.getWikiData(allTheData.author_name, function(wikiData) {
+            apiCalls.getWikiData(goodreadsData.author_name, function(wikiData) {
               allTheData.wikipedia_text = wikiData;
               finalCallback(allTheData);
             });

@@ -1,5 +1,9 @@
 var request = require("request");
 
+var utils = require("../utils");
+
+var checkIfAlreadyCreated = utils.checkIfAlreadyCreated;
+
 var getISBN = function(query, author, callback) {
   var options = {
     uri: `http://api.isbndb.com/books/${query}`,
@@ -17,7 +21,6 @@ var getISBN = function(query, author, callback) {
       let books = JSON.parse(response.body).books;
       let desiredIdx = 0;
       let maxValue = 0;
-
       books.forEach((book, i) => {
         let splitQuery = query.toLowerCase().split(" ");
         let splitBook = book.title.toLowerCase().split(" ");
@@ -39,9 +42,13 @@ var getISBN = function(query, author, callback) {
           maxValue = value;
           desiredIdx = idx;
         }
+        saved = books[desiredIdx];
+
+        saved["author_name"] = books[desiredIdx].author;
+        saved["exact_title"] = books[desiredIdx].title;
+
+        return callback(saved);
       });
-      saved = books[desiredIdx];
-      callback(saved);
     }
   });
 };

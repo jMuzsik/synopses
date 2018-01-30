@@ -2,6 +2,7 @@ var express = require("express");
 var path = require("path");
 var http = require("http");
 var bodyParser = require("body-parser");
+var methodOverride = require('method-override')
 
 require("dotenv").config();
 
@@ -13,6 +14,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride())
 
 app.use(express.static(path.join(__dirname, "src")));
 
@@ -21,6 +23,10 @@ app.use("/api", api);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "src/index.html"));
 });
+
+app.use((err, req, res, next) => {
+  res.status(500).render('error', { error: err, message: 'wtf?' })
+})
 
 var port = process.env.PORT || "3000";
 app.set("port", port);

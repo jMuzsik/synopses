@@ -4,9 +4,10 @@ const db = require("../mongoose.js");
 const Book = require("../book.js");
 
 const utils = require("../utils");
-const grabTitleAndUrl = utils.grabTitleAndUrl;
 
 const getAllTheData = require("../getAllData");
+
+const getIsbn = require("../api-calls/isbndb");
 
 router.get("/", (req, res) => {
   Book.find({})
@@ -20,7 +21,7 @@ router.get("/", (req, res) => {
 
 router.get("/:book", (req, res) => {
   const query = req.params.book;
-
+  console.log("THIS IS IN API CALL: ", query);
   Book.find({ url_title: query })
     .then(book => {
       res.json(book).status(200);
@@ -29,28 +30,31 @@ router.get("/:book", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  var isbn = req.body.isbn;
-
-  Book.find({}).then(books => {
-    books.forEach(book => {
-      if (book.isbn === isbn) {
-        res
-          .status(201)
-          .send({ message: "This book has already been created!!!" });
-      }
-    });
-  });
+  var query = req.body;
 
   getAllTheData(query.title, query.author, function(bookData) {
     var book = bookData;
     book = new Book(book);
-    book
-      .save(function(error) {
-        if (error) console.error(error);
-        else console.log("SAVED!!!!!!!");
+    return Book.find({})
+      .then(books => {
+        var check = true;
+
+        books.forEach(prevBook => {
+          if (prevBook.isbn === book.isbn) {
+            check = false;
+          }
+        });
+
+        if (check) {
+          return book.save(function(error) {
+            if (error) console.log(error);
+            else return res.status(200).send("saved").end();
+          });
+        } else {
+          return res.status(201).send({ message: "same book" }).end();
+        }
       })
-      .then(res.status(201).send({ message: "Buenisimo!!!" }))
-      .catch(error => res.status(401).send({ message: error }));
+      .catch(error => res.end());
   });
 });
 

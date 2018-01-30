@@ -58,4 +58,12 @@ export class BookService {
       return convertToJSON;
     });
   }
+
+  putBook(bookPath: string): Observable<Response> {
+    return this.http.put(`/api/${bookPath}`);
+  }
+
+  postBook(data: any): Observable<Response> {
+    return this.http.post("/api", data, {})
+  }
 }

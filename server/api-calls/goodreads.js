@@ -28,7 +28,7 @@ var getGoodreadsData = function(query, callback) {
     if (error) console.error("THIS IS GOODREADS API ERROR 1ST REQUEST:", error);
     else {
       var xml = response.body;
-      parseString(xml, { trim: true }, (err, result) => {
+      return parseString(xml, { trim: true }, (err, result) => {
         if (err) console.error("THIS IS A GOODREADS INNER ERROR:", err);
         var secondQuery = result.GoodreadsResponse.search[0].results[0].work[0].best_book[0].title[0]
           .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
@@ -44,24 +44,35 @@ var getGoodreadsData = function(query, callback) {
           if (error) console.error("THIS IS GOODREADS API ERROR:", error);
           else {
             xml = response.body;
-            parseString(xml, { trim: true }, (err, result) => {
+            return parseString(xml, { trim: true }, (err, result) => {
               try {
                 goodreadsData.goodreads_description =
                   result.GoodreadsResponse.book[0].description[0];
                 goodreadsData.goodreads_reviews_widget =
                   result.GoodreadsResponse.book[0].reviews_widget[0];
-                goodreadsData.goodreads_author_image =
-                  result.GoodreadsResponse.book[0].authors[0].author[0].image_url[0]._;
+                if (
+                  result.GoodreadsResponse.book[0].authors[0].author[0].image_url[0]._.indexOf(
+                    "nophoto"
+                  ) === -1
+                ) {
+                  goodreadsData.goodreads_author_image =
+                    result.GoodreadsResponse.book[0].authors[0].author[0].image_url[0]._;
+                } else {
+                  //ULTRA IMPORTANT DEFAULT SPACE IMAGE
+                  goodreadsData.goodreads_author_image =
+                    "http://imgsrc.hubblesite.org/hvi/uploads/image_file/image_attachment/30052/STSCI-H-p1720b-t-400x400.png";
+                }
                 goodreadsData.author_name =
                   result.GoodreadsResponse.book[0].authors[0].author[0].name[0];
                 goodreadsData.goodreads_author_link =
                   result.GoodreadsResponse.book[0].authors[0].author[0].link[0];
+                console.log(result.GoodreadsResponse.book[0])
                 goodreadsData.goodreads_similar_books =
                   result.GoodreadsResponse.book[0].similar_books[0].book;
-                callback(goodreadsData);
+                return callback(goodreadsData);
               } catch (e) {
                 if (e) console.log(e);
-                callback(goodreadsData);
+                return callback(goodreadsData);
               }
             });
           }
