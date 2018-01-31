@@ -1,4 +1,4 @@
-@import url("https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css");
+@import '../../styles.scss';
 
 @keyframes big-gif {
   from {
@@ -10,9 +10,8 @@
     height: 0vh;
   }
 }
-
 .big-gif img {
-  animation-name:big-gif;
+  animation-name: big-gif;
   animation-duration: 7s;
   animation-timing-function: ease-out;
   width: 100vw;

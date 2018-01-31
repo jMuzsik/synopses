@@ -1,4 +1,4 @@
-@import url("https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css");
+@import '../styles.scss';
 
 h1 {
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
@@ -8,6 +8,7 @@ h1 {
   font-weight: 500;
   line-height: 23px;
 }
+
 h3 {
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 17px;
@@ -16,6 +17,7 @@ h3 {
   font-weight: 500;
   line-height: 23px;
 }
+
 p {
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 14px;
@@ -38,14 +40,12 @@ p {
     font-size: 32px;
   }
 }
-
 .jumbotron {
   width: 100vw;
   height: 100vh;
   padding: 0;
   margin: 0;
-  background: url("https://n6-img-fp.akamaized.net/free-photo/grunge-vintage-old-paper-background_1373-431.jpg?size=338&ext=jpg")
-    no-repeat center center fixed;
+  background: url("https://n6-img-fp.akamaized.net/free-photo/grunge-vintage-old-paper-background_1373-431.jpg?size=338&ext=jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -53,26 +53,33 @@ p {
   text-align: center;
 }
 
-@keyframes paper-falling {
-  from {
+@keyframes paper1 {
+  0% {
     top: 0em;
     left: 50%;
-
     transform: rotate(0deg) skew(29deg);
   }
-  to {
+  10% {top: 0;};
+  20% {top: 0;};
+  30% {top: 0;};
+  40% {top: 0;};
+  50% {top: 0;};
+  60% {top: 0;};
+  70% {top: 0;};
+  80% {top: 0;};
+  90% {top: 0;};
+  100% {
     bottom: 0em;
     left: 70%;
     transform: rotate(1234deg) skew(50deg);
   }
 }
-
-.falling-paper {
-  float:left;
+.paper1 {
+  float: left;
   position: relative;
   width: 2em;
   height: auto;
-  animation: paper-falling;
-  animation-duration: 2s;
+  animation: paper1;
+  animation-duration: 5s;
   animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
