@@ -1,6 +1,14 @@
-<h1>Hello</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/posts">Post</a>
+<div class="jumbotron">
+  <button id="crazy-button" type="button" class="btn btn-primary btn-lg" (click)="postOpen(); lotsOfPaper();">
+    <div class="glyphicon glyphicon-plus"></div>
+  </button>
+  <div *ngIf="newBook">
+    <app-posts></app-posts>
+  </div>
+  <div *ngIf="papers.length>0">
+    <div *ngFor="let paper of papers">
+      <img src={{paper}} alt="image of paper animation" class="falling-paper" />
+    </div>
+  </div>
   <router-outlet></router-outlet>
-</nav>
+</div>

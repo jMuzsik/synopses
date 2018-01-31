@@ -12,7 +12,7 @@ import { BookService } from "../book.service";
 export class PostsComponent {
   submitted: boolean = false;
 
-  bookPreviouslyCreated: boolean = true;
+  bookPreviouslyCreated: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -21,7 +21,7 @@ export class PostsComponent {
   ) {}
 
   close(): void {
-    if(this.bookPreviouslyCreated) {
+    if (this.bookPreviouslyCreated) {
       this.bookPreviouslyCreated = false;
     }
   }
@@ -42,7 +42,7 @@ export class PostsComponent {
 
     this.bookService.postBook(data).subscribe(
       result => {
-        if (result._body.length > 0) {
+        if (result["_body"].length > 0) {
           const urlTitle: string =
             data.title.split(" ").join("_") +
             "_" +

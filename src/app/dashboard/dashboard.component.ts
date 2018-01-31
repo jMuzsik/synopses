@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { BookService } from "../book.service";
+import { setTimeout } from "timers";
 
 @Component({
   selector: "app-dashboard",
@@ -11,6 +12,7 @@ import { BookService } from "../book.service";
 export class DashboardComponent implements OnInit {
   //LOAD PAGE?
   dataAvailable: boolean = false;
+  showDiv: boolean = true;
 
   //ALL BOOKS
   books: any;
@@ -21,10 +23,10 @@ export class DashboardComponent implements OnInit {
     this.bookService.getBooks().subscribe(
       data => {
         this.books = data;
-        this.dataAvailable = true;
       },
       err => console.log("FAILED OBTAINING ALL BOOKS FROM API", err),
-      () => console.log("SUCCESS!!!!")
+      () => console.log('success')
+
     );
   }
 
@@ -34,5 +36,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBooks();
+    setTimeout(() => {
+      this.showDiv = false;
+      this.dataAvailable = true;
+    }, 7000)
   }
 }

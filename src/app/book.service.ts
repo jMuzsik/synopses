@@ -54,16 +54,19 @@ export class BookService {
 
   getBooks(): Observable<Response> {
     return this.http.get("/api").map(res => {
-      const convertToJSON: Response = res.json();
+      const convertToJSON: any = res.json();
+      const capitaliseFirstLetter: any = convertToJSON.map(book => {
+        book["title"] = capitalizeFirstLetter(book["title"]);
+      });
       return convertToJSON;
     });
   }
 
-  putBook(bookPath: string): Observable<Response> {
-    return this.http.put(`/api/${bookPath}`);
+  putBook(bookPath: string, data: any): Observable<Response> {
+    return this.http.put(`/api/${bookPath}`, data, {});
   }
 
   postBook(data: any): Observable<Response> {
-    return this.http.post("/api", data, {})
+    return this.http.post("/api", data, {});
   }
 }
