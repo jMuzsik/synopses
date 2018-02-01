@@ -1,3 +1,16 @@
 #post {
-  width: 100vw;
+  width: 50vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  #author, #title {
+    margin: 0;
+    background: #39CCCC;
+    color: #001f3f;
+  };
+  #post-button {
+    background: #3D9970;
+    color: #FFDC00;
+  };
 }

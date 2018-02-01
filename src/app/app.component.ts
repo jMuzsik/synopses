@@ -23,15 +23,21 @@ export class AppComponent {
 
   lotsOfPaper(): void {
     const paper: string = "assets/falling-paper.png";
-    for (let i = 0; i < 20; i++) {
-      this.papers[i] = {};
-      this.papers[i]["str"] = paper;
-      this.papers[i]["cl"] = "paper" + " " + "paper" + (i + 1);
+    console.log('why does this run twice"',this.showPaper)
+    if(this.showPaper) {
+      this.hideThePaper()
+    } else {
+      for (let i = 0; i < 20; i++) {
+        this.papers[i] = {};
+        this.papers[i]["str"] = paper;
+        this.papers[i]["cl"] = "paper" + " " + "paper" + (i + 1);
+      }
+      this.showPaper = true;
+      setTimeout(() => {
+        this.hideThePaper();
+      }, 20000);
+
     }
-    this.showPaper = true;
-    setTimeout(() => {
-      this.hideThePaper();
-    }, 20000);
   }
 
   hideThePaper(): void {
@@ -46,7 +52,6 @@ export class AppComponent {
     if (this.newBook) {
       this.newBook = false;
     } else {
-      this.lotsOfPaper();
       this.newBook = true;
     }
   }
