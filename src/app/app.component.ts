@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import { Router } from "@angular/router";
 
-interface papers {
+interface paper {
   cl: String;
   str: String;
 }
@@ -11,28 +12,41 @@ interface papers {
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-
 export class AppComponent {
   newBook: boolean = false;
 
-  papers: papers = {
-    cl: "",
-    str: ""
-  };
+  papers: Array<any> = [];
+
+  showPaper: boolean = false;
+
+  constructor(private router: Router) {}
 
   lotsOfPaper(): void {
-    const paper: string =
-      "https://orig00.deviantart.net/1783/f/2010/026/d/f/old_piece_of_paper_by_cathusiowa.png";
-    for (let i = 1; i < 21; i++) {
-      this.papers["str"] = paper;
-      this.papers["cl"] = "paper" + i;
+    const paper: string = "assets/falling-paper.png";
+    for (let i = 0; i < 20; i++) {
+      this.papers[i] = {};
+      this.papers[i]["str"] = paper;
+      this.papers[i]["cl"] = "paper" + " " + "paper" + (i + 1);
     }
+    this.showPaper = true;
+    setTimeout(() => {
+      this.hideThePaper();
+    }, 20000);
+  }
+
+  hideThePaper(): void {
+    this.showPaper = false;
+  }
+
+  goToHome(): void {
+    this.router.navigate([`/dashboard`]);
   }
 
   postOpen(): void {
     if (this.newBook) {
       this.newBook = false;
     } else {
+      this.lotsOfPaper();
       this.newBook = true;
     }
   }

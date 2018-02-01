@@ -1,4 +1,4 @@
-@import '../styles.scss';
+@import "../styles.scss";
 
 h1 {
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
@@ -45,7 +45,8 @@ p {
   height: 100vh;
   padding: 0;
   margin: 0;
-  background: url("https://n6-img-fp.akamaized.net/free-photo/grunge-vintage-old-paper-background_1373-431.jpg?size=338&ext=jpg") no-repeat center center fixed;
+  background: url("https://n6-img-fp.akamaized.net/free-photo/grunge-vintage-old-paper-background_1373-431.jpg?size=338&ext=jpg")
+    no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -53,33 +54,204 @@ p {
   text-align: center;
 }
 
-@keyframes paper1 {
-  0% {
-    top: 0em;
-    left: 50%;
-    transform: rotate(0deg) skew(29deg);
-  }
-  10% {top: 0;};
-  20% {top: 0;};
-  30% {top: 0;};
-  40% {top: 0;};
-  50% {top: 0;};
-  60% {top: 0;};
-  70% {top: 0;};
-  80% {top: 0;};
-  90% {top: 0;};
-  100% {
-    bottom: 0em;
-    left: 70%;
-    transform: rotate(1234deg) skew(50deg);
+@for $i from 1 through 21 {
+  @keyframes #{paper + $i} {
+    0% {
+      top: 0;
+      left: 0;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
+    30% {
+      top: 30%;
+      left: ($i * $i) % 30 * 1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
+    40% {
+      top: 40%;
+      left: ($i * $i) %40 *1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
+    50% {
+      top: 50%;
+      left: ($i * $i) %50 *1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
+    60% {
+      top: 60%;
+      left: ($i * $i) %60 * 1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
+    70% {
+      top: 70%;
+      left: ($i * $i) %70 * 1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
+    80% {
+      top: 80%;
+      left: ($i * $i) %80 * 1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
+    90% {
+      top: 90%;
+      left: ($i * $i) %90 * 1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
+    100% {
+      top: 100%;
+      left: ($i * $i) %110 * 1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i+100)%70)+deg);
+    }
   }
 }
-.paper1 {
-  float: left;
-  position: relative;
-  width: 2em;
+
+.paper {
+  position: absolute;
+  width: 3em;
   height: auto;
-  animation: paper1;
-  animation-duration: 5s;
-  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  overflow: hidden;
+}
+
+.paper1 {
+  @extend .paper;
+  -webkit-animation-name: paper1;
+  animation-name: paper1;
+}
+
+.paper2 {
+  @extend .paper;
+  -webkit-animation-name: paper2;
+  animation-name: paper2;
+}
+
+.paper3 {
+  @extend .paper;
+  -webkit-animation-name: paper3;
+  animation-name: paper3;
+}
+
+.paper4 {
+  @extend .paper;
+  -webkit-animation-name: paper4;
+  animation-name: paper4;
+}
+
+.paper5 {
+  @extend .paper;
+  -webkit-animation-name: paper5;
+  animation-name: paper5;
+}
+
+.paper6 {
+  @extend .paper;
+  -webkit-animation-name: paper6;
+  animation-name: paper6;
+}
+
+.paper7 {
+  @extend .paper;
+  -webkit-animation-name: paper7;
+  animation-name: paper7;
+}
+
+.paper8 {
+  @extend .paper;
+  -webkit-animation-name: paper8;
+  animation-name: paper8;
+}
+
+.paper9 {
+  @extend .paper;
+  -webkit-animation-name: paper9;
+  animation-name: paper9;
+}
+.paper10 {
+  @extend .paper;
+  -webkit-animation-name: paper10;
+  animation-name: paper10;
+}
+.paper11 {
+  @extend .paper;
+  -webkit-animation-name: paper11;
+  animation-name: paper11;
+}
+.paper12 {
+  @extend .paper;
+  -webkit-animation-name: paper12;
+  animation-name: paper12;
+}
+.paper13 {
+  @extend .paper;
+  -webkit-animation-name: paper13;
+  animation-name: paper13;
+}
+.paper14 {
+  @extend .paper;
+  -webkit-animation-name: paper14;
+  animation-name: paper14;
+}
+.paper15 {
+  @extend .paper;
+  -webkit-animation-name: paper15;
+  animation-name: paper15;
+}
+.paper16 {
+  @extend .paper;
+  -webkit-animation-name: paper16;
+  animation-name: paper16;
+}
+.paper17 {
+  @extend .paper;
+  -webkit-animation-name: paper17;
+  animation-name: paper17;
+}
+.paper18 {
+  @extend .paper;
+  -webkit-animation-name: paper18;
+  animation-name: paper18;
+}
+.paper19 {
+  @extend .paper;
+  -webkit-animation-name: paper19;
+  animation-name: paper19;
+}
+.paper20 {
+  @extend .paper;
+  -webkit-animation-name: paper20;
+  animation-name: paper20;
+}
+
+#post-button {
+  float: left;
+  padding: 0;
+  border: 0px;
+  background-color: rgba(255, 0, 0, 0);
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+  outline: none !important;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  .fa {
+    color: #3d9970;
+  }
+  .fa:hover {
+    color: #ffdc00;
+  }
+}
+
+#home-button {
+  @extend #post-button;
+  float: right;
+  padding-left: 0;
+  padding-right: 0.5em;
 }

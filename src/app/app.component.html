@@ -1,13 +1,18 @@
 <div class="jumbotron">
-  <button id="crazy-button" type="button" class="btn btn-primary btn-lg" (click)="postOpen(); lotsOfPaper();">
-    <i class="fa fa-camera-retro"></i>
+  <button id="post-button" type="button" class="btn btn-primary btn-lg" (click)="postOpen(); lotsOfPaper();">
+    <i class="fa fa-book fa-3x" aria-hidden="true"></i>
+  </button>
+  <button id="home-button" type="button" class="btn btn-primary btn-lg" (click)="goToHome()">
+    <i class="fa fa-home fa-3x" aria-hidden="true"></i>
   </button>
   <div *ngIf="newBook">
     <app-posts></app-posts>
   </div>
-  <div class="paper-falling" *ngIf="papers.length>0">
-    <div *ngFor="let paper of papers; let i = index">
-      <img src={{paper.str}} alt="image of paper animation" class={{paper.cl}} />
+  <div *ngIf="showPaper">
+    <div class="paper-falling" *ngIf="papers.length>0">
+      <div *ngFor="let paper of papers; let i = index">
+        <img src={{paper.str}} alt="image of paper animation" class={{paper.cl}} />
+      </div>
     </div>
   </div>
   <router-outlet></router-outlet>

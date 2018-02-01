@@ -1,7 +1,7 @@
 <div>
-  <div class="big-gif" *ngIf="showDiv">
+  <!-- <div class="big-gif" *ngIf="showDiv">
     <img src="https://media.giphy.com/media/VcizxCUIgaKpa/giphy.gif" alt="Loading" title="Loading" />
-  </div>
+  </div> -->
   <div *ngIf="dataAvailable">
     <div *ngFor="let book of books">
       <button (click)="reroute([book.url_title])">{{book.title}}</button>
