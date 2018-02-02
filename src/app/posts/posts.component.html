@@ -1,7 +1,11 @@
 <div id="post" class="form-group">
-  <input type="text" class="form-control" id="title" placeholder="title goes in this place over here">
-  <input type="text" class="form-control" id="author" placeholder="and author over here">
+  <div class="big-gif-loading" *ngIf="loading">
+    <img class="big-gif-loading" src="https://i.imgur.com/1PaW005.gif" alt="Loading" title="Loading" />
+  </div>
+  <input type="text" class="form-control" id="title" placeholder="title goes in this place over here" #title>
+  <input type="text" class="form-control" id="author" placeholder="and author over here" #author>
   <button type="submit" id="post-button" class="btn btn-default" (click)="newBook(title, author)">New Book</button>
+  <button type="submit" id="post-button" class="btn btn-default" (click)="show()"> Book</button>
 </div>
 <div *ngIf="bookPreviouslyCreated">
   <div class="alert alert-danger alert-dismissable" role="alert">

@@ -38,6 +38,6 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       this.showDiv = false;
       this.dataAvailable = true;
-    }, 7000)
+    }, 5800)
   }
 }

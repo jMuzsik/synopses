@@ -21,11 +21,10 @@ var bookSchema = new Schema({
   url_title: String,
   exact_title: String,
   created_at: { type: Date, default: Date.now },
-  url_author: String,
+  url_author: String
 });
 
 bookSchema.pre("save", function(next) {
-  console.log(this.title, this.author)
   this.url_title =
     this.title.split(" ").join("_") + "_" + this.author.split(" ").join("_");
   next();

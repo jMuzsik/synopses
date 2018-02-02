@@ -1,6 +1,6 @@
-var request = require("request");
+var request = require("request-promise");
 
-var getPenguinData = function(query, callback) {
+var getPenguinData = function(query) {
   //The query necessitates + btw words!
   query = query.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "");
   query = query.split(" ").join("+");
@@ -11,19 +11,13 @@ var getPenguinData = function(query, callback) {
     }`
   };
 
-  return request.get(options, (error, response, body) => {
-    if (error) console.error("THIS IS AN ERROR WITHIN PENGUIN:", error);
-    else {
-      //REFORMAT TO JSON
-      response = JSON.parse(response.body);
+  return request(options)
+    .then(function(data) {
       //This is an assortment of objects that are related to what is searched, one of them is likely what is being looked for but it is difficult to get it exactly!
-
-      // //DESCRIPTION
-      // console.dir(JSON.parse(response.body).data.results[0].description[0])
-      // //TITLE
-      // console.dir(JSON.parse(response.body).data.results[0].url.split('/').slice(-1)[0])
-      callback(response.data.results);
-    }
-  });
+      return JSON.parse(data);
+    }).catch(function(err) {
+      console.log(err);
+      return [];
+    });
 };
 module.exports = getPenguinData;

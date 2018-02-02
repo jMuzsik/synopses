@@ -25,7 +25,7 @@ export class BookService {
     return this.http.get(`/api/${bookPath}`).map(res => {
       //RETURNS MULTIPLE IF THERE ARE FOR THE BOOK, I NEED TO MAKE SURE THAT SAME BOOK CANNOT BE CREATED
       res = res.json()[0];
-
+      console.log(res)
       //TAKE CARE OF CONFUSION WITHIN WIKI TEXT, PERIOD PROPERTY SO AS TO BOLD FIRST SENTENCE OF EACH PARAGRAPH
       var storeWikiFuncResultsArr = makeWikiTextPresentable(
         res["wikipedia_text"]
@@ -35,7 +35,7 @@ export class BookService {
       res["periods"] = storeWikiFuncResultsArr[1];
 
       //INPUT LOWERCASE LETTERS, MAKE FIRST LETTER UPPERCASE
-      res["bookTitle"] = capitalizeFirstLetter(res["title"]);
+      res["bookTitle"] = capitalizeFirstLetter(res["exact_title"]);
 
       //ONLY NEED IFRAME
       res["goodreads_reviews_widget"] = grabIframe(

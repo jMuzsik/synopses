@@ -23,9 +23,8 @@ export class AppComponent {
 
   lotsOfPaper(): void {
     const paper: string = "assets/falling-paper.png";
-    console.log('why does this run twice"',this.showPaper)
     if(this.showPaper) {
-      this.hideThePaper()
+      this.showPaper = false;
     } else {
       for (let i = 0; i < 20; i++) {
         this.papers[i] = {};

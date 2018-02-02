@@ -73,13 +73,31 @@ export class BookComponent implements OnInit {
     });
   }
 
+  penguinDataErrors(data: any): string[] {
+    return data.map(data => {
+      if (data["author"] === null) {
+        data["author"] = "Some reason, no author";
+      } else {
+        data["author"] = data["author"][0];
+      }
+      if (data["description"] === null) {
+        data["description"] = "Some reason, no description";
+      } else {
+        data["description"] = data["description"][0];
+      }
+      return data;
+    });
+  }
+
   getBook(): void {
     var bookPath = this.route.snapshot.url[1].path;
     this.bookService.getBook(bookPath).subscribe(
       data => {
+        console.log(data)
         this.book = createBookObject(data);
         this.periods = data["periods"];
         this.isDataAvailable = true;
+        this.book['penguinData'] = this.penguinDataErrors(this.book.penguinData);
         console.log(this.book);
       },
       err => console.log(err),

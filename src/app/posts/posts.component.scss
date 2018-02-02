@@ -1,3 +1,4 @@
+
 #post {
   width: 50vw;
   position: fixed;
@@ -13,4 +14,34 @@
     background: #3D9970;
     color: #FFDC00;
   };
+}
+
+@keyframes big-gif {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  60% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+  }
+  100% {
+    top: 50em;
+    left: 50em;
+  }
+}
+
+.big-gif-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  animation: big-gif;
+  animation-duration:12s;
+  animation-timing-function: linear;
 }

@@ -4,9 +4,9 @@
   <div>
     <h1>
       <b>
-        <u>{{book.title}}</u>
+        <u>{{book.exact_title}}</u>
       </b>
-      - {{book.author}}
+      - {{book.author_name}}
     </h1>
     <div *ngIf="book.authorLink">
       <div *ngIf="book.authorLink.length > 5">
@@ -99,8 +99,8 @@
   <div *ngIf="buttonToggle.penguinDataVisible">
     <div *ngFor="let book of book.penguinData">
       <a href={{book.url}} alt="url to book" target="_blank">{{book.name}}</a>
-      <p>{{book.author[0]}}</p>
-      <div [innerHTML]="book.description[0]"></div>
+      <p>{{book.author}}</p>
+      <div [innerHTML]="book.description"></div>
       <br />
       <br />
     </div>

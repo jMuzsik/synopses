@@ -1,6 +1,6 @@
 var amazon = require("amazon-product-api");
 
-var getAmazonData = function(isbn) {
+var getAmazonData = function(isbn, callback) {
   var client = amazon.createClient({
     awsId: process.env.AWS_ACCESS_KEY_ID,
     awsSecret: process.env.AWS_SECRET_ACCESS_KEY,
@@ -27,12 +27,12 @@ var getAmazonData = function(isbn) {
           results[0].SimilarProducts[0].SimilarProduct;
         return amazonData;
       } catch (e) {
-        console.log(e)
         return amazonData;
       }
     })
     .catch(function(err) {
-      console.error("Amazon API call error:", err);
+      console.log(err)
+      return amazonData;
     });
 };
 

@@ -1,8 +1,4 @@
-var request = require("request");
-
-var utils = require("../utils");
-
-var checkIfAlreadyCreated = utils.checkIfAlreadyCreated;
+var request = require("request-promise");
 
 var getISBN = function(query, author, callback) {
   var options = {
@@ -12,13 +8,12 @@ var getISBN = function(query, author, callback) {
     }
   };
 
-  return request.get(options, (error, response, body) => {
-    if (error) console.error("THIS IS AN ISBNDB ERROR:", error);
-    else {
+  return request(options)
+    .then(function(data) {
       let saved = {};
       let booksLevel = [];
       let level = 0;
-      let books = JSON.parse(response.body).books;
+      let books = JSON.parse(data).books;
       let desiredIdx = 0;
       let maxValue = 0;
       books.forEach((book, i) => {
@@ -42,14 +37,19 @@ var getISBN = function(query, author, callback) {
           maxValue = value;
           desiredIdx = idx;
         }
-        saved = books[desiredIdx];
-
-        saved["author_name"] = books[desiredIdx].author;
-        saved["exact_title"] = books[desiredIdx].title;
-
-        return callback(saved);
       });
-    }
-  });
+      saved = books[desiredIdx];
+
+      saved["exact_title"] = books[desiredIdx].title;
+      return saved;
+    })
+    .catch(function(err) {
+      console.log(err);
+      return {
+        isbn: 9789892327914,
+        exact_title: "failed",
+        front_cover: "https://pictures.abebooks.com/isbn/9780834800793-us.jpg"
+      };
+    });
 };
 module.exports = getISBN;

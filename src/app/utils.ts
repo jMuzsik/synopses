@@ -50,7 +50,7 @@ export function createBookObject(data: Object): Book {
   //IFRAME IS LOCATED WITHIN ARRAY
   book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
   book["amazonSimilarProducts"] = data["amazon_similar_products"];
-  book["author"] = data["author_name"];
+  book["author_name"] = data["author_name"];
   book["frontCover"] = data["front_cover"];
   book["authorImage"] = data["goodreads_author_image"];
   book["authorLink"] = data["goodreads_author_link"];
@@ -58,7 +58,7 @@ export function createBookObject(data: Object): Book {
   book["goodreadsReviewsWidget"] = data["goodreads_reviews_widget"];
   book["goodreadsSimilarBooks"] = data["goodreads_similar_books"];
   book["penguinData"] = data["penguin_data"];
-  book["title"] = data["bookTitle"];
+  book["exact_title"] = data["bookTitle"];
   book["wikipedia"] = data["wikipedia_text"];
 
   return book;

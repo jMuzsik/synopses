@@ -34,8 +34,9 @@ router.post("/", (req, res) => {
 
   getAllTheData(query.title, query.author, function(bookData) {
     var book = bookData;
+    console.log("PRIOR TO BEING TO THE HOMESTRETCH", book);
     book = new Book(book);
-    return Book.find({})
+    Book.find({})
       .then(books => {
         var check = true;
 
@@ -46,15 +47,23 @@ router.post("/", (req, res) => {
         });
 
         if (check) {
-          return book.save(function(error) {
-            if (error) console.log(error);
-            else return res.status(200).send("saved").end();
+          book.save(function(error) {
+            if (error) {
+              console.log(error);
+            } else
+              return res
+                .status(200)
+                .send("saved")
+                .end();
           });
         } else {
-          return res.status(201).send({ message: "same book" }).end();
+          return res
+            .status(201)
+            .send({ message: "same book" })
+            .end();
         }
       })
-      .catch(error => res.end());
+      .catch(error => res.status(400).end());
   });
 });
 
