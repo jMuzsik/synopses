@@ -1,24 +1,34 @@
 <div *ngIf="isDataAvailable">
 
   <!-------------------INITIALDATA---------------->
-  <div>
-    <h1>
+  <div class="title-author">
+    <h2>
       <b>
         <u>{{book.exact_title}}</u>
       </b>
-      - {{book.author_name}}
-    </h1>
-    <div *ngIf="book.authorLink">
-      <div *ngIf="book.authorLink.length > 5">
-        <h3>Author Link:
-          <a href={{book.authorLink}} target="_blank">goodreads page</a>
-        </h3>
+    </h2>
+    <div class="row title-author">
+      <div class="col-sm-4">
+        <div *ngIf="book.frontCover.length > 5; else do_this">
+          <img src={{book.frontCover}} alt="Front cover of book" />
+          <ng-template #do_this>
+            <img src="http://imgsrc.hubblesite.org/hu/db/2003/15/images/a/formats/web.jpg" alt="Front cover of book" />
+          </ng-template>
+        </div>
       </div>
-    </div>
-    <br />
-    <img src={{book.authorImage}} alt="Image of author" />
-    <div *ngIf="book.frontCover.length > 5">
-      <img src={{book.frontCover}} alt="Front cover of book" />
+      <div class="col-sm-2">
+        <div class="card smaller-card">
+          <img class="card-img-top" src={{book.authorImage}} alt="Image of author">
+          <div class="card-body bg-info">
+            <div *ngIf="book.authorLink.length > 0; else do_this">
+              <a href={{book.authorLink}} class="btn btn-primary" target="_blank">{{book.author.slice(0,4)}}</a>
+              <ng-template #do_this>
+                <a href="https://www.goodreads.com/author/show/62707.Shunryu_Suzuki" class="btn btn-primary" target="_blank">Mystery...</a>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -39,11 +49,9 @@
 
   <div *ngIf="buttonToggle.wikiVisible">
     <div *ngFor="let wiki of book.wikipedia; let i=index">
-      <p>
-        <b>{{wiki.slice(0, periods[i])}}</b>{{wiki.slice(periods[i], wiki.length)}}
-        <br />
-        <br />
-      </p>
+      <b>{{wiki.slice(0, periods[i])}}</b>{{wiki.slice(periods[i], wiki.length)}}
+      <br />
+      <br />
     </div>
   </div>
 
