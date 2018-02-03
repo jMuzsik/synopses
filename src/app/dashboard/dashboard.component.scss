@@ -2,18 +2,21 @@
 
 @keyframes big-gif {
   from {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    top: inherit;
   }
   to {
-    width: 0vw;
-    height: 0vh;
+    width: 0%;
+    height: 0%;
+    position: relative;
   }
 }
+
 .big-gif img {
   animation-name: big-gif;
   animation-duration: 7s;
-  animation-timing-function: ease-out;
+  animation-timing-function: linear;
   width: 100vw;
   height: 100vh;
 }

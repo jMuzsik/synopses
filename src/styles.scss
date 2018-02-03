@@ -1,12 +1,14 @@
 @import "variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-body > app-root > div > app-book > div {
+body > app-root > div {
   background: url("https://c1.staticflickr.com/9/8685/16887179370_404f8fab2f_b.jpg")
     no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }

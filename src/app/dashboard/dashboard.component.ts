@@ -11,10 +11,12 @@ import { BookService } from "../book.service";
 export class DashboardComponent implements OnInit {
   //LOAD PAGE?
   dataAvailable: boolean = false;
-  showDiv: boolean = true;
+  showDiv: boolean = false;
 
   //ALL BOOKS
-  books: any;
+  books: any = [];
+
+  searchResult: any[] = [];
 
   constructor(public bookService: BookService, private router: Router) {}
 
@@ -31,6 +33,14 @@ export class DashboardComponent implements OnInit {
 
   reroute(data): void {
     this.router.navigate([`/book/${data[0]}`]);
+  }
+
+  search(text: string): void {
+    this.books.forEach((book) => {
+      if(book.exact_title.indexOf(text) > -1) {
+        this.searchResult.push(book);
+      }
+    })
   }
 
   ngOnInit(): void {
