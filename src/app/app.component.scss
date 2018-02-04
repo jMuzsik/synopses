@@ -243,3 +243,13 @@ p {
   padding-left: 0;
   padding-right: 0.5em;
 }
+
+//see if this fixes the floating problem with the buttons
+
+// .clearfix:after {
+//   content: ".";
+//   visibility: hidden;
+//   display: block;
+//   height: 0;
+//   clear: both;
+// }

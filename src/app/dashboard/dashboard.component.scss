@@ -4,7 +4,6 @@
   from {
     width: 100%;
     height: 100%;
-    top: inherit;
   }
   to {
     width: 0%;
@@ -17,6 +16,7 @@
   animation-name: big-gif;
   animation-duration: 7s;
   animation-timing-function: linear;
+  display: block;
   width: 100vw;
   height: 100vh;
 }

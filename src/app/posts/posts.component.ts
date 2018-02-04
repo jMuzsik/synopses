@@ -41,7 +41,7 @@ export class PostsComponent {
         this.loading = false;
       }, 9000);
       setTimeout(() => {
-        this.router.navigateByUrl(`/book/this_is_a_book_`);
+        this.router.navigateByUrl(`/book/`);
       }, 10500);
     }
   }

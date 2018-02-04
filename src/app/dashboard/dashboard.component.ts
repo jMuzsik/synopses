@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   //ALL BOOKS
   books: any = [];
 
-  searchResult: any[] = [];
+  filteredItems: any = [];
 
   constructor(public bookService: BookService, private router: Router) {}
 
@@ -26,8 +26,7 @@ export class DashboardComponent implements OnInit {
         this.books = data;
       },
       err => console.log("FAILED OBTAINING ALL BOOKS FROM API", err),
-      () => console.log('success')
-
+      () => console.log("success")
     );
   }
 
@@ -35,12 +34,22 @@ export class DashboardComponent implements OnInit {
     this.router.navigate([`/book/${data[0]}`]);
   }
 
-  search(text: string): void {
-    this.books.forEach((book) => {
-      if(book.exact_title.indexOf(text) > -1) {
-        this.searchResult.push(book);
+  assignCopy() {
+    this.filteredItems = Object.assign([], this.books);
+  }
+
+  filterItem(value: string): void {
+    if (!value) this.filteredItems = [];
+    else {
+      //when nothing has typed
+      const temp: any = Object.assign([], this.books).filter(book => {
+        console.log(book.exact_title)
+        return book.exact_title.toLowerCase().indexOf(value.toLowerCase()) > -1;
+      });
+      if (temp.length >= 1) {
+        this.filteredItems = temp;
       }
-    })
+    }
   }
 
   ngOnInit(): void {
@@ -48,6 +57,7 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       this.showDiv = false;
       this.dataAvailable = true;
-    }, 5800)
+      console.log(this.dataAvailable);
+    }, 5800);
   }
 }
