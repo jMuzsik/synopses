@@ -33,7 +33,7 @@ export class PostsComponent {
   }
 
   show(): void {
-    if(this.loading) {
+    if (this.loading) {
       this.loading = false;
     } else {
       this.loading = true;
@@ -62,10 +62,13 @@ export class PostsComponent {
         if (result["_body"].length > 0) {
           data.title = data.title.toLowerCase();
           data.author = data.author.toLowerCase();
-          const urlTitle: string =
+          let urlTitle: string =
             data.title.split(" ").join("_") +
             "_" +
             data.author.split(" ").join("_");
+          if (urlTitle[urlTitle.length - 1] === "_") {
+            urlTitle = urlTitle.slice(0, urlTitle.length - 1);
+          }
           this.loading = true;
           setTimeout(() => {
             this.loading = false;

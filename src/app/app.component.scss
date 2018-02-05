@@ -1,32 +1,5 @@
 @import "../styles.scss";
 
-h1 {
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  font-size: 23px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 23px;
-}
-
-h3 {
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  font-size: 17px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 23px;
-}
-
-p {
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  line-height: 23px;
-}
-
 /* 16px @ 480px increasing to 32px @ 1920px */
 @media (min-width: 480px) {
   p {
@@ -93,7 +66,7 @@ p {
         skew((random($i*$i)%70)+deg);
     }
     100% {
-      top: 20%;
+      top: 110%;
       left: $rand % 110 * 1%;
       transform: rotate((random($i*$i+100)%70)+deg)
         skew((random($i*$i)%70)+deg);
@@ -243,13 +216,3 @@ p {
   padding-left: 0;
   padding-right: 0.5em;
 }
-
-//see if this fixes the floating problem with the buttons
-
-// .clearfix:after {
-//   content: ".";
-//   visibility: hidden;
-//   display: block;
-//   height: 0;
-//   clear: both;
-// }

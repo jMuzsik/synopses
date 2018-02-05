@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import * as Fuse from "fuse.js";
 
 import { BookService } from "../book.service";
 
@@ -17,6 +18,16 @@ export class DashboardComponent implements OnInit {
   books: any = [];
 
   filteredItems: any = [];
+
+  fuseOptions: any = {
+    shouldSort: true,
+    threshold: 0.6,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: ["exact_title", "author_name"]
+  };
 
   constructor(public bookService: BookService, private router: Router) {}
 
@@ -41,15 +52,36 @@ export class DashboardComponent implements OnInit {
   filterItem(value: string): void {
     if (!value) this.filteredItems = [];
     else {
-      //when nothing has typed
-      const temp: any = Object.assign([], this.books).filter(book => {
-        console.log(book.exact_title)
-        return book.exact_title.toLowerCase().indexOf(value.toLowerCase()) > -1;
-      });
-      if (temp.length >= 1) {
-        this.filteredItems = temp;
-      }
+      const fuse: any = new Fuse(this.books, this.fuseOptions);
+      const result: any = fuse.search(value);
+      this.fillOutGrid(result);
     }
+  }
+
+  fillOutGrid(result: any): void {
+    //if 1 item it is in the center
+    //if 2 items they are at 1 and 3
+    //if 3 items they are at 1,2,3
+    //if 4 items then do not display
+    //if 5 display
+    this.filteredItems = new Array(4).fill(0);
+    console.log(result)
+    if(result.length === 1) {
+      this.filteredItems[1] = result[0];
+    } else if(result.length === 2) {
+      this.filteredItems[1] = result[0];
+      this.filteredItems[2] = result[1];
+    } else if(result.length === 3 || result.length === 4) {
+      this.filteredItems[0] = result[0];
+      this.filteredItems[1] = result[1];
+      this.filteredItems[2] = result[2];
+    } else if(result.length >= 4) {
+      this.filteredItems[0] = result[0];
+      this.filteredItems[1] = result[1];
+      this.filteredItems[2] = result[2];
+      this.filteredItems[3] = result[3];
+    }
+    this.filteredItems.forEach((book)=>console.log(book===0))
   }
 
   ngOnInit(): void {
@@ -58,6 +90,6 @@ export class DashboardComponent implements OnInit {
       this.showDiv = false;
       this.dataAvailable = true;
       console.log(this.dataAvailable);
-    }, 5800);
+    }, 1000);
   }
 }

@@ -27,6 +27,9 @@ var bookSchema = new Schema({
 bookSchema.pre("save", function(next) {
   this.url_title =
     this.title.split(" ").join("_") + "_" + this.author.split(" ").join("_");
+  if (this.url_title[this.url_title.length - 1] === "_") {
+    this.url_title = this.url_title.slice(0, this.url_title.length - 1);
+  }
   next();
 });
 

@@ -1,4 +1,4 @@
-@import '../../styles.scss';
+@import "../../styles.scss";
 
 @keyframes big-gif {
   from {
@@ -20,3 +20,120 @@
   width: 100vw;
   height: 100vh;
 }
+
+.scroll-up {
+  height: 20vh;
+  overflow: hidden;
+  position: relative;
+}
+.scroll-up p {
+  position: absolute;
+  bottom: 10vh;
+  width: 100%;
+  height: 100vh;
+  padding: 0.4em;
+  line-height: 0.9em;
+  text-align: left;
+  /* Starting position */
+  -moz-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  /* Apply animation to this element */
+  -moz-animation: scroll-up 25s linear infinite;
+  -webkit-animation: scroll-up 25s linear infinite;
+  animation: scroll-up 25s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-up {
+  0% {
+    -moz-transform: translateY(100vh);
+  }
+  100% {
+    -moz-transform: translateY(-100vh);
+  }
+}
+@-webkit-keyframes scroll-up {
+  0% {
+    -webkit-transform: translateY(100vh);
+  }
+  100% {
+    -webkit-transform: translateY(-100vh);
+  }
+}
+@keyframes scroll-up {
+  0% {
+    -moz-transform: translateY(100vh); /* Browser bug fix */
+    -webkit-transform: translateY(100vh); /* Browser bug fix */
+    transform: translateY(100vh);
+  }
+  100% {
+    -moz-transform: translateY(-100vh); /* Browser bug fix */
+    -webkit-transform: translateY(-100vh); /* Browser bug fix */
+    transform: translateY(-100vh);
+  }
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.card-img-top {
+  height: 50vh;
+  width: 18.5vw;
+}
+
+.card-header {
+  padding: 0;
+
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
+
+  padding-top: 0.2em;
+  font-size: 1em;
+  height: 15vh;
+  width: 18.5vw;
+}
+
+.card-text {
+  text-shadow: 0px 2px 3px #555;
+}
+
+#hide {
+  visibility: hidden;
+}
+
+//this is the input button css
+
+#input-box {
+  position: relative;
+  max-width: 400px;
+  margin: 150px auto 0;
+ }
+
+ #input-box input {
+  border: 0;
+  border-bottom: 2px solid #1976D2;
+  position: absolute;
+  bottom: 10vh;
+  right: 0vw;
+  width: 100%;
+  font-size: 30px;
+  line-height: 35px;
+  height: 3em;
+  text-align: center;
+  padding: 10px;
+  background: transparent;
+   color: #3d9970;
+ }
+
+ #namer input:focus {
+  outline: 0;
+   color: #FFDC00;
+ }
+
+ #namer input::placeholder {
+  color: #001f3f;
+ }
