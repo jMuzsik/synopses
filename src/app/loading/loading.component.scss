@@ -12,171 +12,181 @@
 
 @for $i from 1 through 21 {
   $rand: ($i * $i);
-  @keyframes #{paper + $i} {
+  @keyframes #{book + $i} {
     0% {
       top: 0;
-      left: 0;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      left: 50%;
+      width: 0.5em;
+      transform: skewY(-30deg);
+    }
+    10% {
+      top: ((($i) % 10) + 10) * 1%;
+      width: 1em;
+      transform: skewY(30deg);
+    }
+    20% {
+      top: ((($i) % 10) + 20) * 1%;
+      width: 1.5em;
+      transform: skewY(-30deg);
     }
     30% {
-      top: 30%;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      top: ((($i) % 10) + 30) * 1%;
+      width: 2em;
+      transform: skewY(30deg);
     }
     40% {
-      top: 40%;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      top: ((($i) % 10) + 40) * 1%;
+      width: 2.5em;
+      transform: skewY(-30deg);
     }
     50% {
-      top: 50%;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      top: ((($i) % 10) + 50) * 1%;
+      width: 3em;
+      transform: skewY(30deg);
     }
     60% {
-      top: 60%;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      top: ((($i) % 10) + 60)* 1%;
+      width: 3.5em;
+      transform: skewY(-30deg);
     }
     70% {
-      top: 70%;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      top: ((($i) % 10) + 70) * 1%;
+      width: 4em;
+      transform: skewY(30deg);
     }
     80% {
-      top: 80%;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      top: ((($i) % 10) + 80) * 1%;
+      width: 4.5em;
+      transform: skewY(-30deg);
     }
     90% {
-      top: 90%;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      top: ((($i) % 10) + 90) * 1%;
+      width: 5em;
+      transform: skewY(30deg);
     }
     100% {
-      top: 110%;
+      top: 111%;
+      width: 5.5em;
       left: $rand % 110 * 1%;
-      transform: rotate((random($i*$i+100)%70)+deg)
-        skew((random($i*$i)%70)+deg);
+      transform: skewY(-30deg);
     }
   }
 }
 
-.paper {
+.book {
   position: absolute;
-  width: 3em;
   height: auto;
-  animation-duration: 20s;
+  animation-duration: 25s;
   animation-timing-function: linear;
+  animation-iteration-count: infinite;
   overflow: hidden;
 }
 
-.paper1 {
-  @extend .paper;
-  -webkit-animation-name: paper1;
-  animation-name: paper1;
+.book1 {
+  @extend .book;
+  -webkit-animation-name: book1;
+  animation-name: book1;
 }
 
-.paper2 {
-  @extend .paper;
-  -webkit-animation-name: paper2;
-  animation-name: paper2;
+.book2 {
+  @extend .book;
+  -webkit-animation-name: book2;
+  animation-name: book2;
 }
 
-.paper3 {
-  @extend .paper;
-  -webkit-animation-name: paper3;
-  animation-name: paper3;
+.book3 {
+  @extend .book;
+  -webkit-animation-name: book3;
+  animation-name: book3;
 }
 
-.paper4 {
-  @extend .paper;
-  -webkit-animation-name: paper4;
-  animation-name: paper4;
+.book4 {
+  @extend .book;
+  -webkit-animation-name: book4;
+  animation-name: book4;
 }
 
-.paper5 {
-  @extend .paper;
-  -webkit-animation-name: paper5;
-  animation-name: paper5;
+.book5 {
+  @extend .book;
+  -webkit-animation-name: book5;
+  animation-name: book5;
 }
 
-.paper6 {
-  @extend .paper;
-  -webkit-animation-name: paper6;
-  animation-name: paper6;
+.book6 {
+  @extend .book;
+  -webkit-animation-name: book6;
+  animation-name: book6;
 }
 
-.paper7 {
-  @extend .paper;
-  -webkit-animation-name: paper7;
-  animation-name: paper7;
+.book7 {
+  @extend .book;
+  -webkit-animation-name: book7;
+  animation-name: book7;
 }
 
-.paper8 {
-  @extend .paper;
-  -webkit-animation-name: paper8;
-  animation-name: paper8;
+.book8 {
+  @extend .book;
+  -webkit-animation-name: book8;
+  animation-name: book8;
 }
 
-.paper9 {
-  @extend .paper;
-  -webkit-animation-name: paper9;
-  animation-name: paper9;
+.book9 {
+  @extend .book;
+  -webkit-animation-name: book9;
+  animation-name: book9;
 }
-.paper10 {
-  @extend .paper;
-  -webkit-animation-name: paper10;
-  animation-name: paper10;
+.book10 {
+  @extend .book;
+  -webkit-animation-name: book10;
+  animation-name: book10;
 }
-.paper11 {
-  @extend .paper;
-  -webkit-animation-name: paper11;
-  animation-name: paper11;
+.book11 {
+  @extend .book;
+  -webkit-animation-name: book11;
+  animation-name: book11;
 }
-.paper12 {
-  @extend .paper;
-  -webkit-animation-name: paper12;
-  animation-name: paper12;
+.book12 {
+  @extend .book;
+  -webkit-animation-name: book12;
+  animation-name: book12;
 }
-.paper13 {
-  @extend .paper;
-  -webkit-animation-name: paper13;
-  animation-name: paper13;
+.book13 {
+  @extend .book;
+  -webkit-animation-name: book13;
+  animation-name: book13;
 }
-.paper14 {
-  @extend .paper;
-  -webkit-animation-name: paper14;
-  animation-name: paper14;
+.book14 {
+  @extend .book;
+  -webkit-animation-name: book14;
+  animation-name: book14;
 }
-.paper15 {
-  @extend .paper;
-  -webkit-animation-name: paper15;
-  animation-name: paper15;
+.book15 {
+  @extend .book;
+  -webkit-animation-name: book15;
+  animation-name: book15;
 }
-.paper16 {
-  @extend .paper;
-  -webkit-animation-name: paper16;
-  animation-name: paper16;
+.book16 {
+  @extend .book;
+  -webkit-animation-name: book16;
+  animation-name: book16;
 }
-.paper17 {
-  @extend .paper;
-  -webkit-animation-name: paper17;
-  animation-name: paper17;
+.book17 {
+  @extend .book;
+  -webkit-animation-name: book17;
+  animation-name: book17;
 }
-.paper18 {
-  @extend .paper;
-  -webkit-animation-name: paper18;
-  animation-name: paper18;
+.book18 {
+  @extend .book;
+  -webkit-animation-name: book18;
+  animation-name: book18;
 }
-.paper19 {
-  @extend .paper;
-  -webkit-animation-name: paper19;
-  animation-name: paper19;
+.book19 {
+  @extend .book;
+  -webkit-animation-name: book19;
+  animation-name: book19;
 }
-.paper20 {
-  @extend .paper;
-  -webkit-animation-name: paper20;
-  animation-name: paper20;
+.book20 {
+  @extend .book;
+  -webkit-animation-name: book20;
+  animation-name: book20;
 }

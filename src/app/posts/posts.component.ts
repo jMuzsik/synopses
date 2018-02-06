@@ -32,20 +32,6 @@ export class PostsComponent {
     }
   }
 
-  show(): void {
-    if (this.loading) {
-      this.loading = false;
-    } else {
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 9000);
-      setTimeout(() => {
-        this.router.navigateByUrl(`/book/`);
-      }, 10500);
-    }
-  }
-
   newBook(title, author): void {
     class ObjectConstructor {
       title: String;
@@ -57,10 +43,11 @@ export class PostsComponent {
     data.title = title.value;
     data.author = author.value;
 
+    this.router.navigate([`/dashboard`]);
+
     setTimeout(() => {
-      this.onSubmission.emit(false);
       this.loading = true;
-    }, 3000);
+    }, 5000);
 
     this.bookService.postBook(data).subscribe(
       result => {
@@ -74,10 +61,9 @@ export class PostsComponent {
           if (urlTitle[urlTitle.length - 1] === "_") {
             urlTitle = urlTitle.slice(0, urlTitle.length - 1);
           }
-          setTimeout(() => {
-            this.loading = false;
-            this.router.navigate([`/book/${urlTitle}`]);
-          }, 6000);
+          this.loading = false;
+          this.onSubmission.emit(false);
+          this.router.navigate([`/book/${urlTitle}`]);
         } else {
           this.bookPreviouslyCreated = true;
         }

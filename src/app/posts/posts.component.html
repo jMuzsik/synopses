@@ -1,13 +1,18 @@
-<div id="post" class="form-group">
-  <input type="text" class="form-control" id="title" placeholder="title goes in this place over here" #title>
-  <input type="text" class="form-control" id="author" placeholder="and author over here" #author>
-  <div *ngIf="notPressed; else do_this">
-    <button type="submit" id="post-button" class="btn btn-default" (click)="newBook(title, author); buttonPressed()">New Book</button>
-  </div>
-  <ng-template #do_this>
+<div *ngIf="loading; else normal">
+  <app-loading></app-loading>
+</div>
+<ng-template #normal>
+  <div id="post" class="form-group">
+    <input type="text" class="form-control" id="title" placeholder="title goes in this place over here" #title>
+    <input type="text" class="form-control" id="author" placeholder="and author over here" #author>
+    <div *ngIf="notPressed; else do_this">
+      <button type="submit" id="post-button" class="btn btn-default" (click)="newBook(title, author); buttonPressed()">New Book</button>
+    </div>
+    <ng-template #do_this>
       <p class="button-replacement">API Stuff happening, please wait.</p>
     </ng-template>
-</div>
+  </div>
+</ng-template>
 <div *ngIf="bookPreviouslyCreated">
   <div class="alert alert-danger alert-dismissable" role="alert">
     <button class="close" (click)="close()">
