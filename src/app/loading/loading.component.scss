@@ -1,0 +1,182 @@
+// body > app-root > div {
+.loading {
+  background: url("https://t4.ftcdn.net/jpg/00/96/92/85/240_F_96928594_oc995mkEMzp9nqQPuRHDnUUWZkMmHSEv.jpg")
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+@for $i from 1 through 21 {
+  $rand: ($i * $i);
+  @keyframes #{paper + $i} {
+    0% {
+      top: 0;
+      left: 0;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+    30% {
+      top: 30%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+    40% {
+      top: 40%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+    50% {
+      top: 50%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+    60% {
+      top: 60%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+    70% {
+      top: 70%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+    80% {
+      top: 80%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+    90% {
+      top: 90%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+    100% {
+      top: 110%;
+      left: $rand % 110 * 1%;
+      transform: rotate((random($i*$i+100)%70)+deg)
+        skew((random($i*$i)%70)+deg);
+    }
+  }
+}
+
+.paper {
+  position: absolute;
+  width: 3em;
+  height: auto;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  overflow: hidden;
+}
+
+.paper1 {
+  @extend .paper;
+  -webkit-animation-name: paper1;
+  animation-name: paper1;
+}
+
+.paper2 {
+  @extend .paper;
+  -webkit-animation-name: paper2;
+  animation-name: paper2;
+}
+
+.paper3 {
+  @extend .paper;
+  -webkit-animation-name: paper3;
+  animation-name: paper3;
+}
+
+.paper4 {
+  @extend .paper;
+  -webkit-animation-name: paper4;
+  animation-name: paper4;
+}
+
+.paper5 {
+  @extend .paper;
+  -webkit-animation-name: paper5;
+  animation-name: paper5;
+}
+
+.paper6 {
+  @extend .paper;
+  -webkit-animation-name: paper6;
+  animation-name: paper6;
+}
+
+.paper7 {
+  @extend .paper;
+  -webkit-animation-name: paper7;
+  animation-name: paper7;
+}
+
+.paper8 {
+  @extend .paper;
+  -webkit-animation-name: paper8;
+  animation-name: paper8;
+}
+
+.paper9 {
+  @extend .paper;
+  -webkit-animation-name: paper9;
+  animation-name: paper9;
+}
+.paper10 {
+  @extend .paper;
+  -webkit-animation-name: paper10;
+  animation-name: paper10;
+}
+.paper11 {
+  @extend .paper;
+  -webkit-animation-name: paper11;
+  animation-name: paper11;
+}
+.paper12 {
+  @extend .paper;
+  -webkit-animation-name: paper12;
+  animation-name: paper12;
+}
+.paper13 {
+  @extend .paper;
+  -webkit-animation-name: paper13;
+  animation-name: paper13;
+}
+.paper14 {
+  @extend .paper;
+  -webkit-animation-name: paper14;
+  animation-name: paper14;
+}
+.paper15 {
+  @extend .paper;
+  -webkit-animation-name: paper15;
+  animation-name: paper15;
+}
+.paper16 {
+  @extend .paper;
+  -webkit-animation-name: paper16;
+  animation-name: paper16;
+}
+.paper17 {
+  @extend .paper;
+  -webkit-animation-name: paper17;
+  animation-name: paper17;
+}
+.paper18 {
+  @extend .paper;
+  -webkit-animation-name: paper18;
+  animation-name: paper18;
+}
+.paper19 {
+  @extend .paper;
+  -webkit-animation-name: paper19;
+  animation-name: paper19;
+}
+.paper20 {
+  @extend .paper;
+  -webkit-animation-name: paper20;
+  animation-name: paper20;
+}

@@ -49,7 +49,7 @@
     -moz-transform: translateY(100vh);
   }
   100% {
-    -moz-transform: translateY(-100vh);
+    -moz-transform: translateY(10vh);
   }
 }
 @-webkit-keyframes scroll-up {
@@ -57,7 +57,7 @@
     -webkit-transform: translateY(100vh);
   }
   100% {
-    -webkit-transform: translateY(-100vh);
+    -webkit-transform: translateY(10vh);
   }
 }
 @keyframes scroll-up {
@@ -67,10 +67,14 @@
     transform: translateY(100vh);
   }
   100% {
-    -moz-transform: translateY(-100vh); /* Browser bug fix */
-    -webkit-transform: translateY(-100vh); /* Browser bug fix */
-    transform: translateY(-100vh);
+    -moz-transform: translateY(10vh); /* Browser bug fix */
+    -webkit-transform: translateY(10vh); /* Browser bug fix */
+    transform: translateY(10vh);
   }
+}
+
+.card-deck {
+  padding: 5vh 5vw;
 }
 
 .card {
@@ -78,8 +82,8 @@
 }
 
 .card-img-top {
-  height: 50vh;
-  width: 18.5vw;
+  height: 30vh;
+  width: 15.95vw;
 }
 
 .card-header {
@@ -92,9 +96,10 @@
     0 20px 20px rgba(0, 0, 0, 0.15);
 
   padding-top: 0.2em;
-  font-size: 1em;
+  font-size: 1.8em;
+  line-height: 1.4em;
   height: 15vh;
-  width: 18.5vw;
+  width: 15.95vw;
 }
 
 .card-text {
@@ -109,7 +114,7 @@
 
 #input-box {
   position: relative;
-  max-width: 400px;
+  max-width: 50vw;
   margin: 150px auto 0;
  }
 
@@ -120,11 +125,11 @@
   bottom: 10vh;
   right: 0vw;
   width: 100%;
-  font-size: 30px;
-  line-height: 35px;
+  font-size: 2em;
+  line-height: 3em;
   height: 3em;
   text-align: center;
-  padding: 10px;
+  padding: 1em;
   background: transparent;
    color: #3d9970;
  }

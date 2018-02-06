@@ -23,7 +23,7 @@ export class AppComponent {
 
   lotsOfPaper(): void {
     const paper: string = "assets/falling-paper.png";
-    if(this.showPaper) {
+    if (this.showPaper) {
       this.showPaper = false;
     } else {
       for (let i = 0; i < 20; i++) {
@@ -32,15 +32,7 @@ export class AppComponent {
         this.papers[i]["cl"] = "paper" + " " + "paper" + (i + 1);
       }
       this.showPaper = true;
-      setTimeout(() => {
-        this.hideThePaper();
-      }, 20000);
-
     }
-  }
-
-  hideThePaper(): void {
-    this.showPaper = false;
   }
 
   goToHome(): void {
@@ -53,5 +45,9 @@ export class AppComponent {
     } else {
       this.newBook = true;
     }
+  }
+
+  onSubmission(closePost: boolean): void {
+    this.newBook = closePost;
   }
 }

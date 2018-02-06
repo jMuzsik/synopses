@@ -6,10 +6,10 @@
     <i class="fa fa-home fa-3x" aria-hidden="true"></i>
   </button>
   <div *ngIf="newBook">
-    <app-posts></app-posts>
+    <app-posts (onSubmission)="onSubmission($event)"></app-posts>
   </div>
   <div *ngIf="showPaper">
-    <div class="paper-falling" *ngIf="papers.length>0">
+    <div *ngIf="papers.length>0">
       <div *ngFor="let paper of papers; let i = index">
         <img src={{paper.str}} alt="image of paper animation" class={{paper.cl}} />
       </div>

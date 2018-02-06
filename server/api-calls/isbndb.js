@@ -13,7 +13,16 @@ var getISBN = function(query, author, callback) {
       let saved = {};
       let booksLevel = [];
       let level = 0;
-      let books = JSON.parse(data).books;
+      let books = [];
+      try {
+        books = JSON.parse(data).books;
+      } catch (e) {
+        return {
+          isbn: 9789892327914,
+          exact_title: "failed",
+          front_cover: "https://pictures.abebooks.com/isbn/9780834800793-us.jpg"
+        };
+      }
       let desiredIdx = 0;
       let maxValue = 0;
       books.forEach((book, i) => {

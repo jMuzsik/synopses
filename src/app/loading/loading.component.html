@@ -1,0 +1,7 @@
+<div class="loading">
+  <div *ngIf="books.length>0">
+    <div *ngFor="let book of books">
+      <img src={{book.str}} alt="image of book animation" class={{book.cl}} />
+    </div>
+  </div>
+</div>

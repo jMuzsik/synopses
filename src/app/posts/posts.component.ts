@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
@@ -10,11 +10,15 @@ import { BookService } from "../book.service";
   styleUrls: ["./posts.component.scss"]
 })
 export class PostsComponent {
+  @Output() onSubmission = new EventEmitter<boolean>();
+
   submitted: boolean = false;
 
   bookPreviouslyCreated: boolean = false;
 
   loading: boolean = false;
+
+  notPressed: boolean = true;
 
   constructor(
     private http: HttpClient,
@@ -26,10 +30,6 @@ export class PostsComponent {
     if (this.bookPreviouslyCreated) {
       this.bookPreviouslyCreated = false;
     }
-  }
-
-  onSubmit(): void {
-    this.submitted = true;
   }
 
   show(): void {
@@ -57,6 +57,11 @@ export class PostsComponent {
     data.title = title.value;
     data.author = author.value;
 
+    setTimeout(() => {
+      this.onSubmission.emit(false);
+      this.loading = true;
+    }, 3000);
+
     this.bookService.postBook(data).subscribe(
       result => {
         if (result["_body"].length > 0) {
@@ -69,11 +74,10 @@ export class PostsComponent {
           if (urlTitle[urlTitle.length - 1] === "_") {
             urlTitle = urlTitle.slice(0, urlTitle.length - 1);
           }
-          this.loading = true;
           setTimeout(() => {
             this.loading = false;
             this.router.navigate([`/book/${urlTitle}`]);
-          }, 11000);
+          }, 6000);
         } else {
           this.bookPreviouslyCreated = true;
         }
@@ -85,5 +89,9 @@ export class PostsComponent {
         console.log("ALL FINISHED!");
       }
     );
+  }
+
+  buttonPressed(): void {
+    this.notPressed = false;
   }
 }

@@ -54,7 +54,17 @@ export class DashboardComponent implements OnInit {
     else {
       const fuse: any = new Fuse(this.books, this.fuseOptions);
       const result: any = fuse.search(value);
-      this.fillOutGrid(result);
+      const filteredResult: any = result.map(book => this.checkForImage(book));
+      this.fillOutGrid(filteredResult);
+    }
+  }
+
+  checkForImage(book: any): void {
+    if (book.front_cover) return book;
+    else {
+      book.front_cover =
+        "http://imgsrc.hubblesite.org/hvi/uploads/image_file/image_attachment/30052/STSCI-H-p1720b-t-400x400.png";
+      return book;
     }
   }
 
@@ -64,24 +74,25 @@ export class DashboardComponent implements OnInit {
     //if 3 items they are at 1,2,3
     //if 4 items then do not display
     //if 5 display
-    this.filteredItems = new Array(4).fill(0);
-    console.log(result)
-    if(result.length === 1) {
-      this.filteredItems[1] = result[0];
-    } else if(result.length === 2) {
+    this.filteredItems = new Array(5).fill(0);
+    console.log(result);
+    if (result.length === 1) {
+      this.filteredItems[2] = result[0];
+    } else if (result.length === 2) {
       this.filteredItems[1] = result[0];
       this.filteredItems[2] = result[1];
-    } else if(result.length === 3 || result.length === 4) {
-      this.filteredItems[0] = result[0];
-      this.filteredItems[1] = result[1];
-      this.filteredItems[2] = result[2];
-    } else if(result.length >= 4) {
+    } else if (result.length === 3 || result.length === 4) {
+      this.filteredItems[1] = result[0];
+      this.filteredItems[2] = result[1];
+      this.filteredItems[3] = result[2];
+    } else if (result.length >= 5) {
       this.filteredItems[0] = result[0];
       this.filteredItems[1] = result[1];
       this.filteredItems[2] = result[2];
       this.filteredItems[3] = result[3];
+      this.filteredItems[4] = result[4];
     }
-    this.filteredItems.forEach((book)=>console.log(book===0))
+    this.filteredItems.forEach(book => console.log(book === 0));
   }
 
   ngOnInit(): void {

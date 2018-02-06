@@ -12,13 +12,15 @@ import { PostsComponent } from "./posts/posts.component";
 import { BookComponent } from "./book/book.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BookService } from "./book.service";
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
     BookComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

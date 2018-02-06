@@ -14,33 +14,24 @@
           <img class="card-img-top" (click)="reroute([book.url_title])" src={{book.front_cover}} alt="Image of book">
           <div class="card-block">
             <div class="scroll-up">
-              <p class="card-text">
-                {{book.goodreads_description.length > 0 ? book.goodreads_description : "The name Gilberte passed close by me, evoking all
-                the more forcibly her whom it labelled in that it did not merely refer to her, as one speaks of a man in
-                his absence, but was directly addressed to her; it passed thus close by me, in action, so to speak, with
-                a force that increased with the curve of its trajectory and as it drew near to its target; — carrying in
-                its wake, I could feel, the knowledge, the impression of her to whom it was addressed that belonged not to
-                me but to the friend who called to her, everything that, while she uttered the words, she more or less vividly
-                reviewed, possessed in her memory, of their daily intimacy, of the visits that they paid to each other, of
-                that unknown existence which was all the more inaccessible..."}}
+              <p class="card-text" [innerHTML]="book.goodreads_description">
               </p>
             </div>
           </div>
         </div>
+        <ng-template #do_this>
+          <div class="card card-inverse" id="hide">
+            <div class="card-header">
+            </div>
+            <img class="card-img-top" alt="Image of book">
+            <div class="card-block">
+              <div class="scroll-up">
+                <p class="card-text">
+                </p>
+              </div>
+            </div>
+          </div>
+        </ng-template>
       </div>
-      <ng-template #do_this>
-        <div class="card card-inverse" id="hide">
-          <div class="card-header"> Nothing really
-          </div>
-          <img class="card-img-top" alt="Image of book">
-          <div class="card-block">
-            <div class="scroll-up">
-              <p class="card-text"> emptyhsdjf asdjf hsadj sadffkhs adjkf halsdjfhj sdfhasdufhsuadfhs a fdsaf
-              </p>
-            </div>
-          </div>
-        </div>
-      </ng-template>
     </div>
   </div>
-</div>
