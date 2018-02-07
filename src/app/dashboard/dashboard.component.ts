@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
     this.bookService.getBooks().subscribe(
       data => {
         this.books = data;
+        this.dataAvailable = true;
       },
       err => console.log("FAILED OBTAINING ALL BOOKS FROM API", err),
       () => console.log("success")
@@ -75,7 +76,6 @@ export class DashboardComponent implements OnInit {
     //if 4 items then do not display
     //if 5 display
     this.filteredItems = new Array(5).fill(0);
-    console.log(result);
     if (result.length === 1) {
       this.filteredItems[2] = result[0];
     } else if (result.length === 2) {
@@ -92,15 +92,9 @@ export class DashboardComponent implements OnInit {
       this.filteredItems[3] = result[3];
       this.filteredItems[4] = result[4];
     }
-    this.filteredItems.forEach(book => console.log(book === 0));
   }
 
   ngOnInit(): void {
     this.getBooks();
-    setTimeout(() => {
-      this.showDiv = false;
-      this.dataAvailable = true;
-      console.log(this.dataAvailable);
-    }, 1000);
   }
 }

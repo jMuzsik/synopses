@@ -1,6 +1,53 @@
-@import '../../styles.scss';
+@import "../../styles.scss";
+//LOADING
 
-p, div {
+$blue: rgb(0, 155, 255);
+
+.jawn {
+  position: relative;
+  background-color: #f8e71c;
+  width: 3em;
+  height: 3em;
+  margin: 0 auto;
+  border-radius: 50%;
+  top: 50vh;
+
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+  }
+
+  &:after {
+    left: -3em;
+    top: -1.5em;
+    background-color: #c7c2a6;
+    transform-origin: 4.5em 3em;
+    animation: axis 1s linear infinite;
+  }
+  &:before {
+    left: -7.5em;
+    top: -4.5em;
+    background-color: $blue;
+    transform-origin: 9em 6em;
+    animation: axis 2s linear infinite;
+  }
+}
+
+@keyframes axis {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0, 0, 0);
+  }
+}
+
+p,
+div {
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -9,18 +56,72 @@ p, div {
   line-height: 23px;
 }
 
-.title-author {
-  position: fixed;
-  width: 100vw;
-  top: 20vh;
-  height: 80vh;
+.author-book-card {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
-#title {
-  position: absolute;
-  top: -15vh;
-  width: 50%;
-  left: 25%;
+.author-book-card > .card-header {
+  background-color: #3d9970;
+  text-align: center;
+  height: 10vh;
+}
+.author-book-card > .card-header > ul > li > a {
+  color: #ffdc00;
+}
+
+.author-book-card > .card-header > ul > li > a > h6 {
   padding: 0;
-  margin: auto;
+}
+
+.author-book-card > .card-header > ul > li > a:hover {
+  color: #0074d9;
+  text-shadow: 0px 2px 3px #39cccc;
+}
+
+.card-img-top {
+  height: 60vh;
+}
+
+.card-body {
+  height: 30vh;
+  overflow: scroll;
+}
+
+.card-title > a {
+  font-size: 1.5em;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.descriptions {
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  left: 25vw;
+  height: 100vh;
+  overflow: scroll;
+  text-align: left;
+  font-size: 1.5em;
+  top: 0;
+}
+
+#amazon {
+  position: absolute;
+  right: 25vw;
+  top:  20vh;
+  padding: 0;
+  border: 0px;
+  background-color: rgba(255, 0, 0, 0);
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+  outline: none !important;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  .fa {
+    color: black;
+  }
+  .fa:hover {
+    color:rgb(253,152,39);
+  }
 }

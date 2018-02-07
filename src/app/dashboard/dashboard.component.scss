@@ -1,31 +1,11 @@
 @import "../../styles.scss";
 
-@keyframes big-gif {
-  from {
-    width: 100%;
-    height: 100%;
-  }
-  to {
-    width: 0%;
-    height: 0%;
-    position: relative;
-  }
-}
-
-.big-gif img {
-  animation-name: big-gif;
-  animation-duration: 7s;
-  animation-timing-function: linear;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
-
 .scroll-up {
   height: 20vh;
   overflow: hidden;
   position: relative;
 }
+
 .scroll-up p {
   position: absolute;
   bottom: 10vh;
@@ -84,6 +64,7 @@
 .card-img-top {
   height: 30vh;
   width: 15.95vw;
+  cursor: pointer;
 }
 
 .card-header {
@@ -98,12 +79,30 @@
   padding-top: 0.2em;
   font-size: 1.8em;
   line-height: 1.4em;
-  height: 15vh;
+  height: 10vh;
+  overflow: scroll;
   width: 15.95vw;
 }
 
 .card-text {
   text-shadow: 0px 2px 3px #555;
+}
+
+.card-img-top:hover{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+-webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+}
+.card-img-top:last-of-type:hover{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+-webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+-moz-box-shadow:    0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+box-shadow:         0px 0px 30px 0px rgba(232, 0, 0, 0.67);
 }
 
 #hide {
@@ -142,3 +141,49 @@
  #namer input::placeholder {
   color: #001f3f;
  }
+
+//this is for the loader
+
+$blue: rgb(0,155,255);
+
+.jawn {
+  position: relative;
+  background-color: #F8E71C;
+  width: 3em;
+  height: 3em;
+  margin: 0 auto;
+  border-radius: 50%;
+  top: 50vh;
+
+  &:after, &:before {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+  }
+
+  &:after {
+    left: -3em;
+    top: -1.5em;
+    background-color: #C7C2A6;
+    transform-origin: 4.5em 3em;
+    animation: axis 1s linear infinite;
+  }
+  &:before {
+    left: -7.5em;
+    top: -4.5em;
+    background-color: $blue;
+    transform-origin: 9em 6em;
+    animation: axis 2s linear infinite;
+  }
+}
+
+@keyframes axis {
+  0% {
+    transform: rotateZ(0deg) translate3d(0,0,0);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0,0,0);
+  }
+}

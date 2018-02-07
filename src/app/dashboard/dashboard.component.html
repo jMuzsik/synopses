@@ -1,4 +1,4 @@
-<div *ngIf="dataAvailable">
+<div *ngIf="dataAvailable; else data_not_available">
   <div id="input-box">
     <div id="input-box-inner">
       <input #myInput placeholder="Book name..." [(ngModel)]="name" (input)="filterItem(myInput.value)" />
@@ -6,7 +6,7 @@
   </div>
   <div class="card-deck">
     <div *ngFor="let book of filteredItems">
-      <div *ngIf="book !== 0;else do_this">
+      <div *ngIf="book !== 0; else do_this">
         <div class="card card-inverse">
           <div class="card-header">
             {{book.exact_title}}
@@ -35,3 +35,7 @@
       </div>
     </div>
   </div>
+</div>
+<ng-template #data_not_available>
+    <div class="jawn"></div>
+</ng-template>
