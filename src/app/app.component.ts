@@ -2,6 +2,10 @@ import { Component } from "@angular/core";
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 import { Router } from "@angular/router";
 
+import { BookService } from "./book.service";
+
+// declare const gapi: any;
+
 interface paper {
   cl: String;
   str: String;

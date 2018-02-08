@@ -45,6 +45,7 @@ export function createBookObject(data: Object): Book {
   const book = new Book();
 
   //SET ALL THE FIELDS OF BOOK
+  console.log(data)
 
   book["amazonReview"] = data["amazon_editorial_review"];
   //IFRAME IS LOCATED WITHIN ARRAY
@@ -60,6 +61,7 @@ export function createBookObject(data: Object): Book {
   book["penguinData"] = data["penguin_data"];
   book["exact_title"] = data["bookTitle"];
   book["wikipedia"] = data["wikipedia_text"];
+  book["isbn"] = data["isbn"];
 
   return book;
 }

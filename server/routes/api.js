@@ -7,6 +7,8 @@ const utils = require("../utils");
 
 const getAllTheData = require("../getAllData");
 
+const getAmazonData = require("../api-calls/index");
+
 const getIsbn = require("../api-calls/isbndb");
 
 router.get("/", (req, res) => {
@@ -82,6 +84,12 @@ router.put("/:book", (req, res) => {
         .catch(error => res.status(401).send({ message: error }));
     });
   });
+});
+
+router.get("/getid/doit", (req, res) => {
+  var cientId = process.env.OAUTH_CLIENT_ID;
+  var clientDomain = process.env.OAUTH_CLIENT_DOMAIN;
+  res.send([clientId, clientDomain]).status(200);
 });
 
 module.exports = router;

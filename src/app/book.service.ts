@@ -69,4 +69,8 @@ export class BookService {
   postBook(data: any): Observable<Response> {
     return this.http.post("/api", data, {});
   }
+
+  getClientId(): Observable<Response> {
+    return this.http.get("/api/getid/doit");
+  }
 }

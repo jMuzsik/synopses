@@ -14,4 +14,5 @@ export class Book {
   penguinData: string[];
   bookTitle: string;
   wikipedia: string[];
+  isbn: string;
 }

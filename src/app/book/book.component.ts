@@ -93,9 +93,13 @@ export class BookComponent implements OnInit {
     data[0]["data"]["results"].forEach((data, i) => {
       newData[i] = {};
       newData[i]["description"] = [];
-      newData[i]["description"][0] = data["description"][0];
-      if (data["description"].length > 1) {
-        newData[i]["description"][1] = data["description"][1];
+      if(Array.isArray(data["description"])) {
+        newData[i]["description"][0] = data["description"][0];
+        if (data["description"].length > 1) {
+          newData[i]["description"][1] = data["description"][1];
+        }
+      } else {
+        newData[i]["description"][0] = "No description given."
       }
       newData[i]["author"] = data["author"][0].split("|")[1];
       newData[i]["name"] = data["name"];
