@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 import { ActivatedRoute } from "@angular/router";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -9,7 +9,7 @@ import { BookService } from "../book.service";
 
 import { createBookObject } from "../utils";
 
-declare var jQuery: any;
+declare let $: any;
 
 interface ToggleButton {
   wikiVisible: boolean;
@@ -28,8 +28,6 @@ interface ToggleButton {
   styleUrls: ["./book.component.scss"]
 })
 export class BookComponent implements OnInit {
-  @ViewChild('modal') modal:ElementRef;
-
   //THE BOOK
   book: Book;
 
@@ -48,6 +46,8 @@ export class BookComponent implements OnInit {
     penguinDataVisible: false
   };
 
+  buttonVisible: boolean = false;
+
   //WIKI HAS NO TITLES, MAKE IT SOMEWHAT READABLE
   periods: number[];
 
@@ -62,28 +62,31 @@ export class BookComponent implements OnInit {
     public sanitizer: DomSanitizer
   ) {}
 
-  toggle(): void {
-    // if (!this.buttonToggle[name]) {
-    //   this.turnOff();
-    //   this.buttonToggle[name] = true;
-    // } else {
-    //   this.turnOff();
-    //   this.buttonToggle[name] = false;
-    // }
-    jQuery("#modal").modal('show');
+  toggle(name: string): void {
+    if (!this.buttonToggle[name]) {
+      this.turnOff();
+      this.buttonToggle[name] = true;
+    } else {
+      this.turnOff();
+      this.buttonToggle[name] = false;
+    }
+  }
 
+  toggleButton(): void {
+    this.buttonVisible = true;
   }
 
   alterView(): void {
     this.showBook = !this.showBook;
   }
 
-  // turnOff(): void {
-  //   const keys = Object.keys(this.buttonToggle);
-  //   keys.forEach(key => {
-  //     this.buttonToggle[key] = false;
-  //   });
-  // }
+  turnOff(): void {
+    const keys = Object.keys(this.buttonToggle);
+    this.buttonVisible = false;
+    keys.forEach(key => {
+      this.buttonToggle[key] = false;
+    });
+  }
 
   penguinDataErrors(data: any): string[] {
     if (data.length > 0) {
@@ -122,6 +125,10 @@ export class BookComponent implements OnInit {
         console.log("SUCCESS!!!!");
       }
     );
+  }
+
+  closeModal(): void {
+    this.turnOff();
   }
 
   ngOnInit(): void {

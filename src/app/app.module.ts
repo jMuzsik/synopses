@@ -14,6 +14,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BookService } from "./book.service";
 import { LoadingComponent } from './loading/loading.component';
 
+import * as bootstrap from "bootstrap";
+
 @NgModule({
   declarations: [
     AppComponent,

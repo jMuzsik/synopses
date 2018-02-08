@@ -108,8 +108,8 @@ div {
 
 #amazon {
   position: absolute;
-  right: 25vw;
-  top:  20vh;
+  right: 30vw;
+  top: 20vh;
   padding: 0;
   border: 0px;
   background-color: rgba(255, 0, 0, 0);
@@ -122,6 +122,93 @@ div {
     color: black;
   }
   .fa:hover {
-    color:rgb(253,152,39);
+    color: rgb(253, 152, 39);
+    }
+}
+
+#goodreads {
+  @extend #amazon;
+  right: 12vw;
+  .fa {
+    color: rgb(84, 59, 14);
   }
+  .fa:hover {
+    color: rgb(252, 207, 104);
+  }
+}
+
+#wikipedia {
+  @extend #amazon;
+  top: 60vh;
+  .fa:hover {
+    color: rgb(139, 139, 139);
+  }
+}
+
+#similar-books {
+  @extend #amazon;
+  top: 60vh;
+  right: 12vw;
+  .fa:hover {
+    color: rgb(252, 102, 33);
+  }
+}
+
+#amazon-reviews {
+  position: absolute;
+  left: 10vw;
+  top: 10vh;
+  width: 80vw;
+  height: 80vh;
+}
+
+#goodreads-reviews {
+  @extend #amazon-reviews;
+}
+
+#wikipedia-text {
+  @extend #amazon-reviews;
+  background-color: white;
+  font-size: .9em;
+}
+
+#similar-books-div {
+  @extend #wikipedia-text;
+  text-align:center;
+}
+
+@keyframes button {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+#general-button {
+  @extend #amazon;
+  position: absolute;
+  animation: button;
+  animation-duration: 7s;
+  animation-timing-function: linear;
+  left: 85vw;
+  top: 12vh;
+}
+
+i:hover {
+  span.tooltip {
+    display: block;
+  }
+}
+
+.tooltip {
+  display: none;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  color: #fff;
+  position: absolute;
+  z-index: 98;
+  font-size:.3em;
+  opacity: 1;
 }
