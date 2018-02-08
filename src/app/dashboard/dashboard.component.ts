@@ -46,10 +46,6 @@ export class DashboardComponent implements OnInit {
     this.router.navigate([`/book/${data[0]}`]);
   }
 
-  assignCopy() {
-    this.filteredItems = Object.assign([], this.books);
-  }
-
   filterItem(value: string): void {
     if (!value) this.filteredItems = [];
     else {
@@ -75,7 +71,8 @@ export class DashboardComponent implements OnInit {
     //if 3 items they are at 1,2,3
     //if 4 items then do not display
     //if 5 display
-    this.filteredItems = new Array(5).fill(0);
+    this.filteredItems = [0, 0, 0, 0, 0];
+    console.log(result, this.filteredItems)
     if (result.length === 1) {
       this.filteredItems[2] = result[0];
     } else if (result.length === 2) {
@@ -92,6 +89,7 @@ export class DashboardComponent implements OnInit {
       this.filteredItems[3] = result[3];
       this.filteredItems[4] = result[4];
     }
+    console.log(this.filteredItems)
   }
 
   ngOnInit(): void {

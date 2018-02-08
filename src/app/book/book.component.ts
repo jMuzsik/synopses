@@ -88,24 +88,31 @@ export class BookComponent implements OnInit {
     });
   }
 
-  penguinDataErrors(data: any): string[] {
-    if (data.length > 0) {
-      return data.map(data => {
-        if (data["author"] === undefined) {
-          data["author"] = "Some reason, no author";
-        } else {
-          data["author"] = data["author"][0];
-        }
-        if (data["description"] === undefined) {
-          data["description"] = "Some reason, no description";
-        } else {
-          data["description"] = data["description"][0];
-        }
-        return data;
-      });
-    } else {
-      return data;
-    }
+  reformatPenguinData(data: any): string[] {
+    const newData = [];
+    data[0]["data"]["results"].forEach((data, i) => {
+      newData[i] = {};
+      newData[i]["description"] = [];
+      newData[i]["description"][0] = data["description"][0];
+      if (data["description"].length > 1) {
+        newData[i]["description"][1] = data["description"][1];
+      }
+      newData[i]["author"] = data["author"][0].split("|")[1];
+      newData[i]["name"] = data["name"];
+      newData[i]["url"] = "http://www.penguinrandomhouse.com" + data["url"];
+    });
+    return newData;
+  }
+
+  setUpAmazonSimilarBooks(data: any): string[] {
+    const newData = [];
+    data.forEach((book, i) => {
+      newData[i] = {};
+      newData[i]["cl"] = "amazon-link";
+      newData[i]["url"] = book.ASIN[0];
+      newData[i]["title"] = book.Title[0];
+    });
+    return newData;
   }
 
   getBook(): void {
@@ -115,8 +122,11 @@ export class BookComponent implements OnInit {
         this.book = createBookObject(data);
         this.periods = data["periods"];
         this.isDataAvailable = true;
-        this.book["penguinData"] = this.penguinDataErrors(
+        this.book["penguinData"] = this.reformatPenguinData(
           this.book.penguinData
+        );
+        this.book["amazonSimilarProducts"] = this.setUpAmazonSimilarBooks(
+          this.book["amazonSimilarProducts"]
         );
         console.log(this.book);
       },
