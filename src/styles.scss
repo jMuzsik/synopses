@@ -1,7 +1,8 @@
 @import "variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
+//DEFAULT STUFF
 body > app-root > div {
   background: url("http://api.thumbr.it/whitenoise-600x200.png?background=f8faebff&noise=6c702d&density=17&opacity=15")
     no-repeat center center fixed;
@@ -32,7 +33,8 @@ h3 {
   line-height: 23px;
 }
 
-p, div {
+p,
+div {
   font-family: Roboto, Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 14px;
   font-style: normal;

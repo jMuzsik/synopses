@@ -79,7 +79,9 @@ router.put("/:book", (req, res) => {
 
   getAmazonData(isbn)
     .then(function(amazonData) {
+      //GRAB AMAZON IFRAME THAT SOMETIMES NEEDS TO BE REFRESHED
       updateBook["amazon_reviews"] = amazonData["amazon_reviews"];
+      updateBook["updated_at"] = Date.now;
       Book.findOneAndUpdate({ url_title }, updateBook, function(error) {
         if (error) {
           console.log("IF THERE IS AN ERROR, IN HERE", error);

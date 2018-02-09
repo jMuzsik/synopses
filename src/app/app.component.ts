@@ -4,12 +4,7 @@ import { Router } from "@angular/router";
 
 import { BookService } from "./book.service";
 
-// declare const gapi: any;
-
-interface paper {
-  cl: String;
-  str: String;
-}
+import {createPaperAnimationData } from './utils';
 
 @Component({
   selector: "app-root",
@@ -26,15 +21,10 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   lotsOfPaper(): void {
-    const paper: string = "assets/falling-paper.png";
     if (this.showPaper) {
       this.showPaper = false;
     } else {
-      for (let i = 0; i < 20; i++) {
-        this.papers[i] = {};
-        this.papers[i]["str"] = paper;
-        this.papers[i]["cl"] = "paper" + " " + "paper" + (i + 1);
-      }
+      this.papers = createPaperAnimationData();
       this.showPaper = true;
     }
   }

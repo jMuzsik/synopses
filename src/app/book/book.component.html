@@ -1,6 +1,8 @@
 <div *ngIf="isDataAvailable; else load">
 
   <!-------------------INITIALDATA---------------->
+
+  <!--CARD TAKING UP 25VW RESPONSIVELY-->
   <div class="card w-25 author-book-card">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
@@ -16,6 +18,7 @@
         </li>
       </ul>
     </div>
+    <!--IF BOOK SHOW IT, ELSE SHOW AUTHOR-->
     <div *ngIf="showBook; else show_author">
       <img class="card-img-top" src={{book.frontCover}} alt="Image of book">
       <div class="card-body">
@@ -43,6 +46,7 @@
     </ng-template>
   </div>
 
+  <!--SIMILAR TO PREVIOUS CARD BUT ONLY WITH TEXT, NOTHING ELSE-->
   <div class="card descriptions w-25">
     <div class="card-body">
       <div class="card-text" [innerHTML]="book.amazonReview"></div>
@@ -56,6 +60,7 @@
 
   <!-- ---------------------------BUTTONS -------------------------- -->
 
+  <!--THIS ONE NEEDS TO BE CHECKED IF PUT REQUEST IS NECESSITATED-->
   <button type="button" class="btn btn-primary" id="amazon" (click)="checkForAmazonReviews()">
     <i class="fa fa-amazon fa-3x" aria-hidden="true">
       <span class="tooltip">Amazon Reviews</span>
@@ -80,7 +85,7 @@
     </i>
   </button>
 
-  <!-- -----------------------AMAZON REVIEWS IFRAME------~    ------------ -->
+  <!-- -----------------AMAZON REVIEWS IFRAME--------------- -->
 
   <div (click)="checkForAmazonReviews()" *ngIf="buttonToggle.amazonReviewVisible">
     <iframe id="amazon-reviews" [src]='sanitizer.bypassSecurityTrustResourceUrl(book.amazonCustomerReviews)' width="100%" height="100%"
@@ -92,6 +97,7 @@
     </div>
   </div>
 
+  <!--GOODREADS REVIEWS IFRAME-->
   <div *ngIf="buttonToggle.goodreadsReviewVisible">
     <iframe id="goodreads-reviews" [src]='sanitizer.bypassSecurityTrustResourceUrl(book.goodreadsReviewsWidget)' width="100%"
       height="100%" frameborder="0"></iframe>
@@ -102,10 +108,12 @@
     </div>
   </div>
 
+  <!--AUTHOR WIKIPEDIA TEXT-->
   <div *ngIf="buttonToggle.wikiVisible">
     <div id="wikipedia-text" class="card descriptions w-75">
       <div class="card-body">
         <div class="card-text">
+          <!--IT IS AN ARRAY THAT NEEDS TO BE ALTERED VISUALLY-->
           <div *ngFor="let wiki of book.wikipedia; let i=index">
             <b>{{wiki.slice(0, periods[i])}}</b>{{wiki.slice(periods[i], wiki.length)}}
             <br />
@@ -126,6 +134,7 @@
     </div>
   </div>
 
+  <!--AMAZON, PENGUIN, AND GOODREADS SIMILAR BOOKS DATA-->
   <div *ngIf="buttonToggle.amazonSimilarBooksVisible">
     <div id="similar-books-div" class="card descriptions w-75">
       <div class="card-body">
@@ -144,6 +153,8 @@
             <ng-container *ngFor="let book of book.goodreadsSimilarBooks">
               <div class="goodreads-link">
                 <a href={{book.authors[0].author[0].link[0]}} target="_blank">{{book.authors[0].author[0].name[0]}}</a>
+
+                <!--IF THERE IS NO PHOTO, GIVE A DEFAULT ONE-->
                 <div *ngIf="book.image_url[0].indexOf('nophoto') === -1; else default_photo">
                   <img src={{book.image_url[0]}} alt="image of goodreads similar book" />
                 </div>
@@ -170,6 +181,8 @@
               <pre>{{book.author}}</pre>
             </h6>
             <div style="text-align: left" [innerHTML]="book.description[0]"></div>
+
+            <!--SOMETIMES A SECOND DESCRIPTION EXISTS-->
             <div *ngIf="book.description.length > 1">
               <br />
               <div style="text-align: left;" [innerHTML]="book.description[1]"></div>
@@ -193,6 +206,7 @@
   </div>
 
 </div>
+<!--DATA IS LOADING, SHOW THIS-->
 <ng-template #load>
   <div class="jawn"></div>
 </ng-template>

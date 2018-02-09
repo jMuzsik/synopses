@@ -1,4 +1,4 @@
-// body > app-root > div {
+//COVER THE PAGE WITH CLOUDS
 .loading {
   background: url("https://t4.ftcdn.net/jpg/00/96/92/85/240_F_96928594_oc995mkEMzp9nqQPuRHDnUUWZkMmHSEv.jpg")
     no-repeat center center fixed;
@@ -10,6 +10,7 @@
   height: 100vh;
 }
 
+//CUSTOM CSS FOR EACH FLYING BOOK
 @for $i from 1 through 21 {
   $rand: ($i * $i);
   @keyframes #{book + $i} {
@@ -73,6 +74,7 @@
   }
 }
 
+//EACH BOOK HAS THINGS RELATED TO ITS ANIMATION
 .book {
   position: absolute;
   height: auto;

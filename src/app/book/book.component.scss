@@ -1,7 +1,7 @@
 @import "../../styles.scss";
 //LOADING
-$blue: rgb(0, 155, 255);
 
+//LOADING CSS
 .jawn {
   position: relative;
   background-color: #f8e71c;
@@ -30,7 +30,7 @@ $blue: rgb(0, 155, 255);
   &:before {
     left: -7.5em;
     top: -4.5em;
-    background-color: $blue;
+    background-color: rgb(0, 155, 255);
     transform-origin: 9em 6em;
     animation: axis 2s linear infinite;
   }
@@ -45,6 +45,7 @@ $blue: rgb(0, 155, 255);
   }
 }
 
+//RESET FONT HERE
 p,
 div {
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
@@ -55,6 +56,7 @@ div {
   line-height: 23px;
 }
 
+//NEEDED TO USE BACKGROUND AGAIN TO HIDE THE POST BUTTON...
 .author-book-card {
   background: url("http://api.thumbr.it/whitenoise-600x200.png?background=f8faebff&noise=6c702d&density=17&opacity=15")
     no-repeat center center fixed;
@@ -68,6 +70,7 @@ div {
   top: 0;
 }
 
+//CENTER THE TABS: AUTHOR AND BOOK
 .author-book-card > .card-header {
   background-color: #3d9970;
   display: flex;
@@ -75,6 +78,7 @@ div {
   text-align: center;
 }
 
+//MAKE HEADER LOOK RIGHT
 .card.w-25.author-book-card > div.card-header > ul {
   top: -2em;
 }
@@ -92,21 +96,24 @@ div {
   text-shadow: 0px 2px 3px #39cccc;
 }
 
+//MAKE BOOK IMAGE LOOK NATURAL
 .card-img-top {
   height: 50vh;
   width: auto;
 }
-
+//EXACT AMOUNT OF SPACE FOR CARD BODY
 .card-body {
   height: 30vh;
   overflow: scroll;
 }
 
+//SIZE, NO BACKGROUND
 .card-title > a {
   font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0);
 }
 
+//PUT IT NEXT TO OTHER CARD, SIMILAR CONCEPT AS OTHER CARD
 .descriptions {
   background-color: rgba(0, 0, 0, 0);
   position: relative;
@@ -118,6 +125,7 @@ div {
   top: 0;
 }
 
+//POSITION IT IN EXACT PLACE, MAKE GIF LOOK AS I WANT
 #amazon {
   position: absolute;
   right: 30vw;
@@ -138,6 +146,7 @@ div {
   }
 }
 
+//EXTEND, DIFFERENT LOCATION AND COLOR 3X
 #goodreads {
   @extend #amazon;
   right: 12vw;
@@ -166,6 +175,7 @@ div {
   }
 }
 
+//POSITION MODAL IN EXACT PLACE, OTHERWISE CHANGE THINGS ONLY A BIT
 #amazon-reviews {
   position: absolute;
   left: 10vw;
@@ -189,6 +199,7 @@ div {
   text-align: center;
 }
 
+//MAKE IT LOOK LESS FIDGETY
 @keyframes button {
   0% {
     opacity: 0;
@@ -198,6 +209,7 @@ div {
   }
 }
 
+//EXACT LOCATION EACH TIME, SAME ANIMATION AS WELL
 #general-button {
   @extend #amazon;
   position: absolute;
@@ -208,6 +220,7 @@ div {
   top: 12vh;
 }
 
+//TOOLTIP FOR GYPHS SO USER KNOWS WHATS UP
 i:hover {
   span.tooltip {
     display: block;
@@ -225,6 +238,7 @@ i:hover {
   opacity: 1;
 }
 
+//WITHIN THE SIMILAR BOOKS MODAL, MAKE LINKS, ETC, FIT BETTER, LOOK BETTER, ETC.
 .amazon-links {
   padding: 0;
   margin: 0;
@@ -274,6 +288,7 @@ i:hover {
   @extend .amazon-link;
 }
 
+//IMAGES OTHERWISE LOOK FUNNY, THIS PX VALUE IS THE SIZE OF CORRESPONDING IMAGES IN THE DATASET
 .uniform-image-size {
   opacity: 0.7;
   width: 97.988px;

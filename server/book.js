@@ -21,7 +21,8 @@ var bookSchema = new Schema({
   url_title: String,
   exact_title: String,
   created_at: { type: Date, default: Date.now },
-  url_author: String
+  url_author: String,
+  updated_at: { type: Date, default: Date.now}
 });
 
 bookSchema.pre("save", function(next) {

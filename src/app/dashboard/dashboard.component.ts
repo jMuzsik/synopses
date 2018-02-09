@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
 
   filteredItems: any = [];
 
+  //LIBRARY THAT DOES FUZZY SEARCH(fuse.js) DEFAULT VALUES
   fuseOptions: any = {
     shouldSort: true,
     threshold: 0.6,
@@ -31,21 +32,16 @@ export class DashboardComponent implements OnInit {
 
   constructor(public bookService: BookService, private router: Router) {}
 
-  getBooks(): any {
-    this.bookService.getBooks().subscribe(
-      data => {
-        this.books = data;
-        this.dataAvailable = true;
-      },
-      err => console.log("FAILED OBTAINING ALL BOOKS FROM API", err),
-      () => console.log("success")
-    );
+  ngOnInit(): void {
+    this.getBooks();
   }
 
+  //WHEN CLICK IMAGE IN SEARCH REROUTE
   reroute(data): void {
     this.router.navigate([`/book/${data[0]}`]);
   }
 
+  //SEARCH RESULTS(FILTER RESULTS)
   filterItem(value: string): void {
     if (!value) this.filteredItems = [];
     else {
@@ -56,6 +52,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  //IF BOOK HAS NO IMAGE, SOME REASON, GIVE SPACE IMAGE
   checkForImage(book: any): void {
     if (book.front_cover) return book;
     else {
@@ -65,14 +62,15 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  //USING CSS GRID
   fillOutGrid(result: any): void {
     //if 1 item it is in the center
     //if 2 items they are at 1 and 3
     //if 3 items they are at 1,2,3
-    //if 4 items then do not display
-    //if 5 display
+    //if 4 items then do not display 4, same as 3
+    //if 5 display all
+
     this.filteredItems = [0, 0, 0, 0, 0];
-    console.log(result, this.filteredItems)
     if (result.length === 1) {
       this.filteredItems[2] = result[0];
     } else if (result.length === 2) {
@@ -89,10 +87,16 @@ export class DashboardComponent implements OnInit {
       this.filteredItems[3] = result[3];
       this.filteredItems[4] = result[4];
     }
-    console.log(this.filteredItems)
   }
 
-  ngOnInit(): void {
-    this.getBooks();
+  //GET ALL THE BOOKS
+  getBooks(): any {
+    this.bookService.getBooks().subscribe(
+      data => {
+        this.books = data;
+      },
+      err => console.log("FAILED OBTAINING ALL BOOKS FROM API", err),
+      () => this.dataAvailable = true
+    );
   }
 }

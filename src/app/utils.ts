@@ -1,6 +1,7 @@
 import { Book } from "./book";
 import { Observable } from "rxjs/Observable";
 
+//ALL I AM GIVEN IS A BUNCH OF UNFORMATTED TEXT, BOLD FIRST SENTENCE OF EACH PARAGRAPH AND SEPARATE SECTIONS TO PUT <BR /> IN CORRECT PLACES
 export function makeWikiTextPresentable(
   text: String
 ): [Array<String>, Array<Number>] {
@@ -17,35 +18,11 @@ export function makeWikiTextPresentable(
   return [textToReturn, periodArrayToReturn];
 }
 
-export function fixTextContainingBrAndITags(text: String): String[] {
-  //AMAZON TEXT CONTAINS BR AND I
-  if (text.indexOf("<BR>") > -1) {
-    return text
-      .split("<BR><BR>")
-      .filter(str => str)
-      .map((str, i) => {
-        str = str.replace(/<I>/g, "");
-        str = str.replace(/<\/I>/g, "");
-        return str;
-      });
-    //GOODREADS TEXT CONTAINS br (lowercase) AND i
-  } else {
-    return text
-      .split("<br /><br />")
-      .filter(str => str)
-      .map((str, i) => {
-        str = str.replace(/<i>/g, "");
-        str = str.replace(/<\/i>/g, "");
-        return str;
-      });
-  }
-}
-
 export function createBookObject(data: Object): Book {
   const book = new Book();
 
   //SET ALL THE FIELDS OF BOOK
-  console.log(data)
+  console.log(data);
 
   book["amazonReview"] = data["amazon_editorial_review"];
   //IFRAME IS LOCATED WITHIN ARRAY
@@ -62,20 +39,15 @@ export function createBookObject(data: Object): Book {
   book["exact_title"] = data["bookTitle"];
   book["wikipedia"] = data["wikipedia_text"];
   book["isbn"] = data["isbn"];
-  book["date"] = data["created_at"]
+  book["date"] = data["created_at"];
+  book["updated"] = data["updated_at"];
 
   return book;
 }
 
-export function capitalizeFirstLetter(str: string): string {
-  return str
-    .split(" ")
-    .map(subStr => subStr.charAt(0).toUpperCase() + subStr.slice(1))
-    .join(" ");
-}
-
+//GOODREADS IFRAME IS IN CONVOLUTED OBJECT
 export function grabIframe(str: string): string {
-  if(str.split('src="').length > 1) {
+  if (str.split('src="').length > 1) {
     const splitWhereSrcIs: Array<string> = str.split('src="');
     const idxOfEndOfHref: number = splitWhereSrcIs[1].indexOf('"');
     const iFrame: string = splitWhereSrcIs[1].slice(0, idxOfEndOfHref);
@@ -84,6 +56,7 @@ export function grabIframe(str: string): string {
   return str;
 }
 
+//LINKS WITHIN SIMILAR BOOKS SO THAT IT HAS SOME SORT OF USE
 export function alterASINtoHREF(arr: Array<any>): Array<any> {
   return arr.map(idxValue => {
     idxValue.ASIN[0] = `http://www.goodreads.com/book/isbn/${idxValue.ASIN[0]}`;
@@ -91,15 +64,88 @@ export function alterASINtoHREF(arr: Array<any>): Array<any> {
   });
 }
 
-export function alterAuthorAndUrl(arr: Array<any>): Array<any> {
- return arr.map(data => {
-    if(data.author) {
-      if(data.author[0].indexOf('|') > -1) {
-        const idxToSlice = data.author[0].indexOf("|") + 1;
-        data.author[0] = data.author[0].slice(idxToSlice);
+export function reformatBookData(data: any): any {
+  //TAKE CARE OF CONFUSION WITHIN WIKI TEXT, PERIOD PROPERTY SO AS TO BOLD FIRST SENTENCE OF EACH PARAGRAPH
+  var storeWikiFuncResultsArr = makeWikiTextPresentable(data["wikipedia_text"]);
+
+  data["wikipedia_text"] = storeWikiFuncResultsArr[0];
+  data["periods"] = storeWikiFuncResultsArr[1];
+
+  data["bookTitle"] = data["exact_title"];
+
+  //ONLY NEED IFRAME
+  data["goodreads_reviews_widget"] = grabIframe(
+    data["goodreads_reviews_widget"]
+  );
+
+  data["amazon_similar_products"] = alterASINtoHREF(
+    data["amazon_similar_products"]
+  );
+  return data;
+}
+
+//PAPER ANIMATION DATA
+export function createPaperAnimationData(): any {
+  const paper: string = "assets/falling-paper.png";
+  const papers = [];
+  for (let i = 0; i < 20; i++) {
+    papers[i] = {};
+    papers[i]["str"] = paper;
+    papers[i]["cl"] = "paper" + " " + "paper" + (i + 1);
+  }
+  return papers;
+}
+
+export function createUrlToRedirect(data: any): string {
+
+  //LOWERCASE THE TITLE AND AUTHOR
+  data.title = data.title.toLowerCase();
+  data.author = data.author.toLowerCase();
+
+  //CREATE THE URL TITLE
+  let urlTitle: string =
+    data.title.split(" ").join("_") + "_" + data.author.split(" ").join("_");
+
+  //GET RID OF WHITESPACE AT THE END
+  if (urlTitle[urlTitle.length - 1] === "_") {
+    urlTitle = urlTitle.slice(0, urlTitle.length - 1);
+  }
+  return urlTitle;
+}
+
+export function reformatPenguinData(data: any): string[] {
+  const newData = [];
+  data.forEach((data, i) => {
+    newData[i] = {};
+    newData[i]["description"] = [];
+    //SOMETIMES 0(NO ARRAY), 1, OR 2 DESCRIPTIONS IN THE ARRAY
+    if (Array.isArray(data["description"])) {
+      newData[i]["description"][0] = data["description"][0];
+      if (data["description"].length > 1) {
+        newData[i]["description"][1] = data["description"][1];
       }
+    } else {
+      newData[i]["description"][0] = "No description given.";
     }
-    data.url = "https://www.penguinrandomhouse.com" + data.url;
-    return data;
+    //SIMILAR SITUATION WITH AUTHOR, NO ARRAY OR 1 WITH AUTHOR WITHIN
+    if (Array.isArray(data["author"])) {
+      newData[i]["author"] = data["author"][0].split("|")[1];
+    }
+    //EASIER ACCESS
+    newData[i]["name"] = data["name"];
+    //URL DOES NOT HAVE BEGINNING OF LINK, ONLY END
+    newData[i]["url"] = "http://www.penguinrandomhouse.com" + data["url"];
   });
+  return newData;
+}
+
+export function setUpAmazonSimilarBooks(data: any): string[] {
+  const newData = [];
+  data.forEach((book, i) => {
+    newData[i] = {};
+    newData[i]["cl"] = "amazon-link";
+    newData[i]["url"] = book.ASIN[0];
+    newData[i]["title"] = book.Title[0];
+  });
+  return newData;
 }

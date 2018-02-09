@@ -7,19 +7,16 @@ import { Book } from "../book";
 
 import { BookService } from "../book.service";
 
-import { createBookObject } from "../utils";
-
-declare let $: any;
+import {
+  createBookObject,
+  reformatPenguinData,
+  setUpAmazonSimilarBooks
+} from "../utils";
 
 interface ToggleButton {
   wikiVisible: boolean;
-  goodreadsVisible: boolean;
-  amazonDescriptionVisible: boolean;
   goodreadsReviewVisible: boolean;
-  amazonReviewVisible: boolean;
   amazonSimilarBooksVisible: boolean;
-  goodreadsSimilarBooksVisible: boolean;
-  penguinDataVisible: boolean;
 }
 
 @Component({
@@ -37,20 +34,17 @@ export class BookComponent implements OnInit {
   //DROPDOWNS
   buttonToggle: ToggleButton = {
     wikiVisible: false,
-    goodreadsVisible: false,
-    amazonDescriptionVisible: false,
     goodreadsReviewVisible: false,
-    amazonReviewVisible: false,
-    amazonSimilarBooksVisible: false,
-    goodreadsSimilarBooksVisible: false,
-    penguinDataVisible: false
+    amazonSimilarBooksVisible: false
   };
 
+  //UNIVERSAL BUTTON WHEN LINK IS PRESSED THAT OPENS MODAL
   buttonVisible: boolean = false;
 
   //WIKI HAS NO TITLES, MAKE IT SOMEWHAT READABLE
   periods: number[];
 
+  //BOOK OR AUTHOR IN CARD
   showBook: boolean = true;
 
   //IS THE DATA LOADING?
@@ -62,6 +56,11 @@ export class BookComponent implements OnInit {
     public sanitizer: DomSanitizer
   ) {}
 
+  ngOnInit(): void {
+    this.getBook();
+  }
+
+  //CLOSE ANYTHING OPEN FIRST, THEN OPEN THE SPECIFIED ONE
   toggle(name: string): void {
     if (!this.buttonToggle[name]) {
       this.turnOff();
@@ -72,14 +71,22 @@ export class BookComponent implements OnInit {
     }
   }
 
+  //SHOW THE BUTTON
   toggleButton(): void {
     this.buttonVisible = true;
   }
 
+  //SHOW BOOK OR AUTHOR IF NOT SHOWING BOOK, ONE OR THE OTHER
   alterView(): void {
     this.showBook = !this.showBook;
   }
 
+  //CLOSE MODAL IF OPEN
+  closeModal(): void {
+    this.turnOff();
+  }
+
+  //CLOSE ANY MODAL THAT IS OPEN
   turnOff(): void {
     const keys = Object.keys(this.buttonToggle);
     this.buttonVisible = false;
@@ -88,60 +95,30 @@ export class BookComponent implements OnInit {
     });
   }
 
-  reformatPenguinData(data: any): string[] {
-    const newData = [];
-    console.log(data);
-    data[0]["data"]["results"].forEach((data, i) => {
-      newData[i] = {};
-      newData[i]["description"] = [];
-      if (Array.isArray(data["description"])) {
-        newData[i]["description"][0] = data["description"][0];
-        if (data["description"].length > 1) {
-          newData[i]["description"][1] = data["description"][1];
-        }
-      } else {
-        newData[i]["description"][0] = "No description given.";
-      }
-      if (Array.isArray(data["author"])) {
-        newData[i]["author"] = data["author"][0].split("|")[1];
-      }
-      newData[i]["name"] = data["name"];
-      newData[i]["url"] = "http://www.penguinrandomhouse.com" + data["url"];
-    });
-    return newData;
-  }
-
-  setUpAmazonSimilarBooks(data: any): string[] {
-    const newData = [];
-    data.forEach((book, i) => {
-      newData[i] = {};
-      newData[i]["cl"] = "amazon-link";
-      newData[i]["url"] = book.ASIN[0];
-      newData[i]["title"] = book.Title[0];
-    });
-    return newData;
-  }
-
+  //AMAZON REVIEW IFRAME ONLY LASTS FOR A SINGLE DAY, PUT REQUEST NECESSARY IF UPDATED LATER THEN A DAY AGO
   checkForAmazonReviews(): void {
     const now = new Date();
-    const past = new Date(this.book["date"]);
+    const past = new Date(this.book["updated"]);
     const bookPath = this.route.snapshot.url[1].path;
     const data = {};
     data["isbn"] = this.book.isbn;
-    if (Math.floor((now.getTime() - past.getTime()) / (24*60*60*1000)) > 0) {
-    this.bookService.putBook(bookPath, data).subscribe(
-      data => {
-        this.book["amazonCustomerReviews"] = data["IFrameURL"][0];
-      },
-      error => console.log(error),
-      () => {
-        this.toggle('amazonReviewVisible');
-        this.toggleButton();
-        console.log("PUT REQUEST SUCCESS");
-      }
-    );
+    //CALCULATE HOW MANY DAYS HAS PASSED SINCE THIS BUTTON HAS BEEN PRESSED/DATA HAS BEEN USED
+    if (
+      Math.floor((now.getTime() - past.getTime()) / (24 * 60 * 60 * 1000)) > 0
+    ) {
+      this.bookService.putBook(bookPath, data).subscribe(
+        data => {
+          this.book["amazonCustomerReviews"] = data["IFrameURL"][0];
+        },
+        error => console.log(error),
+        () => {
+          this.toggle("amazonReviewVisible");
+          this.toggleButton();
+          console.log("PUT REQUEST SUCCESS");
+        }
+      );
     } else {
-      this.toggle('amazonReviewVisible');
+      this.toggle("amazonReviewVisible");
       this.toggleButton();
     }
   }
@@ -152,27 +129,16 @@ export class BookComponent implements OnInit {
       data => {
         this.book = createBookObject(data);
         this.periods = data["periods"];
-        this.isDataAvailable = true;
-        this.book["penguinData"] = this.reformatPenguinData(
-          this.book.penguinData
+        this.book["penguinData"] = reformatPenguinData(
+          this.book.penguinData[0]["data"]["results"]
         );
-        this.book["amazonSimilarProducts"] = this.setUpAmazonSimilarBooks(
+        this.book["amazonSimilarProducts"] = setUpAmazonSimilarBooks(
           this.book["amazonSimilarProducts"]
         );
         console.log(this.book);
       },
       err => console.log(err),
-      () => {
-        console.log("SUCCESS!!!!");
-      }
+      () => (this.isDataAvailable = true)
     );
-  }
-
-  closeModal(): void {
-    this.turnOff();
-  }
-
-  ngOnInit(): void {
-    this.getBook();
   }
 }

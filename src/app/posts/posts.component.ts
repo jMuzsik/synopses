@@ -4,20 +4,24 @@ import { Router } from "@angular/router";
 
 import { BookService } from "../book.service";
 
+import { createUrlToRedirect } from "../utils";
+
 @Component({
   selector: "app-posts",
   templateUrl: "./posts.component.html",
   styleUrls: ["./posts.component.scss"]
 })
 export class PostsComponent {
+  //EMIT EVENT TO AFFECT STATE IN APP COMPONENT
   @Output() onSubmission = new EventEmitter<boolean>();
 
-  submitted: boolean = false;
-
+  //HAS BOOK BEEN CREATED YET?
   bookPreviouslyCreated: boolean = false;
 
+  //LOTS OF API REQUESTS = ~20 SECOND POST REQUEST, SO INTERESTING LOADING PAGE
   loading: boolean = false;
 
+  //HAS USER PRESSED POST BUTTON?
   notPressed: boolean = true;
 
   constructor(
@@ -26,12 +30,19 @@ export class PostsComponent {
     public bookService: BookService
   ) {}
 
+  //CHECK IF BOOK BEING CREATED ALREADY HAS BEEN CREATED
   close(): void {
     if (this.bookPreviouslyCreated) {
       this.bookPreviouslyCreated = false;
     }
   }
 
+  //ALTER STATE OF BUTTON PRESS
+  buttonPressed(): void {
+    this.notPressed = false;
+  }
+
+  //CREATE THE NEW BOOK
   newBook(title, author): void {
     class ObjectConstructor {
       title: String;
@@ -45,6 +56,7 @@ export class PostsComponent {
 
     this.router.navigate([`/dashboard`]);
 
+    //WAIT 5 SECONDS AFTER USER INPUTS PRIOR TO LOADING CODE TO RUN
     setTimeout(() => {
       this.loading = true;
     }, 5000);
@@ -52,19 +64,16 @@ export class PostsComponent {
     this.bookService.postBook(data).subscribe(
       result => {
         if (result["_body"].length > 0) {
-          data.title = data.title.toLowerCase();
-          data.author = data.author.toLowerCase();
-          let urlTitle: string =
-            data.title.split(" ").join("_") +
-            "_" +
-            data.author.split(" ").join("_");
-          if (urlTitle[urlTitle.length - 1] === "_") {
-            urlTitle = urlTitle.slice(0, urlTitle.length - 1);
-          }
+          //REDIRECT URL CREATION
+          const urlTitle = createUrlToRedirect(data);
           this.loading = false;
+
+          //EMIT FUNCTION TO ALTER STATE IN COMPONENT THAT OPENED POST COMPONENT
           this.onSubmission.emit(false);
+          //REROUTE
           this.router.navigate([`/book/${urlTitle}`]);
         } else {
+          //HTML MESSAGE OF ERROR ON DISPLAY
           this.bookPreviouslyCreated = true;
         }
       },
@@ -75,9 +84,5 @@ export class PostsComponent {
         console.log("ALL FINISHED!");
       }
     );
-  }
-
-  buttonPressed(): void {
-    this.notPressed = false;
   }
 }
