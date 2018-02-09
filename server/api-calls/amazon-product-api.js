@@ -1,6 +1,6 @@
 var amazon = require("amazon-product-api");
 
-var getAmazonData = function(isbn, callback) {
+var getAmazonData = function(isbn) {
   var client = amazon.createClient({
     awsId: process.env.AWS_ACCESS_KEY_ID,
     awsSecret: process.env.AWS_SECRET_ACCESS_KEY,

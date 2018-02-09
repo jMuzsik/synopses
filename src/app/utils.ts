@@ -62,6 +62,7 @@ export function createBookObject(data: Object): Book {
   book["exact_title"] = data["bookTitle"];
   book["wikipedia"] = data["wikipedia_text"];
   book["isbn"] = data["isbn"];
+  book["date"] = data["created_at"]
 
   return book;
 }

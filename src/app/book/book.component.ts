@@ -90,18 +90,21 @@ export class BookComponent implements OnInit {
 
   reformatPenguinData(data: any): string[] {
     const newData = [];
+    console.log(data);
     data[0]["data"]["results"].forEach((data, i) => {
       newData[i] = {};
       newData[i]["description"] = [];
-      if(Array.isArray(data["description"])) {
+      if (Array.isArray(data["description"])) {
         newData[i]["description"][0] = data["description"][0];
         if (data["description"].length > 1) {
           newData[i]["description"][1] = data["description"][1];
         }
       } else {
-        newData[i]["description"][0] = "No description given."
+        newData[i]["description"][0] = "No description given.";
       }
-      newData[i]["author"] = data["author"][0].split("|")[1];
+      if (Array.isArray(data["author"])) {
+        newData[i]["author"] = data["author"][0].split("|")[1];
+      }
       newData[i]["name"] = data["name"];
       newData[i]["url"] = "http://www.penguinrandomhouse.com" + data["url"];
     });
@@ -119,8 +122,32 @@ export class BookComponent implements OnInit {
     return newData;
   }
 
+  checkForAmazonReviews(): void {
+    const now = new Date();
+    const past = new Date(this.book["date"]);
+    const bookPath = this.route.snapshot.url[1].path;
+    const data = {};
+    data["isbn"] = this.book.isbn;
+    if (Math.floor((now.getTime() - past.getTime()) / (24*60*60*1000)) > 0) {
+    this.bookService.putBook(bookPath, data).subscribe(
+      data => {
+        this.book["amazonCustomerReviews"] = data["IFrameURL"][0];
+      },
+      error => console.log(error),
+      () => {
+        this.toggle('amazonReviewVisible');
+        this.toggleButton();
+        console.log("PUT REQUEST SUCCESS");
+      }
+    );
+    } else {
+      this.toggle('amazonReviewVisible');
+      this.toggleButton();
+    }
+  }
+
   getBook(): void {
-    var bookPath = this.route.snapshot.url[1].path;
+    const bookPath = this.route.snapshot.url[1].path;
     this.bookService.getBook(bookPath).subscribe(
       data => {
         this.book = createBookObject(data);

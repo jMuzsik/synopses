@@ -15,4 +15,5 @@ export class Book {
   bookTitle: string;
   wikipedia: string[];
   isbn: string;
+  data: string;
 }

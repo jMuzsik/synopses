@@ -25,7 +25,7 @@ export class BookService {
     return this.http.get(`/api/${bookPath}`).map(res => {
       //RETURNS MULTIPLE IF THERE ARE FOR THE BOOK, I NEED TO MAKE SURE THAT SAME BOOK CANNOT BE CREATED
       res = res.json()[0];
-      console.log(res)
+      console.log(res);
       //TAKE CARE OF CONFUSION WITHIN WIKI TEXT, PERIOD PROPERTY SO AS TO BOLD FIRST SENTENCE OF EACH PARAGRAPH
       var storeWikiFuncResultsArr = makeWikiTextPresentable(
         res["wikipedia_text"]
@@ -63,14 +63,14 @@ export class BookService {
   }
 
   putBook(bookPath: string, data: any): Observable<Response> {
-    return this.http.put(`/api/${bookPath}`, data, {});
+    return this.http.put(`/api/${bookPath}`, data, {}).map(res => {
+      console.log('AM I IN HERE, RESULT OF REQUERT -> JSON', res)
+      res = res.json()[0];
+      return res;
+    });
   }
 
   postBook(data: any): Observable<Response> {
     return this.http.post("/api", data, {});
-  }
-
-  getClientId(): Observable<Response> {
-    return this.http.get("/api/getid/doit");
   }
 }

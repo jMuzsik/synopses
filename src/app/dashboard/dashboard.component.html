@@ -7,7 +7,7 @@
   <div class="card-deck">
     <div *ngFor="let book of filteredItems">
       <div *ngIf="book !== 0; else do_this">
-        <div class="card card-inverse">
+        <div class="card">
           <div class="card-header">
             {{book.exact_title}}
           </div>

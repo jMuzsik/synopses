@@ -7,7 +7,9 @@ const utils = require("../utils");
 
 const getAllTheData = require("../getAllData");
 
-const getAmazonData = require("../api-calls/index");
+var apiCalls = require("../api-calls/index");
+
+var getAmazonData = apiCalls.getAmazonData;
 
 const getIsbn = require("../api-calls/isbndb");
 
@@ -70,26 +72,29 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:book", (req, res) => {
-  var query = req.body;
+  var url_title = req.params.book;
+  var isbn = req.body.isbn;
 
-  Book.find({ url_title: query }).then(book => {
-    getAllTheData(book.title, book.author, function(bookData) {
-      book = bookData;
-      book
-        .save(function(error) {
-          if (error) console.error(error);
-          else console.log("SAVED!!!!!!!");
-        })
-        .then(res.status(201).send({ message: "Book data refreshed!!!" }))
-        .catch(error => res.status(401).send({ message: error }));
+  var updateBook = {};
+
+  getAmazonData(isbn)
+    .then(function(amazonData) {
+      updateBook["amazon_reviews"] = amazonData["amazon_reviews"];
+      Book.findOneAndUpdate({ url_title }, updateBook, function(error) {
+        if (error) {
+          console.log("IF THERE IS AN ERROR, IN HERE", error);
+        } else {
+          return res
+            .status(200)
+            .send(updateBook["amazon_reviews"])
+            .end();
+        }
+      });
+    })
+    .catch(error => {
+      console.log("IF THERE IS AN ERROR FROM THE AMAZON QUERY", error);
+      res.status(401).send({ message: error });
     });
-  });
-});
-
-router.get("/getid/doit", (req, res) => {
-  var cientId = process.env.OAUTH_CLIENT_ID;
-  var clientDomain = process.env.OAUTH_CLIENT_DOMAIN;
-  res.send([clientId, clientDomain]).status(200);
 });
 
 module.exports = router;
