@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
 
   //WHEN CLICK IMAGE IN SEARCH REROUTE
   reroute(data): void {
-    this.router.navigate([`/book/${data[0]}`]);
+    this.router.navigate([`/book/${data}`]);
   }
 
   //SEARCH RESULTS(FILTER RESULTS)
@@ -77,8 +77,8 @@ export class DashboardComponent implements OnInit {
       this.filteredItems[1] = result[0];
       this.filteredItems[2] = result[1];
     } else if (result.length === 3 || result.length === 4) {
-      this.filteredItems[1] = result[0];
-      this.filteredItems[2] = result[1];
+      this.filteredItems[2] = result[0];
+      this.filteredItems[1] = result[1];
       this.filteredItems[3] = result[2];
     } else if (result.length >= 5) {
       this.filteredItems[0] = result[0];

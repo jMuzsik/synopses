@@ -11,7 +11,7 @@
           <div class="card-header">
             {{book?.exact_title}}
           </div>
-          <img class="card-img-top" (click)="reroute([book?.url_title])" src={{book?.front_cover}} alt="Image of book">
+          <img class="card-img-top" (click)="reroute(book?.url_title)" src={{book?.front_cover}} alt="Image of book">
           <div class="card-block">
             <div class="scroll-up">
               <p class="card-text" [innerHTML]="book?.goodreads_description">
@@ -21,10 +21,10 @@
         </div>
       </div>
       <ng-template #do_this>
-        <div class="card card-inverse" id="hide">
+        <div class="card" id="hide">
           <div class="card-header">
           </div>
-          <img class="card-img-top" alt="Image of book">
+          <img class="card-img-top" alt="Empty image of book">
           <div class="card-block">
             <div class="scroll-up">
               <p class="card-text">
