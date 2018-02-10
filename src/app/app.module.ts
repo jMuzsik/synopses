@@ -1,8 +1,10 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, ErrorHandler } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
-import { HttpModule } from "@angular/http";
+import { APP_BASE_HREF } from '@angular/common';
+
+import { HttpModule, RequestOptions, XHRBackend, Http } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -12,7 +14,7 @@ import { PostsComponent } from "./posts/posts.component";
 import { BookComponent } from "./book/book.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BookService } from "./book.service";
-import { LoadingComponent } from './loading/loading.component';
+import { LoadingComponent } from "./loading/loading.component";
 
 import * as bootstrap from "bootstrap";
 
@@ -31,7 +33,15 @@ import * as bootstrap from "bootstrap";
     HttpModule,
     HttpClientModule
   ],
-  providers: [BookService],
+  providers: [
+    BookService,
+    {
+      provide: Http,
+      useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) =>
+        new Http(backend, defaultOptions),
+      deps: [XHRBackend, RequestOptions]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

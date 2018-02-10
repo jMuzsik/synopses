@@ -20,10 +20,10 @@
     </div>
     <!--IF BOOK SHOW IT, ELSE SHOW AUTHOR-->
     <div *ngIf="showBook; else show_author">
-      <img class="card-img-top" src={{book.frontCover}} alt="Image of book">
+      <img class="card-img-top" src={{book?.frontCover}} alt="Image of book">
       <div class="card-body">
-        <h6 class="card-title">{{book.exact_title}}</h6>
-        <p class="card-text" [innerHTML]="book.goodreadsDescription">
+        <h6 class="card-title">{{book?.exact_title}}</h6>
+        <p class="card-text" [innerHTML]="book?.goodreadsDescription">
         </p>
         <footer class="blockquote-footer">
           <small class="text-muted">
@@ -33,15 +33,15 @@
       </div>
     </div>
     <ng-template #show_author>
-      <img class="card-img-top" src={{book.authorImage}} alt="Image of author">
+      <img class="card-img-top" src={{book?.authorImage}} alt="Image of author">
       <div class="card-body">
         <div class="card-title">
-          <a href={{book.authorLink}} class="badge badge-light" target="_blank">
-            {{book.author_name}}
+          <a href={{book?.authorLink}} class="badge badge-light" target="_blank">
+            {{book?.author_name}}
             <!-- <h6>{{book.author_name}}</h6> -->
           </a>
         </div>
-        <p class="card-text">{{book.wikipedia[0]}}</p>
+        <p class="card-text">{{book?.wikipedia[0]}}</p>
       </div>
     </ng-template>
   </div>
@@ -49,7 +49,7 @@
   <!--SIMILAR TO PREVIOUS CARD BUT ONLY WITH TEXT, NOTHING ELSE-->
   <div class="card descriptions w-25">
     <div class="card-body">
-      <div class="card-text" [innerHTML]="book.amazonReview"></div>
+      <div class="card-text" [innerHTML]="book?.amazonReview"></div>
       <footer class="blockquote-footer">
         <small class="text-muted">
           Amazon Review
@@ -87,8 +87,8 @@
 
   <!-- -----------------AMAZON REVIEWS IFRAME--------------- -->
 
-  <div (click)="checkForAmazonReviews()" *ngIf="buttonToggle.amazonReviewVisible">
-    <iframe id="amazon-reviews" [src]='sanitizer.bypassSecurityTrustResourceUrl(book.amazonCustomerReviews)' width="100%" height="100%"
+  <div (click)="checkForAmazonReviews()" *ngIf="buttonToggle?.amazonReviewVisible">
+    <iframe id="amazon-reviews" [src]='sanitizer?.bypassSecurityTrustResourceUrl(book?.amazonCustomerReviews)' width="100%" height="100%"
       frameborder="0"></iframe>
     <div *ngIf="buttonVisible">
       <button class="btn btn-dark" type="button" id="general-button" (click)="closeModal()">
@@ -98,8 +98,8 @@
   </div>
 
   <!--GOODREADS REVIEWS IFRAME-->
-  <div *ngIf="buttonToggle.goodreadsReviewVisible">
-    <iframe id="goodreads-reviews" [src]='sanitizer.bypassSecurityTrustResourceUrl(book.goodreadsReviewsWidget)' width="100%"
+  <div *ngIf="buttonToggle?.goodreadsReviewVisible">
+    <iframe id="goodreads-reviews" [src]='sanitizer?.bypassSecurityTrustResourceUrl(book?.goodreadsReviewsWidget)' width="100%"
       height="100%" frameborder="0"></iframe>
     <div *ngIf="buttonVisible">
       <button class="btn btn-dark" type="button" id="general-button" (click)="closeModal()">
@@ -109,13 +109,13 @@
   </div>
 
   <!--AUTHOR WIKIPEDIA TEXT-->
-  <div *ngIf="buttonToggle.wikiVisible">
+  <div *ngIf="buttonToggle?.wikiVisible">
     <div id="wikipedia-text" class="card descriptions w-75">
       <div class="card-body">
         <div class="card-text">
           <!--IT IS AN ARRAY THAT NEEDS TO BE ALTERED VISUALLY-->
-          <div *ngFor="let wiki of book.wikipedia; let i=index">
-            <b>{{wiki.slice(0, periods[i])}}</b>{{wiki.slice(periods[i], wiki.length)}}
+          <div *ngFor="let wiki of book?.wikipedia; let i=index">
+            <b>{{wiki?.slice(0, periods[i])}}</b>{{wiki?.slice(periods[i], wiki?.length)}}
             <br />
             <br />
           </div>
@@ -135,28 +135,28 @@
   </div>
 
   <!--AMAZON, PENGUIN, AND GOODREADS SIMILAR BOOKS DATA-->
-  <div *ngIf="buttonToggle.amazonSimilarBooksVisible">
+  <div *ngIf="buttonToggle?.amazonSimilarBooksVisible">
     <div id="similar-books-div" class="card descriptions w-75">
       <div class="card-body">
         <div class="card-text">
           <h4>Amazon Similar Books</h4>
           <h5 class="text-muted">All link to goodreads book page.</h5>
           <div class="amazon-links">
-            <ng-container *ngFor="let book of book.amazonSimilarProducts">
-              <a class={{book.cl}} href={{book.url}} alt="Link to similar book at goodreads" target="_blank">{{book.title}}</a>
+            <ng-container *ngFor="let book of book?.amazonSimilarProducts">
+              <a class={{book?.cl}} href={{book?.url}} alt="Link to similar book at goodreads" target="_blank">{{book?.title}}</a>
             </ng-container>
           </div>
           <br />
           <br />
           <h4>Goodreads Similar Books</h4>
           <div class="goodreads-links">
-            <ng-container *ngFor="let book of book.goodreadsSimilarBooks">
+            <ng-container *ngFor="let book of book?.goodreadsSimilarBooks">
               <div class="goodreads-link">
-                <a href={{book.authors[0].author[0].link[0]}} target="_blank">{{book.authors[0].author[0].name[0]}}</a>
+                <a href={{book?.authors[0]?.author[0]?.link[0]}} target="_blank">{{book?.authors[0]?.author[0]?.name[0]}}</a>
 
                 <!--IF THERE IS NO PHOTO, GIVE A DEFAULT ONE-->
-                <div *ngIf="book.image_url[0].indexOf('nophoto') === -1; else default_photo">
-                  <img src={{book.image_url[0]}} alt="image of goodreads similar book" />
+                <div *ngIf="book?.image_url[0]?.indexOf('nophoto') === -1; else default_photo">
+                  <img src={{book?.image_url[0]}} alt="image of goodreads similar book" />
                 </div>
                 <ng-template #default_photo>
                   <div>
@@ -164,7 +164,7 @@
                     />
                   </div>
                 </ng-template>
-                <a href={{book.link[0]}} alt="Redirect to book (goodreads)" target="_blank">{{book.title[0]}}</a>
+                <a href={{book?.link[0]}} alt="Redirect to book (goodreads)" target="_blank">{{book?.title[0]}}</a>
               </div>
             </ng-container>
           </div>
@@ -173,19 +173,19 @@
           <h4>Penguin Similar Books</h4>
           <h5 class="text-muted">All link to Penguin Random House book page.</h5>
           <br />
-          <div *ngFor="let book of book.penguinData">
-            <a style="text-align: left;" href={{book.url}} alt="url to book" target="_blank">
-              <h5>{{book.name}}</h5>
+          <div *ngFor="let book of book?.penguinData">
+            <a style="text-align: left;" href={{book?.url}} alt="url to book" target="_blank">
+              <h5>{{book?.name}}</h5>
             </a>
             <h6 style="text-align: left">
-              <pre>{{book.author}}</pre>
+              <pre>{{book?.author}}</pre>
             </h6>
-            <div style="text-align: left" [innerHTML]="book.description[0]"></div>
+            <div style="text-align: left" [innerHTML]="book?.description[0]"></div>
 
             <!--SOMETIMES A SECOND DESCRIPTION EXISTS-->
-            <div *ngIf="book.description.length > 1">
+            <div *ngIf="book?.description?.length > 1">
               <br />
-              <div style="text-align: left;" [innerHTML]="book.description[1]"></div>
+              <div style="text-align: left;" [innerHTML]="book?.description[1]"></div>
             </div>
             <br />
             <br />

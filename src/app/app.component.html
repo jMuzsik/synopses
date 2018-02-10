@@ -11,7 +11,7 @@
   <div *ngIf="showPaper">
     <div *ngIf="papers.length>0">
       <div *ngFor="let paper of papers; let i = index">
-        <img src={{paper.str}} alt="image of paper animation" class={{paper.cl}} />
+        <img src={{paper?.str}} alt="image of paper animation" class={{paper.cl}} />
       </div>
     </div>
   </div>

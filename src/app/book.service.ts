@@ -1,3 +1,4 @@
+import { NgModule } from "@angular/core";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
@@ -5,8 +6,10 @@ import { of } from "rxjs/observable/of";
 import { Book } from "./book";
 
 import { Http } from "@angular/http";
+
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
+
 
 import {
   makeWikiTextPresentable,

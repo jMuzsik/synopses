@@ -41,6 +41,7 @@ export class AppComponent {
     }
   }
 
+  //CLOSE THE POST MODULE AFTER USER POSTS A BOOK
   onSubmission(closePost: boolean): void {
     this.newBook = closePost;
   }

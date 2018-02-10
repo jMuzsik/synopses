@@ -4,7 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { BookComponent } from "./book/book.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: "",
     redirectTo: "/dashboard",
