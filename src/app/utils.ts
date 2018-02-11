@@ -21,9 +21,8 @@ export function makeWikiTextPresentable(
 export function createBookObject(data: Object): Book {
   const book = new Book();
 
-  //SET ALL THE FIELDS OF BOOK
   console.log(data);
-
+  //SET ALL THE FIELDS OF BOOK
   book["amazonReview"] = data["amazon_editorial_review"];
   //IFRAME IS LOCATED WITHIN ARRAY
   book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
@@ -103,6 +102,7 @@ export function createUrlToRedirect(data: any): string {
   data.author = data.author.toLowerCase();
 
   //CREATE THE URL TITLE
+
   let urlTitle: string =
     data.title.split(" ").join("_") + "_" + data.author.split(" ").join("_");
 
