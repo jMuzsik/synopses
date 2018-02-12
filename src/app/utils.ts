@@ -96,7 +96,6 @@ export function createPaperAnimationData(): any {
 }
 
 export function createUrlToRedirect(data: any): string {
-
   //LOWERCASE THE TITLE AND AUTHOR
   data.title = data.title.toLowerCase();
   data.author = data.author.toLowerCase();

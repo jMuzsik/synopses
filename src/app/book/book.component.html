@@ -19,7 +19,7 @@
       </ul>
     </div>
     <!--IF BOOK SHOW IT, ELSE SHOW AUTHOR-->
-    <div *ngIf="showBook; else show_author">
+    <div class="book" *ngIf="showBook; else show_author">
       <img class="card-img-top" src={{book?.frontCover}} alt="Image of book">
       <div class="card-body">
         <h6 class="card-title">{{book?.exact_title}}</h6>
@@ -32,7 +32,7 @@
         </footer>
       </div>
     </div>
-    <ng-template #show_author>
+    <ng-template class="author" #show_author>
       <img class="card-img-top" src={{book?.authorImage}} alt="Image of author">
       <div class="card-body">
         <div class="card-title">

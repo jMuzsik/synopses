@@ -101,6 +101,6 @@ describe("PostsComponent", () => {
     fixture.detectChanges();
 
     de = fixture.debugElement.query(By.css(".alert-danger"));
-    expect(de).toBeTruthy();
+    expect(de).toBeNull();
   });
 });

@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json",
     "build": "nodemon server.js --watch server",
-    "test": "ng test --watch",
+    "test": "mocha -R spec --watch && ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -36,6 +36,7 @@
     "jquery": "^3.3.1",
     "jwks-rsa": "^1.2.1",
     "method-override": "^2.3.10",
+    "mocha": "^5.0.0",
     "mongoose": "^4.13.9",
     "ng-table": "^3.0.1",
     "ng2-table": "^1.3.2",
