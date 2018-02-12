@@ -61,23 +61,49 @@ describe("Utils function file", () => {
 
   it("createUrlToRedirect should do just as it says", () => {
     let data: any = {};
-    data.title = 'this is a title';
-    data.author = 'some guy';
+    data.title = "this is a title";
+    data.author = "some guy";
     expect(utils.createUrlToRedirect(data)).toBe("this_is_a_title_some_guy");
     //GETS RID OF WHITESPACE AT END
-    data.author = 'some guy ';
+    data.author = "some guy ";
     expect(utils.createUrlToRedirect(data)).toBe("this_is_a_title_some_guy");
     //IF RANDOM SPACES, JUST MORE _ THINGS, WHATEVER
-    data.author = ' dis   a   guy    ';
-    expect(utils.createUrlToRedirect(data)).toBe("this_is_a_title__dis___a___guy___");
+    data.author = " dis   a   guy    ";
+    expect(utils.createUrlToRedirect(data)).toBe(
+      "this_is_a_title__dis___a___guy___"
+    );
   });
 
   it("reformatPenguinData should do just as it says", () => {
-    book = MockBooks[0];;
-    // "231142|J. M. Coetzee" -> J. M. Coetzee
-    // /books/297589/disgrace-by-j-m-coetzee' -> http://www.penguinrandomhouse.com/books/297589/disgrace-by-j-m-coetzee
-    result = utils.reformatPenguinData(book["penguin_data"]);
-    console.log(result)
-    expect()
+    book = MockBooks[0];
+    expect(book["penguin_data"][0].data.results[0].author[0]).toBe(
+      "231142|J. M. Coetzee"
+    );
+    expect(book["penguin_data"][0].data.results[0].url).toBe(
+      "/books/297589/disgrace-by-j-m-coetzee"
+    );
+
+    result = utils.reformatPenguinData(book["penguin_data"][0].data.results);
+
+    expect(result[0].author).toBe("J. M. Coetzee");
+    expect(result[0].url).toBe(
+      "http://www.penguinrandomhouse.com/books/297589/disgrace-by-j-m-coetzee"
+    );
+  });
+
+  it("setUpAmazonSimilarBooks should do just as it says", () => {
+    book = MockBooks[0];
+    expect(book["amazon_similar_products"][0].ASIN[0]).toBe(
+      "http://www.goodreads.com/book/isbn/0143039075"
+    );
+    expect(book["amazon_similar_products"][0].Title[0]).toBe(
+      "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
+    );
+    result = utils.setUpAmazonSimilarBooks(book["amazon_similar_products"]);
+    expect(result[0].cl).toBe("amazon-link");
+    expect(result[0].title).toBe(
+      "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
+    );
+    expect(result[0].url).toBe("http://www.goodreads.com/book/isbn/0143039075");
   });
 });

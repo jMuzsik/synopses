@@ -11,6 +11,7 @@ import { BookComponent } from "../book/book.component";
 import { APP_BASE_HREF } from "@angular/common";
 import { BookService } from "../book.service";
 import { decode } from "@angular/router/src/url_tree";
+import { HttpClientModule } from "@angular/common/http";
 
 describe("DashboardComponent", () => {
   let component: DashboardComponent;
@@ -25,7 +26,7 @@ describe("DashboardComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [BookComponent, DashboardComponent],
-        imports: [RouterModule.forRoot(routes), HttpModule],
+        imports: [RouterModule.forRoot(routes), HttpModule, HttpClientModule],
         providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService]
       }).compileComponents();
     })
@@ -162,6 +163,7 @@ describe("DashboardComponent", () => {
       });
     })
   );
+
   it(
     "Properly reroutes when the image is clicked",
     async(() => {
@@ -174,6 +176,7 @@ describe("DashboardComponent", () => {
         let el: any = input.nativeElement;
         el.value = "11111";
         el.dispatchEvent(new Event("input"));
+
         fixture.detectChanges();
         //NOW GRAB THE ONLY CLICK ELEMENT AVAILABLE ON THE PAGE, EVEN HIDDEN ELEMENTS HAVE THIS CLASS, SO GRAB BY DIFFERENT ALT
         debugArr = fixture.debugElement.queryAll(

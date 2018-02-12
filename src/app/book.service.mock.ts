@@ -89,10 +89,7 @@ export const MockBooks: any = [
           results: [
             {
               author: ["231142|J. M. Coetzee"],
-              description: [
-                '<p> some stuff </p>',
-                '<p> some more stuff </p>'
-              ],
+              description: ["<p> some stuff </p>", "<p> some more stuff </p>"],
               url: "/books/297589/disgrace-by-j-m-coetzee"
             },
             {
@@ -100,8 +97,8 @@ export const MockBooks: any = [
                 {
                   author: ["231142|J. M. other guy"],
                   description: [
-                    '<p> some stuff </p>',
-                    '<p> some more stuff </p>'
+                    "<p> some stuff </p>",
+                    "<p> some more stuff </p>"
                   ],
                   url: "/books/297589/disgrace-by-j-m-other-guy"
                 }
@@ -112,8 +109,8 @@ export const MockBooks: any = [
                 {
                   author: ["231142|J. M. again"],
                   description: [
-                    '<p> some stuff </p>',
-                    '<p> some more stuff </p>'
+                    "<p> some stuff </p>",
+                    "<p> some more stuff </p>"
                   ],
                   url: "/books/297589/disgrace-by-j-m-again"
                 }
@@ -189,25 +186,25 @@ export const MockBooks: any = [
     amazonCustomerReviews: [{ thing: 0, IFrameURL: "https://www.google.com" }],
     amazonSimilarProducts: [
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
@@ -278,25 +275,25 @@ export const MockBooks: any = [
     amazonCustomerReviews: [{ thing: 0, IFrameURL: "https://www.google.com" }],
     amazonSimilarProducts: [
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
@@ -329,25 +326,25 @@ export const MockBooks: any = [
     amazonCustomerReviews: [{ thing: 0, IFrameURL: "https://www.google.com" }],
     amazonSimilarProducts: [
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
@@ -380,25 +377,25 @@ export const MockBooks: any = [
     amazonCustomerReviews: [{ thing: 0, IFrameURL: "https://www.google.com" }],
     amazonSimilarProducts: [
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
@@ -431,25 +428,25 @@ export const MockBooks: any = [
     amazonCustomerReviews: [{ thing: 0, IFrameURL: "https://www.google.com" }],
     amazonSimilarProducts: [
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
@@ -482,25 +479,25 @@ export const MockBooks: any = [
     amazonCustomerReviews: [{ thing: 0, IFrameURL: "https://www.google.com" }],
     amazonSimilarProducts: [
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
@@ -531,25 +528,25 @@ export const MockBooks: any = [
     amazonCustomerReviews: [{ thing: 0, IFrameURL: "https://www.google.com" }],
     amazonSimilarProducts: [
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]
       },
       {
-        ASIN: "http://www.goodreads.com/book/isbn/0143039075",
+        ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
           "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
         ]

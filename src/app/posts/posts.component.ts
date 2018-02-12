@@ -54,16 +54,14 @@ export class PostsComponent {
     data.title = title.value;
     data.author = author.value;
 
-    this.router.navigate([`/dashboard`]);
-
-    //WAIT 5 SECONDS AFTER USER INPUTS PRIOR TO LOADING CODE TO RUN
     setTimeout(() => {
       this.loading = true;
-    }, 5000);
+    }, 3000);
 
     this.bookService.postBook(data).subscribe(
       result => {
-        if (result["_body"].length > 0) {
+        //WAIT 5 SECONDS AFTER USER INPUTS PRIOR TO LOADING CODE TO RUN
+        if (result["_body"] === "saved") {
           //REDIRECT URL CREATION
           const urlTitle = createUrlToRedirect(data);
           this.loading = false;
@@ -74,11 +72,13 @@ export class PostsComponent {
           this.router.navigate([`/book/${urlTitle}`]);
         } else {
           //HTML MESSAGE OF ERROR ON DISPLAY
+          this.notPressed = true;
+          this.loading = false;
           this.bookPreviouslyCreated = true;
         }
       },
       error => {
-        alert("This book has already been created.");
+        console.log(error);
       },
       () => {
         console.log("ALL FINISHED!");

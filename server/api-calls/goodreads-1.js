@@ -36,7 +36,6 @@ var getGoodreadsData1 = function(query, callback) {
             process.env.GOODREADS_KEY
           }`
         };
-        console.log(secondOptions);
         parseString.secondOptions = secondOptions;
         callback(secondOptions);
         return;

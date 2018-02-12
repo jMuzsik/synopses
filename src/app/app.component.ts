@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 
 import { BookService } from "./book.service";
 
-import {createPaperAnimationData } from './utils';
+import { createPaperAnimationData } from "./utils";
 
 @Component({
   selector: "app-root",

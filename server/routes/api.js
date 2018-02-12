@@ -35,22 +35,23 @@ router.get("/:book", (req, res) => {
 
 router.post("/", (req, res) => {
   var query = req.body;
+  console.log(query);
+  Book.find({})
+    .then(books => {
+      var check = true;
+      var title = query.title.toLowerCase();
+      books.forEach(prevBook => {
+        if (prevBook.title === title) {
+          check = false;
+        }
+      });
+      console.log(check);
 
-  getAllTheData(query.title, query.author, function(bookData) {
-    var book = bookData;
-    console.log("PRIOR TO BEING TO THE HOMESTRETCH", book);
-    book = new Book(book);
-    Book.find({})
-      .then(books => {
-        var check = true;
-
-        books.forEach(prevBook => {
-          if (prevBook.isbn === book.isbn) {
-            check = false;
-          }
-        });
-
-        if (check) {
+      if (check) {
+        getAllTheData(query.title, query.author, function(bookData) {
+          var book = bookData;
+          book = new Book(book);
+          console.log("PRIOR TO BEING TO THE HOMESTRETCH", book);
           book.save(function(error) {
             if (error) {
               console.log(error);
@@ -60,15 +61,15 @@ router.post("/", (req, res) => {
                 .send("saved")
                 .end();
           });
-        } else {
-          return res
-            .status(201)
-            .send({ message: "same book" })
-            .end();
-        }
-      })
-      .catch(error => res.status(400).end());
-  });
+        });
+      } else {
+        return res
+          .status(201)
+          .send("same book")
+          .end();
+      }
+    })
+    .catch(error => res.status(400).end());
 });
 
 router.put("/:book", (req, res) => {
