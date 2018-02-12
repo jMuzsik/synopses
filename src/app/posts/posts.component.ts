@@ -32,9 +32,7 @@ export class PostsComponent {
 
   //CHECK IF BOOK BEING CREATED ALREADY HAS BEEN CREATED
   close(): void {
-    if (this.bookPreviouslyCreated) {
-      this.bookPreviouslyCreated = false;
-    }
+    this.bookPreviouslyCreated = false;
   }
 
   //ALTER STATE OF BUTTON PRESS

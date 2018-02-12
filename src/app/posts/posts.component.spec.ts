@@ -18,6 +18,8 @@ describe("PostsComponent", () => {
   let fixture: ComponentFixture<PostsComponent>;
   let de: DebugElement;
   let el: HTMLElement;
+  let buttonElement: HTMLElement;
+  let button: DebugElement;
 
   beforeEach(
     async(() => {
@@ -57,17 +59,16 @@ describe("PostsComponent", () => {
     expect(de).toBeFalsy();
   });
 
-  it("should alert the user when post button is pressed, then load after several seconds", (done) => {
-    spyOn(component, 'newBook').and.callThrough();
-    spyOn(component, 'buttonPressed').and.callThrough();
+  it("should alert the user when post button is pressed, then load after several seconds", done => {
+    spyOn(component, "newBook").and.callThrough();
+    spyOn(component, "buttonPressed").and.callThrough();
 
     expect(component.notPressed).toBeTruthy();
 
-
-    de = fixture.debugElement.query(By.css('#post-button'));
+    de = fixture.debugElement.query(By.css("#post-button"));
     el = de.nativeElement;
 
-    el.dispatchEvent(new Event('click'));
+    el.dispatchEvent(new Event("click"));
     fixture.detectChanges();
 
     expect(component.newBook).toHaveBeenCalledTimes(1);
@@ -77,6 +78,29 @@ describe("PostsComponent", () => {
     setTimeout(() => {
       expect(component.loading).toBeTruthy();
       done();
-    }, 6000)
+    }, 6000);
+  });
+
+  it("bookPreviouslyCreated does what it is supposed to do", () => {
+    de = fixture.debugElement.query(By.css(".alert-danger"));
+    button = fixture.debugElement.query(By.css(".close"));
+    expect(de).toBeNull();
+    expect(button).toBeNull();
+
+    component.bookPreviouslyCreated = true;
+    fixture.detectChanges();
+
+    de = fixture.debugElement.query(By.css(".alert-danger"));
+    expect(de).toBeTruthy();
+
+    button = fixture.debugElement.query(By.css(".close"));
+    buttonElement = button.nativeElement;
+    expect(button).toBeTruthy();
+
+    buttonElement.dispatchEvent(new Event("click"));
+    fixture.detectChanges();
+
+    de = fixture.debugElement.query(By.css(".alert-danger"));
+    expect(de).toBeTruthy();
   });
 });
