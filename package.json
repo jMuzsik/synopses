@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json",
     "build": "nodemon server.js --watch server",
-    "test": "mocha -R spec --watch && ng test --watch",
+    "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

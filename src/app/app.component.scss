@@ -211,6 +211,8 @@
 #home-button {
   @extend #post-button;
   float: right;
+  position: relative;
   padding-left: 0;
   padding-right: 0.5em;
+  z-index: 9999 !important;
 }

@@ -112,6 +112,10 @@ div {
   font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0);
 }
+#left-card > div.book > div > h6 {
+  padding-bottom: 0.5em;
+  text-decoration: underline;
+}
 
 //PUT IT NEXT TO OTHER CARD, SIMILAR CONCEPT AS OTHER CARD
 .descriptions {
@@ -293,4 +297,169 @@ i:hover {
   opacity: 0.7;
   width: 97.988px;
   height: 153.984px;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  #left-card {
+    p,
+    div {
+      font-size: 1em !important;
+    }
+    h6 {
+      font-size: 1.2em !important;
+      margin-bottom: 0.5em;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  #left-card {
+    width: 50vw !important;
+    .card-img-top {
+      width: 50vw;
+    }
+    a.nav-link {
+      padding-top: 0.5em;
+      padding-left: 0.3em;
+      padding-bottom: 1.5em;
+      margin: 0;
+    }
+    .card-body {
+      height: 40vh;
+      a {
+        position: relative;
+        left: -0.5em;
+      }
+    }
+  }
+  .card.descriptions {
+    width: 40vw !important;
+    top: 30vh;
+    height: 70vh;
+    font-size: 1.3em;
+    .card-body {
+      padding: 1em !important;
+    }
+  }
+  #amazon {
+    top: 10vh;
+    right: 25vw;
+  }
+  #goodreads {
+    right: 3vw;
+  }
+  #wikipedia {
+    top: 20vh;
+  }
+  #similar-books {
+    top: 20vh;
+    right: 3vw;
+  }
+  #general-button {
+    left: 70vw;
+    top: 10vh;
+  }
+  #wikipedia-text {
+    width: 75vw !important;
+  }
+  .amazon-link {
+    width: 45%;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  #left-card {
+    width: 30vw !important;
+  }
+  #left-card {
+    p,
+    div {
+      font-size: 1em !important;
+    }
+    h6 {
+      font-size: 1.2em !important;
+    }
+  }
+  #amazon {
+    right: 25vw;
+    top: 20vh;
+  }
+  #goodreads {
+    right: 5vw;
+  }
+  #wikipedia {
+    top: 60vh;
+  }
+  #similar-books {
+    right: 5vw;
+    top: 60vh;
+  }
+  #general-button {
+    left: 75vw;
+    top: 10vh;
+    z-index: 99;
+  }
+}
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .card.descriptions {
+    width: 45vw;
+    height: 70vh;
+    right: 0;
+    left: 40vw;
+    padding: 1.5em;
+  }
+  #amazon {
+    right: 36vw;
+  }
+  #goodreads {
+    right: 10vw;
+  }
+  #similar-books {
+    right: 10vw;
+  }
+  #general-button {
+    left: 75vw;
+    top: 10vh;
+  }
+  #wikipedia-text {
+    width: 75vw !important;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  #left-card {
+    width: 35vw !important;
+  }
+  .card.descriptions {
+    width: 30vw !important;
+  }
+  #amazon {
+    right: 25vw;
+    top: 20vh;
+  }
+  #goodreads {
+    right: 10vw;
+  }
+  #similar-books {
+    right: 10vw;
+    top: 60vh;
+  }
+  #wikipedia {
+    top: 60vh;
+  }
+  #general-button {
+    left: 70vw;
+    top: 60vh;
+  }
 }

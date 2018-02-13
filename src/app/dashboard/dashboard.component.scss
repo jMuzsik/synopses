@@ -88,22 +88,22 @@
   text-shadow: 0px 2px 3px #555;
 }
 
-.card-img-top:hover{
+.card-img-top:hover {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
--webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
--moz-box-shadow:    0px 0px 30px 0px rgba(0, 255, 0, 0.67);
-box-shadow:         0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+  box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
 }
 
-.card-img-top:last-of-type:hover{
+.card-img-top:last-of-type:hover {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
--webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
--moz-box-shadow:    0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-box-shadow:         0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+  box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
 }
 
 #hide {
@@ -116,11 +116,11 @@ box-shadow:         0px 0px 30px 0px rgba(232, 0, 0, 0.67);
   position: relative;
   max-width: 50vw;
   margin: 150px auto 0;
- }
+}
 
- #input-box input {
+#input-box input {
   border: 0;
-  border-bottom: 2px solid #1976D2;
+  border-bottom: 2px solid #1976d2;
   position: absolute;
   bottom: 0vh;
   right: 0vw;
@@ -131,32 +131,33 @@ box-shadow:         0px 0px 30px 0px rgba(232, 0, 0, 0.67);
   text-align: center;
   padding: 1em;
   background: transparent;
-   color: #3d9970;
- }
+  color: #3d9970;
+}
 
- #namer input:focus {
+#namer input:focus {
   outline: 0;
-   color: #FFDC00;
- }
+  color: #ffdc00;
+}
 
- #namer input::placeholder {
+#namer input::placeholder {
   color: #001f3f;
- }
+}
 
 //this is for the loader
 
-$blue: rgb(0,155,255);
+$blue: rgb(0, 155, 255);
 
 .jawn {
   position: relative;
-  background-color: #F8E71C;
+  background-color: #f8e71c;
   width: 3em;
   height: 3em;
   margin: 0 auto;
   border-radius: 50%;
   top: 50vh;
 
-  &:after, &:before {
+  &:after,
+  &:before {
     content: "";
     position: absolute;
     width: 1em;
@@ -167,7 +168,7 @@ $blue: rgb(0,155,255);
   &:after {
     left: -3em;
     top: -1.5em;
-    background-color: #C7C2A6;
+    background-color: #c7c2a6;
     transform-origin: 4.5em 3em;
     animation: axis 1s linear infinite;
   }
@@ -182,9 +183,75 @@ $blue: rgb(0,155,255);
 
 @keyframes axis {
   0% {
-    transform: rotateZ(0deg) translate3d(0,0,0);
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
   }
   100% {
-    transform: rotateZ(360deg) translate3d(0,0,0);
+    transform: rotateZ(360deg) translate3d(0, 0, 0);
   }
 }
+
+//IMAGES OTHERWISE LOOK FUNNY, THIS PX VALUE IS THE SIZE OF CORRESPONDING IMAGES IN THE DATASET
+.uniform-image-size {
+  opacity: 0.7;
+  width: 97.988px;
+  height: 153.984px;
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  #input-box-inner > input {
+    font-size: 1.5em;
+  }
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .card-img-top {
+    height: 123px;
+    width: 78px;
+    left: 2vw;
+  }
+  .card {
+    font-size: 1em;
+    width: 28vw;
+    padding-bottom: 2em;
+    padding-left: .5em;
+  }
+  .card-header {
+    height: 0;
+  }
+
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  #input-box-inner > input {
+    font-size: 1.5em;
+    bottom: 10vw;
+  }
+  .card-header {
+    height: 0;
+  }
+  .card {
+    width: 14.8vw;
+  }
+  .card-deck {
+    position: relative;
+    bottom: 20vh;
+  }
+}
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
