@@ -18,14 +18,21 @@ export class AppComponent {
 
   showPaper: boolean = false;
 
+  displayNone: boolean = false;
+
   constructor(private router: Router) {}
 
   lotsOfPaper(): void {
     if (this.showPaper) {
       this.showPaper = false;
+      this.displayNone = false;
     } else {
       this.papers = createPaperAnimationData();
+      this.displayNone = false;
       this.showPaper = true;
+      setTimeout(() => {
+        this.displayNone = true;
+      }, 17000)
     }
   }
 

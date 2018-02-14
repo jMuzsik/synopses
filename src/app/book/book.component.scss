@@ -437,7 +437,7 @@ i:hover {
 }
 
 /* Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
   #left-card {
     width: 35vw !important;
   }

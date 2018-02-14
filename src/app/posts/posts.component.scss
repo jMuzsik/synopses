@@ -6,21 +6,143 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  #author, #title {
+  #author,
+  #title {
     margin: 0;
-    background: #39CCCC;
+    background: #39cccc;
     color: #001f3f;
-  };
+  }
   #post-button {
-    background: #3D9970;
-    color: #FFDC00;
-  };
+    background: #3d9970;
+    color: #ffdc00;
+  }
 }
-
 .alert-p {
   font-size: 1.5em;
 }
-
 .button-replacement {
   @extend #post-button;
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  #post {
+    width: 50vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    #author, #title {
+      font-size: 1em;
+      margin: 0;
+      background: #39CCCC;
+      color: #001f3f;
+    };
+    #post-button {
+      font-size: 1em;
+    }
+  }
+  .alert {
+    margin: 0;
+    padding: .3em;
+  }
+  .alert-p {
+    font-size: 1em;
+  }
+  .alert-heading {
+    font-size: 1.5em;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  #post {
+    width: 50vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    #author,
+    #title {
+      font-size: 1em;
+      margin: 0;
+      background: #39cccc;
+      color: #001f3f;
+    }
+    #post-button {
+      font-size: 1em;
+    }
+  }
+  .alert {
+    margin: 0;
+    padding: 0.3em;
+  }
+  .alert-p {
+    font-size: 1em;
+  }
+  .alert-heading {
+    font-size: 1.5em;
+  }
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  #post {
+    width: 50vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    #author,
+    #title {
+      font-size: 1em;
+      margin: 0;
+      background: #39cccc;
+      color: #001f3f;
+    }
+    #post-button {
+      font-size: 1em;
+    }
+  }
+  .alert {
+    margin: 0;
+    padding: 0.3em;
+  }
+  .alert-p {
+    font-size: 1em;
+  }
+  .alert-heading {
+    font-size: 1.5em;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  #post {
+    width: 50vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    #author,
+    #title {
+      font-size: 1em;
+      margin: 0;
+      background: #39cccc;
+      color: #001f3f;
+    }
+    #post-button {
+      font-size: 1em;
+    }
+  }
+  .alert {
+    margin: 0;
+    padding: 0.3em;
+  }
+  .alert-p {
+    font-size: 1em;
+  }
+  .alert-heading {
+    font-size: 1.5em;
+  }
 }

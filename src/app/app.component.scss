@@ -76,6 +76,7 @@
   animation-duration: 20s;
   animation-timing-function: linear;
   overflow: hidden;
+  z-index: 999999;
 }
 
 //EACH IMAGE HAS A SLIGHTLY DIFFERENT KEYFRAME SO AS TO BE ON DIFFERENT X -AXIS'S

@@ -10,9 +10,15 @@
   </div>
   <div *ngIf="showPaper">
     <div *ngIf="papers.length>0">
-      <div *ngFor="let paper of papers; let i = index">
-        <img src={{paper?.str}} alt="image of paper animation" class={{paper.cl}} />
+      <div *ngIf="displayNone; else do_this">
+        <div style="display:none;">nothing
+        </div>
       </div>
+      <ng-template #do_this>
+        <div *ngFor="let paper of papers; let i = index">
+          <img src={{paper?.str}} alt="image of paper animation" class={{paper.cl}} />
+        </div>
+      </ng-template>
     </div>
   </div>
   <router-outlet></router-outlet>

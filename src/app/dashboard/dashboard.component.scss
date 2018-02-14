@@ -205,6 +205,9 @@ $blue: rgb(0, 155, 255);
   .card-deck {
     display: flex;
     flex-wrap: wrap;
+    div:nth-child(4) {
+      padding-left: 13.8vw;
+    }
   }
   .card-img-top {
     height: 123px;
@@ -215,43 +218,86 @@ $blue: rgb(0, 155, 255);
     font-size: 1em;
     width: 28vw;
     padding-bottom: 2em;
-    padding-left: .5em;
+    padding-left: 0.5em;
   }
   .card-header {
     height: 0;
   }
-
 }
 
 /* Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+@media only screen and (min-device-width: 380px) and (max-device-width: 815px) and (orientation: landscape) {
   #input-box-inner > input {
     font-size: 1.5em;
-    bottom: 10vw;
+    bottom: 20vh;
   }
   .card-header {
     height: 0;
   }
   .card {
+    top: 5vh;
     width: 14.8vw;
   }
   .card-deck {
     position: relative;
     bottom: 20vh;
   }
-}
-
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  .card-img-top {
+    height: 123px;
+    width: 78px;
+    left: 2vw;
+  }
 }
 
 /* Portrait */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-
+  #input-box-inner > input {
+    font-size: 1.5em;
+  }
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    div:nth-child(4) {
+      padding-left: 13.8vw;
+    }
+  }
+  .card-img-top {
+    width: 97.988px;
+    height: 153.984px;
+    left: 5vw;
+  }
+  .card {
+    font-size: 1em;
+    width: 25vw;
+    padding-bottom: 2em;
+    padding-left: 0.5em;
+  }
+  .card-header {
+    height: 0;
+  }
 }
 
 /* Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  #input-box-inner > input {
+    font-size: 1.5em;
+    bottom: 0;
+  }
+  .card-header {
+    height: 0;
+  }
+  .card {
+    top: 5vh;
+    width: 14.8vw;
+    font-size: 1.5em;
+  }
+  .card-deck {
+    position: relative;
+    bottom: 0;
+  }
+  .card-img-top {
+    width: 107px;
+    height: 168.4px;
+    left: 2.5vw;
+  }
 }
-
