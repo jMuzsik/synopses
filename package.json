@@ -8,7 +8,8 @@
     "build": "nodemon server.js --watch server",
     "test": "ng test --watch",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:prod": "ng build --target production --build-optimizer --vendor-chunk"
   },
   "private": true,
   "dependencies": {
