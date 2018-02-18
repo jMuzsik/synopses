@@ -82,10 +82,11 @@ router.put("/:book", (req, res) => {
     .then(function(amazonData) {
       //GRAB AMAZON IFRAME THAT SOMETIMES NEEDS TO BE REFRESHED
       updateBook["amazon_reviews"] = amazonData["amazon_reviews"];
-      updateBook["updated_at"] = Date.now;
+      updateBook["updated_at"] = new Date();
+      console.log(updateBook, amazonData)
       Book.findOneAndUpdate({ url_title }, updateBook, function(error) {
         if (error) {
-          console.log("IF THERE IS AN ERROR, IN HERE", error);
+          console.log("IF THERE IS AN ERROR FOR PUT REQUEST, IN HERE", error);
         } else {
           return res
             .status(200)
