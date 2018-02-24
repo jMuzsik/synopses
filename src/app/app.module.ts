@@ -16,7 +16,6 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BookService } from "./book.service";
 import { LoadingComponent } from "./loading/loading.component";
 
-
 import * as bootstrap from "bootstrap";
 
 @NgModule({
@@ -45,4 +44,4 @@ import * as bootstrap from "bootstrap";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

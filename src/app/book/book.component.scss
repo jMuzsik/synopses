@@ -1,5 +1,6 @@
 @import "../../styles.scss";
 //LOADING
+
 //LOADING CSS
 .jawn {
   position: relative;
@@ -9,6 +10,7 @@
   margin: 0 auto;
   border-radius: 50%;
   top: 50vh;
+
   &:after,
   &:before {
     content: "";
@@ -17,6 +19,7 @@
     height: 1em;
     border-radius: 50%;
   }
+
   &:after {
     left: -3em;
     top: -1.5em;
@@ -55,7 +58,8 @@ div {
 
 //NEEDED TO USE BACKGROUND AGAIN TO HIDE THE POST BUTTON...
 .author-book-card {
-  background: url("http://1.bp.blogspot.com/-mJpKSDcsk8M/T7GbxfuI9fI/AAAAAAAAArU/GeaX_SbKMpo/s1600/paper-background.jpg") no-repeat center center fixed;
+  background: url("http://1.bp.blogspot.com/-mJpKSDcsk8M/T7GbxfuI9fI/AAAAAAAAArU/GeaX_SbKMpo/s1600/paper-background.jpg")
+    no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -67,7 +71,7 @@ div {
 }
 
 //CENTER THE TABS: AUTHOR AND BOOK
-.author-book-card>.card-header {
+.author-book-card > .card-header {
   background-color: #3d9970;
   display: flex;
   justify-content: space-around;
@@ -75,19 +79,19 @@ div {
 }
 
 //MAKE HEADER LOOK RIGHT
-.card.w-25.author-book-card>div.card-header>ul {
+.card.w-25.author-book-card > div.card-header > ul {
   top: -2em;
 }
 
-.author-book-card>.card-header>ul>li>a {
+.author-book-card > .card-header > ul > li > a {
   color: #ffdc00;
 }
 
-.author-book-card>.card-header>ul>li>a>h6 {
+.author-book-card > .card-header > ul > li > a > h6 {
   padding: 0;
 }
 
-.author-book-card>.card-header>ul>li>a:hover {
+.author-book-card > .card-header > ul > li > a:hover {
   color: #0074d9;
   text-shadow: 0px 2px 3px #39cccc;
 }
@@ -97,7 +101,6 @@ div {
   height: 50vh;
   width: auto;
 }
-
 //EXACT AMOUNT OF SPACE FOR CARD BODY
 .card-body {
   height: 30vh;
@@ -105,12 +108,11 @@ div {
 }
 
 //SIZE, NO BACKGROUND
-.card-title>a {
+.card-title > a {
   font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0);
 }
-
-#left-card>div.book>div>h6 {
+#left-card > div.book > div > h6 {
   padding-bottom: 0.5em;
   text-decoration: underline;
 }
@@ -245,11 +247,13 @@ i:hover {
   padding: 0;
   margin: 0;
   list-style: none;
+
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+
   flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   justify-content: space-between;
@@ -260,7 +264,6 @@ i:hover {
 }
 
 /* Large */
-
 .amazon-link {
   padding: 5px;
   width: 20%;
@@ -271,7 +274,6 @@ i:hover {
 }
 
 /* Medium screens */
-
 @media all and (max-width: 800px) {
   .amazon-link {
     /* When on medium sized screens, we center it by evenly distributing empty space around items */
@@ -280,14 +282,12 @@ i:hover {
 }
 
 /* Small screens */
-
 @media all and (max-width: 500px) {
   .amazon-link {
     /* On small screens, we are no longer using row direction but column */
     flex-direction: column;
   }
 }
-
 .goodreads-link {
   @extend .amazon-link;
 }
@@ -315,7 +315,6 @@ i:hover {
 }
 
 /* Portrait */
-
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
   #left-card {
     width: 50vw !important;
@@ -372,7 +371,6 @@ i:hover {
 }
 
 /* Landscape */
-
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
   #left-card {
     width: 30vw !important;
@@ -408,11 +406,10 @@ i:hover {
 }
 
 /* Portrait and Landscape */
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+}
 
 /* Portrait */
-
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   .card.descriptions {
     width: 45vw;
@@ -440,7 +437,6 @@ i:hover {
 }
 
 /* Landscape */
-
 @media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
   #left-card {
     width: 35vw !important;

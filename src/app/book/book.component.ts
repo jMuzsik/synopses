@@ -50,8 +50,6 @@ export class BookComponent implements OnInit {
   //IS THE DATA LOADING?
   dataLoading: boolean = true;
 
-  dimBackground: boolean = false;
-
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
@@ -67,10 +65,8 @@ export class BookComponent implements OnInit {
     if (!this.buttonToggle[name]) {
       this.turnOff();
       this.buttonToggle[name] = true;
-      this.dimBackground = true;
     } else {
       this.turnOff();
-      this.dimBackground = false;
       this.buttonToggle[name] = false;
     }
   }

@@ -6,7 +6,6 @@ var http = require("http");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
-
 require("dotenv").config();
 
 var db = require("./server/mongoose.js");
@@ -18,7 +17,6 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
-
 
 app.use(express.static(path.join(__dirname, "src")));
 
