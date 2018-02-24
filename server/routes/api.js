@@ -48,11 +48,11 @@ router.post("/", (req, res) => {
       console.log(check);
 
       if (check) {
-        getAllTheData(query.title, query.author, function(bookData) {
+        getAllTheData(query.title, query.author, function (bookData) {
           var book = bookData;
           book = new Book(book);
-          console.log("PRIOR TO BEING TO THE HOMESTRETCH", book);
-          book.save(function(error) {
+          console.log(book)
+          book.save(function (error) {
             if (error) {
               console.log(error);
             } else
@@ -79,12 +79,12 @@ router.put("/:book", (req, res) => {
   var updateBook = {};
 
   getAmazonData(isbn)
-    .then(function(amazonData) {
+    .then(function (amazonData) {
       //GRAB AMAZON IFRAME THAT SOMETIMES NEEDS TO BE REFRESHED
       updateBook["amazon_reviews"] = amazonData["amazon_reviews"];
       updateBook["updated_at"] = new Date();
       console.log(updateBook, amazonData)
-      Book.findOneAndUpdate({ url_title }, updateBook, function(error) {
+      Book.findOneAndUpdate({ url_title }, updateBook, function (error) {
         if (error) {
           console.log("IF THERE IS AN ERROR FOR PUT REQUEST, IN HERE", error);
         } else {
