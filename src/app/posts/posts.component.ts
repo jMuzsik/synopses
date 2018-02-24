@@ -54,7 +54,7 @@ export class PostsComponent {
 
     setTimeout(() => {
       this.loading = true;
-    }, 3000);
+    }, 1000);
 
     this.bookService.postBook(data).subscribe(
       result => {

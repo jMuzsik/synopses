@@ -25,7 +25,11 @@ export function createBookObject(data: Object): Book {
   //SET ALL THE FIELDS OF BOOK
   book["amazonReview"] = data["amazon_editorial_review"];
   //IFRAME IS LOCATED WITHIN ARRAY
-  book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
+  try {
+    book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
+  } catch (e) {
+    book["amazonCustomerReviews"] = ['<iframe src="https://climate.nasa.gov/interactives/climate_time_machine" width="900" height="700"></iframe>'];
+  }
   book["amazonSimilarProducts"] = data["amazon_similar_products"];
   book["author_name"] = data["author_name"];
   book["frontCover"] = data["front_cover"];

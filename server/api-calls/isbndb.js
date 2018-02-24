@@ -17,6 +17,7 @@ var getISBN = function(query, author, callback) {
       try {
         books = JSON.parse(data).books;
       } catch (e) {
+        console.log('within isbn parsing', e)
         return {
           isbn: 9789892327914,
           exact_title: "failed",
@@ -48,7 +49,7 @@ var getISBN = function(query, author, callback) {
         }
       });
       saved = books[desiredIdx];
-
+      console.log(saved)
       saved["exact_title"] = books[desiredIdx].title;
       return saved;
     })
