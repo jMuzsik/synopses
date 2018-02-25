@@ -9,7 +9,7 @@
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng ng build --target production --build-optimizer --vendor-chunk"
+    "postinstall": "ng build --target production --build-optimizer --vendor-chunk"
   },
   "private": true,
   "dependencies": {
