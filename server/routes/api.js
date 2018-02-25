@@ -34,9 +34,10 @@ router.get("/:book", (req, res) => {
 
 router.post("/", (req, res) => {
   var query = req.body;
-
+  console.log('do i ever get in the actual post request????')
   Book.find({})
     .then(books => {
+      console.log('do i get the initial query', books)
       var check = true;
       var title = query.title.toLowerCase();
       books.forEach(prevBook => {
