@@ -17,7 +17,7 @@ var getISBN = function(query, author, callback) {
       try {
         books = JSON.parse(data).books;
       } catch (e) {
-        console.log('within isbn parsing ERROR', e)
+        console.log("within isbn parsing ERROR", e);
         return {
           isbn: 9789892327914,
           exact_title: "failed",
@@ -53,7 +53,7 @@ var getISBN = function(query, author, callback) {
       return saved;
     })
     .catch(function(err) {
-      console.log('ISBN FAILED TO GET DATA', err);
+      console.log("ISBN FAILED TO GET DATA", err);
       return {
         isbn: 9789892327914,
         exact_title: "failed",

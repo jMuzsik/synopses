@@ -56,7 +56,11 @@ export class PostsComponent {
       this.loading = true;
     }, 1000);
 
-    console.log('what is this, no post???', data)
+    setTimeout(() => {
+      if (this.loading) {
+        this.router.navigate(["/dashboard"]);
+      }
+    }, 12000);
 
     this.bookService.postBook(data).subscribe(
       result => {
@@ -78,7 +82,7 @@ export class PostsComponent {
         }
       },
       error => {
-        console.log('FAILED POSTING THE BOOK', error);
+        console.log("FAILED POSTING THE BOOK", error);
       },
       () => {
         console.log("ALL FINISHED POSTING BOOK!");

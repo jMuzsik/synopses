@@ -34,10 +34,8 @@ router.get("/:book", (req, res) => {
 
 router.post("/", (req, res) => {
   var query = req.body;
-  console.log('do i ever get in the actual post request????')
   Book.find({})
     .then(books => {
-      console.log('do i get the initial query', books)
       var check = true;
       var title = query.title.toLowerCase();
       books.forEach(prevBook => {
@@ -45,15 +43,17 @@ router.post("/", (req, res) => {
           check = false;
         }
       });
-
-
+      console.log(check)
       if (check) {
-        getAllTheData(query.title, query.author, function (bookData) {
+        getAllTheData(query.title, query.author, function(bookData) {
           var book = bookData;
+          console.log(bookData)
+          book.penguin_data.data.facets = "";
+
           book = new Book(book);
-          book.save(function (error) {
+          book.save(function(error) {
             if (error) {
-              console.log('ERROR SAVING BOOK TO DB', error);
+              console.log("ERROR SAVING BOOK TO DB", error);
             } else
               return res
                 .status(200)
@@ -78,11 +78,11 @@ router.put("/:book", (req, res) => {
   var updateBook = {};
 
   getAmazonData(isbn)
-    .then(function (amazonData) {
+    .then(function(amazonData) {
       //GRAB AMAZON IFRAME THAT SOMETIMES NEEDS TO BE REFRESHED
       updateBook["amazon_reviews"] = amazonData["amazon_reviews"];
       updateBook["updated_at"] = new Date();
-      Book.findOneAndUpdate({ url_title }, updateBook, function (error) {
+      Book.findOneAndUpdate({ url_title }, updateBook, function(error) {
         if (error) {
           console.log("IF THERE IS AN ERROR FOR PUT REQUEST, IN HERE", error);
         } else {

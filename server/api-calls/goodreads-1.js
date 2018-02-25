@@ -17,7 +17,7 @@ var getGoodreadsData1 = function(query, callback) {
 
       parseString(xml, { trim: true, async: true }, (err, result) => {
         if (err) {
-          console.log('GOODREADS PARSING ERROR', err);
+          console.log("GOODREADS PARSING ERROR", err);
           callback(secondOptionsError);
           return;
         }
@@ -42,7 +42,7 @@ var getGoodreadsData1 = function(query, callback) {
       });
     })
     .catch(function(err) {
-      console.log('GOODREADS QUERY ERROR', err);
+      console.log("GOODREADS QUERY ERROR", err);
       callback(secondOptionsError);
       return;
     });

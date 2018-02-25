@@ -1,34 +1,53 @@
 <div *ngIf="dataAvailable; else data_not_available">
   <div id="input-box">
     <div id="input-box-inner">
-      <input #myInput placeholder="Book name..." (input)="filterItem(myInput?.value)" />
+      <input
+        #myInput
+        placeholder="Book name..."
+        (input)="filterItem(myInput?.value)"
+      />
     </div>
   </div>
+
   <div class="card-deck">
     <div *ngFor="let book of filteredItems">
       <div *ngIf="book !== 0; else do_this">
         <div class="card">
-          <div class="card-header">
-            {{book?.exact_title}}
-          </div>
-          <img class="card-img-top" (click)="reroute(book?.url_title)" src={{book?.front_cover}} alt="Image of book">
+          <div class="card-header">{{book?.exact_title}}</div>
+
+          <img
+            class="card-img-top"
+            (click)="reroute(book?.url_title)"
+            src="{{book?.front_cover}}"
+            alt="Image of book"
+          >
+
           <div class="card-block">
             <div class="scroll-up">
-              <p class="card-text" [innerHTML]="book?.goodreads_description">
-              </p>
+              <p
+                class="card-text"
+                [innerHTML]="book?.goodreads_description"
+              ></p>
             </div>
           </div>
         </div>
       </div>
+
       <ng-template #do_this>
-        <div class="card" id="hide">
-          <div class="card-header">
-          </div>
-          <img class="card-img-top" alt="Empty image of book">
+        <div
+          class="card"
+          id="hide"
+        >
+          <div class="card-header"></div>
+
+          <img
+            class="card-img-top"
+            alt="Empty image of book"
+          >
+
           <div class="card-block">
             <div class="scroll-up">
-              <p class="card-text">
-              </p>
+              <p class="card-text"></p>
             </div>
           </div>
         </div>
@@ -36,6 +55,7 @@
     </div>
   </div>
 </div>
+
 <ng-template #data_not_available>
   <div class="jawn"></div>
 </ng-template>

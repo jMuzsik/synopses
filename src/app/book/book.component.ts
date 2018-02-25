@@ -54,7 +54,7 @@ export class BookComponent implements OnInit {
     private route: ActivatedRoute,
     private bookService: BookService,
     public sanitizer: DomSanitizer
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getBook();
@@ -136,7 +136,11 @@ export class BookComponent implements OnInit {
           this.book["amazonSimilarProducts"]
         );
       },
-      err => console.log('IF ERROR IN OBTAINING DATA FROM DB FOR INDIVIDUAL BOOK', err),
+      err =>
+        console.log(
+          "IF ERROR IN OBTAINING DATA FROM DB FOR INDIVIDUAL BOOK",
+          err
+        ),
       () => (this.isDataAvailable = true)
     );
   }

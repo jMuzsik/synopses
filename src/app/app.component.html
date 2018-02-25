@@ -2,24 +2,29 @@
   <button id="post-button" type="button" class="btn btn-primary btn-lg" (click)="postOpen(); lotsOfPaper();">
     <i class="fa fa-book fa-3x" aria-hidden="true"></i>
   </button>
+
   <button id="home-button" type="button" class="btn btn-primary btn-lg" (click)="goToHome()">
     <i class="fa fa-home fa-3x" aria-hidden="true"></i>
   </button>
+
   <div *ngIf="newBook">
     <app-posts (onSubmission)="onSubmission($event)"></app-posts>
   </div>
+
   <div *ngIf="showPaper">
-    <div *ngIf="papers.length>0">
+    <div *ngIf="papers.length">
+
       <div *ngIf="displayNone; else do_this">
-        <div style="display:none;">nothing
-        </div>
+        <div style="display:none;">nothing</div>
       </div>
+
       <ng-template #do_this>
         <div *ngFor="let paper of papers; let i = index">
-          <img src={{paper?.str}} alt="image of paper animation" class={{paper.cl}} />
+          <img src="{{paper?.str}}" alt="image of paper animation" class="{{paper.cl}}">
         </div>
       </ng-template>
     </div>
   </div>
+
   <router-outlet></router-outlet>
 </div>

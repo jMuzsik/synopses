@@ -78,7 +78,7 @@ describe("PostsComponent", () => {
     setTimeout(() => {
       expect(component.loading).toBeTruthy();
       done();
-    }, 6000);
+    }, 4000);
   });
 
   it("bookPreviouslyCreated does what it is supposed to do", () => {

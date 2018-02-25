@@ -35,14 +35,12 @@ function getAllTheData(title, author, finalCallback) {
       allTheData.amazon_reviews = amazonData.amazon_reviews;
       allTheData.amazon_editorial_review = amazonData.amazon_editorial_review;
       allTheData.amazon_similar_products = amazonData.amazon_similar_products;
-
       return apiCalls.getPenguinData(allTheData.exact_title);
     })
     .then(function(penguinData) {
       allTheData.penguin_data = penguinData;
       //CALLBACKS....SO MANY CALLBACKS, PROMISES NOT ALLOWED
       apiCalls.getGoodreadsData1(allTheData.isbn, function(option) {
-
         apiCalls.getGoodreadsData2(option, function(goodreadsData) {
           allTheData.goodreads_description =
             goodreadsData.goodreads_description;
@@ -67,7 +65,7 @@ function getAllTheData(title, author, finalCallback) {
       });
     })
     .catch(function(err) {
-      console.log(err);
+      console.log("FUNDAMENTAL ERROR IN GETTING DATA", err);
       finalCallback(allTheData);
       return;
     });

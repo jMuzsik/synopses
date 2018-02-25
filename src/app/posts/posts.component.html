@@ -1,33 +1,76 @@
-<!--LOAD TAKE OVER ENTIRE PAGE OR NORMAL POST FORM-->
+<!-- LOAD TAKE OVER ENTIRE PAGE OR NORMAL POST FORM -->
+
 <div *ngIf="loading; else normal">
   <app-loading></app-loading>
 </div>
-<ng-template #normal>
-  <div id="post" class="form-group">
-    <input type="text" class="form-control" id="title" placeholder="title goes in this place over here" #title>
-    <input type="text" class="form-control" id="author" placeholder="and author over here" #author>
-    <div *ngIf="notPressed; else do_this">
-      <button type="submit" id="post-button" class="btn btn-default" (click)="newBook(title, author); buttonPressed()">New Book</button>
 
-      <!--LET USER KNOW THE PROPER WAY TO INPUT A BOOK-->
-      <div class="alert alert-info" role="alert">
+<ng-template #normal>
+  <div
+    id="post"
+    class="form-group"
+  >
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      placeholder="title goes in this place over here"
+      #title />
+
+    <input
+      type="text"
+      class="form-control"
+      id="author"
+      placeholder="and author over here"
+      #author
+    />
+
+    <div *ngIf="notPressed; else do_this">
+      <button
+        type="submit"
+        id="post-button"
+        class="btn btn-default"
+        (click)="newBook(title, author); buttonPressed()"
+      >New Book</button>
+
+      <!-- LET USER KNOW THE PROPER WAY TO INPUT A BOOK -->
+
+      <div
+        class="alert alert-info"
+        role="alert"
+      >
         <h6 class="alert-heading">Information before inputting</h6>
-        <p class="alert-p">If you want exact book, input title/author with exactitude (even better if title relates to a particular ISBN instance).
-          Case-insensitive. Otherwise, write something and something will come, not sure what though.</p>
+
+        <p class="alert-p">
+          If you want exact book, input title/author with exactitude (even better if title relates to a particular ISBN instance).
+          Case-insensitive. Otherwise, write something and something will come, not sure what though.
+        </p>
       </div>
     </div>
 
-    <!--AFTER POST IS PRESSED LET USER KNOW SOMETHING IS HAPPENING..-->
+    <!-- AFTER POST IS PRESSED LET USER KNOW SOMETHING IS HAPPENING.. -->
+
     <ng-template #do_this>
-      <p class="button-replacement">API Stuff happening, please wait.</p>
+      <p class="button-replacement">
+        API Stuff happening, please wait.
+      </p>
     </ng-template>
+
     <div *ngIf="bookPreviouslyCreated">
-      <div class="alert alert-danger alert-dismissable" role="alert">
-        <button class="close" (click)="close()">
+      <div
+        class="alert alert-danger alert-dismissable"
+        role="alert"
+      >
+        <button
+          class="close"
+          (click)="close()"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
-        This book has already been created.</div>
+
+        This book has already been created.
+      </div>
     </div>
   </div>
-  <!--SAME BOOK/SAME ISBN ALREADY CREATED, SHOW THIS-->
+
+  <!-- SAME BOOK/SAME ISBN ALREADY CREATED, SHOW THIS -->
 </ng-template>

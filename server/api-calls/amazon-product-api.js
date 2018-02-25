@@ -1,6 +1,6 @@
 var amazon = require("amazon-product-api");
 
-var getAmazonData = function (isbn) {
+var getAmazonData = function(isbn) {
   var client = amazon.createClient({
     awsId: process.env.AWS_ACCESS_KEY_ID,
     awsSecret: process.env.AWS_SECRET_ACCESS_KEY,
@@ -18,7 +18,7 @@ var getAmazonData = function (isbn) {
       itemId: isbn,
       responseGroup: "EditorialReview,Images,Reviews,Similarities,"
     })
-    .then(function (results) {
+    .then(function(results) {
       try {
         amazonData.amazon_reviews = results[0].CustomerReviews;
         amazonData.amazon_editorial_review =
@@ -27,12 +27,15 @@ var getAmazonData = function (isbn) {
           results[0].SimilarProducts[0].SimilarProduct;
         return amazonData;
       } catch (e) {
-        console.log('THIS IS AFTER SUCCESS ERROR', e)
+        console.log("THIS IS AFTER SUCCESS ERROR", e);
         return amazonData;
       }
     })
-    .catch(function (err) {
-      console.log('THIS IS WHEN THE ITEM LOOKUP FAILS, AMAZON', err.Error[0].Message)
+    .catch(function(err) {
+      console.log(
+        "THIS IS WHEN THE ITEM LOOKUP FAILS, AMAZON",
+        err.Error[0].Message
+      );
       return amazonData;
     });
 };

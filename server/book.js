@@ -22,7 +22,7 @@ var bookSchema = new Schema({
   exact_title: String,
   created_at: { type: Date, default: Date.now },
   url_author: String,
-  updated_at: { type: Date, default: Date.now}
+  updated_at: { type: Date, default: Date.now }
 });
 
 bookSchema.pre("save", function(next) {
