@@ -51,7 +51,8 @@
     "rxjs": "^5.5.6",
     "wtf_wikipedia": "^2.5.0",
     "xml2js": "^0.4.19",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "typescript": "~2.5.3"
   },
   "devDependencies": {
     "@types/bootstrap": "^3.3.37",
@@ -72,7 +73,6 @@
     "node-sass": "^4.7.2",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
-    "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
-  }
+    "tslint": "~5.9.1"
+    }
 }
