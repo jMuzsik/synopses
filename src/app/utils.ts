@@ -21,7 +21,6 @@ export function makeWikiTextPresentable(
 export function createBookObject(data: Object): Book {
   const book = new Book();
 
-  console.log(data);
   //SET ALL THE FIELDS OF BOOK
   book["amazonReview"] = data["amazon_editorial_review"];
   //IFRAME IS LOCATED WITHIN ARRAY

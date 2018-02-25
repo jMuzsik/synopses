@@ -56,6 +56,8 @@ export class PostsComponent {
       this.loading = true;
     }, 1000);
 
+    console.log('what is this, no post???', data)
+
     this.bookService.postBook(data).subscribe(
       result => {
         //WAIT 5 SECONDS AFTER USER INPUTS PRIOR TO LOADING CODE TO RUN
@@ -76,10 +78,10 @@ export class PostsComponent {
         }
       },
       error => {
-        console.log(error);
+        console.log('FAILED POSTING THE BOOK', error);
       },
       () => {
-        console.log("ALL FINISHED!");
+        console.log("ALL FINISHED POSTING BOOK!");
       }
     );
   }

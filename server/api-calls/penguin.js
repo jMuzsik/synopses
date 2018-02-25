@@ -16,7 +16,7 @@ var getPenguinData = function(query) {
       //This is an assortment of objects that are related to what is searched, one of them is likely what is being looked for but it is difficult to get it exactly!
       return JSON.parse(data);
     }).catch(function(err) {
-      console.log(err);
+      console.log('ERROR IN PENGUIN API REQUEST', err);
       return [];
     });
 };

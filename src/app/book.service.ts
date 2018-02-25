@@ -22,13 +22,13 @@ import { Response } from "@angular/http/src/static_response";
 
 @Injectable()
 export class BookService {
-  constructor(private http: Http) {}
+  constructor(private http: Http) { }
 
   getBook(bookPath: string) {
+    console.log('individual book is obtained by db query??', bookPath)
     return this.http.get(`/api/${bookPath}`).map(res => {
       //RETURNS MULTIPLE IF THERE ARE FOR THE BOOK, I NEED TO MAKE SURE THAT SAME BOOK CANNOT BE CREATED
       res = res.json()[0];
-      console.log(res);
       //REFORMAT CERTAIN CONFUSING ELEMENTS OF THE DATA
       res = reformatBookData(res);
       return res;
@@ -36,6 +36,7 @@ export class BookService {
   }
 
   getBooks(): Observable<Response> {
+    console.log('but books are gotten???')
     return this.http.get("/api").map(res => {
       const convertToJSON: any = res.json();
       return convertToJSON;
@@ -50,6 +51,7 @@ export class BookService {
   }
 
   postBook(data: any): Observable<Response> {
+    console.log('does post ever begin to happen???', data)
     return this.http.post("/api", data, {});
   }
 }

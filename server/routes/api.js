@@ -25,7 +25,6 @@ router.get("/", (req, res) => {
 
 router.get("/:book", (req, res) => {
   const query = req.params.book;
-  console.log("THIS IS IN API CALL: ", query);
   Book.find({ url_title: query })
     .then(book => {
       res.json(book).status(200);
@@ -35,7 +34,7 @@ router.get("/:book", (req, res) => {
 
 router.post("/", (req, res) => {
   var query = req.body;
-  console.log(query);
+
   Book.find({})
     .then(books => {
       var check = true;
@@ -45,16 +44,15 @@ router.post("/", (req, res) => {
           check = false;
         }
       });
-      console.log(check);
+
 
       if (check) {
         getAllTheData(query.title, query.author, function (bookData) {
           var book = bookData;
           book = new Book(book);
-          console.log(book)
           book.save(function (error) {
             if (error) {
-              console.log(error);
+              .log('ERROR SAVING BOOK TO DB', error);
             } else
               return res
                 .status(200)
@@ -83,7 +81,6 @@ router.put("/:book", (req, res) => {
       //GRAB AMAZON IFRAME THAT SOMETIMES NEEDS TO BE REFRESHED
       updateBook["amazon_reviews"] = amazonData["amazon_reviews"];
       updateBook["updated_at"] = new Date();
-      console.log(updateBook, amazonData)
       Book.findOneAndUpdate({ url_title }, updateBook, function (error) {
         if (error) {
           console.log("IF THERE IS AN ERROR FOR PUT REQUEST, IN HERE", error);

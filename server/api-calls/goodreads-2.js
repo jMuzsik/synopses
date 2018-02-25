@@ -18,7 +18,7 @@ var getGoodreadsData2 = function(secondOptions, callback) {
       var xml = response;
       parseString(xml, { trim: true }, function(err, result) {
         if (err) {
-          console.log(err);
+          console.log('GOODREADS PARSING ERROR', err);
           callback(goodreadsData);
           return;
         }
@@ -49,14 +49,14 @@ var getGoodreadsData2 = function(secondOptions, callback) {
           callback(goodreadsData);
           return;
         } catch (e) {
-          if (e) console.log(e);
+          if (e) console.log('GOODREADS DATA GRABBING ERROR', e);
           callback(goodreadsData);
           return;
         }
       });
     })
     .catch(function(err) {
-      console.log(err);
+      console.log('ERROR QUERYING GOODREADS API', err);
       callback(goodreadsData);
       return;
     });
