@@ -1,15 +1,15 @@
 {
-  "name": "mean-app",
+  "name": "synopses",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
-    "build": "nodemon server.js --watch server",
+    "start": "node server.js",
+    "build": "ng build",
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "ng build --target production --build-optimizer --vendor-chunk"
+    "postinstall": "ng ng build --target production --build-optimizer --vendor-chunk"
   },
   "private": true,
   "dependencies": {

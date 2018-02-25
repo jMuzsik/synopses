@@ -18,13 +18,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
 
-app.use(express.static(path.join(__dirname, "src")));
+app.use(express.static(path.join(__dirname, "dist")));
 
 app.use("/api", api);
 
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "src/index.html"));
-});
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "/dist/index.html"));
+// });
 
 app.use((err, req, res, next) => {
   res
@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
     .render("error", { error: err, message: "THINGS AIN'T WORKING!" });
 });
 
-var port = process.env.PORT || "3000";
+var port = process.env.PORT || 8080;
 app.set("port", port);
 
 var server = http.createServer(app);

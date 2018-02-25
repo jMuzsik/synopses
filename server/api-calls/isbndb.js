@@ -49,7 +49,6 @@ var getISBN = function(query, author, callback) {
         }
       });
       saved = books[desiredIdx];
-      console.log(saved)
       saved["exact_title"] = books[desiredIdx].title;
       return saved;
     })
