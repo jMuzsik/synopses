@@ -52,7 +52,7 @@ router.post("/", (req, res) => {
           book = new Book(book);
           book.save(function (error) {
             if (error) {
-              .log('ERROR SAVING BOOK TO DB', error);
+              console.log('ERROR SAVING BOOK TO DB', error);
             } else
               return res
                 .status(200)
