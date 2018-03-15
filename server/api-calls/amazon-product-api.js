@@ -23,10 +23,17 @@ var getAmazonData = function(isbn) {
         amazonData.amazon_reviews = results[0].CustomerReviews;
         amazonData.amazon_editorial_review =
           results[0].EditorialReviews[0].EditorialReview[0].Content[0];
-        amazonData.amazon_similar_products =
-          results[0].SimilarProducts[0].SimilarProduct;
+        if (
+          Array.isArray(
+            (amazonData.amazon_similar_products = results[0].SimilarProducts)
+          )
+        ) {
+          amazonData.amazon_similar_products =
+            results[0].SimilarProducts[0].SimilarProduct;
+        } else amazonData.amazon_similar_products = null;
         return amazonData;
       } catch (e) {
+        console.log(amazonData);
         console.log("THIS IS AFTER SUCCESS ERROR", e);
         return amazonData;
       }

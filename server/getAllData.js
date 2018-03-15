@@ -28,7 +28,6 @@ function getAllTheData(title, author, finalCallback) {
       allTheData.isbn = isbnData.isbn;
       allTheData.front_cover = isbnData.image;
       allTheData.exact_title = isbnData.exact_title;
-
       return apiCalls.getAmazonData(allTheData.isbn);
     })
     .then(function(amazonData) {
@@ -40,8 +39,10 @@ function getAllTheData(title, author, finalCallback) {
     .then(function(penguinData) {
       allTheData.penguin_data = penguinData;
       //CALLBACKS....SO MANY CALLBACKS, PROMISES NOT ALLOWED
-      apiCalls.getGoodreadsData1(allTheData.isbn, function(option) {
-        apiCalls.getGoodreadsData2(option, function(goodreadsData) {
+      apiCalls.getGoodreadsData1(allTheData.isbn, allTheData.exact_title, function(option) {
+        apiCalls.getGoodreadsData2(option, function(
+          goodreadsData
+        ) {
           allTheData.goodreads_description =
             goodreadsData.goodreads_description;
           if (goodreadsData.author_name.length === 0) {

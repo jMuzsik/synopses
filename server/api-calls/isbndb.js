@@ -27,19 +27,26 @@ var getISBN = function(query, author, callback) {
       let desiredIdx = 0;
       let maxValue = 0;
       books.forEach((book, i) => {
+        let splitAuthor = [], splitAuthorQuery = [];
         let splitQuery = query.toLowerCase().split(" ");
         let splitBook = book.title.toLowerCase().split(" ");
-        let splitAuthor = book.authors[0].toLowerCase().split(" ");
-        let splitAuthorQuery = author.toLowerCase().split(" ");
+        try {
+          splitAuthor = book.authors[0].toLowerCase().split(" ");
+          splitAuthorQuery = author.toLowerCase().split(" ");
+        } catch(e) {
+          console.log("some reason no author in this book", e)
+        }
         level = 0;
         if (splitBook[0] === splitQuery[0]) level++;
         if (splitBook[1] === splitQuery[1]) level++;
         if (splitBook[2] === splitQuery[2]) level++;
         if (splitBook[3] === splitQuery[3]) level++;
         if (splitBook[4] === splitQuery[4]) level++;
-        if (splitAuthor[0] === splitAuthorQuery[0]) level++;
-        if (splitAuthor[1] === splitAuthorQuery[1]) level++;
-        if (splitAuthor[2] === splitAuthorQuery[2]) level++;
+        if(splitAuthor.length) {
+          if (splitAuthor[0] === splitAuthorQuery[0]) level++;
+          if (splitAuthor[1] === splitAuthorQuery[1]) level++;
+          if (splitAuthor[2] === splitAuthorQuery[2]) level++;
+        }
         booksLevel[i] = level;
       });
       booksLevel.forEach((value, idx) => {

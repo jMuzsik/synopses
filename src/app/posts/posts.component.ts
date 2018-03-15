@@ -60,7 +60,7 @@ export class PostsComponent {
       if (this.loading) {
         this.router.navigate(["/dashboard"]);
       }
-    }, 12000);
+    }, 8000);
 
     this.bookService.postBook(data).subscribe(
       result => {

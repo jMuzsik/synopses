@@ -129,12 +129,19 @@ export class BookComponent implements OnInit {
       data => {
         this.book = createBookObject(data);
         this.periods = data["periods"];
-        this.book["penguinData"] = reformatPenguinData(
-          this.book.penguinData[0]["data"]["results"]
-        );
-        this.book["amazonSimilarProducts"] = setUpAmazonSimilarBooks(
-          this.book["amazonSimilarProducts"]
-        );
+        try {
+          this.book["penguinData"] = reformatPenguinData(
+            this.book.penguinData[0]["data"]["results"]
+          );
+        } catch(e) {
+          // do nothing atm
+        }
+        console.log(this.book)
+        if (Array.isArray(this.book["amazonSimilarProducts"])) {
+          this.book["amazonSimilarProducts"] = setUpAmazonSimilarBooks(
+            this.book["amazonSimilarProducts"]
+          );
+        }
       },
       err =>
         console.log(

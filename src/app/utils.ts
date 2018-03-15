@@ -79,10 +79,12 @@ export function reformatBookData(data: any): any {
   data["goodreads_reviews_widget"] = grabIframe(
     data["goodreads_reviews_widget"]
   );
-
-  data["amazon_similar_products"] = alterASINtoHREF(
-    data["amazon_similar_products"]
-  );
+  console.log(data)
+  if(data["amazon_similar_products"] !== null) {
+    data["amazon_similar_products"] = alterASINtoHREF(
+      data["amazon_similar_products"]
+    );
+  }
   return data;
 }
 

@@ -1,21 +1,35 @@
 var parseString = require("xml2js").parseString;
 var request = require("request-promise");
 
-var getGoodreadsData1 = function(query, callback) {
-  //www.goodreads.com/book/title.xml?author=Arthur+Conan+Doyle&key=evdOKu9Llw81A2O1l29Q&title=Hound+of+the+Baskervilles]
+var getGoodreadsData1 = function(query, backupTitle, callback) {
+  console.log(backupTitle)
+  var secondOptionsQuery = backupTitle
+    .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
+    .split(" ")
+    .slice(3)
+    .join("+");
+  console.log(secondOptionsError)
+
+  var secondOptionsError = {
+    uri: `https://www.goodreads.com/book/title.xml?title=${secondOptionsQuery}&key=${
+      process.env.GOODREADS_KEY
+    }`
+  };
 
   var options = {
     uri: `https://www.goodreads.com/search/index.xml?q=${query}&key=${
       process.env.GOODREADS_KEY
     }`
   };
+  console.log(query);
 
-  //NEED TO FIRST F IND BOOK BY USING THE ISBN
+  //NEED TO FIRST FIND BOOK BY USING THE ISBN
   request(options)
     .then(function(data) {
       var xml = data;
 
-      parseString(xml, { trim: true, async: true }, (err, result) => {
+      parseString(xml, { trim: true }, (err, result) => {
+        console.log(result);
         if (err) {
           console.log("GOODREADS PARSING ERROR", err);
           callback(secondOptionsError);
@@ -36,6 +50,7 @@ var getGoodreadsData1 = function(query, callback) {
             process.env.GOODREADS_KEY
           }`
         };
+        console.log(secondOptions, parseString);
         parseString.secondOptions = secondOptions;
         callback(secondOptions);
         return;
