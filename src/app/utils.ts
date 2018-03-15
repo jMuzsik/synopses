@@ -79,7 +79,6 @@ export function reformatBookData(data: any): any {
   data["goodreads_reviews_widget"] = grabIframe(
     data["goodreads_reviews_widget"]
   );
-  console.log(data)
   if(data["amazon_similar_products"] !== null) {
     data["amazon_similar_products"] = alterASINtoHREF(
       data["amazon_similar_products"]

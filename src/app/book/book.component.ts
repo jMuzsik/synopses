@@ -136,7 +136,6 @@ export class BookComponent implements OnInit {
         } catch(e) {
           // do nothing atm
         }
-        console.log(this.book)
         if (Array.isArray(this.book["amazonSimilarProducts"])) {
           this.book["amazonSimilarProducts"] = setUpAmazonSimilarBooks(
             this.book["amazonSimilarProducts"]

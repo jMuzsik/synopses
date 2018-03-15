@@ -46,13 +46,11 @@ router.post("/", (req, res) => {
       if (check) {
         getAllTheData(query.title, query.author, function(bookData) {
           var book = bookData;
-          console.log(bookData)
           try {
             book.penguin_data.data.facets = "";
           } catch(e) {
             console.log(e);
           }
-          console.log(book)
           book = new Book(book);
           book.save(function(error) {
             if (error) {
