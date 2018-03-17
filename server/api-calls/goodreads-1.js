@@ -2,13 +2,11 @@ var parseString = require("xml2js").parseString;
 var request = require("request-promise");
 
 var getGoodreadsData1 = function(query, backupTitle, callback) {
-  console.log(backupTitle)
   var secondOptionsQuery = backupTitle
     .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
     .split(" ")
     .slice(3)
     .join("+");
-  console.log(secondOptionsError)
 
   var secondOptionsError = {
     uri: `https://www.goodreads.com/book/title.xml?title=${secondOptionsQuery}&key=${
@@ -21,7 +19,6 @@ var getGoodreadsData1 = function(query, backupTitle, callback) {
       process.env.GOODREADS_KEY
     }`
   };
-  console.log(query);
 
   //NEED TO FIRST FIND BOOK BY USING THE ISBN
   request(options)
@@ -29,7 +26,6 @@ var getGoodreadsData1 = function(query, backupTitle, callback) {
       var xml = data;
 
       parseString(xml, { trim: true }, (err, result) => {
-        console.log(result);
         if (err) {
           console.log("GOODREADS PARSING ERROR", err);
           callback(secondOptionsError);
@@ -50,7 +46,6 @@ var getGoodreadsData1 = function(query, backupTitle, callback) {
             process.env.GOODREADS_KEY
           }`
         };
-        console.log(secondOptions, parseString);
         parseString.secondOptions = secondOptions;
         callback(secondOptions);
         return;

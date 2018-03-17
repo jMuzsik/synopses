@@ -45,22 +45,29 @@ router.post("/", (req, res) => {
       });
       if (check) {
         getAllTheData(query.title, query.author, function(bookData) {
-          var book = bookData;
-          try {
-            book.penguin_data.data.facets = "";
-          } catch(e) {
-            console.log(e);
+          if (bookData === "failed") {
+            return res
+              .status(201)
+              .send("no results for query")
+              .end();
+          } else {
+            var book = bookData;
+            try {
+              book.penguin_data.data.facets = "";
+            } catch (e) {
+              console.log(e);
+            }
+            book = new Book(book);
+            book.save(function(error) {
+              if (error) {
+                console.log("ERROR SAVING BOOK TO DB", error);
+              } else
+                return res
+                  .status(200)
+                  .send("saved")
+                  .end();
+            });
           }
-          book = new Book(book);
-          book.save(function(error) {
-            if (error) {
-              console.log("ERROR SAVING BOOK TO DB", error);
-            } else
-              return res
-                .status(200)
-                .send("saved")
-                .end();
-          });
         });
       } else {
         return res

@@ -28,42 +28,55 @@ function getAllTheData(title, author, finalCallback) {
       allTheData.isbn = isbnData.isbn;
       allTheData.front_cover = isbnData.image;
       allTheData.exact_title = isbnData.exact_title;
-      return apiCalls.getAmazonData(allTheData.isbn);
+      if (isbnData.exact_title === "failed") {
+        return;
+      } else {
+        return apiCalls.getAmazonData(allTheData.isbn);
+      }
     })
     .then(function(amazonData) {
-      allTheData.amazon_reviews = amazonData.amazon_reviews;
-      allTheData.amazon_editorial_review = amazonData.amazon_editorial_review;
-      allTheData.amazon_similar_products = amazonData.amazon_similar_products;
-      return apiCalls.getPenguinData(allTheData.exact_title);
+      if (amazonData !== undefined) {
+        allTheData.amazon_reviews = amazonData.amazon_reviews;
+        allTheData.amazon_editorial_review = amazonData.amazon_editorial_review;
+        allTheData.amazon_similar_products = amazonData.amazon_similar_products;
+        return apiCalls.getPenguinData(allTheData.exact_title);
+      }
     })
     .then(function(penguinData) {
-      allTheData.penguin_data = penguinData;
-      //CALLBACKS....SO MANY CALLBACKS, PROMISES NOT ALLOWED
-      apiCalls.getGoodreadsData1(allTheData.isbn, allTheData.exact_title, function(option) {
-        apiCalls.getGoodreadsData2(option, function(
-          goodreadsData
-        ) {
-          allTheData.goodreads_description =
-            goodreadsData.goodreads_description;
-          if (goodreadsData.author_name.length === 0) {
-            allTheData.author_name = author;
-          } else allTheData.author_name = goodreadsData.author_name;
-          allTheData.goodreads_reviews_widget =
-            goodreadsData.goodreads_reviews_widget;
-          allTheData.goodreads_author_image =
-            goodreadsData.goodreads_author_image;
-          allTheData.goodreads_author_link =
-            goodreadsData.goodreads_author_link;
-          allTheData.goodreads_similar_books =
-            goodreadsData.goodreads_similar_books;
+      if (penguinData !== undefined) {
+        allTheData.penguin_data = penguinData;
+        //CALLBACKS....SO MANY CALLBACKS, PROMISES NOT ALLOWED
+        apiCalls.getGoodreadsData1(
+          allTheData.isbn,
+          allTheData.exact_title,
+          function(option) {
+            apiCalls.getGoodreadsData2(option, function(goodreadsData) {
+              allTheData.goodreads_description =
+                goodreadsData.goodreads_description;
+              if (goodreadsData.author_name.length === 0) {
+                allTheData.author_name = author;
+              } else allTheData.author_name = goodreadsData.author_name;
+              allTheData.goodreads_reviews_widget =
+                goodreadsData.goodreads_reviews_widget;
+              allTheData.goodreads_author_image =
+                goodreadsData.goodreads_author_image;
+              allTheData.goodreads_author_link =
+                goodreadsData.goodreads_author_link;
+              allTheData.goodreads_similar_books =
+                goodreadsData.goodreads_similar_books;
 
-          apiCalls.getWikiData(allTheData.author_name, function(wikiData) {
-            allTheData.wikipedia_text = wikiData;
-            finalCallback(allTheData);
-            return;
-          });
-        });
-      });
+              apiCalls.getWikiData(allTheData.author_name, function(wikiData) {
+                allTheData.wikipedia_text = wikiData;
+                finalCallback(allTheData);
+                return;
+              });
+            });
+          }
+        );
+      } else {
+        finalCallback("failed");
+        return;
+      }
     })
     .catch(function(err) {
       console.log("FUNDAMENTAL ERROR IN GETTING DATA", err);

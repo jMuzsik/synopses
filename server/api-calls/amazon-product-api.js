@@ -19,6 +19,7 @@ var getAmazonData = function(isbn) {
       responseGroup: "EditorialReview,Images,Reviews,Similarities,"
     })
     .then(function(results) {
+      console.log(results)
       try {
         amazonData.amazon_reviews = results[0].CustomerReviews;
         amazonData.amazon_editorial_review =
@@ -33,7 +34,6 @@ var getAmazonData = function(isbn) {
         } else amazonData.amazon_similar_products = null;
         return amazonData;
       } catch (e) {
-        console.log(amazonData);
         console.log("THIS IS AFTER SUCCESS ERROR", e);
         return amazonData;
       }
