@@ -19,7 +19,6 @@ var getAmazonData = function(isbn) {
       responseGroup: "EditorialReview,Images,Reviews,Similarities,"
     })
     .then(function(results) {
-      console.log(results)
       try {
         amazonData.amazon_reviews = results[0].CustomerReviews;
         amazonData.amazon_editorial_review =
