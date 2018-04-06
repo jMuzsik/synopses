@@ -8,21 +8,21 @@ export const routes: Routes = [
   {
     path: "",
     redirectTo: "/dashboard",
-    pathMatch: "full"
+    pathMatch: "full",
   },
   {
     path: "dashboard",
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: "book/:title",
-    component: BookComponent
+    component: BookComponent,
   },
-  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: "**", redirectTo: "/dashboard", pathMatch: "full" },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

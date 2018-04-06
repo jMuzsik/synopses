@@ -8,7 +8,7 @@
   </button>
 
   <div *ngIf="newBook">
-    <app-posts (onSubmission)="onSubmission($event)"></app-posts>
+    <app-posts (submission)="submission($event)"></app-posts>
   </div>
 
   <div *ngIf="showPaper">

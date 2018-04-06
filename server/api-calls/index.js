@@ -11,5 +11,5 @@ module.exports = {
   getGoodreadsData2,
   getAmazonData,
   getWikiData,
-  getPenguinData
+  getPenguinData,
 };

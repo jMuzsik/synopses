@@ -30,7 +30,7 @@ describe("BookComponent", () => {
       TestBed.configureTestingModule({
         declarations: [BookComponent, DashboardComponent],
         imports: [RouterModule.forRoot(routes), HttpModule],
-        providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService]
+        providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService],
       }).compileComponents();
     })
   );

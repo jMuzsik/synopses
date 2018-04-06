@@ -46,7 +46,7 @@
       transform: skewY(30deg);
     }
     60% {
-      top: ((($i) % 10) + 60)* 1%;
+      top: ((($i) % 10) + 60) * 1%;
       width: 3.5em;
       transform: skewY(-30deg);
     }

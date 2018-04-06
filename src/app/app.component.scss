@@ -2,7 +2,12 @@
 
 /* 16px @ 480px increasing to 32px @ 1920px */
 @media (min-width: 480px) {
-  p {
+  p,
+  h1,
+  div,
+  h6,
+  input,
+  button {
     font-size: calc(1rem + ((1vw - 4.8px) * 1.1111));
     /* Where: * 1.1111 = 100 * font_Size_Difference / viewport_Width_Difference */
   }
@@ -30,40 +35,49 @@
     0% {
       top: 0;
       left: 0;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
     30% {
       top: 30%;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
     40% {
       top: 40%;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
     50% {
       top: 50%;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
     60% {
       top: 60%;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
     70% {
       top: 70%;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
     80% {
       top: 80%;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
     90% {
       top: 90%;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
     100% {
       top: 110%;
       left: $rand % 110 * 1%;
-      transform: rotate((random($i*$i+100)%70)+deg) skew((random($i*$i)%70)+deg);
+      transform: rotate((random($i * $i + 100) %70) + deg)
+        skew((random($i * $i) %70) + deg);
     }
   }
 }
@@ -197,6 +211,7 @@
   background-color: rgba(255, 0, 0, 0);
   padding-left: 0.5em;
   padding-top: 0.5em;
+  font-size: calc(1rem + ((1vw - 4.8px) * 2)) !important;
   outline: none !important;
   box-shadow: none;
   -webkit-box-shadow: none;

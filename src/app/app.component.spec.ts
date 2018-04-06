@@ -28,10 +28,10 @@ describe("AppComponent", () => {
           PostsComponent,
           DashboardComponent,
           BookComponent,
-          LoadingComponent
+          LoadingComponent,
         ],
         imports: [RouterModule.forRoot(routes), HttpModule, HttpClientModule],
-        providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService]
+        providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService],
       }).compileComponents();
     })
   );

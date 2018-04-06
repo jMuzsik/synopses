@@ -8,27 +8,27 @@ export const MockBooks: any = [
       {
         ASIN: ["0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
-      }
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
+      },
     ],
     author: "some guy",
     author_name: "Some Guy",
@@ -90,7 +90,7 @@ export const MockBooks: any = [
             {
               author: ["231142|J. M. Coetzee"],
               description: ["<p> some stuff </p>", "<p> some more stuff </p>"],
-              url: "/books/297589/disgrace-by-j-m-coetzee"
+              url: "/books/297589/disgrace-by-j-m-coetzee",
             },
             {
               results: [
@@ -98,11 +98,11 @@ export const MockBooks: any = [
                   author: ["231142|J. M. other guy"],
                   description: [
                     "<p> some stuff </p>",
-                    "<p> some more stuff </p>"
+                    "<p> some more stuff </p>",
                   ],
-                  url: "/books/297589/disgrace-by-j-m-other-guy"
-                }
-              ]
+                  url: "/books/297589/disgrace-by-j-m-other-guy",
+                },
+              ],
             },
             {
               results: [
@@ -110,15 +110,15 @@ export const MockBooks: any = [
                   author: ["231142|J. M. again"],
                   description: [
                     "<p> some stuff </p>",
-                    "<p> some more stuff </p>"
+                    "<p> some more stuff </p>",
                   ],
-                  url: "/books/297589/disgrace-by-j-m-again"
-                }
-              ]
-            }
-          ]
-        }
-      }
+                  url: "/books/297589/disgrace-by-j-m-again",
+                },
+              ],
+            },
+          ],
+        },
+      },
     ],
     wikipedia_text: `John Maxwell Coetzee (, ; : "The first syllable is pronounced kuut (uu as in book); debate rages about the pronunciation of the "ee" at the end. Many South Africans, whether Afrikaans speakers or not, pronounce this as a diphthong EE-uh, as in the word "idea". Indeed, kuut-SEE-uh was the Unit's original recommendation in the early 1980s, based on the advice of the South African Broadcasting Corporation and his London publisher, Secker and Warburg. However, that vowel can also be pronounced as a monophthong (kuut-SEE), especially by those from the south of the country, and this is the pronunciation that the author uses and prefers the BBC to use too." ; born 9 February 1940) is a South African novelist, essayist, linguist, translator and recipient of the 2003 Nobel Prize in Literature. He relocated to Australia in 2002 and lives in Adelaide. He became an Australian citizen in 2006. In 2013, Richard Poplak of the Daily Maverick described Coetzee as "inarguably the most celebrated and decorated living English-language author". Before receiving the 2003 Nobel Prize in Literature, Coetzee was awarded the Jerusalem Prize, CNA Prize (thrice), the Prix Femina Étranger, The Irish Times International Fiction Prize and the Booker Prize (twice), among other accolades.
 
@@ -177,7 +177,7 @@ export const MockBooks: any = [
       `,
     isbn: "0143039229",
     date: "today",
-    updated: "tomorrow"
+    updated: "tomorrow",
   },
   {
     url_title: "some_book_2",
@@ -188,27 +188,27 @@ export const MockBooks: any = [
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
-      }
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
+      },
     ],
     author: "some guy",
     author_name: "Some Guy",
@@ -266,7 +266,7 @@ export const MockBooks: any = [
       "Valentin Louis Georges Eugène Marcel Proust (; ; 10 July 1871 – 18 November 1922), known as Marcel Proust, was a French novelist, critic, and essayist best known for his monumental novel À la recherche du temps perdu (In Search of Lost Time; earlier rendered as Remembrance of Things Past), published in seven parts between 1913 and 1927. He is considered by critics and writers to be one of the most influential authors of the ↵↵20th century.",
     isbn: "0143039229",
     date: "today",
-    updated: "tomorrow"
+    updated: "tomorrow",
   },
   {
     url_title: "some_book_3",
@@ -277,27 +277,27 @@ export const MockBooks: any = [
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
-      }
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
+      },
     ],
     author: "some guy",
     author_name: "Some Guy",
@@ -313,11 +313,11 @@ export const MockBooks: any = [
     penguinData: [{}, {}, {}],
     wikipedia: [
       "Valentin Louis Georges Eugène Marcel Proust (; ; 10 July 1871 – 18 November 1922), known as Marcel Proust, was a French novelist, critic, and essayist best known for his monumental novel À la recherche du temps perdu (In Search of Lost Time; earlier rendered as Remembrance of Things Past), published in seven parts between 1913 and 1927. He is considered by critics and writers to be one of the most influential authors of the 20th century.",
-      "MORE STUFF"
+      "MORE STUFF",
     ],
     isbn: "0143039229",
     date: "today",
-    updated: "tomorrow"
+    updated: "tomorrow",
   },
   {
     url_title: "some_book_4",
@@ -328,27 +328,27 @@ export const MockBooks: any = [
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
-      }
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
+      },
     ],
     author: "some guy",
     author_name: "Some Guy",
@@ -364,11 +364,11 @@ export const MockBooks: any = [
     penguinData: [{}, {}, {}],
     wikipedia: [
       "Valentin Louis Georges Eugène Marcel Proust (; ; 10 July 1871 – 18 November 1922), known as Marcel Proust, was a French novelist, critic, and essayist best known for his monumental novel À la recherche du temps perdu (In Search of Lost Time; earlier rendered as Remembrance of Things Past), published in seven parts between 1913 and 1927. He is considered by critics and writers to be one of the most influential authors of the 20th century.",
-      "MORE STUFF"
+      "MORE STUFF",
     ],
     isbn: "0143039229",
     date: "today",
-    updated: "tomorrow"
+    updated: "tomorrow",
   },
   {
     url_title: "some_book_5",
@@ -379,27 +379,27 @@ export const MockBooks: any = [
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
-      }
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
+      },
     ],
     author: "some guy",
     author_name: "Some Guy",
@@ -415,11 +415,11 @@ export const MockBooks: any = [
     penguin_data: [{}, {}, {}],
     wikipedia: [
       "Valentin Louis Georges Eugène Marcel Proust (; ; 10 July 1871 – 18 November 1922), known as Marcel Proust, was a French novelist, critic, and essayist best known for his monumental novel À la recherche du temps perdu (In Search of Lost Time; earlier rendered as Remembrance of Things Past), published in seven parts between 1913 and 1927. He is considered by critics and writers to be one of the most influential authors of the 20th century.",
-      "MORE STUFF"
+      "MORE STUFF",
     ],
     isbn: "0143039229",
     date: "today",
-    updated: "tomorrow"
+    updated: "tomorrow",
   },
   {
     url_title: "some_book_6",
@@ -430,27 +430,27 @@ export const MockBooks: any = [
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
-      }
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
+      },
     ],
     author: "some guy",
     author_name: "Some Guy",
@@ -466,11 +466,11 @@ export const MockBooks: any = [
     penguinData: [{}, {}, {}],
     wikipedia: [
       "Valentin Louis Georges Eugène Marcel Proust (; ; 10 July 1871 – 18 November 1922), known as Marcel Proust, was a French novelist, critic, and essayist best known for his monumental novel À la recherche du temps perdu (In Search of Lost Time; earlier rendered as Remembrance of Things Past), published in seven parts between 1913 and 1927. He is considered by critics and writers to be one of the most influential authors of the 20th century.",
-      "MORE STUFF"
+      "MORE STUFF",
     ],
     isbn: "0143039229",
     date: "today",
-    updated: "tomorrow"
+    updated: "tomorrow",
   },
   {
     url_title: "some_book_7",
@@ -481,27 +481,27 @@ export const MockBooks: any = [
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
-      }
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
+      },
     ],
     author: "some guy",
     author_name: "Some Guy",
@@ -519,7 +519,7 @@ export const MockBooks: any = [
       "Valentin Louis Georges Eugène Marcel Proust (; ; 10 July 1871 – 18 November 1922), known as Marcel Proust, was a French novelist, critic, and essayist best known for his monumental novel À la recherche du temps perdu (In Search of Lost Time; earlier rendered as Remembrance of Things Past), published in seven parts between 1913 and 1927. He is considered by critics and writers to be one of the most influential authors of the ↵↵20th century.",
     isbn: "0143039229",
     date: "today",
-    updated: "tomorrow"
+    updated: "tomorrow",
   },
   {
     url_title: "super_different",
@@ -530,27 +530,27 @@ export const MockBooks: any = [
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
       },
       {
         ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
         Title: [
-          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-        ]
-      }
+          "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+        ],
+      },
     ],
     author: "some guy",
     author_name: "Some Guy",
@@ -566,10 +566,10 @@ export const MockBooks: any = [
     penguinData: [{}, {}, {}],
     wikipedia: [
       "Valentin Louis Georges Eugène Marcel Proust (; ; 10 July 1871 – 18 November 1922), known as Marcel Proust, was a French novelist, critic, and essayist best known for his monumental novel À la recherche du temps perdu (In Search of Lost Time; earlier rendered as Remembrance of Things Past), published in seven parts between 1913 and 1927. He is considered by critics and writers to be one of the most influential authors of the 20th century.",
-      "MORE STUFF"
+      "MORE STUFF",
     ],
     isbn: "0143039229",
     date: "today",
-    updated: "tomorrow"
-  }
+    updated: "tomorrow",
+  },
 ];

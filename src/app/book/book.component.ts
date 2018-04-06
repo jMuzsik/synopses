@@ -10,7 +10,7 @@ import { BookService } from "../book.service";
 import {
   createBookObject,
   reformatPenguinData,
-  setUpAmazonSimilarBooks
+  setUpAmazonSimilarBooks,
 } from "../utils";
 
 interface ToggleButton {
@@ -22,33 +22,33 @@ interface ToggleButton {
 @Component({
   selector: "app-book",
   templateUrl: "./book.component.html",
-  styleUrls: ["./book.component.scss"]
+  styleUrls: ["./book.component.scss"],
 })
 export class BookComponent implements OnInit {
-  //THE BOOK
+  // THE BOOK
   book: Book;
 
-  //DO NOT RENDER PAGE UNLESS YOU'VE GOT DATA
-  isDataAvailable: boolean = false;
+  // DO NOT RENDER PAGE UNLESS YOU'VE GOT DATA
+  isDataAvailable = false;
 
-  //DROPDOWNS
+  // DROPDOWNS
   buttonToggle: ToggleButton = {
     wikiVisible: false,
     goodreadsReviewVisible: false,
-    amazonSimilarBooksVisible: false
+    amazonSimilarBooksVisible: false,
   };
 
-  //UNIVERSAL BUTTON WHEN LINK IS PRESSED THAT OPENS MODAL
-  buttonVisible: boolean = false;
+  // UNIVERSAL BUTTON WHEN LINK IS PRESSED THAT OPENS MODAL
+  buttonVisible = false;
 
-  //WIKI HAS NO TITLES, MAKE IT SOMEWHAT READABLE
+  // WIKI HAS NO TITLES, MAKE IT SOMEWHAT READABLE
   periods: number[];
 
-  //BOOK OR AUTHOR IN CARD
-  showBook: boolean = true;
+  // BOOK OR AUTHOR IN CARD
+  showBook = true;
 
-  //IS THE DATA LOADING?
-  dataLoading: boolean = true;
+  // IS THE DATA LOADING?
+  dataLoading = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -60,7 +60,7 @@ export class BookComponent implements OnInit {
     this.getBook();
   }
 
-  //CLOSE ANYTHING OPEN FIRST, THEN OPEN THE SPECIFIED ONE
+  // CLOSE ANYTHING OPEN FIRST, THEN OPEN THE SPECIFIED ONE
   toggle(name: string): void {
     if (!this.buttonToggle[name]) {
       this.turnOff();
@@ -71,22 +71,22 @@ export class BookComponent implements OnInit {
     }
   }
 
-  //SHOW THE BUTTON
+  // SHOW THE BUTTON
   toggleButton(): void {
     this.buttonVisible = true;
   }
 
-  //SHOW BOOK OR AUTHOR IF NOT SHOWING BOOK, ONE OR THE OTHER
+  // SHOW BOOK OR AUTHOR IF NOT SHOWING BOOK, ONE OR THE OTHER
   alterView(): void {
     this.showBook = !this.showBook;
   }
 
-  //CLOSE MODAL IF OPEN
+  // CLOSE MODAL IF OPEN
   closeModal(): void {
     this.turnOff();
   }
 
-  //CLOSE ANY MODAL THAT IS OPEN
+  // CLOSE ANY MODAL THAT IS OPEN
   turnOff(): void {
     const keys = Object.keys(this.buttonToggle);
     this.buttonVisible = false;
@@ -95,14 +95,14 @@ export class BookComponent implements OnInit {
     });
   }
 
-  //AMAZON REVIEW IFRAME ONLY LASTS FOR A SINGLE DAY, PUT REQUEST NECESSARY IF UPDATED LATER THEN A DAY AGO
+  // AMAZON REVIEW IFRAME ONLY LASTS FOR A SINGLE DAY, PUT REQUEST NECESSARY IF UPDATED LATER THEN A DAY AGO
   checkForAmazonReviews(): void {
     const now = new Date();
     const past = new Date(this.book["updated"]);
     const bookPath = this.route.snapshot.url[1].path;
     const data = {};
     data["isbn"] = this.book.isbn;
-    //CALCULATE HOW MANY DAYS HAS PASSED SINCE THIS BUTTON HAS BEEN PRESSED/DATA HAS BEEN USED
+    // CALCULATE HOW MANY DAYS HAS PASSED SINCE THIS BUTTON HAS BEEN PRESSED/DATA HAS BEEN USED
     if (
       Math.floor((now.getTime() - past.getTime()) / (24 * 60 * 60 * 1000)) > 0
     ) {
@@ -133,7 +133,7 @@ export class BookComponent implements OnInit {
           this.book["penguinData"] = reformatPenguinData(
             this.book.penguinData[0]["data"]["results"]
           );
-        } catch(e) {
+        } catch (e) {
           // do nothing atm
         }
         if (Array.isArray(this.book["amazonSimilarProducts"])) {

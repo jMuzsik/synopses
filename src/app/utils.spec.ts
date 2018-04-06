@@ -17,26 +17,26 @@ describe("Utils function file", () => {
 
   it("makeWikiPresentable function should do exactly what it is supposed to do", () => {
     book = data[0];
-    //REGULAR TIME WHEN THERE IS GUARANTEED TO BE A PERIOD AND A NEW LINE
+    // REGULAR TIME WHEN THERE IS GUARANTEED TO BE A PERIOD AND A NEW LINE
     result = utils.makeWikiTextPresentable(book["wikipedia_text"]);
     expect(result[0].length).toBe(result[1].length);
-    //NO PERIODS OR NEW LINES
+    // NO PERIODS OR NEW LINES
     book["wikipedia_text"] = "this is a string of stuff";
     result = utils.makeWikiTextPresentable(book["wikipedia_text"]);
     expect(result[0][0]).toBe("this is a string of stuff");
     expect(result[1][0]).toBe(-1);
-    //PERIODS, NO NEW LINE
+    // PERIODS, NO NEW LINE
     book["wikipedia_text"] = "this is a string of stuff.";
     result = utils.makeWikiTextPresentable(book["wikipedia_text"]);
     expect(result[0][0]).toBe("this is a string of stuff.");
     expect(result[1][0]).toBe(result[0][0].length - 1);
-    //NEW LINE, NO PERIODS
+    // NEW LINE, NO PERIODS
     book["wikipedia_text"] = `this is a string of stuff.
 
         `;
     result = utils.makeWikiTextPresentable(book["wikipedia_text"]);
     expect(result[0][0]).toBe("this is a string of stuff.");
-    //WHERE PERIOD IS LOCATED
+    // WHERE PERIOD IS LOCATED
     expect(result[1][0]).toBe(result[0][0].length - 1);
   });
 
@@ -44,7 +44,7 @@ describe("Utils function file", () => {
     book = MockBooks[0];
     result = utils.grabIframe(book["goodreads_reviews_widget"]);
     expect(result.slice(0, 5)).toBe("https");
-    //IF NO IFRAME EXISTS RETURN THE SAME STRING BACK
+    // IF NO IFRAME EXISTS RETURN THE SAME STRING BACK
     result = utils.grabIframe("this is not an iframe");
     expect(result).toBe("this is not an iframe");
   });
@@ -64,10 +64,10 @@ describe("Utils function file", () => {
     data.title = "this is a title";
     data.author = "some guy";
     expect(utils.createUrlToRedirect(data)).toBe("this_is_a_title_some_guy");
-    //GETS RID OF WHITESPACE AT END
+    // GETS RID OF WHITESPACE AT END
     data.author = "some guy ";
     expect(utils.createUrlToRedirect(data)).toBe("this_is_a_title_some_guy");
-    //IF RANDOM SPACES, JUST MORE _ THINGS, WHATEVER
+    // IF RANDOM SPACES, JUST MORE _ THINGS, WHATEVER
     data.author = " dis   a   guy    ";
     expect(utils.createUrlToRedirect(data)).toBe(
       "this_is_a_title__dis___a___guy___"

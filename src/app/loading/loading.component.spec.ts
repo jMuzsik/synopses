@@ -1,20 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { LoadingComponent } from './loading.component';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { LoadingComponent } from "./loading.component";
+import { DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
-describe('LoadingComponent', () => {
+describe("LoadingComponent", () => {
   let component: LoadingComponent;
   let fixture: ComponentFixture<LoadingComponent>;
   let de: DebugElement;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoadingComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [LoadingComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoadingComponent);
@@ -22,18 +23,18 @@ describe('LoadingComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should only truly exist when there is book data, by default it ought to exist', () => {
-    de = fixture.debugElement.query(By.css('.book'));
+  it("should only truly exist when there is book data, by default it ought to exist", () => {
+    de = fixture.debugElement.query(By.css(".book"));
     expect(de).toBeTruthy();
 
     component.books = [];
     fixture.detectChanges();
 
-    de = fixture.debugElement.query(By.css('.book'));
+    de = fixture.debugElement.query(By.css(".book"));
     expect(de).toBeNull();
-  })
+  });
 });

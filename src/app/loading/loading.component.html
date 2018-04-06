@@ -1,13 +1,7 @@
 <div class="loading">
-  <div
-    *ngIf="books?.length"
-  >
+  <div *ngIf="books?.length">
     <div *ngFor="let book of books">
-      <img
-        src="{{book?.str}}"
-        alt="image of book animation"
-        class="{{book?.cl}}"
-      >
+      <img src="{{book?.str}}" alt="image of book animation" class="{{book?.cl}}">
     </div>
   </div>
 </div>

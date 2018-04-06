@@ -5,46 +5,23 @@
 </div>
 
 <ng-template #normal>
-  <div
-    id="post"
-    class="form-group"
-  >
-    <input
-      type="text"
-      class="form-control"
-      id="title"
-      placeholder="title goes in this place over here"
-      #title />
+  <div id="post" class="form-group">
+    <!-- LET USER KNOW THE PROPER WAY TO INPUT A BOOK -->
 
-    <input
-      type="text"
-      class="form-control"
-      id="author"
-      placeholder="and author over here"
-      #author
-    />
+    <div class="alert alert-info" role="alert">
+      <h6 class="alert-heading">Information before inputting:</h6>
+
+      <p class="alert-p">
+        If you want exact book, input title/author with exactitude (even better if title relates to a particular ISBN instance).
+        Case-insensitive. Otherwise, write something and something will come, not sure what though.
+      </p>
+    </div>
+    <input type="text" class="form-control" id="title" placeholder="title goes in this place over here" #title />
+
+    <input type="text" class="form-control" id="author" placeholder="and author over here" #author />
 
     <div *ngIf="notPressed; else do_this">
-      <button
-        type="submit"
-        id="post-button"
-        class="btn btn-default"
-        (click)="newBook(title, author); buttonPressed()"
-      >New Book</button>
-
-      <!-- LET USER KNOW THE PROPER WAY TO INPUT A BOOK -->
-
-      <div
-        class="alert alert-info"
-        role="alert"
-      >
-        <h6 class="alert-heading">Information before inputting</h6>
-
-        <p class="alert-p">
-          If you want exact book, input title/author with exactitude (even better if title relates to a particular ISBN instance).
-          Case-insensitive. Otherwise, write something and something will come, not sure what though.
-        </p>
-      </div>
+      <button type="submit" id="post-button" class="btn btn-default" (click)="newBook(title, author); buttonPressed()">New Book</button>
     </div>
 
     <!-- AFTER POST IS PRESSED LET USER KNOW SOMETHING IS HAPPENING.. -->
@@ -56,14 +33,8 @@
     </ng-template>
 
     <div *ngIf="bookPreviouslyCreated">
-      <div
-        class="alert alert-danger alert-dismissable"
-        role="alert"
-      >
-        <button
-          class="close"
-          (click)="close()"
-        >
+      <div class="alert alert-danger alert-dismissable" role="alert">
+        <button class="close" (click)="close()">
           <span aria-hidden="true">&times;</span>
         </button>
 

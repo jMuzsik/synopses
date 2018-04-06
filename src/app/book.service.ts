@@ -10,25 +10,24 @@ import { Http } from "@angular/http";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 
-
 import {
   makeWikiTextPresentable,
   grabIframe,
   alterASINtoHREF,
-  reformatBookData
+  reformatBookData,
 } from "./utils";
 
 import { Response } from "@angular/http/src/static_response";
 
 @Injectable()
 export class BookService {
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   getBook(bookPath: string) {
     return this.http.get(`/api/${bookPath}`).map(res => {
-      //RETURNS MULTIPLE IF THERE ARE FOR THE BOOK, I NEED TO MAKE SURE THAT SAME BOOK CANNOT BE CREATED
+      // RETURNS MULTIPLE IF THERE ARE FOR THE BOOK, I NEED TO MAKE SURE THAT SAME BOOK CANNOT BE CREATED
       res = res.json()[0];
-      //REFORMAT CERTAIN CONFUSING ELEMENTS OF THE DATA
+      // REFORMAT CERTAIN CONFUSING ELEMENTS OF THE DATA
       res = reformatBookData(res);
       return res;
     });

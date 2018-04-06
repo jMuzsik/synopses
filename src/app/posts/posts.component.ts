@@ -9,20 +9,20 @@ import { createUrlToRedirect } from "../utils";
 @Component({
   selector: "app-posts",
   templateUrl: "./posts.component.html",
-  styleUrls: ["./posts.component.scss"]
+  styleUrls: ["./posts.component.scss"],
 })
 export class PostsComponent {
-  //EMIT EVENT TO AFFECT STATE IN APP COMPONENT
-  @Output() onSubmission = new EventEmitter<boolean>();
+  // EMIT EVENT TO AFFECT STATE IN APP COMPONENT
+  @Output() submission = new EventEmitter<boolean>();
 
-  //HAS BOOK BEEN CREATED YET?
-  bookPreviouslyCreated: boolean = false;
+  // HAS BOOK BEEN CREATED YET?
+  bookPreviouslyCreated = false;
 
-  //LOTS OF API REQUESTS = ~20 SECOND POST REQUEST, SO INTERESTING LOADING PAGE
-  loading: boolean = false;
+  // LOTS OF API REQUESTS = ~20 SECOND POST REQUEST, SO INTERESTING LOADING PAGE
+  loading = false;
 
-  //HAS USER PRESSED POST BUTTON?
-  notPressed: boolean = true;
+  // HAS USER PRESSED POST BUTTON?
+  notPressed = true;
 
   constructor(
     private http: HttpClient,
@@ -30,17 +30,17 @@ export class PostsComponent {
     public bookService: BookService
   ) {}
 
-  //CHECK IF BOOK BEING CREATED ALREADY HAS BEEN CREATED
+  // CHECK IF BOOK BEING CREATED ALREADY HAS BEEN CREATED
   close(): void {
     this.bookPreviouslyCreated = false;
   }
 
-  //ALTER STATE OF BUTTON PRESS
+  // ALTER STATE OF BUTTON PRESS
   buttonPressed(): void {
     this.notPressed = false;
   }
 
-  //CREATE THE NEW BOOK
+  // CREATE THE NEW BOOK
   newBook(title, author): void {
     class ObjectConstructor {
       title: String;
@@ -64,18 +64,18 @@ export class PostsComponent {
 
     this.bookService.postBook(data).subscribe(
       result => {
-        //WAIT 5 SECONDS AFTER USER INPUTS PRIOR TO LOADING CODE TO RUN
+        // WAIT 5 SECONDS AFTER USER INPUTS PRIOR TO LOADING CODE TO RUN
         if (result["_body"] === "saved") {
-          //REDIRECT URL CREATION
+          // REDIRECT URL CREATION
           const urlTitle = createUrlToRedirect(data);
           this.loading = false;
 
-          //EMIT FUNCTION TO ALTER STATE IN COMPONENT THAT OPENED POST COMPONENT
-          this.onSubmission.emit(false);
-          //REROUTE
+          // EMIT FUNCTION TO ALTER STATE IN COMPONENT THAT OPENED POST COMPONENT
+          this.submission.emit(false);
+          // REROUTE
           this.router.navigate([`/book/${urlTitle}`]);
         } else {
-          //HTML MESSAGE OF ERROR ON DISPLAY
+          // HTML MESSAGE OF ERROR ON DISPLAY
           this.notPressed = true;
           this.loading = false;
           this.bookPreviouslyCreated = true;

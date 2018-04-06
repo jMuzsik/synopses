@@ -8,7 +8,7 @@ var getPenguinData = function(query) {
   var options = {
     uri: `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${query}&api_key=${
       process.env.PENGUIN_API_KEY
-    }`
+    }`,
   };
 
   return request(options)

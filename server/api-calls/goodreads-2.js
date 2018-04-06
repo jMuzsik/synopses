@@ -10,7 +10,7 @@ var getGoodreadsData2 = function(secondOptions, callback) {
     goodreads_author_image: "",
     goodreads_author_link: "",
     goodreads_similar_books: [],
-    author_name: ""
+    author_name: "",
   };
 
   request(secondOptions)

@@ -55,19 +55,13 @@
 
 .card-deck {
   padding: 5vh 5vw;
+  justify-content: center;
 }
 
 .card {
   background-color: rgba(0, 0, 0, 0);
   width: 15.95vw;
-}
-
-.card-img-top {
-  height: 200px;
-  width: 132px;
-  position: relative;
-  left: calc((15.95vw - 132px)/2);
-  cursor: pointer;
+  height: auto;
 }
 
 .card-header {
@@ -81,7 +75,16 @@
   font-size: 1.5em;
   line-height: 1.2em;
   height: 14vh;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  background-color: rgb(237, 205, 149);
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .card-text {
@@ -134,13 +137,9 @@
   color: #3d9970;
 }
 
-#namer input:focus {
-  outline: 0;
+input:focus {
   color: #ffdc00;
-}
-
-#namer input::placeholder {
-  color: #001f3f;
+  outline-color: rgb(65, 152, 113);
 }
 
 //this is for the loader
@@ -164,7 +163,6 @@ $blue: rgb(0, 155, 255);
     height: 1em;
     border-radius: 50%;
   }
-
   &:after {
     left: -3em;
     top: -1.5em;
@@ -197,83 +195,96 @@ $blue: rgb(0, 155, 255);
   height: 153.984px;
 }
 
-/* Portrait */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+@media only screen and (min-device-width: 100px) and (max-device-width: 374px) and (orientation: portrait) {
   #input-box-inner > input {
     font-size: 1.5em;
   }
   .card-deck {
     display: flex;
     flex-wrap: wrap;
-    div:nth-child(4) {
-      padding-left: 13.8vw;
-    }
-  }
-  .card-img-top {
-    height: 123px;
-    width: 78px;
-    left: 2vw;
+    align-self: baseline;
+    height: 90vh;
+    padding-top: 0;
   }
   .card {
-    font-size: 1em;
-    width: 28vw;
-    padding-bottom: 2em;
-    padding-left: 0.5em;
+    // font-size: 1em;
+    width: 25vw;
+    border: none;
   }
-  .card-header {
-    height: 0;
+  .card-text {
+    visibility: hidden;
+  }
+  .card-block {
+    display: none;
+  }
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 767px) and (orientation: portrait) {
+  #input-box-inner > input {
+    font-size: 1.5em;
+  }
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: baseline;
+    height: 90vh;
+  }
+  .card {
+    // font-size: 1em;
+    width: 25vw;
+    border: none;
+  }
+  .card-text {
+    display: none;
+  }
+  .card-block {
+    display: none;
   }
 }
 
 /* Landscape */
-@media only screen and (min-device-width: 380px) and (max-device-width: 815px) and (orientation: landscape) {
+@media only screen and (min-device-width: 380px) and (max-device-width: 812px) and (orientation: landscape) {
   #input-box-inner > input {
     font-size: 1.5em;
     bottom: 20vh;
   }
-  .card-header {
-    height: 0;
-  }
   .card {
     top: 5vh;
-    width: 14.8vw;
+    width: 14vw;
+    margin: 0;
+    border: none;
   }
   .card-deck {
     position: relative;
     bottom: 20vh;
   }
-  .card-img-top {
-    height: 123px;
-    width: 78px;
-    left: 2vw;
+  .card-header {
+    height: 20vh;
+  }
+  .card-text {
+    display: none;
+  }
+  .card-block {
+    display: none;
   }
 }
 
 /* Portrait */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+@media only screen and (min-device-width: 767px) and (max-device-width: 1024px) and (orientation: portrait) {
   #input-box-inner > input {
     font-size: 1.5em;
   }
   .card-deck {
     display: flex;
     flex-wrap: wrap;
-    div:nth-child(4) {
-      padding-left: 13.8vw;
-    }
   }
-  .card-img-top {
-    width: 97.988px;
-    height: 153.984px;
-    left: 5vw;
-  }
+
   .card {
     font-size: 1em;
     width: 25vw;
+    height: 30vh;
     padding-bottom: 2em;
-    padding-left: 0.5em;
-  }
-  .card-header {
-    height: 0;
   }
 }
 
@@ -283,9 +294,6 @@ $blue: rgb(0, 155, 255);
     font-size: 1.5em;
     bottom: 0;
   }
-  .card-header {
-    height: 0;
-  }
   .card {
     top: 5vh;
     width: 14.8vw;
@@ -295,9 +303,154 @@ $blue: rgb(0, 155, 255);
     position: relative;
     bottom: 0;
   }
-  .card-img-top {
-    width: 107px;
-    height: 168.4px;
-    left: 2.5vw;
+  .card-text {
+    display: none;
   }
+}
+
+// Pixel 2XL
+@media only screen and (-webkit-min-device-pixel-ratio: 1.77) and (orientation: landscape) {
+  .card {
+    font-size: 0.75em;
+    height: 50vh;
+    padding-top: 0;
+    border: none;
+  }
+  img.card-img-top {
+    height: 20vh;
+  }
+  .card-header {
+    height: 10vh;
+  }
+  .card-block {
+    display: none;
+  }
+}
+
+// Pixel 2XL
+@media only screen and (-webkit-min-device-pixel-ratio: 1.77) and (orientation: portrait) {
+  .card {
+    width: 30vw;
+    border: none;
+  }
+  .card-header {
+    height: 10vh;
+  }
+  .card-block {
+    display: none;
+  }
+}
+
+//Iphone 5
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
+  #input-box-inner > input {
+    font-size: 1.5em;
+  }
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: baseline;
+    height: 80vh;
+    padding-top: 0;
+  }
+  .card {
+    width: 30vw;
+    border: none;
+  }
+  .card-text {
+    visibility: hidden;
+  }
+  .card-block {
+    display: none;
+  }
+}
+
+//iphone 5
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  #input-box-inner > input {
+    font-size: 1.5em;
+  }
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: baseline;
+    height: 70vh;
+    padding-top: 0;
+  }
+  .card-header {
+    height: 20vh;
+  }
+  .card {
+    // font-size: 1em;
+    width: 15vw;
+  }
+  .card-text {
+    visibility: hidden;
+  }
+  .card-block {
+    display: none;
+  }
+}
+
+// IPad
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .card {
+    width: 15vw;
+    font-size: 1em;
+    border: none;
+  }
+  .card-block {
+    visibility: none;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .card {
+    width: 27vw;
+    height: 40vh;
+    border: none;
+  }
+  .card-header {
+    height: 10vh;
+    font-size: 2em;
+  }
+  .card-block {
+    visibility: none;
+  }
+}
+
+// Ipad Pro
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+  #input-box input {
+    font-size: 2.5em;
+  }
+  .card {
+    font-size: 1.5em;
+  }
+}
+
+// Ipad Pro
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .card-deck {
+    padding-top: 20vh;
+  }
+  .card {
+    font-size: 1.5em;
+    width: 16vw;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 3em;
+  background-color: black;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }

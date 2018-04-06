@@ -11,13 +11,13 @@ var getGoodreadsData1 = function(query, backupTitle, callback) {
   var secondOptionsError = {
     uri: `https://www.goodreads.com/book/title.xml?title=${secondOptionsQuery}&key=${
       process.env.GOODREADS_KEY
-    }`
+    }`,
   };
 
   var options = {
     uri: `https://www.goodreads.com/search/index.xml?q=${query}&key=${
       process.env.GOODREADS_KEY
-    }`
+    }`,
   };
 
   //NEED TO FIRST FIND BOOK BY USING THE ISBN
@@ -44,7 +44,7 @@ var getGoodreadsData1 = function(query, backupTitle, callback) {
         var secondOptions = {
           uri: `https://www.goodreads.com/book/title.xml?title=${secondQuery}&key=${
             process.env.GOODREADS_KEY
-          }`
+          }`,
         };
         parseString.secondOptions = secondOptions;
         callback(secondOptions);

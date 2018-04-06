@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var mongoDB = process.env.MONGO_CONNECTION;
 
 mongoose.connect(mongoDB, {
-  useMongoClient: true
+  useMongoClient: true,
 });
 
 mongoose.Promise = global.Promise;

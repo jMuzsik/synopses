@@ -3,7 +3,7 @@ import {
   BaseRequestOptions,
   Response,
   ResponseOptions,
-  Http
+  Http,
 } from "@angular/http";
 import { MockBackend, MockConnection } from "@angular/http/testing";
 
@@ -19,27 +19,27 @@ const book = {
     {
       ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
       Title: [
-        "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-      ]
+        "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+      ],
     },
     {
       ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
       Title: [
-        "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-      ]
+        "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+      ],
     },
     {
       ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
       Title: [
-        "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-      ]
+        "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+      ],
     },
     {
       ASIN: ["http://www.goodreads.com/book/isbn/0143039075"],
       Title: [
-        "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)"
-      ]
-    }
+        "In the Shadow of Young Girls in Flower: In Search of Lost Time, Vol. 2 (Penguin Classics Deluxe Edition)",
+      ],
+    },
   ],
   author: "some guy",
   author_name: "Some Guy",
@@ -59,7 +59,7 @@ const book = {
     "Valentin Louis Georges Eugène Marcel Proust (; ; 10 July 1871 – 18 November 1922), known as Marcel Proust, was a French novelist, critic, and essayist best known for his monumental novel À la recherche du temps perdu (In Search of Lost Time; earlier rendered as Remembrance of Things Past), published in seven parts between 1913 and 1927. He is considered by critics and writers to be one of the most influential authors of the 20th↵↵ century.",
   isbn: "0143039229",
   date: "today",
-  updated: "tomorrow"
+  updated: "tomorrow",
 };
 
 describe("Service: Books", () => {
@@ -77,9 +77,9 @@ describe("Service: Books", () => {
           ) => {
             return new Http(backend, defaultOptions);
           },
-          deps: [MockBackend, BaseRequestOptions]
-        }
-      ]
+          deps: [MockBackend, BaseRequestOptions],
+        },
+      ],
     });
   });
 
@@ -96,7 +96,7 @@ describe("Service: Books", () => {
       [BookService, MockBackend],
       (service: BookService, backend: MockBackend) => {
         let response = new ResponseOptions({
-          body: JSON.stringify(MockBooks)
+          body: JSON.stringify(MockBooks),
         });
 
         const baseResponse = new Response(response);
@@ -118,7 +118,7 @@ describe("Service: Books", () => {
       [BookService, MockBackend],
       (service: BookService, backend: MockBackend) => {
         let response = new ResponseOptions({
-          body: JSON.stringify(MockBooks)
+          body: JSON.stringify(MockBooks),
         });
 
         const baseResponse = new Response(response);

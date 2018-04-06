@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
+    "ng": "ng serve --watch && nodemon server.js",
     "start": "nodemon server.js",
     "build": "ng build",
     "test": "ng test --watch",
@@ -73,6 +73,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "node-sass": "^4.7.2",
+    "prettier-eslint": "^8.8.1",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.9.1",

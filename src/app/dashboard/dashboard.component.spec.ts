@@ -27,7 +27,7 @@ describe("DashboardComponent", () => {
       TestBed.configureTestingModule({
         declarations: [BookComponent, DashboardComponent],
         imports: [RouterModule.forRoot(routes), HttpModule, HttpClientModule],
-        providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService]
+        providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService],
       }).compileComponents();
     })
   );
@@ -41,44 +41,44 @@ describe("DashboardComponent", () => {
         exact_title: "11111",
         front_cover: img,
         goodreads_description: "<h1>1</h1>",
-        url_title: "url_1"
+        url_title: "url_1",
       },
       {
         exact_title: "21222",
         front_cover: img,
         goodreads_description: "<h1>2</h1>",
-        url_title: "url_2"
+        url_title: "url_2",
       },
       {
         exact_title: "33333",
         front_cover: img,
         goodreads_description: "<h1>3</h1>",
-        url_title: "url_3"
+        url_title: "url_3",
       },
       {
         exact_title: "44444",
         front_cover: img,
         goodreads_description: "<h1>4</h1>",
-        url_title: "url_4"
+        url_title: "url_4",
       },
       {
         exact_title: "51555",
         front_cover: img,
         goodreads_description: "<h1>5</h1>",
-        url_title: "url_5"
+        url_title: "url_5",
       },
       {
         exact_title: "66666",
         front_cover: img,
         goodreads_description: "<h1>6</h1>",
-        url_title: "url_6"
+        url_title: "url_6",
       },
       {
         exact_title: "77777",
         front_cover: img,
         goodreads_description: "<h1>7</h1>",
-        url_title: "url_7"
-      }
+        url_title: "url_7",
+      },
     ];
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;

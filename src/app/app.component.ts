@@ -9,7 +9,7 @@ import { createPaperAnimationData } from "./utils";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
   newBook: boolean = false;
@@ -32,7 +32,7 @@ export class AppComponent {
       this.showPaper = true;
       setTimeout(() => {
         this.displayNone = true;
-      }, 17000)
+      }, 17000);
     }
   }
 
@@ -48,8 +48,8 @@ export class AppComponent {
     }
   }
 
-  //CLOSE THE POST MODULE AFTER USER POSTS A BOOK
-  onSubmission(closePost: boolean): void {
+  // CLOSE THE POST MODULE AFTER USER POSTS A BOOK
+  submission(closePost: boolean): void {
     this.newBook = closePost;
   }
 }

@@ -15,7 +15,7 @@ function getAllTheData(title, author, finalCallback) {
     author_name: String,
     isbn: String,
     wikipedia_text: String,
-    title: String
+    title: String,
   };
 
   allTheData.title = title.toLowerCase();
