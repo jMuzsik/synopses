@@ -25,6 +25,9 @@ var getISBN = function(query, author, callback) {
             "https://pictures.abebooks.com/isbn/9780834800793-us.jpg",
         };
       }
+
+      // Simple comparison to be sure that the first object returned from the ISBNDB query is not what
+      // is used but rather the title and author most similar to what the user entered in the form
       let desiredIdx = 0;
       let maxValue = 0;
       books.forEach((book, i) => {

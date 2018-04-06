@@ -1,8 +1,8 @@
 const db = require("./mongoose.js");
-var Book = require("./book.js");
+const Book = require("./book.js");
 
 function checkIfAlreadyCreated(isbn) {
-  var check = false;
+  let check = false;
   Book.find({}).then(books => {
     books.forEach(book => {
       if (book.isbn === isbn) {

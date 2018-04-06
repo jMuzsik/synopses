@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var bookSchema = new Schema({
+const bookSchema = new Schema({
   id: Number,
   front_cover: String,
   amazon_reviews: Array,
@@ -34,6 +34,6 @@ bookSchema.pre("save", function(next) {
   next();
 });
 
-var Book = mongoose.model("Book", bookSchema);
+const Book = mongoose.model("Book", bookSchema);
 
 module.exports = Book;

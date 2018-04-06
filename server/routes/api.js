@@ -4,13 +4,9 @@ const db = require("../mongoose.js");
 const Book = require("../book.js");
 
 const utils = require("../utils");
-
 const getAllTheData = require("../getAllData");
-
-var apiCalls = require("../api-calls/index");
-
-var getAmazonData = apiCalls.getAmazonData;
-
+const apiCalls = require("../api-calls/index");
+const getAmazonData = apiCalls.getAmazonData;
 const getIsbn = require("../api-calls/isbndb");
 
 router.get("/", (req, res) => {
@@ -33,11 +29,11 @@ router.get("/:book", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  var query = req.body;
+  const query = req.body;
   Book.find({})
     .then(books => {
-      var check = true;
-      var title = query.title.toLowerCase();
+      let check = true;
+      const title = query.title.toLowerCase();
       books.forEach(prevBook => {
         if (prevBook.title === title) {
           check = false;
@@ -51,7 +47,7 @@ router.post("/", (req, res) => {
               .send("no results for query")
               .end();
           } else {
-            var book = bookData;
+            let book = bookData;
             try {
               book.penguin_data.data.facets = "";
             } catch (e) {
@@ -80,10 +76,10 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:book", (req, res) => {
-  var url_title = req.params.book;
-  var isbn = req.body.isbn;
+  const url_title = req.params.book;
+  const isbn = req.body.isbn;
 
-  var updateBook = {};
+  let updateBook = {};
 
   getAmazonData(isbn)
     .then(function(amazonData) {

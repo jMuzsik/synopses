@@ -1,7 +1,7 @@
-var apiCalls = require("./api-calls/index");
+const apiCalls = require("./api-calls/index");
 
 function getAllTheData(title, author, finalCallback) {
-  var allTheData = {
+  let allTheData = {
     front_cover: String,
     amazon_reviews: Array,
     amazon_editorial_review: String,
@@ -45,7 +45,7 @@ function getAllTheData(title, author, finalCallback) {
     .then(function(penguinData) {
       if (penguinData !== undefined) {
         allTheData.penguin_data = penguinData;
-        //CALLBACKS....SO MANY CALLBACKS, PROMISES NOT ALLOWED
+        // CALLBACKS....SO MANY CALLBACKS, PROMISES NOT ALLOWED WITH LIBRARY BEING USED
         apiCalls.getGoodreadsData1(
           allTheData.isbn,
           allTheData.exact_title,

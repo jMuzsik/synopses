@@ -2,7 +2,7 @@ var wtf = require("wtf_wikipedia");
 
 var getWikiData = function(query, callback) {
   wtf.from_api(query, "en", function(markup) {
-    //RETURNS NULL IF NO WIKIPEDIA ARTICLE
+    // RETURNS NULL IF NO WIKIPEDIA ARTICLE
     if (markup === null) {
       markup =
         query +

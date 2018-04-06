@@ -4,9 +4,6 @@ import * as Fuse from "fuse.js";
 
 import { BookService } from "../book.service";
 
-import { MockBooks } from "../book.service.mock";
-import { Mock } from "protractor/built/driverProviders";
-
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",

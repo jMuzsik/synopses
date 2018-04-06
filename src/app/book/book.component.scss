@@ -2,6 +2,7 @@
 //LOADING
 
 //LOADING CSS
+
 .jawn {
   position: relative;
   background-color: #f8e71c;
@@ -48,8 +49,7 @@
 //RESET FONT HERE
 p,
 div {
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  font-size: 14px;
+  font-family: Roboto, Futura, "Trebuchet MS", Arial, sans-serif;
   font-style: normal;
   font-variant: normal;
   font-weight: 400;
@@ -68,14 +68,22 @@ div {
   position: absolute;
   left: 0;
   top: 0;
+  height: auto;
 }
 
 //CENTER THE TABS: AUTHOR AND BOOK
-.author-book-card > .card-header {
-  background-color: #3d9970;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
+.author-book-card {
+  .card-header {
+    background-color: #3d9970;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+  .card-body {
+    .card-text {
+      text-align: left;
+    }
+  }
 }
 
 //MAKE HEADER LOOK RIGHT
@@ -103,8 +111,8 @@ div {
 }
 //EXACT AMOUNT OF SPACE FOR CARD BODY
 .card-body {
-  height: 30vh;
-  overflow: scroll;
+  height: 50vh;
+  overflow-y: scroll;
 }
 
 //SIZE, NO BACKGROUND
@@ -118,12 +126,11 @@ div {
 }
 
 //PUT IT NEXT TO OTHER CARD, SIMILAR CONCEPT AS OTHER CARD
-.descriptions {
+#right-card {
   background-color: rgba(0, 0, 0, 0);
   position: relative;
   left: 25vw;
   height: 100vh;
-  overflow: scroll;
   text-align: left;
   font-size: 1.5em;
   top: 0;
@@ -292,21 +299,109 @@ i:hover {
   @extend .amazon-link;
 }
 
-//IMAGES OTHERWISE LOOK FUNNY, THIS PX VALUE IS THE SIZE OF CORRESPONDING IMAGES IN THE DATASET
-.uniform-image-size {
-  opacity: 0.7;
-  width: 97.988px;
-  height: 153.984px;
+@media only screen and (min-device-height: 200px) and (max-height: 374px) and (orientation: landscape) {
+  #left-card {
+    width: 35vw !important;
+    height: 95vh;
+    h6,
+    a {
+      font-size: 0.75em;
+    }
+    .card-body {
+      padding: 0;
+      font-size: 0.75em;
+      font-weight: normal;
+    }
+    .card-header {
+      font-size: 2em;
+      a.nav-link {
+        position: relative;
+        top: -5vh;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 0.5em;
+    }
+  }
+  #right-card {
+    width: 30vw !important;
+    left: 20vw;
+    div {
+      font-size: 0.75em;
+    }
+    .card-body {
+      padding: 0;
+    }
+    ::-webkit-scrollbar {
+      width: 0.5em;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 200px) and (max-width: 374px) and (orientation: portrait) {
+  #amazon {
+    font-size: 1em;
+    right: 15vw;
+    top: 20vh;
+  }
+  #goodreads {
+    right: 0;
+  }
+  #similar-books {
+    right: 0;
+    top: 60vh;
+  }
+  #wikipedia {
+    top: 60vh;
+  }
+  #general-button {
+    top: 10vh;
+    right: 10vw;
+  }
+  #left-card {
+    width: 35vw !important;
+    h6,
+    a {
+      font-size: 1em;
+    }
+    .card-body {
+      padding: 0;
+      font-size: 0.5em;
+    }
+    .card-title {
+      font-size: 2.5em;
+    }
+    ::-webkit-scrollbar {
+      width: 1em;
+    }
+  }
+  #right-card {
+    width: 35vw !important;
+    left: 20vw;
+    div {
+      font-size: 0.75em;
+    }
+    .card-body {
+      padding: 0;
+    }
+    ::-webkit-scrollbar {
+      width: 0.5em;
+    }
+  }
+  .amazon-link {
+    font-size: 0.75em;
+    width: 33%;
+  }
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
   #left-card {
     p,
     div {
-      font-size: 1em !important;
+      font-size: 1em;
     }
     h6 {
-      font-size: 1.2em !important;
+      font-size: 1.2em;
       margin-bottom: 0.5em;
       padding: 0;
       margin: 0;
@@ -316,6 +411,9 @@ i:hover {
 
 /* Portrait */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
+  ::-webkit-scrollbar {
+    width: 0.75em;
+  }
   #left-card {
     width: 50vw !important;
     .card-img-top {
@@ -335,9 +433,10 @@ i:hover {
       }
     }
   }
-  .card.descriptions {
+  #right-card {
     width: 40vw !important;
     top: 30vh;
+    left: 40vw;
     height: 70vh;
     font-size: 1.3em;
     .card-body {
@@ -371,17 +470,29 @@ i:hover {
 }
 
 /* Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  #left-card {
-    width: 30vw !important;
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: landscape) {
+  ::-webkit-scrollbar {
+    width: 0.4em;
   }
   #left-card {
+    width: 30vw !important;
+    height: 95vh;
     p,
     div {
-      font-size: 1em !important;
+      font-size: 1em;
     }
     h6 {
-      font-size: 1.2em !important;
+      font-size: 1.2em;
+    }
+    .card-header {
+      font-size: 2em;
+      padding-bottom: 10vh;
+      padding-left: 6vw;
+      padding-right: 6vw;
+      a.nav-link {
+        position: relative;
+        top: -5vh;
+      }
     }
   }
   #amazon {
@@ -410,8 +521,22 @@ i:hover {
 }
 
 /* Portrait */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  .card.descriptions {
+@media only screen and (min-device-width: 767px) and (max-device-width: 1024px) and (orientation: portrait) {
+  #left-card {
+    height: 100vh;
+    .card-body {
+      .card-title {
+        font-size: 1.5em;
+      }
+    }
+    .card-header {
+      font-size: 2em;
+      padding-bottom: 10vh;
+      padding-left: 6vw;
+      padding-right: 6vw;
+    }
+  }
+  #right-card {
     width: 45vw;
     height: 70vh;
     right: 0;
@@ -437,11 +562,15 @@ i:hover {
 }
 
 /* Landscape */
-@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) {
   #left-card {
     width: 35vw !important;
+    height: 100vh;
+    .card-body {
+      height: 70vh;
+    }
   }
-  .card.descriptions {
+  #right-card {
     width: 30vw !important;
   }
   #amazon {
@@ -459,7 +588,173 @@ i:hover {
     top: 60vh;
   }
   #general-button {
+    left: 75vw;
+    top: 10vh;
+  }
+}
+
+// Ipad pro
+/* Portrait */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
+  #left-card {
+    width: 50vw !important;
+    .card-img-top {
+      width: 40vw;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .card-header {
+      ul {
+        li {
+          a {
+            h6 {
+              font-size: 2em;
+            }
+          }
+        }
+      }
+    }
+    .card-body {
+      height: 40vh;
+      a {
+        position: relative;
+        left: -0.5em;
+      }
+      .card-text {
+        font-size: 1.5em;
+        line-height: 1.5em;
+      }
+      .card-title {
+        font-size: 2em;
+      }
+    }
+    .card-header {
+      height: 14vh;
+    }
+  }
+  #right-card {
+    width: 50vw !important;
+    top: 30vh;
+    left: 40vw;
+    height: 70vh;
+    padding: 0 !important;
+  }
+  #amazon {
+    top: 10vh;
+    right: 35vw;
+    font-size: 2em;
+  }
+  #goodreads {
+    right: 15vw;
+  }
+  #wikipedia {
+    top: 20vh;
+  }
+  #similar-books {
+    top: 20vh;
+    right: 15vw;
+  }
+  #general-button {
     left: 70vw;
+    top: 10vh;
+  }
+  #wikipedia-text {
+    width: 75vw !important;
+  }
+  .amazon-link {
+    width: 45%;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
+  #left-card {
+    width: 35vw !important;
+    height: 100vh;
+    .card-body {
+      height: 70vh;
+    }
+  }
+  #right-card {
+    width: 30vw !important;
+  }
+  #amazon {
+    right: 25vw;
+    top: 20vh;
+  }
+  #goodreads {
+    right: 10vw;
+  }
+  #similar-books {
+    right: 10vw;
     top: 60vh;
   }
+  #wikipedia {
+    top: 60vh;
+  }
+  #general-button {
+    left: 75vw;
+    top: 10vh;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 1367px) and (max-device-width: 2000px) {
+  #left-card {
+    width: 35vw !important;
+    height: 100vh;
+    .card-body {
+      height: 70vh;
+    }
+    .card-header {
+      padding-bottom: 10vh;
+      ul {
+        li {
+          a {
+            h6 {
+              font-size: 2em;
+            }
+          }
+        }
+      }
+    }
+  }
+  #right-card {
+    width: 30vw !important;
+  }
+  #amazon {
+    right: 25vw;
+    top: 20vh;
+  }
+  #goodreads {
+    right: 10vw;
+  }
+  #similar-books {
+    right: 10vw;
+    top: 60vh;
+  }
+  #wikipedia {
+    top: 60vh;
+  }
+  #general-button {
+    left: 85vw;
+    top: 10vh;
+  }
+}
+
+::-webkit-scrollbar {
+  background-color: rgb(237, 205, 149);
+  opacity: 0.5;
+  color: black;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }

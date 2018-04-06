@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var mongoDB = process.env.MONGO_CONNECTION;
+const mongoDB = process.env.MONGO_CONNECTION;
 
 mongoose.connect(mongoDB, {
   useMongoClient: true,
@@ -8,7 +8,7 @@ mongoose.connect(mongoDB, {
 
 mongoose.Promise = global.Promise;
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 

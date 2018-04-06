@@ -6,14 +6,14 @@
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link book-link" (click)="alterView()" style="cursor: pointer;">
-            <h6>Book</h6>
+          <a *ngIf="!showBook" class="nav-link book-link" (click)="alterView()" style="cursor: pointer;">
+            <h6>Check out the Book</h6>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link author-link" (click)="alterView()" style="cursor: pointer;">
-            <h6>Author</h6>
+          <a *ngIf="showBook" class="nav-link author-link" (click)="alterView()" style="cursor: pointer;">
+            <h6>Check out the Author</h6>
           </a>
         </li>
       </ul>
@@ -54,7 +54,7 @@
 
   <!-- SIMILAR TO PREVIOUS CARD BUT ONLY WITH TEXT, NOTHING ELSE -->
 
-  <div class="card descriptions w-25">
+  <div id="right-card" class="card descriptions w-25">
     <div class="card-body">
       <div class="card-text" [innerHTML]="book?.amazonReview"></div>
 
