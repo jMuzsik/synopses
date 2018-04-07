@@ -38,7 +38,7 @@ describe("BookComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
-    //SOME FORM OF ERROR IF THIS IS RUN
+    // Some form of error if this is run...
     // fixture.detectChanges();
   });
 

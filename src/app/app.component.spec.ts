@@ -19,6 +19,7 @@ describe("AppComponent", () => {
   let app: AppComponent;
   let de: DebugElement;
   let el: HTMLElement;
+  let originalTimeout;
 
   beforeEach(
     async(() => {
@@ -40,6 +41,12 @@ describe("AppComponent", () => {
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.debugElement.componentInstance;
     fixture.detectChanges();
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+  });
+
+  afterEach(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
   });
 
   it(
@@ -69,6 +76,7 @@ describe("AppComponent", () => {
         expect(app.papers.length).toBe(20);
         expect(app.showPaper).toBeTruthy();
         expect(app.newBook).toBeTruthy();
+        return;
       });
     })
   );

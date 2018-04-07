@@ -1,25 +1,7 @@
-@import "../styles.scss";
+@import "../scss/flying-paper";
+@import "../scss/post-home-buttons";
 
-/* 16px @ 480px increasing to 32px @ 1920px */
-@media (min-width: 480px) {
-  p,
-  h1,
-  div,
-  h6,
-  input,
-  button {
-    font-size: calc(1rem + ((1vw - 4.8px) * 1.1111));
-    /* Where: * 1.1111 = 100 * font_Size_Difference / viewport_Width_Difference */
-  }
-}
-/* Prevent font scaling beyond this breakpoint */
-@media (min-width: 1920px) {
-  p {
-    font-size: 32px;
-  }
-}
-
-//BASICALLY EVERYTHING IS WITHIN HERE, RESET BASIC THINGS, FULL PAGE
+// Basically everything is within here...
 .jumbotron {
   width: 100vw;
   height: 100vh;
@@ -28,72 +10,7 @@
   text-align: center;
 }
 
-//WHEN USER CLICKS TO POST A NEW BOOK, ANIMATION BEGINS, 20 DIFFERENT GIFS ON SAME Y PLANE, DIFFERENT X PLANE, SLIGHT TRANSFORM TO LOOK LIKE MOVING IN THE WIND
-@for $i from 1 through 21 {
-  $rand: ($i * $i);
-  @keyframes #{paper + $i} {
-    0% {
-      top: 0;
-      left: 0;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-    30% {
-      top: 30%;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-    40% {
-      top: 40%;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-    50% {
-      top: 50%;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-    60% {
-      top: 60%;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-    70% {
-      top: 70%;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-    80% {
-      top: 80%;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-    90% {
-      top: 90%;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-    100% {
-      top: 110%;
-      left: $rand % 110 * 1%;
-      transform: rotate((random($i * $i + 100) %70) + deg)
-        skew((random($i * $i) %70) + deg);
-    }
-  }
-}
-
-//SIZE OF GIFS, WEHRE LOCATED, ANIMATION FUNCTIONING
-.paper {
-  position: absolute;
-  width: 3em;
-  height: auto;
-  animation-duration: 20s;
-  animation-timing-function: linear;
-  overflow: hidden;
-  z-index: 999999;
-}
-
-//EACH IMAGE HAS A SLIGHTLY DIFFERENT KEYFRAME SO AS TO BE ON DIFFERENT X -AXIS'S
+// Each image has a slightly different keyframe so as to be on different x-axis
 .paper1 {
   @extend .paper;
   -webkit-animation-name: paper1;
@@ -201,34 +118,4 @@
   @extend .paper;
   -webkit-animation-name: paper20;
   animation-name: paper20;
-}
-
-//STYLE THE BUTTON, AND IT ALWAYS EXISTS IN THE PARTICULAR POSITION
-#post-button {
-  float: left;
-  padding: 0;
-  border: 0px;
-  background-color: rgba(255, 0, 0, 0);
-  padding-left: 0.5em;
-  padding-top: 0.5em;
-  font-size: calc(1rem + ((1vw - 4.8px) * 2)) !important;
-  outline: none !important;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  .fa {
-    color: #3d9970;
-  }
-  .fa:hover {
-    color: #ffdc00;
-  }
-}
-
-//IT'S ON THE OPPOSITE SIDE OF POST BUTTON
-#home-button {
-  @extend #post-button;
-  float: right;
-  position: relative;
-  padding-left: 0;
-  padding-right: 0.5em;
-  z-index: 9999 !important;
 }

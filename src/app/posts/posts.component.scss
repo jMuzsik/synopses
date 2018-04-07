@@ -1,4 +1,4 @@
-//POST CSS
+// Post CSS
 #post {
   width: 50vw;
   position: fixed;
@@ -42,7 +42,7 @@
   }
 }
 
-/* Portrait */
+/* Medium (iphones, etc) */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
   #post {
     width: 50vw;
@@ -104,7 +104,7 @@
   }
 }
 
-/* Portrait */
+/* Larger screens (Ipad, etc) */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   #post {
     width: 50vw;
@@ -166,25 +166,16 @@
   }
 }
 
-/* Regular laptop/screen */
+/* Regular laptop */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 2000px) and (orientation: landscape) {
-  #post {
-    #post-button {
-      font-size: 2em;
-    }
-  }
-}
-//Ipad
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
   #post-button {
     font-size: 2em;
   }
 }
 
-/* Ipad */
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
   #post-button {
-    font-size: em;
+    font-size: 2em;
   }
 }
 

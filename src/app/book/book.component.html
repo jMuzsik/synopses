@@ -40,7 +40,7 @@
 
       <div class="card-body">
         <div class="card-title">
-          <a href="{{book?.authorLink}}" class="badge badge-light" target="_blank">
+          <a href="{{book?.authorLink}}" target="_blank">
             {{book?.author_name}}
 
             <!-- <h6>{{book.author_name}}</h6> -->
@@ -54,7 +54,7 @@
 
   <!-- SIMILAR TO PREVIOUS CARD BUT ONLY WITH TEXT, NOTHING ELSE -->
 
-  <div id="right-card" class="card descriptions w-25">
+  <div id="right-card" class="card book-description w-25">
     <div class="card-body">
       <div class="card-text" [innerHTML]="book?.amazonReview"></div>
 
@@ -164,7 +164,14 @@
 
           <div class="amazon-links">
             <ng-container *ngFor="let book of book?.amazonSimilarProducts">
-              <a class="{{book?.cl}}" href="{{book?.url}}" alt="Link to similar book at goodreads" target="_blank">{{book?.title}}</a>
+              <div class="border">
+                <div *ngIf="book?.title.length > 14; else whole_title">
+                  <a class="{{book?.cl}}" href="{{book?.url}}" alt="Link to similar book at goodreads" target="_blank">{{book?.title.slice(0,12)}}...</a>
+                </div>
+                <ng-template #whole_title>
+                  <a class="{{book?.cl}}" href="{{book?.url}}" alt="Link to similar book at goodreads" target="_blank">{{book?.title}}</a>
+                </ng-template>
+              </div>
             </ng-container>
           </div>
 
@@ -175,7 +182,7 @@
 
           <div class="goodreads-links">
             <ng-container *ngFor="let book of book?.goodreadsSimilarBooks">
-              <div class="goodreads-link">
+              <div class="goodreads-link border">
                 <a href="{{book?.authors[0]?.author[0]?.link[0]}}" target="_blank">
                   {{book?.authors[0]?.author[0]?.name[0]}}
                 </a>
@@ -191,24 +198,31 @@
                     <img class="uniform-image-size" src="http://www.asei.co.id/wp-content/themes/linstar/assets/images/default.jpg" alt="default image when no image (image of space)">
                   </div>
                 </ng-template>
-
-                <a href="{{book?.link[0]}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title[0]}}</a>
+                <div class="border">
+                <div *ngIf=" book?.title[0].length> 14; else whole_title">
+                  <a href="{{book?.link[0]}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title[0].slice(0, 12)}}...</a>
+                </div>
+                <ng-template #whole_title>
+                  <a href="{{book?.link[0]}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title[0]}}</a>
+                </ng-template>
               </div>
-            </ng-container>
           </div>
+          </ng-container>
+        </div>
 
-          <br>
-          <br>
+        <br>
+        <br>
 
-          <h4>Penguin Similar Books</h4>
+        <h4>Penguin Similar Books</h4>
 
-          <h5 class="text-muted">
-            All link to Penguin Random House book page.
-          </h5>
+        <h5 class="text-muted">
+          All link to Penguin Random House book page.
+        </h5>
 
-          <br>
+        <br>
 
-          <div *ngFor="let book of book?.penguinData">
+        <div *ngFor="let book of book?.penguinData">
+          <div class="border-bottom">
             <a style="text-align: left;" href="{{book?.url}}" alt="url to book" target="_blank">
               <h5>{{book?.name}}</h5>
             </a>
@@ -225,26 +239,25 @@
               <br>
               <div style="text-align: left;" [innerHTML]="book?.description[1]"></div>
             </div>
-
-            <br>
-            <br>
           </div>
+          <br>
         </div>
       </div>
-
-      <footer class="blockquote-footer">
-        <div class="text-muted">
-          From Penguin Publishing, Amazon, and Goodreads
-        </div>
-      </footer>
     </div>
 
-    <div *ngIf="buttonVisible">
-      <button class="btn btn-dark" type="button" id="general-button" (click)="closeModal()">
-        <i class="fa fa-window-close fa-2x"></i>
-      </button>
-    </div>
+    <footer class="blockquote-footer">
+      <div class="text-muted">
+        From Penguin Publishing, Amazon, and Goodreads
+      </div>
+    </footer>
   </div>
+
+  <div *ngIf="buttonVisible">
+    <button class="btn btn-dark" type="button" id="general-button" (click)="closeModal()">
+      <i class="fa fa-window-close fa-2x"></i>
+    </button>
+  </div>
+</div>
 </div>
 
 <!-- DATA IS LOADING, SHOW THIS -->

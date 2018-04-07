@@ -12,13 +12,13 @@ import { createPaperAnimationData } from "./utils";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  newBook: boolean = false;
+  newBook = false;
 
   papers: Array<any> = [];
 
-  showPaper: boolean = false;
+  showPaper = false;
 
-  displayNone: boolean = false;
+  displayNone = false;
 
   constructor(private router: Router) {}
 

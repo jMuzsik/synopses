@@ -1,0 +1,73 @@
+// CSS for each flying book
+@for $i from 1 through 21 {
+  $rand: ($i * $i);
+  @keyframes #{book + $i} {
+    0% {
+      top: 0;
+      left: 50%;
+      width: 0.5em;
+      transform: skewY(-30deg);
+    }
+    10% {
+      top: ((($i) % 10) + 10) * 1%;
+      width: 1em;
+      transform: skewY(30deg);
+    }
+    20% {
+      top: ((($i) % 10) + 20) * 1%;
+      width: 1.5em;
+      transform: skewY(-30deg);
+    }
+    30% {
+      top: ((($i) % 10) + 30) * 1%;
+      width: 2em;
+      transform: skewY(30deg);
+    }
+    40% {
+      top: ((($i) % 10) + 40) * 1%;
+      width: 2.5em;
+      transform: skewY(-30deg);
+    }
+    50% {
+      top: ((($i) % 10) + 50) * 1%;
+      width: 3em;
+      transform: skewY(30deg);
+    }
+    60% {
+      top: ((($i) % 10) + 60) * 1%;
+      width: 3.5em;
+      transform: skewY(-30deg);
+    }
+    70% {
+      top: ((($i) % 10) + 70) * 1%;
+      width: 4em;
+      transform: skewY(30deg);
+    }
+    80% {
+      top: ((($i) % 10) + 80) * 1%;
+      width: 4.5em;
+      transform: skewY(-30deg);
+    }
+    90% {
+      top: ((($i) % 10) + 90) * 1%;
+      width: 5em;
+      transform: skewY(30deg);
+    }
+    100% {
+      top: 111%;
+      width: 5.5em;
+      left: $rand % 110 * 1%;
+      transform: skewY(-30deg);
+    }
+  }
+}
+
+// Each book GIF
+.book {
+  position: absolute;
+  height: auto;
+  animation-duration: 25s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  overflow: hidden;
+}

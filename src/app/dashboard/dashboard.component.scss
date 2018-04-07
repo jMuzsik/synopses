@@ -1,190 +1,67 @@
-@import "../../styles.scss";
-
-.scroll-up {
-  height: 20vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.scroll-up p {
-  position: absolute;
-  bottom: 10vh;
-  width: 100%;
-  height: 100vh;
-  padding: 0.4em;
-  line-height: 0.9em;
-  text-align: left;
-  /* Starting position */
-  -moz-transform: translateY(0);
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-  /* Apply animation to this element */
-  -moz-animation: scroll-up 25s linear infinite;
-  -webkit-animation: scroll-up 25s linear infinite;
-  animation: scroll-up 25s linear infinite;
-}
-/* Move it (define the animation) */
-@-moz-keyframes scroll-up {
-  0% {
-    -moz-transform: translateY(100vh);
-  }
-  100% {
-    -moz-transform: translateY(10vh);
-  }
-}
-@-webkit-keyframes scroll-up {
-  0% {
-    -webkit-transform: translateY(100vh);
-  }
-  100% {
-    -webkit-transform: translateY(10vh);
-  }
-}
-@keyframes scroll-up {
-  0% {
-    -moz-transform: translateY(100vh); /* Browser bug fix */
-    -webkit-transform: translateY(100vh); /* Browser bug fix */
-    transform: translateY(100vh);
-  }
-  100% {
-    -moz-transform: translateY(10vh); /* Browser bug fix */
-    -webkit-transform: translateY(10vh); /* Browser bug fix */
-    transform: translateY(10vh);
-  }
-}
+@import "../../scss/scroll-up";
+@import "../../scss/scrollbar";
+@import "../../scss/loader";
 
 .card-deck {
   padding: 5vh 5vw;
   justify-content: center;
-}
-
-.card {
-  background-color: rgba(0, 0, 0, 0);
-  width: 15.95vw;
-  height: auto;
-}
-
-.card-header {
-  padding: 0;
-  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
-    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
-    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
-    0 20px 20px rgba(0, 0, 0, 0.15);
-  padding-top: 0.2em;
-  font-size: 1.5em;
-  line-height: 1.2em;
-  height: 14vh;
-  overflow-y: scroll;
-}
-
-::-webkit-scrollbar {
-  background-color: rgb(237, 205, 149);
-  opacity: 0.5;
-}
-
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.card-text {
-  text-shadow: 0px 2px 3px #555;
-}
-
-.card-img-top:hover {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
-  box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
-}
-
-.card-img-top:last-of-type:hover {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-  box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+  .card {
+    background-color: rgba(0, 0, 0, 0);
+    width: 15.95vw;
+    height: auto;
+    .card-header {
+      padding: 0;
+      text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+        0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+        0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+        0 20px 20px rgba(0, 0, 0, 0.15);
+      padding-top: 0.2em;
+      font-size: 1.5em;
+      line-height: 1.2em;
+      height: 10vh;
+      overflow-y: scroll;
+      font-size: 2em;
+    }
+    .card-text {
+      text-shadow: 0px 2px 3px #555;
+    }
+    .card-img-top:last-of-type:hover {
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+      -moz-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+      box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+    }
+  }
 }
 
 #hide {
-  visibility: hidden;
+  display: none;
 }
-
-//this is the input button css
 
 #input-box {
   position: relative;
   max-width: 50vw;
   margin: 150px auto 0;
-}
-
-#input-box input {
-  border: 0;
-  border-bottom: 2px solid #1976d2;
-  position: absolute;
-  bottom: 0vh;
-  right: 0vw;
-  width: 100%;
-  font-size: 2em;
-  line-height: 3em;
-  height: 3em;
-  text-align: center;
-  padding: 1em;
-  background: transparent;
-  color: #3d9970;
-}
-
-input:focus {
-  color: #ffdc00;
-  outline-color: rgb(65, 152, 113);
-}
-
-//this is for the loader
-
-$blue: rgb(0, 155, 255);
-
-.jawn {
-  position: relative;
-  background-color: #f8e71c;
-  width: 3em;
-  height: 3em;
-  margin: 0 auto;
-  border-radius: 50%;
-  top: 50vh;
-
-  &:after,
-  &:before {
-    content: "";
+  input {
+    border: 0;
+    border-bottom: 2px solid #1976d2;
     position: absolute;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-  }
-  &:after {
-    left: -3em;
-    top: -1.5em;
-    background-color: #c7c2a6;
-    transform-origin: 4.5em 3em;
-    animation: axis 1s linear infinite;
-  }
-  &:before {
-    left: -7.5em;
-    top: -4.5em;
-    background-color: $blue;
-    transform-origin: 9em 6em;
-    animation: axis 2s linear infinite;
-  }
-}
-
-@keyframes axis {
-  0% {
-    transform: rotateZ(0deg) translate3d(0, 0, 0);
-  }
-  100% {
-    transform: rotateZ(360deg) translate3d(0, 0, 0);
+    bottom: 0vh;
+    right: 0vw;
+    width: 100%;
+    font-size: 2em;
+    line-height: 3em;
+    height: 3em;
+    text-align: center;
+    padding: 1em;
+    background: transparent;
+    color: #3d9970;
+    &:focus {
+      outline-color: rgb(65, 152, 113);
+    }
   }
 }
 
@@ -219,10 +96,13 @@ $blue: rgb(0, 155, 255);
   }
 }
 
+// Smaller screens
 /* Portrait */
 @media only screen and (min-device-width: 375px) and (max-device-width: 767px) and (orientation: portrait) {
-  #input-box-inner > input {
-    font-size: 1.5em;
+  #input-box-inner {
+    input {
+      font-size: 1.5em;
+    }
   }
   .card-deck {
     display: flex;
@@ -249,62 +129,63 @@ $blue: rgb(0, 155, 255);
     font-size: 1.5em;
     bottom: 20vh;
   }
-  .card {
-    top: 5vh;
-    width: 14vw;
-    margin: 0;
-    border: none;
-  }
   .card-deck {
     position: relative;
     bottom: 20vh;
-  }
-  .card-header {
-    height: 20vh;
-  }
-  .card-text {
-    display: none;
-  }
-  .card-block {
-    display: none;
+    .card {
+      top: 5vh;
+      width: 14vw;
+      margin: 0;
+      border: none;
+      .card-header {
+        height: 20vh;
+      }
+      .card-block {
+        display: none;
+      }
+    }
   }
 }
 
+// Medium sized screens
 /* Portrait */
 @media only screen and (min-device-width: 767px) and (max-device-width: 1024px) and (orientation: portrait) {
-  #input-box-inner > input {
-    font-size: 1.5em;
+  #input-box-inner {
+    input {
+      font-size: 1.5em;
+    }
   }
   .card-deck {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  .card {
-    font-size: 1em;
-    width: 25vw;
-    height: 30vh;
-    padding-bottom: 2em;
+    .card {
+      font-size: 1em;
+      width: 25vw;
+      height: 30vh;
+      padding-bottom: 2em;
+    }
   }
 }
 
 /* Landscape */
 @media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  #input-box-inner > input {
-    font-size: 1.5em;
-    bottom: 0;
-  }
-  .card {
-    top: 5vh;
-    width: 14.8vw;
-    font-size: 1.5em;
+  #input-box-inner {
+    input {
+      font-size: 1.5em;
+      bottom: 0;
+    }
   }
   .card-deck {
     position: relative;
     bottom: 0;
-  }
-  .card-text {
-    display: none;
+    .card {
+      top: 5vh;
+      width: 14.8vw;
+      font-size: 1.5em;
+      .card-block {
+        display: none;
+      }
+    }
   }
 }
 
@@ -315,15 +196,15 @@ $blue: rgb(0, 155, 255);
     height: 50vh;
     padding-top: 0;
     border: none;
-  }
-  img.card-img-top {
-    height: 20vh;
-  }
-  .card-header {
-    height: 10vh;
-  }
-  .card-block {
-    display: none;
+    .card-img-top {
+      height: 20vh;
+    }
+    .card-header {
+      height: 10vh;
+    }
+    .card-block {
+      display: none;
+    }
   }
 }
 
@@ -332,12 +213,12 @@ $blue: rgb(0, 155, 255);
   .card {
     width: 30vw;
     border: none;
-  }
-  .card-header {
-    height: 10vh;
-  }
-  .card-block {
-    display: none;
+    .card-header {
+      height: 10vh;
+    }
+    .card-block {
+      display: none;
+    }
   }
 }
 
@@ -352,16 +233,13 @@ $blue: rgb(0, 155, 255);
     align-self: baseline;
     height: 80vh;
     padding-top: 0;
-  }
-  .card {
-    width: 30vw;
-    border: none;
-  }
-  .card-text {
-    visibility: hidden;
-  }
-  .card-block {
-    display: none;
+    .card {
+      width: 30vw;
+      border: none;
+      .card-block {
+        display: none;
+      }
+    }
   }
 }
 
@@ -376,19 +254,15 @@ $blue: rgb(0, 155, 255);
     align-self: baseline;
     height: 70vh;
     padding-top: 0;
-  }
-  .card-header {
-    height: 20vh;
-  }
-  .card {
-    // font-size: 1em;
-    width: 15vw;
-  }
-  .card-text {
-    visibility: hidden;
-  }
-  .card-block {
-    display: none;
+    .card {
+      width: 15vw;
+      .card-header {
+        height: 20vh;
+      }
+      .card-block {
+        display: none;
+      }
+    }
   }
 }
 
@@ -398,9 +272,9 @@ $blue: rgb(0, 155, 255);
     width: 15vw;
     font-size: 1em;
     border: none;
-  }
-  .card-block {
-    visibility: none;
+    .card-block {
+      display: none;
+    }
   }
 }
 
@@ -409,19 +283,19 @@ $blue: rgb(0, 155, 255);
     width: 27vw;
     height: 40vh;
     border: none;
-  }
-  .card-header {
-    height: 10vh;
-    font-size: 2em;
-  }
-  .card-block {
-    visibility: none;
+    .card-header {
+      height: 10vh;
+      font-size: 2em;
+    }
+    .card-block {
+      display: none;
+    }
   }
 }
 
 // Ipad Pro
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
-  #input-box input {
+  #input-box > input {
     font-size: 2.5em;
   }
   .card {
@@ -433,24 +307,23 @@ $blue: rgb(0, 155, 255);
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
   .card-deck {
     padding-top: 20vh;
+    .card {
+      font-size: 1.5em;
+      width: 16vw;
+    }
   }
+}
+
+/* ----------- Laptop Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
   .card {
-    font-size: 1.5em;
-    width: 16vw;
+    .card-block {
+      display: block;
+    }
+    .card-header {
+      height: 10vh;
+      font-size: 2em;
+      padding-bottom: 5vh;
+    }
   }
-}
-
-body::-webkit-scrollbar {
-  width: 3em;
-  background-color: black;
-}
-
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
 }

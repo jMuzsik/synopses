@@ -1,0 +1,44 @@
+//this is for the loader
+$blue: rgb(0, 155, 255);
+
+.jawn {
+  position: relative;
+  background-color: #f8e71c;
+  width: 3em;
+  height: 3em;
+  margin: 0 auto;
+  border-radius: 50%;
+  top: 50vh;
+
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+  }
+  &:after {
+    left: -3em;
+    top: -1.5em;
+    background-color: #c7c2a6;
+    transform-origin: 4.5em 3em;
+    animation: axis 1s linear infinite;
+  }
+  &:before {
+    left: -7.5em;
+    top: -4.5em;
+    background-color: $blue;
+    transform-origin: 9em 6em;
+    animation: axis 2s linear infinite;
+  }
+}
+
+@keyframes axis {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0, 0, 0);
+  }
+}

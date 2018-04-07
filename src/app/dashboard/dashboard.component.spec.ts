@@ -17,7 +17,6 @@ describe("DashboardComponent", () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
   let de: DebugElement;
-  let el: HTMLElement;
   let img: string;
   let data: Array<any>;
   let debugArr: Array<DebugElement>;
@@ -91,11 +90,12 @@ describe("DashboardComponent", () => {
   });
 
   it("should show loading view(jawn class) when data is not available", () => {
-    //WHEN DATA IS LOADING, DATA NOT AVAILABLE YET
+
+    // When data is loading
     de = fixture.debugElement.query(By.css(".jawn"));
     expect(de).toBeTruthy();
 
-    //WHEN DATA IS AVAILABLE
+    // When it is available
     component.dataAvailable = true;
     fixture.detectChanges();
     de = fixture.debugElement.query(By.css("#input-box"));
@@ -115,23 +115,23 @@ describe("DashboardComponent", () => {
         expect(de).toBeNull();
 
         // WHEN USER BEGINS TO LOOK, NO MATTER HOW MANY RESULTS FROM THE FUZZY SEARCH THERE SHOULD BE 5 CARDS
-        let input: DebugElement = fixture.debugElement.query(By.css("input"));
-        let el: any = input.nativeElement;
+        const input: DebugElement = fixture.debugElement.query(By.css("input"));
+        const element: any = input.nativeElement;
 
-        //CHECK FOR EXACT QUERY
-        el.value = "11111";
-        el.dispatchEvent(new Event("input"));
+        // Check for exact query
+        element.value = "11111";
+        element.dispatchEvent(new Event("input"));
         fixture.detectChanges();
         debugArr = fixture.debugElement.queryAll(By.css(".card"));
 
         expect(debugArr.length).toBe(5);
 
         expect(component.filteredItems[0]).toBe(0);
-        //HIDE EXISTS ON ALL CARDS THAT DO NOT HAVE A BOOK OBJECT ASSOCIATED
+        // Hide exists on all cards that do not have a book object associated
         expect(debugArr[0].attributes.id).toBe("hide");
         expect(component.filteredItems[1]).toBe(0);
         expect(debugArr[1].attributes.id).toBe("hide");
-        //RESULT[0] OF FUZZY SEARCH IS FILTEREDITEMS[2]
+        // Result[0] of fuzzy search is filteredItems[2]
         expect(component.filteredItems[2].exact_title).toBe("11111");
         expect(debugArr[2].attributes.id).toBe(undefined);
         expect(component.filteredItems[3]).toBe(0);
@@ -139,9 +139,8 @@ describe("DashboardComponent", () => {
         expect(component.filteredItems[4]).toBe(0);
         expect(debugArr[4].attributes.id).toBe("hide");
 
-        //CHECK A FUZZIER QUERY
-        el.value = "1";
-        el.dispatchEvent(new Event("input"));
+        // Check a fuzzier query
+        element.dispatchEvent(new Event("input"));
         fixture.detectChanges();
         debugArr = fixture.debugElement.queryAll(By.css(".card"));
 
@@ -149,13 +148,13 @@ describe("DashboardComponent", () => {
 
         expect(component.filteredItems[0]).toBe(0);
         expect(debugArr[0].attributes.id).toBe("hide");
-        //RESULT[0] OF FUZZY SEARCH IS FILTEREDITEMS[2]
+        // result[0] of fuzzy search is filteredItems[2]
         expect(component.filteredItems[1].exact_title).toBe("21222");
         expect(debugArr[1].attributes.id).toBe(undefined);
-        //RESULT[1] OF FUZZY SEARCH IS FILTEREDITEMS[1]
+        // Result[1] of fuzzy search is filteredItems[1]
         expect(component.filteredItems[2].exact_title).toBe("11111");
         expect(debugArr[2].attributes.id).toBe(undefined);
-        //RESULT[2] OF FUZZY SEARCH IS FILTEREDITEMS[3]
+        // result[2] of fuzzy search is filteredItems[3]
         expect(component.filteredItems[3].exact_title).toBe("51555");
         expect(debugArr[3].attributes.id).toBe(undefined);
         expect(component.filteredItems[4]).toBe(0);
@@ -171,22 +170,23 @@ describe("DashboardComponent", () => {
         spyOn(component, "reroute");
         component.dataAvailable = true;
         fixture.detectChanges();
-        //FIRST SET UP THE PAGE WITH CARDS SO SOMETHING CAN BE CLICKED, THIS ONLY HAS THE ONE CARD AT POSITION 2 AS SHOWN IN LAST TEST
-        let input: DebugElement = fixture.debugElement.query(By.css("input"));
-        let el: any = input.nativeElement;
-        el.value = "11111";
-        el.dispatchEvent(new Event("input"));
+        // First set up the page with cards so something can be clicked, only has one card at position 2 as shown
+        const input: DebugElement = fixture.debugElement.query(By.css("input"));
+        const element: any = input.nativeElement;
+        element.value = "11111";
+        element.dispatchEvent(new Event("input"));
 
         fixture.detectChanges();
-        //NOW GRAB THE ONLY CLICK ELEMENT AVAILABLE ON THE PAGE, EVEN HIDDEN ELEMENTS HAVE THIS CLASS, SO GRAB BY DIFFERENT ALT
+        // Now grab the only click element available on the page, even hidden 
+        // elements have this glass, so grab different alt
         debugArr = fixture.debugElement.queryAll(
           By.css("img[alt='Image of book']")
         );
         expect(debugArr.length).toBe(1);
-        //CLICK TO CALL REROUTE
+        // Click to call reroute
         debugArr[0].nativeElement.dispatchEvent(new Event("click"));
         fixture.detectChanges();
-        //IT WAS CALLED WITH THE RIGHT VALUE AND CALLED IN GENERAL
+        // It was called with the right value and called in general
         expect(component.reroute).toHaveBeenCalledWith("url_1");
         expect(component.reroute).toHaveBeenCalled();
       });
