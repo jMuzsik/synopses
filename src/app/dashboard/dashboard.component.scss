@@ -2,37 +2,85 @@
 @import "../../scss/scrollbar";
 @import "../../scss/loader";
 
+/* ---------- Mobile first - smallest screens first and landscape focus then portrait -----------*/
+
+%hover-etc {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+  box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+}
+.input-box {
+  position: relative;
+  top: -20vh;
+  max-width: 50vw;
+  margin: 150px auto 0;
+  .input-box-inner {
+    .input-book {
+      border: 0;
+      border-bottom: 2px solid #1976d2;
+      position: absolute;
+      bottom: 0vh;
+      right: 0vw;
+      width: 100%;
+      font-size: 1em;
+      line-height: 1em;
+      height: 2em;
+      text-align: center;
+      padding: 0.75em;
+      background: transparent;
+      color: #3d9970;
+      &:focus {
+        outline-color: rgb(65, 152, 113);
+      }
+    }
+  }
+}
+
 .card-deck {
-  padding: 5vh 5vw;
+  display: flex;
+  flex-flow: row wrap;
+  align-self: baseline;
+  align-items: center;
+  height: 70vh;
   justify-content: center;
+  position: relative;
+  top: -10vh;
   .card {
     background-color: rgba(0, 0, 0, 0);
+    border: none;
     width: 15.95vw;
-    height: auto;
     .card-header {
+      background-color: rgba(218, 197, 159, 0.7);
+      border-radius: 10%;
       padding: 0;
-      text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
-        0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
-        0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
-        0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
-        0 20px 20px rgba(0, 0, 0, 0.15);
       padding-top: 0.2em;
-      font-size: 1.5em;
-      line-height: 1.2em;
       height: 10vh;
-      overflow-y: scroll;
-      font-size: 2em;
+      display: table;
+      .title {
+        font-size: 0.75em;
+        font-weight: bolder;
+        line-height: 1em;
+        display: table-cell;
+        vertical-align: middle;
+        width: 15.95vw;
+        text-align: center;
+      }
     }
     .card-text {
-      text-shadow: 0px 2px 3px #555;
+      display: none;
+      z-index: 0;
     }
-    .card-img-top:last-of-type:hover {
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-      -moz-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-      box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+    .card-img-top:hover {
+      @extend %hover-etc;
+    }
+    .card-img-top:focus {
+      @extend %hover-etc;
+    }
+    .card-img-top:focus {
+      @extend %hover-etc;
     }
   }
 }
@@ -41,289 +89,220 @@
   display: none;
 }
 
-#input-box {
-  position: relative;
-  max-width: 50vw;
-  margin: 150px auto 0;
-  input {
-    border: 0;
-    border-bottom: 2px solid #1976d2;
-    position: absolute;
-    bottom: 0vh;
-    right: 0vw;
-    width: 100%;
-    font-size: 2em;
-    line-height: 3em;
-    height: 3em;
-    text-align: center;
-    padding: 1em;
-    background: transparent;
-    color: #3d9970;
-    &:focus {
-      outline-color: rgb(65, 152, 113);
-    }
-  }
-}
-
-//IMAGES OTHERWISE LOOK FUNNY, THIS PX VALUE IS THE SIZE OF CORRESPONDING IMAGES IN THE DATASET
-.uniform-image-size {
-  opacity: 0.7;
-  width: 97.988px;
-  height: 153.984px;
-}
-
-@media only screen and (min-device-width: 100px) and (max-device-width: 374px) and (orientation: portrait) {
-  #input-box-inner > input {
-    font-size: 1.5em;
-  }
-  .card-deck {
-    display: flex;
-    flex-wrap: wrap;
-    align-self: baseline;
-    height: 90vh;
-    padding-top: 0;
-  }
-  .card {
-    // font-size: 1em;
-    width: 25vw;
-    border: none;
-  }
-  .card-text {
-    visibility: hidden;
-  }
-  .card-block {
-    display: none;
-  }
-}
-
-// Smaller screens
-/* Portrait */
-@media only screen and (min-device-width: 375px) and (max-device-width: 767px) and (orientation: portrait) {
-  #input-box-inner {
-    input {
-      font-size: 1.5em;
-    }
-  }
-  .card-deck {
-    display: flex;
-    flex-wrap: wrap;
-    align-self: baseline;
-    height: 90vh;
-  }
-  .card {
-    // font-size: 1em;
-    width: 25vw;
-    border: none;
-  }
-  .card-text {
-    display: none;
-  }
-  .card-block {
-    display: none;
-  }
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 380px) and (max-device-width: 812px) and (orientation: landscape) {
-  #input-box-inner > input {
-    font-size: 1.5em;
-    bottom: 20vh;
-  }
-  .card-deck {
-    position: relative;
-    bottom: 20vh;
-    .card {
-      top: 5vh;
-      width: 14vw;
-      margin: 0;
-      border: none;
-      .card-header {
-        height: 20vh;
-      }
-      .card-block {
-        display: none;
+/* -------- Landscape continuing when screen >= 570 in width --------*/
+@media only screen and (min-device-width: 560px) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        font-size: 1.7em;
+        line-height: 1.8em;
+        height: 2em;
+        top: -15vh;
       }
     }
   }
-}
-
-// Medium sized screens
-/* Portrait */
-@media only screen and (min-device-width: 767px) and (max-device-width: 1024px) and (orientation: portrait) {
-  #input-box-inner {
-    input {
-      font-size: 1.5em;
-    }
-  }
   .card-deck {
-    display: flex;
-    flex-wrap: wrap;
     .card {
-      font-size: 1em;
-      width: 25vw;
-      height: 30vh;
-      padding-bottom: 2em;
-    }
-  }
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  #input-box-inner {
-    input {
-      font-size: 1.5em;
-      bottom: 0;
-    }
-  }
-  .card-deck {
-    position: relative;
-    bottom: 0;
-    .card {
-      top: 5vh;
-      width: 14.8vw;
-      font-size: 1.5em;
-      .card-block {
-        display: none;
-      }
-    }
-  }
-}
-
-// Pixel 2XL
-@media only screen and (-webkit-min-device-pixel-ratio: 1.77) and (orientation: landscape) {
-  .card {
-    font-size: 0.75em;
-    height: 50vh;
-    padding-top: 0;
-    border: none;
-    .card-img-top {
-      height: 20vh;
-    }
-    .card-header {
-      height: 10vh;
-    }
-    .card-block {
-      display: none;
-    }
-  }
-}
-
-// Pixel 2XL
-@media only screen and (-webkit-min-device-pixel-ratio: 1.77) and (orientation: portrait) {
-  .card {
-    width: 30vw;
-    border: none;
-    .card-header {
-      height: 10vh;
-    }
-    .card-block {
-      display: none;
-    }
-  }
-}
-
-//Iphone 5
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
-  #input-box-inner > input {
-    font-size: 1.5em;
-  }
-  .card-deck {
-    display: flex;
-    flex-wrap: wrap;
-    align-self: baseline;
-    height: 80vh;
-    padding-top: 0;
-    .card {
-      width: 30vw;
-      border: none;
-      .card-block {
-        display: none;
-      }
-    }
-  }
-}
-
-//iphone 5
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
-  #input-box-inner > input {
-    font-size: 1.5em;
-  }
-  .card-deck {
-    display: flex;
-    flex-wrap: wrap;
-    align-self: baseline;
-    height: 70vh;
-    padding-top: 0;
-    .card {
+      padding: 0.3em;
       width: 15vw;
       .card-header {
-        height: 20vh;
+        .title {
+          font-size: 1.1em;
+          line-height: 1.3em;
+        }
       }
-      .card-block {
-        display: none;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 750px) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        top: -15vh;
       }
     }
   }
-}
-
-// IPad
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  .card {
-    width: 15vw;
-    font-size: 1em;
-    border: none;
-    .card-block {
-      display: none;
-    }
-  }
-}
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  .card {
-    width: 27vw;
-    height: 40vh;
-    border: none;
-    .card-header {
-      height: 10vh;
-      font-size: 2em;
-    }
-    .card-block {
-      display: none;
-    }
-  }
-}
-
-// Ipad Pro
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
-  #input-box > input {
-    font-size: 2.5em;
-  }
-  .card {
-    font-size: 1.5em;
-  }
-}
-
-// Ipad Pro
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
   .card-deck {
-    padding-top: 20vh;
     .card {
-      font-size: 1.5em;
-      width: 16vw;
+      padding: 0.3em;
+      width: 15vw;
+      .card-header {
+        .title {
+        }
+      }
     }
   }
 }
 
-/* ----------- Laptop Screens ----------- */
-@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
-  .card {
-    .card-block {
-      display: block;
+@media only screen and (min-device-width: 1000px) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        font-size: 2.3em;
+        line-height: 2.5em;
+        height: 2.8em;
+        top: 7vh;
+      }
     }
-    .card-header {
-      height: 10vh;
-      font-size: 2em;
-      padding-bottom: 5vh;
+  }
+  .card-deck {
+    top: 0;
+    .card {
+      width: 16vw;
+      .card-header {
+        .title {
+          font-size: 1.5em;
+          line-height: 1.7em;
+        }
+      }
+      .card-text {
+        display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-width: 1250px) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        font-size: 2em;
+        line-height: 2.2em;
+        height: 2.4em;
+        top: 10vh;
+      }
+    }
+  }
+  .card-deck {
+    margin: 0;
+    .card {
+      width: 13vw;
+      .card-header {
+        .title {
+          font-size: 1.7em;
+          line-height: 1.9em;
+        }
+      }
+    }
+  }
+}
+
+/* -------- Now start working towards the portrait orientation (320px to begin) --------*/
+
+@media only screen and (min-device-height: 320px) and (orientation: portrait) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        font-size: 1.2em;
+        line-height: 1.2em;
+        height: 2em;
+        top: -15vh;
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-height: 450px) and (orientation: portrait) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        top: -5vh;
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-height: 550px) and (orientation: portrait) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        font-size: 1.5em;
+        line-height: 1.5em;
+        height: 2.5em;
+        top: 2vh;
+      }
+    }
+  }
+  .card-deck {
+    .card {
+      width: 33vw;
+      height: 40vh;
+      padding: 1em;
+      margin: auto;
+      .card-header {
+        .title {
+          width: 33vw;
+          font-size: 1.2em;
+          line-height: 1.3em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-height: 800px) and (orientation: portrait) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        font-size: 2em;
+        line-height: 2.3em;
+        height: 2.5em;
+        top: 5vh;
+      }
+    }
+  }
+  .card-deck {
+    padding-top: 5vh;
+    .card {
+      height: 45vh;
+      .card-header {
+        .title {
+          font-size: 1.4em;
+          line-height: 1.6em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-height: 950px) and (orientation: portrait) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        top: 10vh;
+      }
+    }
+  }
+  .card-deck {
+    top: 0;
+    .card {
+      height: 40vh;
+      width: 26vw;
+    }
+  }
+}
+
+@media only screen and (min-device-height: 1025px) and (orientation: portrait) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        font-size: 2.3em;
+        line-height: 2.6em;
+        height: 3.2em;
+        top: 15vh;
+      }
+    }
+  }
+  .card-deck {
+    .card {
+      width: 23vw;
+      .card-header {
+        .title {
+          font-size: 1.8em;
+          line-height: 2em;
+        }
+      }
     }
   }
 }

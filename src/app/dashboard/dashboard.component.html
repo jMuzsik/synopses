@@ -1,7 +1,7 @@
 <div *ngIf="dataAvailable; else data_not_available">
-  <div id="input-box">
-    <div id="input-box-inner">
-      <input #myInput placeholder="Book name..." (input)="filterItem(myInput?.value)" />
+  <div class="input-box">
+    <div class="input-box-inner">
+      <input #myInput class="input-book" placeholder="Book name..." (input)="filterItem(myInput?.value)" />
     </div>
   </div>
 
@@ -9,10 +9,17 @@
     <div *ngFor="let book of filteredItems">
       <div *ngIf="book !== 0; else do_this">
         <div class="card">
-          <div class="card-header">{{book?.exact_title}}</div>
-
+          <div *ngIf="book?.exact_title.length > 30; else whole_title">
+            <div class="card-header">
+              <p class="title">{{book?.exact_title.slice(0, 30)}} ...</p>
+            </div>
+          </div>
+          <ng-template #whole_title>
+            <div class="card-header">
+              <p class="title">{{book?.exact_title}}</p>
+            </div>
+          </ng-template>
           <img class="card-img-top" (click)="reroute(book?.url_title)" src="{{book?.front_cover}}" alt="Image of book">
-
           <div class="card-block">
             <div class="scroll-up">
               <p class="card-text" [innerHTML]="book?.goodreads_description"></p>

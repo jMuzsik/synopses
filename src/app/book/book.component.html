@@ -2,21 +2,15 @@
   <!-- -----------------INITIALDATA-------------- -->
   <!-- CARD TAKING UP 25VW RESPONSIVELY -->
 
-  <div id="left-card" class="card w-25 author-book-card">
+  <div class="card author-book-card">
     <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a *ngIf="!showBook" class="nav-link book-link" (click)="alterView()" style="cursor: pointer;">
-            <h6>Check out the Book</h6>
-          </a>
-        </li>
+      <a *ngIf="!showBook" class="nav-link toggle" (click)="alterView()" style="cursor: pointer;">
+        <h6 class="toggle-text">Book Info</h6>
+      </a>
 
-        <li class="nav-item">
-          <a *ngIf="showBook" class="nav-link author-link" (click)="alterView()" style="cursor: pointer;">
-            <h6>Check out the Author</h6>
-          </a>
-        </li>
-      </ul>
+      <a *ngIf="showBook" class="nav-link toggle" (click)="alterView()" style="cursor: pointer;">
+        <h6 class="toggle-text">Author Info</h6>
+      </a>
     </div>
 
     <!-- IF BOOK SHOW IT, ELSE SHOW AUTHOR -->
@@ -54,7 +48,7 @@
 
   <!-- SIMILAR TO PREVIOUS CARD BUT ONLY WITH TEXT, NOTHING ELSE -->
 
-  <div id="right-card" class="card book-description w-25">
+  <div class="card book-description">
     <div class="card-body">
       <div class="card-text" [innerHTML]="book?.amazonReview"></div>
 
@@ -67,25 +61,25 @@
   <!-- ---------------------------BUTTONS -------------------------- -->
   <!-- THIS ONE NEEDS TO BE CHECKED IF PUT REQUEST IS NECESSITATED -->
 
-  <button type="button" class="btn btn-primary" id="amazon" (click)="checkForAmazonReviews()">
+  <button type="button" class="btn btn-primary amazon-button" (click)="checkForAmazonReviews()">
     <i class="fa fa-amazon fa-3x" aria-hidden="true">
       <span class="tooltip">Amazon Reviews</span>
     </i>
   </button>
 
-  <button type="button" class="btn btn-primary" id="goodreads" (click)="toggle('goodreadsReviewVisible'); toggleButton()">
+  <button type="button" class="btn btn-primary goodreads-button" (click)="toggle('goodreadsReviewVisible'); toggleButton()">
     <i class="fa fa-eye fa-3x" aria-hidden="true">
       <span class="tooltip">Goodreads Reviews</span>
     </i>
   </button>
 
-  <button type="button" class="btn btn-primary" id="wikipedia" (click)="toggle('wikiVisible'); toggleButton()">
+  <button type="button" class="btn btn-primary wikipidia-button" (click)="toggle('wikiVisible'); toggleButton()">
     <i class="fa fa-wikipedia-w fa-3x" aria-hidden="true">
       <span class="tooltip">Author's Wikipedia Text</span>
     </i>
   </button>
 
-  <button type="button" class="btn btn-primary" id="similar-books" (click)="toggle('amazonSimilarBooksVisible'); toggleButton()">
+  <button type="button" class="btn btn-primary similar-books-button" (click)="toggle('amazonSimilarBooksVisible'); toggleButton()">
     <i class="fa fa-clone fa-3x" aria-hidden="true">
       <span class="tooltip">Similar Books</span>
     </i>
@@ -94,11 +88,11 @@
   <!-- -----------------AMAZON REVIEWS IFRAME--------------- -->
 
   <div (click)="checkForAmazonReviews()" *ngIf="buttonToggle?.amazonReviewVisible">
-    <iframe id="amazon-reviews" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.amazonCustomerReviews)" width="100%" height="100%"
+    <iframe class="amazon-reviews" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.amazonCustomerReviews)" width="100%" height="100%"
       frameborder="0"></iframe>
 
     <div *ngIf="buttonVisible">
-      <button class="btn btn-dark" type="button" id="general-button" (click)="closeModal()">
+      <button class="btn btn-dark general-button" type="button" (click)="closeModal()">
         <i class="fa fa-window-close fa-2x"></i>
       </button>
     </div>
@@ -107,11 +101,11 @@
   <!-- GOODREADS REVIEWS IFRAME -->
 
   <div *ngIf="buttonToggle?.goodreadsReviewVisible">
-    <iframe id="goodreads-reviews" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.goodreadsReviewsWidget)" width="100%"
+    <iframe class="goodreads-reviews" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.goodreadsReviewsWidget)" width="100%"
       height="100%" frameborder="0"></iframe>
 
     <div *ngIf="buttonVisible">
-      <button class="btn btn-dark" type="button" id="general-button" (click)="closeModal()">
+      <button class="btn btn-dark general-button" type="button" (click)="closeModal()">
         <i class="fa fa-window-close fa-2x"></i>
       </button>
     </div>
@@ -120,7 +114,7 @@
   <!-- AUTHOR WIKIPEDIA TEXT -->
 
   <div *ngIf="buttonToggle?.wikiVisible">
-    <div id="wikipedia-text" class="card descriptions w-75">
+    <div class="card descriptions wikipedia-text">
       <div class="card-body">
         <div class="card-text">
           <!-- IT IS AN ARRAY THAT NEEDS TO BE ALTERED VISUALLY -->
@@ -144,7 +138,7 @@
     </div>
 
     <div *ngIf="buttonVisible">
-      <button class="btn btn-dark" type="button" id="general-button" (click)="closeModal()">
+      <button class="btn btn-dark general-button" type="button" (click)="closeModal()">
         <i class="fa fa-window-close fa-2x"></i>
       </button>
     </div>
@@ -153,7 +147,7 @@
   <!-- AMAZON, PENGUIN, AND GOODREADS SIMILAR BOOKS DATA -->
 
   <div *ngIf="buttonToggle?.amazonSimilarBooksVisible">
-    <div id="similar-books-div" class="card descriptions w-75">
+    <div class="card descriptions similar-books-div">
       <div class="card-body">
         <div class="card-text">
           <h4>Amazon Similar Books</h4>
@@ -198,66 +192,66 @@
                     <img class="uniform-image-size" src="http://www.asei.co.id/wp-content/themes/linstar/assets/images/default.jpg" alt="default image when no image (image of space)">
                   </div>
                 </ng-template>
-                <div class="border">
-                <div *ngIf=" book?.title[0].length> 14; else whole_title">
-                  <a href="{{book?.link[0]}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title[0].slice(0, 12)}}...</a>
+                <div>
+                  <div *ngIf=" book?.title[0].length> 14; else whole_title">
+                    <a href="{{book?.link[0]}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title[0].slice(0, 12)}}...</a>
+                  </div>
+                  <ng-template #whole_title>
+                    <a href="{{book?.link[0]}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title[0]}}</a>
+                  </ng-template>
                 </div>
-                <ng-template #whole_title>
-                  <a href="{{book?.link[0]}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title[0]}}</a>
-                </ng-template>
               </div>
+            </ng-container>
           </div>
-          </ng-container>
-        </div>
 
-        <br>
-        <br>
-
-        <h4>Penguin Similar Books</h4>
-
-        <h5 class="text-muted">
-          All link to Penguin Random House book page.
-        </h5>
-
-        <br>
-
-        <div *ngFor="let book of book?.penguinData">
-          <div class="border-bottom">
-            <a style="text-align: left;" href="{{book?.url}}" alt="url to book" target="_blank">
-              <h5>{{book?.name}}</h5>
-            </a>
-
-            <h6 style="text-align: left">
-              <pre>{{book?.author}}</pre>
-            </h6>
-
-            <div style="text-align: left" [innerHTML]="book?.description[0]"></div>
-
-            <!-- SOMETIMES A SECOND DESCRIPTION EXISTS -->
-
-            <div *ngIf="book?.description?.length">
-              <br>
-              <div style="text-align: left;" [innerHTML]="book?.description[1]"></div>
-            </div>
-          </div>
           <br>
+          <br>
+
+          <h4>Penguin Similar Books</h4>
+
+          <h5 class="text-muted">
+            All link to Penguin Random House book page.
+          </h5>
+
+          <br>
+
+          <div *ngFor="let book of book?.penguinData">
+            <div class="border-bottom">
+              <a style="text-align: left;" href="{{book?.url}}" alt="url to book" target="_blank">
+                <h5>{{book?.name}}</h5>
+              </a>
+
+              <h6 style="text-align: left">
+                <pre>{{book?.author}}</pre>
+              </h6>
+
+              <div style="text-align: left" [innerHTML]="book?.description[0]"></div>
+
+              <!-- SOMETIMES A SECOND DESCRIPTION EXISTS -->
+
+              <div *ngIf="book?.description?.length">
+                <br>
+                <div style="text-align: left;" [innerHTML]="book?.description[1]"></div>
+              </div>
+            </div>
+            <br>
+          </div>
         </div>
       </div>
+
+      <footer class="blockquote-footer">
+        <div class="text-muted">
+          From Penguin Publishing, Amazon, and Goodreads
+        </div>
+      </footer>
     </div>
 
-    <footer class="blockquote-footer">
-      <div class="text-muted">
-        From Penguin Publishing, Amazon, and Goodreads
-      </div>
-    </footer>
+    <div *ngIf="buttonVisible">
+      <button class="btn btn-dark general-button" type="button" (click)="closeModal()">
+        <i class="fa fa-window-close fa-2x"></i>
+      </button>
+    </div>
   </div>
-
-  <div *ngIf="buttonVisible">
-    <button class="btn btn-dark" type="button" id="general-button" (click)="closeModal()">
-      <i class="fa fa-window-close fa-2x"></i>
-    </button>
-  </div>
-</div>
 </div>
 
 <!-- DATA IS LOADING, SHOW THIS -->

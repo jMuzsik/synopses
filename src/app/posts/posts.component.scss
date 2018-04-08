@@ -1,304 +1,101 @@
-// Post CSS
-#post {
-  width: 50vw;
+/*---------------- Mobile First, defaults here -----------------*/
+
+.post {
   position: fixed;
-  top: 50%;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
-  #author,
-  #title {
-    margin: 0;
-    background: #39cccc;
-    color: #001f3f;
+  z-index: 99;
+  .alert {
+    .alert-heading {
+      text-decoration: underline;
+      font-weight: bold;
+      color: rgb(196, 26, 26);
+      font-size: 1.2em;
+    }
+    .alert-p {
+      font-size: 1em;
+    }
   }
-  #post-button {
+  .author,
+  .title {
+    background: #eeffa2;
+    color: black;
+    font-size: 1.2em;
+  }
+  .post-button {
+    width: 30vw;
+    font-size: 1.4em;
     background: #3d9970;
     color: #ffdc00;
   }
 }
-.alert-heading {
-  text-decoration: underline;
-  font-weight: bold;
-  color: red;
-}
-.alert-p {
-  font-size: 1.5em;
-}
+
 .button-replacement {
-  @extend #post-button;
+  @extend .post-button;
 }
 
-// Small screens
-@media only screen and (min-device-width: 100px) and (max-device-width: 374px) and (orientation: portrait) {
-  .alert {
-    font-size: 0.75em;
-    margin: 0;
-    padding: 0.3em;
-  }
-  #author,
-  #title {
-    font-size: 1em;
-  }
-}
-
-/* Medium (iphones, etc) */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) {
-  #post {
-    width: 50vw;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 9999;
-    #author,
-    #title {
-      font-size: 1em;
-      margin: 0;
-      background: #39cccc;
-      color: #001f3f;
+@media only screen and (max-width: 500px) and (min-height: 800px) {
+  .post {
+    width: 60vw;
+    .alert {
+      .alert-heading {
+        font-size: 1.4em;
+      }
+      .alert-p {
+        font-size: 1.2em;
+        line-height: 1.3em;
+      }
     }
-    #post-button {
-      font-size: 1em;
+    .author,
+    .title {
+      font-size: 1.3em;
     }
-  }
-  .alert {
-    margin: 0;
-    padding: 0.3em;
-  }
-  .alert-p {
-    font-size: 1em;
-  }
-  .alert-heading {
-    font-size: 1.5em;
-  }
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  #post {
-    width: 50vw;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 9999;
-    #author,
-    #title {
-      font-size: 1em;
-      margin: 0;
-      background: #39cccc;
-      color: #001f3f;
-    }
-    #post-button {
-      font-size: 1em;
-    }
-  }
-  .alert {
-    margin: 0;
-    padding: 0.3em;
-  }
-  .alert-p {
-    font-size: 1em;
-  }
-  .alert-heading {
-    font-size: 1.5em;
-  }
-}
-
-/* Larger screens (Ipad, etc) */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  #post {
-    width: 50vw;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 9999;
-    #author,
-    #title {
-      font-size: 1em;
-      margin: 0;
-      background: #39cccc;
-      color: #001f3f;
-    }
-    #post-button {
-      font-size: 1em;
-    }
-  }
-  .alert {
-    margin: 0;
-    padding: 0.3em;
-  }
-  .alert-p {
-    font-size: 1em;
-  }
-  .alert-heading {
-    font-size: 1.5em;
-  }
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 813px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-  #post {
-    width: 50vw;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 9999;
-    #author,
-    #title {
-      font-size: 1em;
-      margin: 0;
-      background: #39cccc;
-      color: #001f3f;
-    }
-    #post-button {
-      font-size: 1em;
-    }
-  }
-  .alert {
-    margin: 0;
-    padding: 0.3em;
-  }
-  .alert-p {
-    font-size: 1em;
-  }
-  .alert-heading {
-    font-size: 1.5em;
-  }
-}
-
-/* Regular laptop */
-@media only screen and (min-device-width: 1024px) and (max-device-width: 2000px) and (orientation: landscape) {
-  #post-button {
-    font-size: 2em;
-  }
-}
-
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
-  #post-button {
-    font-size: 2em;
-  }
-}
-
-//Iphone 5
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
-  .alert {
-    font-size: 0.75em;
-    margin: 0;
-    padding: 0.3em;
-  }
-  #author,
-  #title {
-    font-size: 1em;
-  }
-}
-
-//iphone 5
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
-  .alert {
-    font-size: 0.5em;
-    margin: 0;
-    padding: 0.3em;
-  }
-  #author,
-  #title {
-    font-size: 1em;
-  }
-}
-
-// iphone 6 etc
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .alert {
-    font-size: 1em;
-    margin: 0;
-    padding: 0.3em;
-  }
-  #author,
-  #title {
-    font-size: 1em;
-  }
-}
-
-// iphone 6 etc
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  .alert {
-    font-size: 0.5em;
-    margin: 0;
-    padding: 0.3em;
-  }
-  #author,
-  #title {
-    font-size: 1em;
-  }
-}
-
-// IPad
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  .alert {
-    font-size: 1.5em;
-  }
-  #post {
-    #author,
-    #title {
-      font-size: 2em;
-    }
-    #post-button {
-      font-size: 2em;
+    .post-button {
+      width: 45vw;
     }
   }
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  .alert {
-    font-size: 1.5em;
-  }
-  #post {
-    #author,
-    #title {
-      font-size: 2em;
+@media only screen and (min-width: 1000px) {
+  .post {
+    .alert {
+      .alert-heading {
+        font-size: 1.8em;
+      }
+      .alert-p {
+        font-size: 1.6em;
+        line-height: 1.7em;
+      }
     }
-    #post-button {
-      font-size: 2em;
+    .author,
+    .title {
+      font-size: 1.5em;
     }
-  }
-}
-
-// Ipad Pro
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
-  .alert {
-    font-size: 2.5em;
-    .alert-p {
-      line-height: 1.5em;
-    }
-  }
-  #post {
-    #author,
-    #title {
-      font-size: 3.5em;
-    }
-    #post-button {
-      font-size: 3.5em;
+    .post-button {
+      font-size:1.7em;
     }
   }
 }
 
-// Ipad Pro
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
-  .alert {
-    font-size: 2em;
-    .alert-heading {
-      font-size: 2em;
+
+@media only screen and (min-height: 1000px) and (orientation: portrait) {
+  .post {
+    .alert {
+      .alert-heading {
+        font-size: 2.2em;
+      }
+      .alert-p {
+        font-size: 1.9em;
+        line-height: 2em;
+      }
     }
-    .alert-p {
-      line-height: 1em;
+    .author,
+    .title {
+      font-size: 1.8em;
     }
-  }
-  #post {
-    #author,
-    #title {
-      font-size: 3.5em;
-    }
-    #post-button {
-      font-size: 3.5em;
+    .post-button {
+      font-size: 2.1em;
     }
   }
 }
