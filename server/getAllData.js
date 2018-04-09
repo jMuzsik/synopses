@@ -34,7 +34,7 @@
         allTheData.exact_title = isbnData.exact_title;
         // If integral process failed, verfify immidiately in front-end
         if (isbnData.exact_title === "failed") {
-          return "failed";
+          throw new Error("failed");
         } else {
           return apiCalls.getAmazonData(allTheData.isbn);
         }
@@ -56,7 +56,6 @@
             apiCalls.getGoodreadsData2(option, function(goodreadsData) {
               allTheData.goodreads_description =
                 goodreadsData.goodreads_description;
-                console.log(goodreadsData.author_name, author)
               if (goodreadsData.author_name.length === 0) {
                 allTheData.author_name = author;
               } else allTheData.author_name = goodreadsData.author_name;
@@ -80,7 +79,7 @@
       })
       .catch(function(err) {
         console.log("FUNDAMENTAL ERROR IN GETTING DATA", err);
-        finalCallback(allTheData);
+        finalCallback("failed");
         return;
       });
   }

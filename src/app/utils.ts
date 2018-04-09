@@ -40,7 +40,6 @@ export function createBookObject(data: Object): Book {
   book["isbn"] = data["isbn"];
   book["date"] = data["created_at"];
   book["updated"] = data["updated_at"];
-  console.log(book);
   return book;
 }
 

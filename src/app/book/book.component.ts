@@ -130,7 +130,6 @@ export class BookComponent implements OnInit {
         this.book = createBookObject(data);
         this.periods = data["periods"];
         this.book["penguinData"] = reformatPenguinData(this.book.penguinData);
-        console.log(this.book)
         if (Array.isArray(this.book["amazonSimilarProducts"])) {
           this.book["amazonSimilarProducts"] = setUpAmazonSimilarBooks(
             this.book["amazonSimilarProducts"]
