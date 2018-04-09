@@ -11,6 +11,7 @@ const getAmazonData = apiCalls.getAmazonData;
 router.get("/", (req, res) => {
   Book.find({})
     .then(books => {
+      console.log('never happens?')
       res.status(200).send(books);
     })
     .catch(err => {

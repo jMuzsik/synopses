@@ -139,7 +139,7 @@
   .input-box {
     .input-box-inner {
       .input-book {
-        font-size: 2.3em;
+        font-size: 2em;
         line-height: 2.5em;
         height: 2.8em;
         top: 7vh;
@@ -152,8 +152,8 @@
       width: 16vw;
       .card-header {
         .title {
-          font-size: 1.5em;
-          line-height: 1.5em;
+          font-size: 1.2em;
+          line-height: 1.2em;
         }
       }
       .card-text {
@@ -240,8 +240,8 @@
     .input-box-inner {
       .input-book {
         font-size: 2em;
-        line-height: 2.3em;
-        height: 2.5em;
+        line-height: 2em;
+        height: 2.1em;
         top: 5vh;
       }
     }
@@ -253,7 +253,7 @@
       .card-header {
         .title {
           font-size: 1.4em;
-          line-height: 1.6em;
+          line-height: 1.4em;
         }
       }
     }
@@ -294,7 +294,31 @@
       .card-header {
         .title {
           font-size: 1.8em;
-          line-height: 2em;
+          line-height: 1.8em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-height: 1024px) and (min-device-width: 1000px) {
+  .input-box {
+    .input-box-inner {
+      .input-book {
+        font-size: 2.3em;
+        line-height: 2.6em;
+        height: 3.2em;
+        top: 15vh;
+      }
+    }
+  }
+  .card-deck {
+    top: 5vh;
+    .card {
+      .card-header {
+        .title {
+          font-size: 1.8em;
+          line-height: 1.8em;
         }
       }
     }
