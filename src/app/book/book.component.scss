@@ -78,6 +78,7 @@
   right: 20vw;
   top: 25vh;
   background-color: rgba(255, 0, 0, 0);
+  border-color: yellow;
   .fa {
     color: black;
   }
@@ -243,7 +244,21 @@ i {
       }
     }
   }
-
+  .general-button {
+    left: 83vw;
+  }
+  .similar-books-div {
+    .card-body {
+      .card-text {
+        .goodreads-links {
+          .goodreads-link {
+            width: 33%;
+            padding: 0.2em;
+          }
+        }
+      }
+    }
+  }
   .book-description {
     .card-body {
       .card-text {
@@ -273,7 +288,17 @@ i {
       }
     }
   }
-
+  .similar-books-div {
+    .card-body {
+      .card-text {
+        .goodreads-links {
+          .goodreads-link {
+            width: 30%;
+          }
+        }
+      }
+    }
+  }
   .book-description {
     .card-body {
       .card-text {

@@ -12,17 +12,20 @@ import { createUrlToRedirect } from "../utils";
   styleUrls: ["./posts.component.scss"],
 })
 export class PostsComponent {
-  // EMIT EVENT TO AFFECT STATE IN APP COMPONENT
+  // to app component
   @Output() submission = new EventEmitter<boolean>();
 
-  // HAS BOOK BEEN CREATED YET?
+  // has book been created yet?
   bookPreviouslyCreated = false;
 
-  // LOTS OF API REQUESTS = ~20 SECOND POST REQUEST, SO INTERESTING LOADING PAGE
   loading = false;
 
-  // HAS USER PRESSED POST BUTTON?
+  // press post button
   notPressed = true;
+
+  // post input
+  author = "";
+  title = "";
 
   constructor(
     private http: HttpClient,
@@ -30,27 +33,36 @@ export class PostsComponent {
     public bookService: BookService
   ) {}
 
-  // CHECK IF BOOK BEING CREATED ALREADY HAS BEEN CREATED
+  onKey(event: any) {
+    if (event.target.classList[1] === "title") {
+      this.title = event.target.value;
+    }
+    if (event.target.classList[1] === "author") {
+      this.author = event.target.value;
+    }
+  }
+
   close(): void {
     this.bookPreviouslyCreated = false;
   }
 
-  // ALTER STATE OF BUTTON PRESS
+  // alter state of button press
   buttonPressed(): void {
     this.notPressed = false;
   }
 
-  // CREATE THE NEW BOOK
-  newBook(title, author): void {
+  // create new book
+  newBook(): void {
     class ObjectConstructor {
       title: String;
       author: String;
     }
 
     const data: ObjectConstructor = new ObjectConstructor();
-
-    data.title = title.value;
-    data.author = author.value;
+    data.title = this.title;
+    data.author = this.author;
+    this.title = "";
+    this.author = "";
 
     setTimeout(() => {
       this.loading = true;

@@ -15,25 +15,7 @@
 </body>
 </script>
 <!-- Bootstrap JS CDN -->
-<script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
-<!-- Bootstrap JS local fallback -->
-<script>
-  if (typeof ($.fn.modal) === 'undefined') {
-    document.write('<script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><\/script>')
-  }
-
-</script>
-<!-- Bootstrap CSS local fallback -->
-<div id="bootstrapCssTest" class="hidden"></div>
-<script>
-  $(function () {
-    if ($('#bootstrapCssTest').is(':visible')) {
-      $("head").prepend(
-        '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">'
-      );
-    }
-  });
-
+<script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" defer>
 </script>
 
 </html>

@@ -25,13 +25,7 @@ export function createBookObject(data: Object): Book {
   // SET ALL THE FIELDS OF BOOK
   book["amazonReview"] = data["amazon_editorial_review"];
   // IFRAME IS LOCATED WITHIN ARRAY
-  try {
-    book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
-  } catch (e) {
-    book["amazonCustomerReviews"] = [
-      "<iframe src='https://climate.nasa.gov/interactives/climate_time_machine' width='900' height='700'></iframe>",
-    ];
-  }
+  book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
   book["amazonSimilarProducts"] = data["amazon_similar_products"];
   book["author_name"] = data["author_name"];
   book["frontCover"] = data["front_cover"];
@@ -46,7 +40,7 @@ export function createBookObject(data: Object): Book {
   book["isbn"] = data["isbn"];
   book["date"] = data["created_at"];
   book["updated"] = data["updated_at"];
-
+  console.log(book);
   return book;
 }
 
@@ -121,29 +115,20 @@ export function createUrlToRedirect(data: any): string {
 }
 
 export function reformatPenguinData(data: any): string[] {
-  const newData = [];
-  data.forEach((data, i) => {
-    newData[i] = {};
-    newData[i]["description"] = [];
-    // SOMETIMES 0(NO ARRAY), 1, OR 2 DESCRIPTIONS IN THE ARRAY
-    if (Array.isArray(data["description"])) {
-      newData[i]["description"][0] = data["description"][0];
-      if (data["description"].length > 1) {
-        newData[i]["description"][1] = data["description"][1];
-      }
-    } else {
-      newData[i]["description"][0] = "No description given.";
+  return data.map((book, i) => {
+    // null description at times
+    if (!Array.isArray(book["description"])) {
+      book["description"] = ["No description given."];
     }
-    // SIMILAR SITUATION WITH AUTHOR, NO ARRAY OR 1 WITH AUTHOR WITHIN
-    if (Array.isArray(data["author"])) {
-      newData[i]["author"] = data["author"][0].split("|")[1];
+    // split at the pipe
+    if (Array.isArray(book["author"])) {
+      book["author"] = book["author"][0].split("|")[1];
     }
-    // EASIER ACCESS
-    newData[i]["name"] = data["name"];
-    // URL DOES NOT HAVE BEGINNING OF LINK, ONLY END
-    newData[i]["url"] = "http://www.penguinrandomhouse.com" + data["url"];
+    // add beginning href to url
+    book["url"] = "http://www.penguinrandomhouse.com" + book["url"];
+    book["name"] = book["name"];
+    return book;
   });
-  return newData;
 }
 
 export function setUpAmazonSimilarBooks(data: any): string[] {

@@ -7,7 +7,6 @@ const utils = require("../utils");
 const getAllTheData = require("../getAllData");
 const apiCalls = require("../api-calls/index");
 const getAmazonData = apiCalls.getAmazonData;
-const getIsbn = require("../api-calls/isbndb");
 
 router.get("/", (req, res) => {
   Book.find({})
@@ -33,6 +32,8 @@ router.post("/", (req, res) => {
   Book.find({})
     .then(books => {
       let check = true;
+      // If the title was never entered
+      if (typeof query.title !== "string") check = false;
       const title = query.title.toLowerCase();
       books.forEach(prevBook => {
         if (prevBook.title === title) {
@@ -48,11 +49,6 @@ router.post("/", (req, res) => {
               .end();
           } else {
             let book = bookData;
-            try {
-              book.penguin_data.data.facets = "";
-            } catch (e) {
-              console.log(e);
-            }
             book = new Book(book);
             book.save(function(error) {
               if (error) {

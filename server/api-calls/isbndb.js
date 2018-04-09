@@ -1,5 +1,7 @@
 var request = require("request-promise");
 
+var getRankOfBook = require("../utils").getRankOfBook;
+
 var getISBN = function(query, author, callback) {
   var options = {
     uri: `http://api.isbndb.com/books/${query}`,
@@ -28,8 +30,9 @@ var getISBN = function(query, author, callback) {
 
       // Simple comparison to be sure that the first object returned from the ISBNDB query is not what
       // is used but rather the title and author most similar to what the user entered in the form
-      let desiredIdx = 0;
-      let maxValue = 0;
+      let desiredIdx = 0; // The book title that is most similar to what the user entered
+      let maxValue = 0; // Most similar book atm
+
       books.forEach((book, i) => {
         let splitAuthor = [],
           splitAuthorQuery = [];
@@ -38,18 +41,10 @@ var getISBN = function(query, author, callback) {
         try {
           splitAuthor = book.authors[0].toLowerCase().split(" ");
           splitAuthorQuery = author.toLowerCase().split(" ");
-        } catch (e) {}
-        level = 0;
-        if (splitBook[0] === splitQuery[0]) level++;
-        if (splitBook[1] === splitQuery[1]) level++;
-        if (splitBook[2] === splitQuery[2]) level++;
-        if (splitBook[3] === splitQuery[3]) level++;
-        if (splitBook[4] === splitQuery[4]) level++;
-        if (splitAuthor.length) {
-          if (splitAuthor[0] === splitAuthorQuery[0]) level++;
-          if (splitAuthor[1] === splitAuthorQuery[1]) level++;
-          if (splitAuthor[2] === splitAuthorQuery[2]) level++;
+        } catch (e) {
+          console.log("The author in ISBNDB query is missing.");
         }
+        const level = getRankOfBook(splitBook, splitQuery, splitAuthor, splitAuthorQuery);
         booksLevel[i] = level;
       });
       booksLevel.forEach((value, idx) => {
@@ -63,7 +58,7 @@ var getISBN = function(query, author, callback) {
       return saved;
     })
     .catch(function(err) {
-      console.log("ISBN FAILED TO GET DATA", err);
+      console.log("ISBNDB FAILED TO GET DATA", err);
       return {
         isbn: 9789892327914,
         exact_title: "failed",

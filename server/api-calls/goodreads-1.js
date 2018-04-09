@@ -1,6 +1,8 @@
 var parseString = require("xml2js").parseString;
 var request = require("request-promise");
 
+var findDeep = require("../utils").findDeep;
+
 var getGoodreadsData1 = function(query, backupTitle, callback) {
   var secondOptionsQuery = backupTitle
     .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
@@ -20,7 +22,7 @@ var getGoodreadsData1 = function(query, backupTitle, callback) {
     }`,
   };
 
-  //NEED TO FIRST FIND BOOK BY USING THE ISBN
+  // First find book by using ISBN
   request(options)
     .then(function(data) {
       var xml = data;
@@ -31,15 +33,40 @@ var getGoodreadsData1 = function(query, backupTitle, callback) {
           callback(secondOptionsError);
           return;
         }
-        if (result.GoodreadsResponse.search[0].results[0].work.length === 0) {
+        const findArray = findDeep(
+          result,
+          ["GoodreadsResponse", "search", 0, "results", 0, "work"],
+          "cat",
+        );
+        if (findArray.length === 0) {
           callback(secondOptionsError);
           return;
-        }
+        } 
 
-        var secondQuery = result.GoodreadsResponse.search[0].results[0].work[0].best_book[0].title[0]
-          .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
-          .split(" ")
-          .join("+");
+        // Deeply nested data
+        var secondQuery = findDeep(
+          result,
+          [
+            "GoodreadsResponse",
+            "search",
+            0,
+            "results",
+            0,
+            "work",
+            0,
+            "best_book",
+            0,
+            "title",
+            0,
+          ],
+          false
+        );
+        if (secondQuery) {
+          secondQuery = secondQuery
+            .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
+            .split(" ")
+            .join("+");
+        }
 
         var secondOptions = {
           uri: `https://www.goodreads.com/book/title.xml?title=${secondQuery}&key=${

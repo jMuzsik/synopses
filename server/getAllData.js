@@ -1,51 +1,54 @@
-const apiCalls = require("./api-calls/index");
+  const apiCalls = require("./api-calls/index");
 
-function getAllTheData(title, author, finalCallback) {
-  let allTheData = {
-    front_cover: String,
-    amazon_reviews: Array,
-    amazon_editorial_review: String,
-    amazon_similar_products: Array,
-    goodreads_description: String,
-    goodreads_reviews_widget: String,
-    goodreads_author_image: String,
-    goodreads_author_link: String,
-    goodreads_similar_books: Array,
-    penguin_data: Array,
-    author_name: String,
-    isbn: String,
-    wikipedia_text: String,
-    title: String,
-  };
+  var getRidOfExcessPenguinData = require("./utils").getRidOfExcessPenguinData;
+  var getRidOfExcessGoodreadsbookData = require("./utils")
+    .getRidOfExcessGoodreadsbookData;
 
-  allTheData.title = title.toLowerCase();
-  allTheData.author = author.toLowerCase();
+  function getAllTheData(title, author, finalCallback) {
+    let allTheData = {
+      front_cover: String,
+      amazon_reviews: Array,
+      amazon_editorial_review: String,
+      amazon_similar_products: Array,
+      goodreads_description: String,
+      goodreads_reviews_widget: String,
+      goodreads_author_image: String,
+      goodreads_author_link: String,
+      goodreads_similar_books: Array,
+      penguin_data: Array,
+      author_name: String,
+      isbn: String,
+      wikipedia_text: String,
+      title: String,
+    };
 
-  // FIRST GET THE ISBN
-  apiCalls
-    .getISBN(allTheData.title, author)
-    .then(function(isbnData) {
-      allTheData.isbn = isbnData.isbn;
-      allTheData.front_cover = isbnData.image;
-      allTheData.exact_title = isbnData.exact_title;
-      if (isbnData.exact_title === "failed") {
-        return;
-      } else {
-        return apiCalls.getAmazonData(allTheData.isbn);
-      }
-    })
-    .then(function(amazonData) {
-      if (amazonData !== undefined) {
+    allTheData.title = title.toLowerCase();
+    allTheData.author = author.toLowerCase();
+
+    // FIRST GET THE ISBN
+    apiCalls
+      .getISBN(allTheData.title, author)
+      .then(function(isbnData) {
+        allTheData.isbn = isbnData.isbn;
+        allTheData.front_cover = isbnData.image;
+        allTheData.exact_title = isbnData.exact_title;
+        // If integral process failed, verfify immidiately in front-end
+        if (isbnData.exact_title === "failed") {
+          return "failed";
+        } else {
+          return apiCalls.getAmazonData(allTheData.isbn);
+        }
+      })
+      .then(function(amazonData) {
         allTheData.amazon_reviews = amazonData.amazon_reviews;
         allTheData.amazon_editorial_review = amazonData.amazon_editorial_review;
         allTheData.amazon_similar_products = amazonData.amazon_similar_products;
         return apiCalls.getPenguinData(allTheData.exact_title);
-      }
-    })
-    .then(function(penguinData) {
-      if (penguinData !== undefined) {
+      })
+      .then(function(penguinData) {
+        penguinData = getRidOfExcessPenguinData(penguinData);
         allTheData.penguin_data = penguinData;
-        // CALLBACKS....SO MANY CALLBACKS, PROMISES NOT ALLOWED WITH LIBRARY BEING USED
+        // Not simple to use promises with libraries following
         apiCalls.getGoodreadsData1(
           allTheData.isbn,
           allTheData.exact_title,
@@ -53,6 +56,7 @@ function getAllTheData(title, author, finalCallback) {
             apiCalls.getGoodreadsData2(option, function(goodreadsData) {
               allTheData.goodreads_description =
                 goodreadsData.goodreads_description;
+                console.log(goodreadsData.author_name, author)
               if (goodreadsData.author_name.length === 0) {
                 allTheData.author_name = author;
               } else allTheData.author_name = goodreadsData.author_name;
@@ -62,9 +66,9 @@ function getAllTheData(title, author, finalCallback) {
                 goodreadsData.goodreads_author_image;
               allTheData.goodreads_author_link =
                 goodreadsData.goodreads_author_link;
-              allTheData.goodreads_similar_books =
-                goodreadsData.goodreads_similar_books;
-
+              allTheData.goodreads_similar_books = getRidOfExcessGoodreadsbookData(
+                goodreadsData.goodreads_similar_books
+              );
               apiCalls.getWikiData(allTheData.author_name, function(wikiData) {
                 allTheData.wikipedia_text = wikiData;
                 finalCallback(allTheData);
@@ -73,16 +77,12 @@ function getAllTheData(title, author, finalCallback) {
             });
           }
         );
-      } else {
-        finalCallback("failed");
+      })
+      .catch(function(err) {
+        console.log("FUNDAMENTAL ERROR IN GETTING DATA", err);
+        finalCallback(allTheData);
         return;
-      }
-    })
-    .catch(function(err) {
-      console.log("FUNDAMENTAL ERROR IN GETTING DATA", err);
-      finalCallback(allTheData);
-      return;
-    });
-}
+      });
+  }
 
-module.exports = getAllTheData;
+  module.exports = getAllTheData;
