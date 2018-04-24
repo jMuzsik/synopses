@@ -6,3 +6,4 @@ Amazon books, Goodreads, Penguin books, Wikipidia, ISBNDB are all queried instan
 
 Built with love over several weeks.
 
+[Heroku Link](https://synopses.herokuapp.com/dashboard)
