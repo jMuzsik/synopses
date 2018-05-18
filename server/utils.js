@@ -17,14 +17,6 @@ const findDeep = (data, pathArr, fallback) => {
   const len = pathArr.length;
   for (let i = 0; i < len; i++) {
     let path = pathArr[i];
-    if(fallback === "cat"){
-      console.log(
-        data[path],
-        Array.isArray(data[path]) ||
-          findDeep.isObject(data[path]) ||
-          typeof data[path] === "string"
-      );
-    }
     if (
       Array.isArray(data[path]) ||
       findDeep.isObject(data[path]) ||
