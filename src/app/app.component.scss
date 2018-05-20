@@ -1,3 +1,23 @@
+@import "./../scss/variables";
+
+.main {
+  .navbar {
+    background-color: #2B3990;
+    .navbar-brand {
+      color: $red;
+      font-family: Didot, 'Courier New', Courier, monospace;
+    }
+    .row {
+      button {
+        background-color: rgb(177, 212, 208);
+        color: #2B3990;
+      }
+      button:focus, button:hover {
+        background-color: rgb(209, 235, 232);
+      }
+    }
+  }}
+
 @media (min-width: 576px) {
   .main {
     .navbar {

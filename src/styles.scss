@@ -6,6 +6,10 @@ html {
   font-size: 1rem;
 }
 
+p, div {
+  font-family: Didot, serif, Times, "Times New Roman";
+}
+
 @include media-breakpoint-up(sm) {
   html {
     font-size: 1.2rem;
@@ -27,6 +31,7 @@ html {
 body {
   border: 2px solid black;
   min-height: 100vh;
+  background-color: #F2F3F2;
 }
 
 @media (min-width: 576px) {

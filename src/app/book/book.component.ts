@@ -3,6 +3,7 @@ import {
   Component,
   OnInit,
   Input,
+  AfterViewChecked,
 } from "@angular/core";
 
 import { ActivatedRoute } from "@angular/router";
@@ -30,7 +31,7 @@ interface ToggleButton {
   styleUrls: ["./book.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class BookComponent implements OnInit {
+export class BookComponent implements OnInit, AfterViewChecked {
   // THE BOOK
   book: Book;
 
@@ -64,7 +65,7 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBook();
-  } 
+  }
 
   // CLOSE ANYTHING OPEN FIRST, THEN OPEN THE SPECIFIED ONE
   toggle(name: string): void {
@@ -159,5 +160,11 @@ export class BookComponent implements OnInit {
         ),
       () => (this.isDataAvailable = true)
     );
+  }
+
+  ngAfterViewChecked() {
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
   }
 }

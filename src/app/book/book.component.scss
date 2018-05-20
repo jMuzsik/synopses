@@ -3,6 +3,33 @@
 
 /* ---------------- Defaults and small screen first (mobile first) -----------------*/
 
+.book {
+  .buttons {
+    background-color: #5970af;
+    .nav-link {
+      border: none;
+    }
+    .fa, .fab, .fas {
+      line-height: 1.25;
+    }
+    .fa-amazon {
+      background-color: black;
+      color: #ff9900;
+    }
+    .fa-goodreads {
+      background-color: rgb(240, 237, 228);
+      color: rgb(97, 67, 54);
+    }
+    .fa-wikipedia {
+      background-color: black;
+      color: rgb(246, 246, 246);
+    }
+    .fa-book {
+      background-color: black;
+      color: rgb(253, 232, 220);
+    }
+  }
+}
 .similar-books .penguin-books .badge {
   white-space: normal;
 }
@@ -19,6 +46,9 @@
   flex-direction: column;
   .card-parent {
     width: 75%;
+  }
+  .card {
+    background-color: rgb(250, 250, 250);
   }
 }
 

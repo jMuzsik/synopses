@@ -76,7 +76,7 @@ export class PostsComponent implements OnInit {
         this.router.navigate(["/dashboard"]);
       }
     }, 8000);
-    
+
     this.bookService.postBook(data).subscribe(
       result => {
         // WAIT 5 SECONDS AFTER USER INPUTS PRIOR TO LOADING CODE TO RUN

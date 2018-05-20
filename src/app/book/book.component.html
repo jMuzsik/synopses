@@ -11,13 +11,13 @@
     <div class="card-header text-center">
       <ul class="nav nav-tabs card-header-tabs justify-content-center">
         <li class="nav-item">
-          <button type="button" data-toggle="tooltip" data-placement="top" title="Click for book info." class="author-input nav-link btn active btn-secondary"
+          <button type="button" title="Click for book info." class="author-input nav-link btn active btn-primary"
             (click)="alterView('author')" disabled>
             <h6 class="">Book Info</h6>
           </button>
         </li>
         <li class="nav-item">
-          <button type="button" data-toggle="tooltip" data-placement="top" title="Click for author info." class="book-input nav-link btn active btn-secondary"
+          <button type="button" title="Click for author info." class="book-input nav-link btn active btn-primary"
             (click)="alterView('book')">
             <h6 class="">Author Info</h6>
           </button>
@@ -44,7 +44,7 @@
       <img class="card-img-top img-fluid mx-auto w-75" src="{{book?.authorImage}}" alt="Image of author">
       <div class="card-body px-3">
         <div class="card-title">
-          <a class="badge badge-light" href="{{book?.authorLink}}" target="_blank">
+          <a class="btn btn-outline-primary" href="{{book?.authorLink}}" target="_blank">
             <h5 class="mb-0">
               <strong>{{book?.author_name}}</strong>
             </h5>
@@ -68,28 +68,28 @@
 
   <!-- ---------------------------BUTTONS -------------------------- -->
 
-  <div class="card text-center">
+  <div class="buttons card text-center">
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills justify-content-around">
         <li class="nav-item">
-          <button type="button" class="nav-link p-0" (click)="checkForAmazonReviews(); toggleButton()">
-            <i title="Links to amazon reviews" class="fab fa-amazon fa-3x fa-fw" aria-hidden="true">
+          <button type="button"  data-toggle="tooltip" title="Amazon Reviews"  data-placement="top" class="nav-link p-0" (click)="checkForAmazonReviews(); toggleButton()">
+            <i title="Links to amazon reviews" class="fab fa-amazon fa-3x fa-fw rounded" aria-hidden="true">
             </i>
           </button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link p-0" (click)="toggle( 'goodreadsReviewVisible'); toggleButton()">
-            <i title="Links to goodreads reviews" class="fab fa-goodreads fa-3x fa-fw"></i>
+          <button type="button" data-toggle="tooltip" title="Goodreads Reviews"  data-placement="top" class="nav-link p-0" (click)="toggle( 'goodreadsReviewVisible'); toggleButton()">
+            <i title="Links to goodreads reviews" class="fab fa-goodreads fa-3x fa-fw rounded"></i>
           </button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link p-0" (click)="toggle('wikiVisible'); toggleButton()">
-            <i title="Text of author wikipedia article" class="fab fa-wikipedia-w fa-3x fa-fw"></i>
+          <button type="button"  data-toggle="tooltip" title="Author Wikipedia Article"  data-placement="top" class="nav-link p-0" (click)="toggle('wikiVisible'); toggleButton()">
+            <i title="Text of author wikipedia article" class="fab fa-wikipedia-w fa-3x fa-fw rounded"></i>
           </button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link p-0" (click)="toggle( 'amazonSimilarBooksVisible'); toggleButton()">
-            <i title="Displays similar books " class="fas fa-book fa-3x fa-fw"></i>
+          <button type="button"  data-toggle="tooltip" title="Similar Books from multiple sources."  data-placement="top" class="nav-link p-0" (click)="toggle( 'amazonSimilarBooksVisible'); toggleButton()">
+            <i title="Displays similar books " class="fas fa-book fa-3x fa-fw rounded"></i>
           </button>
         </li>
       </ul>
@@ -160,8 +160,8 @@
 
         <br>
 
-        <div class="col-12 col-sm-10 col-med-10 mx-auto px-4" *ngFor="let book of book?.penguinData">
-          <a class="badge badge-light w-100 text-center" href="{{book?.url}}" alt="url to book" target="_blank">
+        <div class="col-12 col-sm-10 col-med-10 mx-auto px-4 py-3" *ngFor="let book of book?.penguinData">
+          <a class="btn btn-outline-primary w-100 text-center" href="{{book?.url}}" alt="url to book" target="_blank">
             <h5 class="mb-0">{{book?.name}}</h5>
           </a>
           <h6 class="text-center my-3">
@@ -205,12 +205,12 @@
 
                     <div class="card-body text-center">
                       <div class="card-title">
-                        <a class="badge badge-light text-justify" href="{{book?.book_link}}" alt="Redirect to book (goodreads)" target="_blank">
+                        <a class="btn btn-outline-primary text-justify" href="{{book?.book_link}}" alt="Redirect to book (goodreads)" target="_blank">
                           <h6 class="mb-0 text-center">
                             <strong>{{book?.title}}</strong>
                           </h6>
                         </a>
-                        <a class="mt-3 badge badge-light text-justify" href="{{book?.author_link}}" target="_blank">
+                        <a class="mt-3 btn btn-outline-primary text-justify" href="{{book?.author_link}}" target="_blank">
                           <h6 class="mb-0 text-center">
                             <small class="text-muted">by {{book?.author_name}}</small>
                           </h6>
@@ -243,7 +243,7 @@
         <div class="d-flex flex-column align-items-center w-100">
           <ng-container *ngFor="let book of book?.amazonSimilarProducts">
             <div class="py-2">
-              <a class="badge badge-light text-justify my-4" href="{{book?.url}}" alt="Link to book at goodreads" target="_blank">
+              <a class="btn btn-outline-primary text-justify my-4" href="{{book?.url}}" alt="Link to book at goodreads" target="_blank">
                 <h6 class="mb-0 text-center">
                   <strong>{{book?.title}}</strong>
                 </h6>

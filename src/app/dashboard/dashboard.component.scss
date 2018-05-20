@@ -1,4 +1,5 @@
 @import "../../scss/loader";
+@import "../../scss/variables";
 
 /* ---------- Mobile first - smallest screens first and landscape focus then portrait -----------*/
 
@@ -6,8 +7,13 @@
   padding-top: var(--jumbotron-padding-y);
   padding-bottom: var(--jumbotron-padding-y);
   margin-bottom: 0;
-  background-color: #fff;
+  background-color: #f2f3f2;
 }
+
+.jumbotron .container .lead {
+  color: #374396;
+}
+
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: calc(var(--jumbotron-padding-y) * 2);
@@ -31,10 +37,6 @@
   display: none;
 }
 
-.dashboard hr {
-  border-top: 1rem solid #8c8b8b;
-}
-
 .dashboard .jumbotron .display-1 {
   font-size: 10rem;
 }
@@ -53,18 +55,11 @@
   line-height: 1.2rem;
 }
 
-.dashboard .large-card .title {
-  font-size: 3.5rem;
-}
-
-.dashboard .large-card .card-text {
-  font-size: 2.5rem;
-  line-height: 3.5rem;
-}
-.dashboard .large-card button {
-  font-size: 3rem;
-  border: 2px solid rgba(0, 0, 0, 1);
-}
-.dashboard .large-card {
-  border: 3px solid rgba(0, 0, 0, 1);
+.dashboard .card {
+  background-color: rgb(250, 250, 250);
+  border: 1.5px solid #5970af;
+  .card-header {
+    background-color: whitesmoke;
+    border-bottom: 1.5px solid #5970af;
+  }
 }

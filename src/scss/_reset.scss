@@ -1,35 +1,58 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
 h1 {
-  font-family: Roboto, Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Didot, Roboto, Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 23px;
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
   line-height: 23px;
+  color: rgb(64, 55, 46);
 }
 
 h3 {
-  font-family: Roboto, Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Didot, Roboto, Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 17px;
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
   line-height: 23px;
+  color: rgb(64, 55, 46);
 }
 
 p,
 div {
-  font-family: Roboto, Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Didot, Roboto, Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-variant: normal;
   font-weight: 400;
   line-height: 23px;
+  color: rgb(64, 55, 46);
 }
 
 img {
   max-width: 100% !important;
   height: auto !important;
   width: auto\9; /* ie8 */
+}
+
+.btn-outline-primary:hover {
+  color: whitesmoke !important;
+  background-color: #5970af !important;
+  border-color: #5970af !important;
+}
+.btn-outline-primary {
+  white-space: normal !important;
+  color: #5970af !important;
+  border-color: #5970af !important;
+}
+
+.btn-primary {
+  color: #f2f3f2 !important;
+  background-color: #5970af !important;
+}
+
+.btn-primary:hover {
+  background-color: #6d80b4 !important;
 }
