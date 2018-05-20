@@ -43,12 +43,15 @@ export class DashboardComponent implements OnInit {
 
   // SEARCH RESULTS(FILTER RESULTS)
   filterItem(value: string): void {
+    console.log(value)
     if (!value) {
       this.filteredItems = [];
     } else {
       const fuse: any = new Fuse(this.books, this.fuseOptions);
       const result: any = fuse.search(value);
-      const filteredResult: any = result.map(book => this.checkForImage(book));
+      console.log(result)
+      const filteredResult = result.map(book => this.checkForImage(book));
+      console.log(filteredResult)
       this.fillOutGrid(filteredResult);
     }
   }
@@ -71,8 +74,7 @@ export class DashboardComponent implements OnInit {
     // if 3 items they are at 1,2,3
     // if 4 items then do not display 4, same as 3
     // if 5 display all
-
-    this.filteredItems = [0, 0, 0, 0, 0];
+    this.filteredItems = [0, 0, 0, 0, 0, 0];
     if (result.length === 1) {
       this.filteredItems[2] = result[0];
     } else if (result.length === 2) {
@@ -82,20 +84,33 @@ export class DashboardComponent implements OnInit {
       this.filteredItems[2] = result[0];
       this.filteredItems[1] = result[1];
       this.filteredItems[3] = result[2];
-    } else if (result.length >= 5) {
-      this.filteredItems[0] = result[0];
-      this.filteredItems[1] = result[1];
-      this.filteredItems[2] = result[2];
+    } else if (result.length >= 6) {
+      this.filteredItems[2] = result[0];
+      this.filteredItems[0] = result[1];
+      this.filteredItems[1] = result[2];
       this.filteredItems[3] = result[3];
       this.filteredItems[4] = result[4];
+      this.filteredItems[5] = result[5];
     }
+  }
+
+  formatBooks(books) {
+    return books.map(book => {
+      if (book.goodreads_description) {
+        book.goodreads_description =
+          book.goodreads_description.slice(0, 300) + "...";
+      }
+      return book;
+    });
   }
 
   // GET ALL THE BOOKS
   getBooks(): any {
     this.bookService.getBooks().subscribe(
       data => {
+        console.log(data)
         this.books = data;
+        this.books = this.formatBooks(this.books);
       },
       err => console.log("FAILED OBTAINING ALL BOOKS FROM API", err),
       () => (this.dataAvailable = true)

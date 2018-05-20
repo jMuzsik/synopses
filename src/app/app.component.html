@@ -1,30 +1,18 @@
-<div class="jumbotron">
-  <button id="post-button" value="button" type="button" class="btn btn-primary btn-lg" (click)="postOpen(); lotsOfPaper();">
-    <i class="fa fa-book fa-3x" aria-hidden="true"></i>
-  </button>
-
-  <button id="home-button" type="button" class="btn btn-primary btn-lg" (click)="goToHome()">
-    <i class="fa fa-home fa-3x" aria-hidden="true"></i>
-  </button>
-
+<main class="main" role="main">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-light">
+    <h1 class="h1 mb-0">Synopses</h1>
+    <button type="button" data-toggle="tooltip" data-placement="bottom" title="Go to home" class="btn btn-primary btn-lg nav-link"
+      onmouseenter="$(this).tooltip('toggle')" (click)="goToHome()">
+      <i title="home button" class="fas fa-home" aria-hidden="true"></i>
+    </button>
+    <button type="button" type="button" data-toggle="tooltip" data-placement="bottom" title="Create a new book" onmouseenter="$(this).tooltip('toggle')"
+      class="btn btn-primary btn-lg nav-link" (click)="postOpen()">
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </button>
+  </nav>
   <div *ngIf="newBook">
     <app-posts (submission)="submission($event)"></app-posts>
   </div>
 
-  <div *ngIf="showPaper">
-    <div *ngIf="papers.length">
-
-      <div *ngIf="displayNone; else do_this">
-        <div style="display:none;">nothing</div>
-      </div>
-
-      <ng-template #do_this>
-        <div *ngFor="let paper of papers; let i = index">
-          <img src="{{paper?.str}}" alt="image of paper animation" class="{{paper.cl}}">
-        </div>
-      </ng-template>
-    </div>
-  </div>
-
   <router-outlet></router-outlet>
-</div>
+</main>

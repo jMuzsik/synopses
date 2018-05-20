@@ -134,7 +134,6 @@ export function setUpAmazonSimilarBooks(data: any): string[] {
   const newData = [];
   data.forEach((book, i) => {
     newData[i] = {};
-    newData[i]["cl"] = "amazon-link";
     newData[i]["url"] = book.ASIN[0];
     newData[i]["title"] = book.Title[0];
   });

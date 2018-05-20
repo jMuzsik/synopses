@@ -1,481 +1,124 @@
-@import "../scss/flying-paper";
 @import "../scss/reset";
 @import "../scss/background";
 @import "../scss/scrollbar";
+@import "../scss/variables";
 
 /* ---------------- Defaults and small screen first (mobile first) -----------------*/
 
-// All cards with card bodies are scrollable
-.card-body {
-  overflow-y: scroll;
+.similar-books .penguin-books .badge {
+  white-space: normal;
 }
 
-/* ----------- Styling for the Author and book card ---------------*/
-.author-book-card {
-  background-image: url("../../assets/static-background.jpg");
-  @extend %background;
-  position: absolute;
-  float: left;
-  width: 33vw;
-  .card-header {
-    height: 10vh;
-    padding: 0;
-    background-color: #3d9970;
-    .toggle {
-      margin: 0 auto;
-      color: #ffdc00;
-      .toggle-text {
-        font-size: 1em;
-      }
-      &:hover {
-        color: #d99400;
-      }
-    }
-  }
-  .card-img-top {
-    height: 40vh !important;
-    width: auto;
-    margin: 0 auto;
-  }
-  .card-body {
-    height: 50vh;
-    overflow-y: scroll;
-    .card-title {
-      font-size: 0.9em;
-      a {
-        color: #249964;
-        &:hover {
-          color: rgb(24, 86, 88);
-        }
-      }
-    }
-    .card-text {
-      font-size: 0.7em;
-      line-height: 1.2em;
-      text-align: left;
-    }
+.similar-books .goodreads-books .badge {
+  white-space: normal;
+}
+
+.similar-books .amazon-books .badge {
+  white-space: normal;
+}
+
+.similar-books .goodreads-books .flex-container {
+  flex-direction: column;
+  .card-parent {
+    width: 75%;
   }
 }
 
-.book-description {
-  background-color: rgba(0, 0, 0, 0);
-  height: 100vh;
-  width: 33vw;
-  position: relative;
-  left: 22vw;
-  top: 0;
-  .card-body {
-    .card-text {
-      text-align: left;
-      font-size: 0.7em;
-      line-height: 1.2em;
-    }
-  }
-}
-
-.amazon-button {
-  position: absolute;
-  right: 20vw;
-  top: 25vh;
-  background-color: rgba(255, 0, 0, 0);
-  border-color: yellow;
-  .fa {
-    color: black;
-  }
-  .fa:hover {
-    color: rgb(253, 152, 39);
-  }
-}
-
-@media (orientation: landscape) {
-  .amazon-button {
-    font-size: 2vw;
-  }
-}
-
-@media (orientation: portrait) {
-  .amazon-button {
-    font-size: 2.5vw;
-  }
-}
-// Extend, different location, and change color
-.goodreads-button {
-  @extend .amazon-button;
-  right: 5vw;
-  .fa {
-    color: rgb(84, 59, 14);
-  }
-  .fa:hover {
-    color: rgb(252, 207, 104);
-  }
-}
-
-.wikipidia-button {
-  @extend .amazon-button;
-  top: 60vh;
-  .fa:hover {
-    color: rgb(139, 139, 139);
-  }
-}
-
-.similar-books-button {
-  @extend .amazon-button;
-  top: 60vh;
-  right: 5vw;
-  .fa:hover {
-    color: rgb(252, 102, 33);
-  }
-}
-// Exact location each time
-.general-button {
-  @extend .amazon-button;
-  position: absolute;
-  left: 75vw;
-  top: 12vh;
-  z-index: 10;
-  animation: button-click;
-  animation-duration: 7s;
-  animation-timing-function: linear;
-}
-
-// Prevent fidgeting button
-@keyframes button-click {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-
-// Tooltip for glyphicons
-i {
-  .tooltip {
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 5px;
-    color: #fff;
-    position: absolute;
-    z-index: 3;
-    font-size: 0.3em;
-    opacity: 1;
-    display: none;
-  }
-  &:hover {
-    .tooltip {
-      display: block;
-    }
-  }
-}
-
-// Position pop-up modals in exact place
-.amazon-reviews {
-  position: absolute;
-  z-index: 6;
-  left: 10vw;
-  top: 10vh;
-  width: 80vw;
-  height: 80vh;
-}
-
-.goodreads-reviews {
-  @extend .amazon-reviews;
-}
-
-.wikipedia-text {
-  @extend .amazon-reviews;
-  background-color: white;
-  font-size: 0.9em;
-  text-align: left;
-}
-
-// Within similar books modal, make links, etc. look better
-.similar-books-div {
-  @extend .wikipedia-text;
-  .card-body {
-    .card-text {
-      .amazon-links {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        justify-content: space-between;
-      }
-      .goodreads-links {
-        @extend .amazon-links;
-        .goodreads-link {
-          padding: 0.5em;
-          text-align: center;
-          .uniform-image-size {
-            opacity: 0.7;
-            width: 97.988px;
-            height: 153.984px !important;
-          }
-        }
-      }
-      .border-bottom {
-        border-style: none none solid none;
-      }
-      .border {
-        border-style: groove;
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 700px) {
+@media (min-width: 576px) {
   .author-book-card {
-    .card-header {
-      .toggle {
-        .toggle-text {
-          font-size: 1.4em;
-        }
-      }
-    }
-    .card-body {
-      .card-title {
-        font-size: 1.2em;
-      }
-      .card-text {
-        font-size: 1em;
-        line-height: 1.4em;
-      }
-    }
+    width: 75%;
   }
-  .general-button {
-    left: 83vw;
+  .book-description,
+  .wiki-text {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .similar-books-div {
-    .card-body {
-      .card-text {
-        .goodreads-links {
-          .goodreads-link {
-            width: 33%;
-            padding: 0.2em;
-          }
-        }
-      }
-    }
-  }
-  .book-description {
-    .card-body {
-      .card-text {
-        font-size: 1em;
-        line-height: 1.4em;
-      }
+  .similar-books .goodreads-books .flex-container {
+    flex-direction: row;
+    .card-parent {
+      width: 50%;
     }
   }
 }
 
-@media only screen and (min-width: 1000px) {
-  .author-book-card {
-    .card-header {
-      .toggle {
-        .toggle-text {
-          font-size: 2em;
+@media (min-width: 768px) {
+  small {
+    font-size: 0.75rem;
+  }
+  .book {
+    .similar-books .goodreads-books .flex-container {
+      .card-parent {
+        width: 25%;
+        .card-body {
+          display: flex;
+          justify-content: space-around;
+          flex-direction: column;
         }
       }
     }
-    .card-body {
-      .card-title {
-        font-size: 1.5em;
-      }
-      .card-text {
-        font-size: 1.3em;
-        line-height: 1.8em;
+    .heading {
+      small {
+        font-size: 150%;
       }
     }
-  }
-  .similar-books-div {
-    .card-body {
-      .card-text {
-        .goodreads-links {
-          .goodreads-link {
-            width: 30%;
-          }
-        }
-      }
+    h5,
+    h6 {
+      font-size: 1rem;
+      line-height: 1.3rem;
     }
-  }
-  .book-description {
-    .card-body {
-      .card-text {
-        font-size: 1.3em;
-        line-height: 1.8em;
-      }
+    p,
+    div,
+    .penguin-description {
+      font-size: 0.75rem;
+      line-height: 1.25rem;
     }
   }
 }
-
-@media only screen and (min-device-height: 567px) and (orientation: portrait) {
-  .author-book-card {
-    .card-header {
-      .toggle {
-        .toggle-text {
-          font-size: 1.3em;
-        }
-      }
-    }
-    width: 50vw;
-  }
-  .book-description {
-    position: relative;
-    top: 50vh;
-    left: 35vw;
-    width: 50vw;
-    height: 50vh;
-  }
-  .amazon-button {
-    right: 30vw;
-    top: 15vh;
-  }
-
-  .goodreads-button {
-    right: 5vw;
-  }
-
-  .wikipidia-button {
-    top: 30vh;
-  }
-
-  .similar-books-button {
-    top: 30vh;
-    right: 5vw;
-  }
-  // Exact location each time
-  .general-button {
-    left: 75vw;
-    top: 12vh;
-  }
-  .similar-books-div {
-    .card-body {
-      .card-text {
-        .goodreads-links {
-          .goodreads-link {
-            width: 45%;
-            padding: 0.2em;
-          }
-        }
-      }
-    }
-  }
+@media (min-width: 992px) {
 }
 
-@media only screen and (min-device-height: 800px) and (orientation: portrait) {
-  .author-book-card {
-    .card-header {
-      .toggle {
-        .toggle-text {
-          font-size: 1.5em;
-        }
-      }
-    }
-    .card-body {
-      .card-title {
-        font-size: 1.2em;
-      }
-      .card-text {
-        font-size: .9em;
-        line-height: 1.4em;
-      }
+@media (min-width: 1200px) {
+  small {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+  }
+  .similar-books .goodreads-books {
+    .container {
+      max-width: 100% !important;
     }
   }
-  .book-description {
-    .card-body {
-      .card-text {
-        font-size: 0.9em;
-        line-height: 1.4em;
-      }
+  .similar-books .goodreads-books .flex-container {
+    .card-parent {
+      width: 25%;
     }
   }
-}
-
-@media only screen and (min-device-height: 1000px) and (orientation: portrait) {
-  .author-book-card {
-    .card-header {
-      .toggle {
-        .toggle-text {
-          font-size: 1.7em;
-        }
-      }
+  .book {
+    .heading small {
+      font-size: 4rem;
+      line-height: 6rem;
     }
-    .card-body {
-      .card-title {
-        font-size: 1.4em;
-      }
-      .card-text {
-        font-size: 1.3em;
-        line-height: 1.6em;
-      }
+    h2 {
+      font-size: 5rem;
+      line-height: 7rem;
     }
-  }
-  .book-description {
-    .card-body {
-      .card-text {
-        font-size: 1.3em;
-        line-height: 1.6em;
-      }
+    h4 {
+      font-size: 5rem;
+      line-height: 7rem;
     }
-  }
-  .similar-books-div {
-    .card-body {
-      .card-text {
-        .amazon-links {
-          div {
-            div {
-              a {
-                font-size: 1.5em;
-              }
-            }
-          }
-        }
-        .goodreads-links {
-          .goodreads-link {
-            font-size: 1.5em;
-            img {
-              margin: 0 33%;
-            }
-            div {
-              div {
-                a {
-                  font-size: 1.5em;
-                }
-              }
-            }
-          }
-        }
-      }
+    h5,
+    h6 {
+      font-size: 4rem;
+      line-height: 6rem;
     }
-  }
-}
-
-@media only screen and (min-device-height: 1350px) and (orientation: portrait) {
-  .author-book-card {
-    .card-header {
-      .toggle {
-        .toggle-text {
-          font-size: 2em;
-        }
-      }
+    p,
+    div,
+    .penguin-description {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
     }
-    .card-body {
-      .card-title {
-        font-size: 1.8em;
-      }
-      .card-text {
-        font-size: 1.6em;
-        line-height: 2em;
-      }
-    }
-  }
-  .book-description {
-    .card-body {
-      .card-text {
-        font-size: 1.6em;
-        line-height: 2em;
-      }
+    .card-img-top {
+      width: 50% !important;
     }
   }
 }

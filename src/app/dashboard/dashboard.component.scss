@@ -1,326 +1,71 @@
-@import "../../scss/scroll-up";
 @import "../../scss/scrollbar";
 @import "../../scss/loader";
 
 /* ---------- Mobile first - smallest screens first and landscape focus then portrait -----------*/
 
-%hover-etc {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
-  box-shadow: 0px 0px 30px 0px rgba(232, 0, 0, 0.67);
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
 }
-.input-box {
-  position: relative;
-  top: -20vh;
-  max-width: 50vw;
-  margin: 150px auto 0;
-  .input-box-inner {
-    .input-book {
-      border: 0;
-      border-bottom: 2px solid #1976d2;
-      position: absolute;
-      bottom: 0vh;
-      right: 0vw;
-      width: 100%;
-      font-size: 1em;
-      line-height: 1em;
-      height: 2em;
-      text-align: center;
-      padding: 0.75em;
-      background: transparent;
-      color: #3d9970;
-      &:focus {
-        outline-color: rgb(65, 152, 113);
-      }
-    }
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
   }
 }
 
-.card-deck {
-  display: flex;
-  flex-flow: row wrap;
-  align-self: baseline;
-  align-items: center;
-  height: 70vh;
-  justify-content: center;
-  position: relative;
-  top: -10vh;
-  .card {
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    width: 15.95vw;
-    .card-header {
-      background-color: rgba(218, 197, 159, 0.7);
-      border-radius: 10%;
-      padding: 0;
-      padding-top: 0.2em;
-      height: 10vh;
-      display: table;
-      .title {
-        font-size: 0.75em;
-        font-weight: bolder;
-        line-height: 1em;
-        display: table-cell;
-        vertical-align: middle;
-        width: 15.95vw;
-        text-align: center;
-      }
-    }
-    .card-text {
-      display: none;
-      z-index: 0;
-    }
-    .card-img-top:hover {
-      @extend %hover-etc;
-    }
-    .card-img-top:focus {
-      @extend %hover-etc;
-    }
-    .card-img-top:focus {
-      @extend %hover-etc;
-    }
-  }
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
 }
 
 #hide {
   display: none;
 }
 
-/* -------- Landscape continuing when screen >= 570 in width --------*/
-@media only screen and (min-device-width: 560px) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        font-size: 1.7em;
-        line-height: 1.8em;
-        height: 2em;
-        top: -15vh;
-      }
-    }
-  }
-  .card-deck {
-    .card {
-      padding: 0.3em;
-      width: 15vw;
-      .card-header {
-        .title {
-          font-size: 1.1em;
-          line-height: 1.3em;
-        }
-      }
-    }
-  }
+.dashboard hr {
+  border-top: 1rem solid #8c8b8b;
 }
 
-@media only screen and (min-device-width: 750px) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        top: -15vh;
-      }
-    }
-  }
-  .card-deck {
-    .card {
-      padding: 0.3em;
-      width: 15vw;
-      .card-header {
-        .title {
-        }
-      }
-    }
-  }
+.dashboard .jumbotron .display-1 {
+  font-size: 10rem;
 }
 
-@media only screen and (min-device-width: 1000px) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        font-size: 2em;
-        line-height: 2.5em;
-        height: 2.8em;
-        top: 7vh;
-      }
-    }
-  }
-  .card-deck {
-    top: 0;
-    .card {
-      width: 16vw;
-      .card-header {
-        .title {
-          font-size: 1.2em;
-          line-height: 1.2em;
-        }
-      }
-      .card-text {
-        display: block;
-      }
-    }
-  }
+.dashboard .input-group .input-lg {
+  height: 10rem;
+  font-size: 4rem;
 }
 
-@media only screen and (min-device-width: 1250px) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        font-size: 2em;
-        line-height: 2.2em;
-        height: 2.4em;
-        top: 10vh;
-      }
-    }
-  }
-  .card-deck {
-    margin: 0;
-    .card {
-      width: 13vw;
-    }
-  }
+.dashboard .med-card .title {
+  line-height: 1.4rem;
 }
 
-/* -------- Now start working towards the portrait orientation (320px to begin) --------*/
-
-@media only screen and (min-device-height: 320px) and (orientation: portrait) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        font-size: 1.2em;
-        line-height: 1.2em;
-        height: 2em;
-        top: -15vh;
-      }
-    }
-  }
+.dashboard .med-card .card-text {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
 }
 
-@media only screen and (min-device-height: 450px) and (orientation: portrait) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        top: -5vh;
-      }
-    }
-  }
+.dashboard .large-card .title {
+  font-size: 3.5rem;
 }
 
-@media only screen and (min-device-height: 550px) and (orientation: portrait) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        font-size: 1.5em;
-        line-height: 1.5em;
-        height: 2.5em;
-        top: 2vh;
-      }
-    }
-  }
-  .card-deck {
-    .card {
-      width: 33vw;
-      height: 40vh;
-      padding: 1em;
-      margin: auto;
-      .card-header {
-        .title {
-          width: 33vw;
-          font-size: 1.2em;
-          line-height: 1.3em;
-        }
-      }
-    }
-  }
+.dashboard .large-card .card-text {
+  font-size: 2.5rem;
+  line-height: 3.5rem;
 }
-
-@media only screen and (min-device-height: 800px) and (orientation: portrait) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        font-size: 2em;
-        line-height: 2em;
-        height: 2.1em;
-        top: 5vh;
-      }
-    }
-  }
-  .card-deck {
-    padding-top: 5vh;
-    .card {
-      height: 45vh;
-      .card-header {
-        .title {
-          font-size: 1.4em;
-          line-height: 1.4em;
-        }
-      }
-    }
-  }
+.dashboard .large-card button {
+  font-size: 3rem;
+  border: 2px solid rgba(0, 0, 0, 1);
 }
-
-@media only screen and (min-device-height: 950px) and (orientation: portrait) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        top: 10vh;
-      }
-    }
-  }
-  .card-deck {
-    top: 0;
-    .card {
-      height: 40vh;
-      width: 26vw;
-    }
-  }
-}
-
-@media only screen and (min-device-height: 1025px) and (orientation: portrait) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        font-size: 2.3em;
-        line-height: 2.6em;
-        height: 3.2em;
-        top: 15vh;
-      }
-    }
-  }
-  .card-deck {
-    .card {
-      width: 23vw;
-      .card-header {
-        .title {
-          font-size: 1.8em;
-          line-height: 1.8em;
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (min-device-height: 1024px) and (min-device-width: 1000px) {
-  .input-box {
-    .input-box-inner {
-      .input-book {
-        font-size: 2.3em;
-        line-height: 2.6em;
-        height: 3.2em;
-        top: 15vh;
-      }
-    }
-  }
-  .card-deck {
-    top: 5vh;
-    .card {
-      .card-header {
-        .title {
-          font-size: 1.8em;
-          line-height: 1.8em;
-        }
-      }
-    }
-  }
+.dashboard .large-card {
+  border: 3px solid rgba(0, 0, 0, 1);
 }

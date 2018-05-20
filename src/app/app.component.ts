@@ -4,8 +4,6 @@ import { Router } from "@angular/router";
 
 import { BookService } from "./book.service";
 
-import { createPaperAnimationData } from "./utils";
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -21,20 +19,6 @@ export class AppComponent {
   displayNone = false;
 
   constructor(private router: Router) {}
-
-  lotsOfPaper(): void {
-    if (this.showPaper) {
-      this.showPaper = false;
-      this.displayNone = false;
-    } else {
-      this.papers = createPaperAnimationData();
-      this.displayNone = false;
-      this.showPaper = true;
-      setTimeout(() => {
-        this.displayNone = true;
-      }, 17000);
-    }
-  }
 
   goToHome(): void {
     this.router.navigate([`/dashboard`]);

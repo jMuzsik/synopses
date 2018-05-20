@@ -1,47 +1,135 @@
-<div *ngIf="dataAvailable; else data_not_available">
-  <div class="input-box">
-    <div class="input-box-inner">
-      <input #myInput class="input-book" placeholder="Book name..." (input)="filterItem(myInput?.value)" />
+<div class="dashboard" *ngIf="dataAvailable; else data_not_available">
+
+  <!-- Mobile version -->
+  <section class="d-block d-xl-none jumbotron mx-auto jumbotron-fluid">
+    <div class="container">
+      <h4 class="lead text-muted text-center py-4 mb-0">Search for a synopsis or create a new one</h4>
+      <hr class="my-8">
     </div>
+  </section>
+
+  <!-- Laptop screen version -->
+
+  <section class="d-none d-xl-block jumbotron mx-auto jumbotron-fluid">
+    <div class="d-flex align-items-center flex-column">
+      <h2 class="lead display-3 text-muted text-center py-4 mb-0">Search for a synopsis or create a new one</h2>
+      <hr class="my-8">
+    </div>
+  </section>
+
+  <!-- Small to Larg -->
+
+  <div class="input-group w-50 mx-auto d-block d-xl-none small-input">
+    <input #myInputLarge type="text" class="form-control w-100" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Book name..."
+      (input)="filterItem(myInputLarge?.value)" />
+    <label class="sr-only">Use this to search for a synopsis</label>
   </div>
 
-  <div class="card-deck">
-    <div *ngFor="let book of filteredItems">
-      <div *ngIf="book !== 0; else do_this">
-        <div class="card">
-          <div *ngIf="book?.exact_title.length > 30; else whole_title">
-            <div class="card-header">
-              <p class="title">{{book?.exact_title.slice(0, 30)}} ...</p>
+  <!--Laptop -->
+
+  <div class="input-group w-25 mx-auto d-none d-xl-block large-input">
+    <input #myInputSmall type="text" class="form-control input-lg w-100" aria-label="Large" aria-describedby="inputGroup-sizing-lg"
+      placeholder="Book name..." (input)="filterItem(myInputSmall?.value)" />
+    <label class="sr-only">Use this to search for a synopsis</label>
+  </div>
+
+  <div class="d-block d-xl-none album py-5 container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4" *ngFor="let book of filteredItems">
+
+        <!-- Small screens -->
+
+        <div class="py-2" *ngIf="book !== 0; else do_this">
+
+          <div class="d-block d-sm-none small-card">
+            <div class="card mb-4 mw-75">
+              <div class="card-header text-center bg-white">
+                <h5 class="font-weight-bold title">
+                  <u>{{book?.exact_title}}</u>
+                </h5>
+              </div>
+              <img class="card-img-top align-middle img-fluid img-thumbnail mx-auto d-block w-75" alt="Book image" src="{{book?.front_cover}}"
+                alt="Image of book">
+              <div class="card-body">
+                <p class="card-text" [innerHTML]="book?.goodreads_description"></p>
+                <button (click)="reroute(book?.url_title)" class="btn btn-outline-dark btn-block">Synopsis</button>
+              </div>
             </div>
           </div>
-          <ng-template #whole_title>
-            <div class="card-header">
-              <p class="title">{{book?.exact_title}}</p>
-            </div>
-          </ng-template>
-          <img class="card-img-top" (click)="reroute(book?.url_title)" src="{{book?.front_cover}}" alt="Image of book">
-          <div class="card-block">
-            <div class="scroll-up">
-              <p class="card-text" [innerHTML]="book?.goodreads_description"></p>
+
+          <!-- Medium screens -->
+
+          <div class="d-none d-sm-block d-xl-none med-card py-2">
+            <div class="card h-100">
+              <div class="text-center card-header bg-white">
+                <h6 class="title">
+                  <u>{{book?.exact_title}}</u>
+                </h6>
+              </div>
+              <img class="card-img-top img-fluid mx-auto d-block w-75" alt="Book image" src="{{book?.front_cover}}" alt="Image of book">
+              <div class="card-body px-2">
+                <p class="card-text" [innerHTML]="book?.goodreads_description"></p>
+                <button (click)="reroute(book?.url_title)" class="btn btn-outline-dark btn-block h-100">Synopsis</button>
+              </div>
             </div>
           </div>
+
         </div>
-      </div>
 
-      <ng-template #do_this>
-        <div class="card" id="hide">
-          <div class="card-header"></div>
-
-          <img class="card-img-top" alt="Empty image of book">
-
-          <div class="card-block">
-            <div class="scroll-up">
+        <ng-template #do_this>
+          <div class="card" id="hide">
+            <div class="card-header"></div>
+            <img class="card-img-top" alt="Empty image of book">
+            <div class="card-block">
               <p class="card-text"></p>
             </div>
           </div>
-        </div>
-      </ng-template>
+        </ng-template>
+
+      </div>
     </div>
+  </div>
+
+
+  <!-- Large Screens -->
+  <div class="d-none d-xl-block">
+
+    <div class="d-flex align-items-center flex-column">
+      <div class="row">
+        <div class="py-4 col-lg-4" *ngFor="let book of filteredItems">
+          <div class="w-75 mx-auto" *ngIf="book !== 0; else do_this">
+
+            <div class="d-none d-xl-block large-card">
+              <div class="card h-100">
+                <div class="text-center card-header bg-white">
+                  <h6 class="title">
+                    <u>{{book?.exact_title}}</u>
+                  </h6>
+                </div>
+                <img class="card-img-top img-fluid mx-auto w-75" alt="Book image" src="{{book?.front_cover}}" alt="Image of book">
+                <div class="card-body px-5">
+                  <p class="card-text" [innerHTML]="book?.goodreads_description"></p>
+                  <button (click)="reroute(book?.url_title)" class="btn btn-outline-dark btn-block">Synopsis</button>
+                </div>
+              </div>
+            </div>
+
+            <ng-template #do_this>
+              <div class="d-none d-xl-block card" id="hide">
+                <div class="card-header"></div>
+                <img class="card-img-top" alt="Empty image of book">
+                <div class="card-block">
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
 

@@ -6,6 +6,7 @@
   <title>Books Passed</title>
   <base href="/"></base>
   <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" type="text/scss" href="styles.scss"></link>
   <link rel="icon" type="image/x-icon" href="favicon.ico"></link>
 </head>
@@ -13,27 +14,4 @@
 <body>
   <app-root></app-root>
 </body>
-</script>
-<!-- Bootstrap JS CDN -->
-<script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
-<!-- Bootstrap JS local fallback -->
-<script>
-  if (typeof ($.fn.modal) === 'undefined') {
-    document.write('<script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><\/script>')
-  }
-
-</script>
-<!-- Bootstrap CSS local fallback -->
-<div id="bootstrapCssTest" class="hidden"></div>
-<script>
-  $(function () {
-    if ($('#bootstrapCssTest').is(':visible')) {
-      $("head").prepend(
-        '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">'
-      );
-    }
-  });
-
-</script>
-
 </html>

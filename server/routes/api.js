@@ -9,6 +9,7 @@ const apiCalls = require("../api-calls/index");
 const getAmazonData = apiCalls.getAmazonData;
 
 router.get("/", (req, res) => {
+  console.log('hello');
   Book.find({})
     .then(books => {
       res.status(200).send(books);

@@ -4,6 +4,58 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 body > app-root > div {
-  background-image: url('./assets/static-background.jpg');
+  background-color: $lightGrey;
   @extend %background;
+}
+
+html {
+  font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
+body {
+  border: 2px solid black;
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+  body > div > div.tooltip-inner {
+    font-size: 1.2rem !important;
+    line-height: 1.6rem !important;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+  body {
+    border: 10px solid black;
+  }  
+  body > div > div.tooltip-inner {
+    font-size: 3rem !important;
+    line-height: 4rem !important;
+    max-width: 350px !important;
+    /* If max-width does not work, try using width instead */
+    width: 350px !important;
+  }
 }

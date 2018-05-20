@@ -1,246 +1,269 @@
-<div *ngIf="isDataAvailable; else load">
-  <!-- -----------------INITIALDATA-------------- -->
-  <!-- CARD TAKING UP 25VW RESPONSIVELY -->
+<div class="book" *ngIf="isDataAvailable; else load">
+  <!-- -----------------Data has been fetched -------------- -->
+  <div class="heading px-4 py-4 text-center w-100">
+    <h2 class="display-5">
+      <i>{{book?.exact_title}} </i>
+    </h2>
+    <small class="text-muted">by {{book?.author_name}}</small>
+  </div>
 
-  <div class="card author-book-card">
-    <div class="card-header">
-      <a *ngIf="!showBook" class="nav-link toggle" (click)="alterView()" style="cursor: pointer;">
-        <h6 class="toggle-text">Book Info</h6>
-      </a>
-
-      <a *ngIf="showBook" class="nav-link toggle" (click)="alterView()" style="cursor: pointer;">
-        <h6 class="toggle-text">Author Info</h6>
-      </a>
+  <div class="card h-100 bg-light text-center author-book-card mb-5 mx-auto">
+    <div class="card-header text-center">
+      <ul class="nav nav-tabs card-header-tabs justify-content-center">
+        <li class="ml-auto nav-item">
+          <button *ngIf="!showBook" data-toggle="tooltip" data-placement="top" title="Click for book info." onmouseenter="$(this).tooltip('toggle')"
+            class="nav-link btn btn-secondary" (click)="alterView()">
+            <h6 class="">Book Info</h6>
+          </button>
+        </li>
+        <li class="mr-auto nav-item">
+          <button *ngIf="showBook" data-toggle="tooltip" data-placement="top" title="Click for author info." class="nav-link btn btn-secondary"
+            onmouseenter="$(this).tooltip('toggle')" (click)="alterView()">
+            <h6 class="">Author Info</h6>
+          </button>
+        </li>
+      </ul>
     </div>
 
-    <!-- IF BOOK SHOW IT, ELSE SHOW AUTHOR -->
-
+    <!-- Book or author -->
     <div class="book" *ngIf="showBook; else show_author">
-      <img class="card-img-top" src="{{book?.frontCover}}" alt="Image of book">
-
-      <div class="card-body">
-        <h6 class="card-title">{{book?.exact_title}}</h6>
-
-        <p class="card-text" [innerHTML]="book?.goodreadsDescription"></p>
-
-        <footer class="blockquote-footer">
-          <small class="text-muted">Goodreads Description</small>
+      <img class="card-img-top img-fluid mx-auto w-75" src="{{book?.frontCover}}" alt="Image of book">
+      <div class="card-body px-3">
+        <h6 class="card-title">
+          <u>{{book?.exact_title}}</u>
+        </h6>
+        <p class="card-text text-left" [innerHTML]="book?.goodreadsDescription"></p>
+        <footer class="blockquote-footer text-center">
+          <small class="text-muted">
+            <cite>Goodreads</cite> Description</small>
         </footer>
       </div>
     </div>
 
     <ng-template class="author" #show_author>
-      <img class="card-img-top" src="{{book?.authorImage}}" alt="Image of author">
-
-      <div class="card-body">
+      <img class="card-img-top img-fluid mx-auto w-75" src="{{book?.authorImage}}" alt="Image of author">
+      <div class="card-body px-3">
         <div class="card-title">
-          <a href="{{book?.authorLink}}" target="_blank">
-            {{book?.author_name}}
-
-            <!-- <h6>{{book.author_name}}</h6> -->
+          <a class="badge badge-light" href="{{book?.authorLink}}" target="_blank">
+            <h5 class="mb-0">
+              <strong>{{book?.author_name}}</strong>
+            </h5>
           </a>
         </div>
-
-        <p class="card-text">{{book?.wikipedia[0]}}</p>
+        <p class="card-text text-left">{{book?.wikipedia[0]}}</p>
       </div>
     </ng-template>
   </div>
 
   <!-- SIMILAR TO PREVIOUS CARD BUT ONLY WITH TEXT, NOTHING ELSE -->
-
-  <div class="card book-description">
+  <div class="book-description card bg-light my-5 mx-auto">
     <div class="card-body">
+      <h5 class="card-title">Book Description</h5>
       <div class="card-text" [innerHTML]="book?.amazonReview"></div>
-
       <footer class="blockquote-footer">
-        <small class="text-muted">Amazon Review</small>
+        <small class="text-muted">Amazon Professional Review</small>
       </footer>
     </div>
   </div>
 
   <!-- ---------------------------BUTTONS -------------------------- -->
-  <!-- THIS ONE NEEDS TO BE CHECKED IF PUT REQUEST IS NECESSITATED -->
 
-  <button type="button" class="btn btn-primary amazon-button" (click)="checkForAmazonReviews()">
-    <i class="fa fa-amazon fa-3x" aria-hidden="true">
-      <span class="tooltip">Amazon Reviews</span>
-    </i>
-  </button>
-
-  <button type="button" class="btn btn-primary goodreads-button" (click)="toggle('goodreadsReviewVisible'); toggleButton()">
-    <i class="fa fa-eye fa-3x" aria-hidden="true">
-      <span class="tooltip">Goodreads Reviews</span>
-    </i>
-  </button>
-
-  <button type="button" class="btn btn-primary wikipidia-button" (click)="toggle('wikiVisible'); toggleButton()">
-    <i class="fa fa-wikipedia-w fa-3x" aria-hidden="true">
-      <span class="tooltip">Author's Wikipedia Text</span>
-    </i>
-  </button>
-
-  <button type="button" class="btn btn-primary similar-books-button" (click)="toggle('amazonSimilarBooksVisible'); toggleButton()">
-    <i class="fa fa-clone fa-3x" aria-hidden="true">
-      <span class="tooltip">Similar Books</span>
-    </i>
-  </button>
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills justify-content-around">
+        <li class="nav-item">
+          <button type="button" class="nav-link p-0" (click)="checkForAmazonReviews(); toggleButton()">
+            <i title="Links to amazon reviews" class="fab fa-amazon fa-3x fa-fw" aria-hidden="true">
+            </i>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link p-0" (click)="toggle( 'goodreadsReviewVisible'); toggleButton()">
+            <i title="Links to goodreads reviews" class="fab fa-goodreads fa-3x fa-fw"></i>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link p-0" (click)="toggle('wikiVisible'); toggleButton()">
+            <i title="Text of author wikipedia article" class="fab fa-wikipedia-w fa-3x fa-fw"></i>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-link p-0" (click)="toggle( 'amazonSimilarBooksVisible'); toggleButton()">
+            <i title="Displays similar books " class="fas fa-book fa-3x fa-fw"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <!-- -----------------AMAZON REVIEWS IFRAME--------------- -->
 
-  <div (click)="checkForAmazonReviews()" *ngIf="buttonToggle?.amazonReviewVisible">
-    <iframe class="amazon-reviews" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.amazonCustomerReviews)" frameborder="0"></iframe>
-
-    <div *ngIf="buttonVisible">
-      <button class="btn btn-dark general-button" type="button" (click)="closeModal()">
-        <i class="fa fa-window-close fa-2x"></i>
-      </button>
-    </div>
+  <div class="embed-responsive embed-responsive-16by9" (click)="checkForAmazonReviews()" *ngIf="buttonToggle?.amazonReviewVisible">
+    <iframe class="embed-responsive-item" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.amazonCustomerReviews)"></iframe>
   </div>
 
   <!-- GOODREADS REVIEWS IFRAME -->
 
-  <div *ngIf="buttonToggle?.goodreadsReviewVisible">
-    <iframe class="goodreads-reviews" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.goodreadsReviewsWidget)" frameborder="0"></iframe>
-
-    <div *ngIf="buttonVisible">
-      <button class="btn btn-dark general-button" type="button" (click)="closeModal()">
-        <i class="fa fa-window-close fa-2x"></i>
-      </button>
-    </div>
+  <div class="embed-responsive embed-responsive-16by9" *ngIf="buttonToggle?.goodreadsReviewVisible">
+    <iframe class="embed-responsive-item" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.goodreadsReviewsWidget)"></iframe>
   </div>
 
   <!-- AUTHOR WIKIPEDIA TEXT -->
 
   <div *ngIf="buttonToggle?.wikiVisible">
-    <div class="card descriptions wikipedia-text">
+
+    <div class="wiki-text card">
+      <div class="card-header bg-white text-center">
+        <h6 class="font-weight-bold pt-4">Author's Wikipedia Article</h6>
+      </div>
+
       <div class="card-body">
         <div class="card-text">
-          <!-- IT IS AN ARRAY THAT NEEDS TO BE ALTERED VISUALLY -->
 
           <div *ngFor="let wiki of book?.wikipedia; let i=index">
-            <b>
-              {{wiki?.slice(0, periods[i])}}
-            </b>
-
-            {{wiki?.slice(periods[i], wiki?.length)}}
-
+            <p>
+              <b>{{wiki?.slice(0, periods[i] + 1)}}</b>
+            </p>
+            <p>{{wiki?.slice(periods[i] + 1, wiki?.length)}}</p>
             <br>
             <br>
           </div>
+
         </div>
       </div>
 
-      <footer class="blockquote-footer">
-        <small class="text-muted">From Wikipedia Article</small>
-      </footer>
+      <small class="text-muted">From Wikipedia Article</small>
+
     </div>
 
-    <div *ngIf="buttonVisible">
-      <button class="btn btn-dark general-button" type="button" (click)="closeModal()">
-        <i class="fa fa-window-close fa-2x"></i>
-      </button>
-    </div>
   </div>
 
   <!-- AMAZON, PENGUIN, AND GOODREADS SIMILAR BOOKS DATA -->
 
   <div *ngIf="buttonToggle?.amazonSimilarBooksVisible">
-    <div class="card descriptions similar-books-div">
-      <div class="card-body">
-        <div class="card-text">
-          <h4>Amazon Similar Books</h4>
+    <div class="container-fluid similar-books">
 
-          <h5 class="text-muted">
-            All link to goodreads book page.
-          </h5>
-
-          <div class="amazon-links">
-            <ng-container *ngFor="let book of book?.amazonSimilarProducts">
-              <div class="border">
-                <div *ngIf="book?.title.length > 14; else whole_title">
-                  <a class="{{book?.cl}}" href="{{book?.url}}" alt="Link to similar book at goodreads" target="_blank">{{book?.title.slice(0,12)}}...</a>
-                </div>
-                <ng-template #whole_title>
-                  <a class="{{book?.cl}}" href="{{book?.url}}" alt="Link to similar book at goodreads" target="_blank">{{book?.title}}</a>
-                </ng-template>
-              </div>
-            </ng-container>
-          </div>
-
-          <br>
-          <br>
-
-          <h4>Goodreads Similar Books</h4>
-
-          <div class="goodreads-links">
-            <ng-container *ngFor="let book of book?.goodreadsSimilarBooks">
-              <div class="goodreads-link border">
-                <div>
-                  <a href="{{book?.author_link}}" target="_blank">
-                    {{book?.author_name}}
-                  </a>
-                </div>
-                <img src="{{book?.book_image}}" alt="image of goodreads similar book">
-                <div>
-                  <div *ngIf=" book?.title.length> 14; else whole_title">
-                    <a href="{{book?.book_link}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title.slice(0, 12)}}...</a>
-                  </div>
-                  <ng-template #whole_title>
-                    <a href="{{book?.book_link}}" alt="Redirect to book (goodreads)" target="_blank">{{book?.title}}</a>
-                  </ng-template>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-
-          <br>
-          <br>
-
-          <h4>Penguin Similar Books</h4>
-
-          <h5 class="text-muted">
-            All link to Penguin Random House book page.
-          </h5>
-
-          <br>
-
-          <div *ngFor="let book of book?.penguinData">
-            <div class="border-bottom">
-              <a style="text-align: left;" href="{{book?.url}}" alt="url to book" target="_blank">
-                <h5>{{book?.name}}</h5>
-              </a>
-
-              <h6 style="text-align: left">
-                <pre>{{book?.author}}</pre>
-              </h6>
-
-              <div style="text-align: left" [innerHTML]="book?.description[0]"></div>
-
-              <!-- SOMETIMES A SECOND DESCRIPTION EXISTS -->
-
-              <div *ngIf="book?.description?.length">
-                <br>
-                <div style="text-align: left;" [innerHTML]="book?.description[1]"></div>
-              </div>
-            </div>
-            <br>
-          </div>
-        </div>
+      <div class="row p-4 mx-auto">
+        <h4 class="mx-auto">
+          <u>Penguin, Goodreads, and Amazon Similar Books</u>
+        </h4>
       </div>
 
-      <footer class="blockquote-footer">
+      <div class="penguin-books row">
+
+        <div class="pb-3 text-center w-100">
+          <h5>
+            <strong>Penguin Similar Books</strong>
+          </h5>
+          <small class="text-muted">All titles link to Penguin Random House book page.</small>
+        </div>
+
+        <br>
+
+        <div class="col-12 col-sm-10 col-med-10 mx-auto px-4" *ngFor="let book of book?.penguinData">
+          <a class="badge badge-light w-100 text-center" href="{{book?.url}}" alt="url to book" target="_blank">
+            <h5 class="mb-0">{{book?.name}}</h5>
+          </a>
+          <h6 class="text-center my-3">
+            <pre>{{book?.author}}</pre>
+          </h6>
+
+          <div class="text-justify penguin-description" [innerHTML]="book?.description[0]"></div>
+
+          <!-- SOMETIMES A SECOND DESCRIPTION EXISTS -->
+
+          <div *ngIf="book?.description?.length">
+            <br>
+            <div class="text-justify" [innerHTML]="book?.description[1]"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <br>
+      <br>
+      <hr>
+      <div class="goodreads-books row">
+
+        <div class="pb-3 text-center w-100">
+          <h5>
+            <strong>Goodreads Similar Books</strong>
+          </h5>
+          <small class="text-muted">All titles link to Goodreads book page. All author name links go to Goodreads author page.</small>
+        </div>
+
+        <div class="container">
+          <div class="flex-container d-flex align-items-center">
+            <div class="row">
+
+              <ng-container class="py-4" *ngFor="let book of book?.goodreadsSimilarBooks">
+                <div class="card-parent mx-auto">
+                  <div class="card h-100 pt-3">
+
+                    <img class="card-img-top w-75 img-fluid mx-auto" src="{{book?.book_image}}" alt="image of goodreads similar book">
+
+                    <div class="card-body text-center">
+                      <div class="card-title">
+                        <a class="badge badge-light text-justify" href="{{book?.book_link}}" alt="Redirect to book (goodreads)" target="_blank">
+                          <h6 class="mb-0 text-center">
+                            <strong>{{book?.title}}</strong>
+                          </h6>
+                        </a>
+                        <a class="mt-3 badge badge-light text-justify" href="{{book?.author_link}}" target="_blank">
+                          <h6 class="mb-0 text-center">
+                            <small class="text-muted">by {{book?.author_name}}</small>
+                          </h6>
+                        </a>
+                      </div>
+                    </div>
+                    <br>
+                  </div>
+                </div>
+
+              </ng-container>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <br>
+      <hr>
+      <div class="amazon-books row">
+
+        <div class="pb-3 text-center w-100">
+          <h5>
+            <strong>Amazon Similar Books</strong>
+          </h5>
+          <small class="text-muted">All titles link to Goodreads book page.</small>
+        </div>
+
+        <div class="d-flex flex-column align-items-center w-100">
+          <ng-container *ngFor="let book of book?.amazonSimilarProducts">
+            <div class="py-2">
+              <a class="badge badge-light text-justify my-4" href="{{book?.url}}" alt="Link to book at goodreads" target="_blank">
+                <h6 class="mb-0 text-center">
+                  <strong>{{book?.title}}</strong>
+                </h6>
+              </a>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <footer class="blockquote-footer text-center">
         <div class="text-muted">
           From Penguin Publishing, Amazon, and Goodreads
         </div>
       </footer>
-    </div>
 
-    <div *ngIf="buttonVisible">
-      <button class="btn btn-dark general-button" type="button" (click)="closeModal()">
-        <i class="fa fa-window-close fa-2x"></i>
-      </button>
     </div>
   </div>
+
+  <!-- Close the entire page -->
 </div>
 
 <!-- DATA IS LOADING, SHOW THIS -->

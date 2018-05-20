@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { ViewEncapsulation, Component, OnInit, Input } from "@angular/core";
 
 import { ActivatedRoute } from "@angular/router";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -23,6 +23,7 @@ interface ToggleButton {
   selector: "app-book",
   templateUrl: "./book.component.html",
   styleUrls: ["./book.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BookComponent implements OnInit {
   // THE BOOK
