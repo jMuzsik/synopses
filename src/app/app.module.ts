@@ -17,7 +17,6 @@ import { BookService } from "./book.service";
 import { LoadingComponent } from "./loading/loading.component";
 
 import * as bootstrap from "bootstrap";
-import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { HeaderComponent } from './header/header.component';
     BookComponent,
     DashboardComponent,
     LoadingComponent,
-    HeaderComponent,
   ],
   imports: [
     BrowserModule,

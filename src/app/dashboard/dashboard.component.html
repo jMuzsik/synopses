@@ -1,39 +1,22 @@
 <div class="dashboard" *ngIf="dataAvailable; else data_not_available">
 
   <!-- Mobile version -->
-  <section class="d-block d-xl-none jumbotron mx-auto jumbotron-fluid">
+  <section class="jumbotron mx-auto jumbotron-fluid">
     <div class="container">
       <h4 class="lead text-muted text-center py-4 mb-0">Search for a synopsis or create a new one</h4>
       <hr class="my-8">
     </div>
   </section>
 
-  <!-- Laptop screen version -->
+  <!-- Small to Large -->
 
-  <section class="d-none d-xl-block jumbotron mx-auto jumbotron-fluid">
-    <div class="d-flex align-items-center flex-column">
-      <h2 class="lead display-3 text-muted text-center py-4 mb-0">Search for a synopsis or create a new one</h2>
-      <hr class="my-8">
-    </div>
-  </section>
-
-  <!-- Small to Larg -->
-
-  <div class="input-group w-50 mx-auto d-block d-xl-none small-input">
+  <div class="input-group w-50 mx-auto small-input">
     <input #myInputLarge type="text" class="form-control w-100" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Book name..."
       (input)="filterItem(myInputLarge?.value)" />
     <label class="sr-only">Use this to search for a synopsis</label>
   </div>
 
-  <!--Laptop -->
-
-  <div class="input-group w-25 mx-auto d-none d-xl-block large-input">
-    <input #myInputSmall type="text" class="form-control input-lg w-100" aria-label="Large" aria-describedby="inputGroup-sizing-lg"
-      placeholder="Book name..." (input)="filterItem(myInputSmall?.value)" />
-    <label class="sr-only">Use this to search for a synopsis</label>
-  </div>
-
-  <div class="d-block d-xl-none album py-5 container">
+  <div class="album py-5 container">
     <div class="row">
       <div class="col-12 col-sm-6 col-md-4" *ngFor="let book of filteredItems">
 
@@ -59,7 +42,7 @@
 
           <!-- Medium screens -->
 
-          <div class="d-none d-sm-block d-xl-none med-card py-2">
+          <div class="d-none d-sm-block med-card py-2">
             <div class="card h-100">
               <div class="text-center card-header bg-white">
                 <h6 class="title">
@@ -91,46 +74,6 @@
   </div>
 
 
-  <!-- Large Screens -->
-  <div class="d-none d-xl-block">
-
-    <div class="d-flex align-items-center flex-column">
-      <div class="row">
-        <div class="py-4 col-lg-4" *ngFor="let book of filteredItems">
-          <div class="w-75 mx-auto" *ngIf="book !== 0; else do_this">
-
-            <div class="d-none d-xl-block large-card">
-              <div class="card h-100">
-                <div class="text-center card-header bg-white">
-                  <h6 class="title">
-                    <u>{{book?.exact_title}}</u>
-                  </h6>
-                </div>
-                <img class="card-img-top img-fluid mx-auto w-75" alt="Book image" src="{{book?.front_cover}}" alt="Image of book">
-                <div class="card-body px-5">
-                  <p class="card-text" [innerHTML]="book?.goodreads_description"></p>
-                  <button (click)="reroute(book?.url_title)" class="btn btn-outline-dark btn-block">Synopsis</button>
-                </div>
-              </div>
-            </div>
-
-            <ng-template #do_this>
-              <div class="d-none d-xl-block card" id="hide">
-                <div class="card-header"></div>
-                <img class="card-img-top" alt="Empty image of book">
-                <div class="card-block">
-                  <p class="card-text"></p>
-                </div>
-              </div>
-            </ng-template>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  </div>
 </div>
 
 <ng-template #data_not_available>

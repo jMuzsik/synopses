@@ -1,14 +1,9 @@
-@import "../scss/post-home-buttons";
-
-@media (min-width: 1200px) {
+@media (min-width: 576px) {
   .main {
     .navbar {
-      justify-content: space-evenly;
-      .fas {
-        font-size: 8rem;
-      }
-      h1 {
-        font-size: 8rem;
+      .row {
+        width: 25%;
+        justify-content: space-around;
       }
     }
   }

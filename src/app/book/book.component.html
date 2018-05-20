@@ -11,14 +11,14 @@
     <div class="card-header text-center">
       <ul class="nav nav-tabs card-header-tabs justify-content-center">
         <li class="ml-auto nav-item">
-          <button *ngIf="!showBook" data-toggle="tooltip" data-placement="top" title="Click for book info." onmouseenter="$(this).tooltip('toggle')"
-            class="nav-link btn btn-secondary" (click)="alterView()">
+          <button *ngIf="!showBook"  type="button" data-toggle="tooltip" data-placement="top" title="Click for book info." class="nav-link btn active btn-secondary"
+            (click)="alterView()">
             <h6 class="">Book Info</h6>
           </button>
         </li>
         <li class="mr-auto nav-item">
-          <button *ngIf="showBook" data-toggle="tooltip" data-placement="top" title="Click for author info." class="nav-link btn btn-secondary"
-            onmouseenter="$(this).tooltip('toggle')" (click)="alterView()">
+          <button *ngIf="showBook"  type="button" data-toggle="tooltip" data-placement="top" title="Click for author info." class="nav-link btn btn-secondary"
+            (click)="alterView()">
             <h6 class="">Author Info</h6>
           </button>
         </li>

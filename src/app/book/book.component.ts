@@ -1,4 +1,10 @@
-import { ViewEncapsulation, Component, OnInit, Input } from "@angular/core";
+import {
+  ViewEncapsulation,
+  Component,
+  OnInit,
+  Input,
+  AfterViewChecked,
+} from "@angular/core";
 
 import { ActivatedRoute } from "@angular/router";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -25,7 +31,7 @@ interface ToggleButton {
   styleUrls: ["./book.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class BookComponent implements OnInit {
+export class BookComponent implements AfterViewChecked, OnInit {
   // THE BOOK
   book: Book;
 
@@ -59,6 +65,12 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBook();
+  }
+
+  ngAfterViewChecked() {
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
   }
 
   // CLOSE ANYTHING OPEN FIRST, THEN OPEN THE SPECIFIED ONE

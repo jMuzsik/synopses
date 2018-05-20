@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
-import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import {
+  OnInit,
+  AfterViewInit,
+} from "@angular/core/src/metadata/lifecycle_hooks";
 import { Router } from "@angular/router";
 
 import { BookService } from "./book.service";
@@ -9,7 +12,7 @@ import { BookService } from "./book.service";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   newBook = false;
 
   papers: Array<any> = [];
@@ -19,6 +22,12 @@ export class AppComponent {
   displayNone = false;
 
   constructor(private router: Router) {}
+
+  ngAfterViewInit() {
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  }
 
   goToHome(): void {
     this.router.navigate([`/dashboard`]);

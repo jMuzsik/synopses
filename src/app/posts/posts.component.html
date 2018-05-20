@@ -1,46 +1,47 @@
-<!-- LOAD TAKE OVER ENTIRE PAGE OR NORMAL POST FORM -->
-
 <div *ngIf="loading; else normal">
   <app-loading></app-loading>
 </div>
 
 <ng-template #normal>
-  <div class="form-group post">
-    <!-- LET USER KNOW THE PROPER WAY TO INPUT A BOOK -->
-
-    <div class="alert alert-info" role="alert">
-      <h6 class="alert-heading">Information before inputting:</h6>
-
-      <p class="alert-p">
-        For exact book, input title/author accurately (similar to how it is written on amazon).
-      </p>
-    </div>
-    <input type="text" class="form-control title" placeholder="title goes in this place over here" (keyup)="onKey($event)" />
-
-    <input type="text" class="form-control author" placeholder="and author over here" (keyup)="onKey($event)" />
-
-    <div *ngIf="notPressed; else do_this">
-      <button type="submit" class="btn btn-default post-button" (click)="newBook(); buttonPressed()">New Book</button>
-    </div>
-
-    <!-- AFTER POST IS PRESSED LET USER KNOW SOMETHING IS HAPPENING.. -->
-
-    <ng-template #do_this>
-      <button class="button-replacement btn btn-default post-button">
-        API Stuff...
-      </button>
-    </ng-template>
-
-    <div *ngIf="bookPreviouslyCreated">
-      <div class="alert alert-danger alert-dismissable" role="alert">
-        <button class="close" (click)="close()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-        Error, either invalid name or book has previously been created.
+    <!-- <div class="alert alert-info" role="alert">
+        <h6 class="alert-heading">Information before inputting:</h6>
+  
+        <p class="alert-p">
+          For exact book, input title/author accurately (similar to how it is written on amazon).
+        </p>
+      </div> -->
+  <form>
+    <div class="form-group row">
+      <label for="inputTitle" class="col-sm-2 col-form-label">Book Title</label>
+      <div class="col-sm-10">
+        <input type="text" id="input-title" class="form-control title" placeholder="Title..." (keyup)="onKey($event)" />
       </div>
     </div>
-  </div>
-
-  <!-- SAME BOOK/SAME ISBN ALREADY CREATED, SHOW THIS -->
+    <div class="form-group row">
+      <label for="inputAuther" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputAuthor" placeholder="Author..." (keyup)="onKey($event)">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <div *ngIf="notPressed; else do_this">
+          <button type="submit" class="btn btn-default post-button" (click)="newBook(); buttonPressed()">New Book</button>
+        </div>
+        <ng-template #do_this>
+          <button class="button-replacement btn btn-default post-button">
+            API Stuff...
+          </button>
+        </ng-template>
+        <div *ngIf="bookPreviouslyCreated">
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <button class="close" (click)="close()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            Error, either invalid name or book has previously been created.
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </ng-template>

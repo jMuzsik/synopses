@@ -1,14 +1,18 @@
 <main class="main" role="main">
   <nav class="navbar navbar-toggleable-md navbar-light bg-light">
-    <h1 class="h1 mb-0">Synopses</h1>
-    <button type="button" data-toggle="tooltip" data-placement="bottom" title="Go to home" class="btn btn-primary btn-lg nav-link"
-      onmouseenter="$(this).tooltip('toggle')" (click)="goToHome()">
-      <i title="home button" class="fas fa-home" aria-hidden="true"></i>
-    </button>
-    <button type="button" type="button" data-toggle="tooltip" data-placement="bottom" title="Create a new book" onmouseenter="$(this).tooltip('toggle')"
-      class="btn btn-primary btn-lg nav-link" (click)="postOpen()">
-      <i class="fas fa-book" aria-hidden="true"></i>
-    </button>
+    <a class="navbar-brand">
+      <h1 class="h1 mb-0">Synopses</h1>
+    </a>
+    <div class="row">
+      <button type="button" data-toggle="tooltip" data-placement="bottom" title="Go to home" class="btn btn-primary btn-lg nav-link"
+        (click)="goToHome()">
+        <i title="home button" class="fas fa-home" aria-hidden="true"></i>
+      </button>
+      <button type="button" data-toggle="tooltip" data-placement="bottom" title="Create a new book" class="btn btn-primary btn-lg nav-link"
+        (click)="postOpen()">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </button>
+    </div>
   </nav>
   <div *ngIf="newBook">
     <app-posts (submission)="submission($event)"></app-posts>

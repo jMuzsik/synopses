@@ -43,15 +43,12 @@ export class DashboardComponent implements OnInit {
 
   // SEARCH RESULTS(FILTER RESULTS)
   filterItem(value: string): void {
-    console.log(value)
     if (!value) {
       this.filteredItems = [];
     } else {
       const fuse: any = new Fuse(this.books, this.fuseOptions);
       const result: any = fuse.search(value);
-      console.log(result)
       const filteredResult = result.map(book => this.checkForImage(book));
-      console.log(filteredResult)
       this.fillOutGrid(filteredResult);
     }
   }
@@ -108,7 +105,6 @@ export class DashboardComponent implements OnInit {
   getBooks(): any {
     this.bookService.getBooks().subscribe(
       data => {
-        console.log(data)
         this.books = data;
         this.books = this.formatBooks(this.books);
       },

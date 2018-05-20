@@ -1,13 +1,6 @@
 @import "./scss/variables";
 @import "./scss/reset";
-@import "./scss/background";
 @import "../node_modules/bootstrap/scss/bootstrap";
-
-body > app-root > div {
-  background-color: $lightGrey;
-  @extend %background;
-}
-
 html {
   font-size: 1rem;
 }
@@ -32,6 +25,7 @@ html {
 
 body {
   border: 2px solid black;
+  min-height: 100vh;
 }
 
 @media (min-width: 576px) {
@@ -48,14 +42,4 @@ body {
 @media (min-width: 992px) {
 }
 @media (min-width: 1200px) {
-  body {
-    border: 10px solid black;
-  }  
-  body > div > div.tooltip-inner {
-    font-size: 3rem !important;
-    line-height: 4rem !important;
-    max-width: 350px !important;
-    /* If max-width does not work, try using width instead */
-    width: 350px !important;
-  }
 }
