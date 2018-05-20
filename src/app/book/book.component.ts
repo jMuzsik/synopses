@@ -3,7 +3,6 @@ import {
   Component,
   OnInit,
   Input,
-  AfterViewChecked,
 } from "@angular/core";
 
 import { ActivatedRoute } from "@angular/router";
@@ -31,7 +30,7 @@ interface ToggleButton {
   styleUrls: ["./book.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class BookComponent implements AfterViewChecked, OnInit {
+export class BookComponent implements OnInit {
   // THE BOOK
   book: Book;
 
@@ -65,13 +64,7 @@ export class BookComponent implements AfterViewChecked, OnInit {
 
   ngOnInit(): void {
     this.getBook();
-  }
-
-  ngAfterViewChecked() {
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-  }
+  } 
 
   // CLOSE ANYTHING OPEN FIRST, THEN OPEN THE SPECIFIED ONE
   toggle(name: string): void {
@@ -90,8 +83,18 @@ export class BookComponent implements AfterViewChecked, OnInit {
   }
 
   // SHOW BOOK OR AUTHOR IF NOT SHOWING BOOK, ONE OR THE OTHER
-  alterView(): void {
-    this.showBook = !this.showBook;
+  alterView(type): void {
+    const authorInput = $(".author-input");
+    const bookInput = $(".book-input");
+    if (type === "author") {
+      this.showBook = true;
+      authorInput.prop("disabled", true);
+      bookInput.prop("disabled", false);
+    } else {
+      this.showBook = false;
+      bookInput.prop("disabled", true);
+      authorInput.prop("disabled", false);
+    }
   }
 
   // CLOSE MODAL IF OPEN

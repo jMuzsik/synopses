@@ -1,11 +1,16 @@
-// Background of clouds ~ uplifting
-.loading {
-  background: url("https://t4.ftcdn.net/jpg/00/96/92/85/240_F_96928594_oc995mkEMzp9nqQPuRHDnUUWZkMmHSEv.jpg")
-    no-repeat center center fixed;
+@import "../../scss/loader";
+
+.cover { 
+  background: url("https://cdn.spacetelescope.org/archives/images/wallpaper4/heic0611b.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: none;
 }

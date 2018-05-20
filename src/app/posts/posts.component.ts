@@ -11,7 +11,7 @@ import { createUrlToRedirect } from "../utils";
   templateUrl: "./posts.component.html",
   styleUrls: ["./posts.component.scss"],
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
   // to app component
   @Output() submission = new EventEmitter<boolean>();
 
@@ -33,11 +33,11 @@ export class PostsComponent {
     public bookService: BookService
   ) {}
 
-  onKey(event: any) {
-    if (event.target.classList[1] === "title") {
+  onInput(event: any) {
+    if (event.target.classList[0] === "title-input") {
       this.title = event.target.value;
     }
-    if (event.target.classList[1] === "author") {
+    if (event.target.classList[0] === "author-input") {
       this.author = event.target.value;
     }
   }
@@ -52,28 +52,31 @@ export class PostsComponent {
   }
 
   // create new book
-  newBook(): void {
+  newBook(event): void {
     class ObjectConstructor {
       title: String;
       author: String;
     }
-
     const data: ObjectConstructor = new ObjectConstructor();
     data.title = this.title;
     data.author = this.author;
     this.title = "";
     this.author = "";
 
+    // close modal
+    $("#postModal").modal("hide");
+
     setTimeout(() => {
       this.loading = true;
+      // temp fix
+      this.router.navigate(["/dashboard"]);
     }, 1000);
-
     setTimeout(() => {
       if (this.loading) {
         this.router.navigate(["/dashboard"]);
       }
     }, 8000);
-
+    
     this.bookService.postBook(data).subscribe(
       result => {
         // WAIT 5 SECONDS AFTER USER INPUTS PRIOR TO LOADING CODE TO RUN
@@ -100,5 +103,14 @@ export class PostsComponent {
         console.log("ALL FINISHED POSTING BOOK!");
       }
     );
+  }
+
+  ngOnInit() {
+    const options = {
+      keyboard: true,
+      focus: true,
+    };
+    $("#postModal").modal(options);
+    console.log($("#postModal"), "no?");
   }
 }

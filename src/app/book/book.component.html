@@ -10,15 +10,15 @@
   <div class="card h-100 bg-light text-center author-book-card mb-5 mx-auto">
     <div class="card-header text-center">
       <ul class="nav nav-tabs card-header-tabs justify-content-center">
-        <li class="ml-auto nav-item">
-          <button *ngIf="!showBook"  type="button" data-toggle="tooltip" data-placement="top" title="Click for book info." class="nav-link btn active btn-secondary"
-            (click)="alterView()">
+        <li class="nav-item">
+          <button type="button" data-toggle="tooltip" data-placement="top" title="Click for book info." class="author-input nav-link btn active btn-secondary"
+            (click)="alterView('author')" disabled>
             <h6 class="">Book Info</h6>
           </button>
         </li>
-        <li class="mr-auto nav-item">
-          <button *ngIf="showBook"  type="button" data-toggle="tooltip" data-placement="top" title="Click for author info." class="nav-link btn btn-secondary"
-            (click)="alterView()">
+        <li class="nav-item">
+          <button type="button" data-toggle="tooltip" data-placement="top" title="Click for author info." class="book-input nav-link btn active btn-secondary"
+            (click)="alterView('book')">
             <h6 class="">Author Info</h6>
           </button>
         </li>
