@@ -9,7 +9,11 @@ const apiCalls = require("../api-calls/index");
 const getAmazonData = apiCalls.getAmazonData;
 
 router.get("/", (req, res) => {
-  Book.find({})
+  const query = Book.find({}).select(
+    "exact_title front_cover goodreads_description url_title -_id"
+  );
+
+  query
     .then(books => {
       res.status(200).send(books);
     })
@@ -20,6 +24,7 @@ router.get("/", (req, res) => {
 
 router.get("/:book", (req, res) => {
   const query = req.params.book;
+
   Book.find({ url_title: query })
     .then(book => {
       res.json(book).status(200);
@@ -30,6 +35,7 @@ router.get("/:book", (req, res) => {
 router.post("/", (req, res) => {
   const query = req.body;
   Book.find({})
+    .select("title -_id")
     .then(books => {
       let check = true;
       // If the title was never entered

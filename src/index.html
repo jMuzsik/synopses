@@ -6,12 +6,32 @@
   <title>Books Passed</title>
   <base href="/"></base>
   <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <meta name="theme-color" content="#1976d2">
+  <meta name="description" content="This app is used to get a synopsis of a book or read other book synopsis's." />
+  <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" type="text/scss" href="styles.scss"></link>
+  <link href="/assets/css/fontawesome-all.min.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="favicon.ico"></link>
+  <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
-  <app-root></app-root>
+  <app-root>
+    <div class="jawn">
+      <div style="height: 100%; width: 100%; display: flex; align-items: center; background: white;">
+        <h1 style="font-size: 3rem; color: darkblue; font-family: Futura, sans-serif; margin: 0 auto; text-align: center;">
+          Welcome to Synopses!
+        </h1>
+      </div>
+    </div>
+  </app-root>
 </body>
+<noscript>
+  <div style="height: 100vh; width: 100vw; display: flex; align-items: center; background: black;">
+    <h1 style="color: yellow; font-family: Helvetica; margin: 0 auto; text-align: center;">
+      Sorry, but the app is not available without javascript!
+    </h1>
+  </div>
+</noscript>
+
 </html>

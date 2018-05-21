@@ -1,22 +1,24 @@
-@import "./../scss/variables";
-
 .main {
   .navbar {
-    background-color: #2B3990;
+    background-color: #2b3990;
     .navbar-brand {
-      color: $red;
-      font-family: Didot, 'Courier New', Courier, monospace;
+      color: #f2f3f2;
+      font-family: Apple Chancery, cursive;
+      font-weight: bolder;
     }
     .row {
       button {
-        background-color: rgb(177, 212, 208);
-        color: #2B3990;
+        background-color: #2b3990;
+        color: #f2f3f2;
       }
-      button:focus, button:hover {
-        background-color: rgb(209, 235, 232);
+      button:focus,
+      button:hover {
+        background-color: #f2f3f2;
+        color: #2b3990;
       }
     }
-  }}
+  }
+}
 
 @media (min-width: 576px) {
   .main {

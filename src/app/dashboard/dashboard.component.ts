@@ -48,22 +48,9 @@ export class DashboardComponent implements OnInit {
     } else {
       const fuse: any = new Fuse(this.books, this.fuseOptions);
       const result: any = fuse.search(value);
-      const filteredResult = result.map(book => this.checkForImage(book));
-      this.fillOutGrid(filteredResult);
+      this.fillOutGrid(result);
     }
   }
-
-  // IF BOOK HAS NO IMAGE, SOME REASON, GIVE SPACE IMAGE
-  checkForImage(book: any): void {
-    if (book.front_cover) {
-      return book;
-    } else {
-      book.front_cover =
-        "http://imgsrc.hubblesite.org/hvi/uploads/image_file/image_attachment/30052/STSCI-H-p1720b-t-400x400.png";
-      return book;
-    }
-  }
-
   // USING CSS GRID
   fillOutGrid(result: any): void {
     // if 1 item it is in the center

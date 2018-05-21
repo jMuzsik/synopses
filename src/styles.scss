@@ -1,5 +1,5 @@
-@import "./scss/variables";
 @import "./scss/reset";
+@import "./scss/loader";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 html {
@@ -12,26 +12,26 @@ p, div {
 
 @include media-breakpoint-up(sm) {
   html {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 }
 
 @include media-breakpoint-up(md) {
   html {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 }
 
 @include media-breakpoint-up(lg) {
   html {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 }
 
 body {
   border: 2px solid black;
   min-height: 100vh;
-  background-color: #F2F3F2;
+  background-color: #F2F3F2 !important;
 }
 
 @media (min-width: 576px) {

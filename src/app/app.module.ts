@@ -17,6 +17,8 @@ import { BookService } from "./book.service";
 import { LoadingComponent } from "./loading/loading.component";
 
 import * as bootstrap from "bootstrap";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,9 @@ import * as bootstrap from "bootstrap";
     FormsModule,
     HttpModule,
     HttpClientModule,
+    ServiceWorkerModule.register("/ngsw-worker.js", {
+      enabled: environment.production,
+    }),
   ],
   providers: [
     BookService,

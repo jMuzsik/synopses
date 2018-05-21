@@ -1,8 +1,5 @@
 import { Component } from "@angular/core";
-import {
-  OnInit,
-  AfterViewInit,
-} from "@angular/core/src/metadata/lifecycle_hooks";
+import { AfterViewInit } from "@angular/core/src/metadata/lifecycle_hooks";
 import { Router } from "@angular/router";
 
 import { BookService } from "./book.service";
