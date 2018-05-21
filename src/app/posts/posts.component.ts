@@ -69,11 +69,11 @@ export class PostsComponent implements OnInit {
     setTimeout(() => {
       this.loading = true;
       // temp fix
-      this.router.navigate(["/dashboard"]);
+      this.router.navigate(["/"]);
     }, 1000);
     setTimeout(() => {
       if (this.loading) {
-        this.router.navigate(["/dashboard"]);
+        this.router.navigate(["/"]);
       }
     }, 8000);
 

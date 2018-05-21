@@ -11,4 +11,9 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
+  .then(() => {
+    if ("serviceWorker" in navigator && environment.production) {
+      navigator.serviceWorker.register("/ngsw-worker.js");
+    }
+  })
   .catch(err => console.log("FUNDAMENTAL ERROR IN PROGRAM, IN MAIN.TS", err));

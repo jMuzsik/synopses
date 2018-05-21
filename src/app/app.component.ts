@@ -27,7 +27,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   goToHome(): void {
-    this.router.navigate([`/dashboard`]);
+    this.router.navigate([`/`]);
   }
 
   postOpen(): void {

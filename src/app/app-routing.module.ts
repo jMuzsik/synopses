@@ -7,7 +7,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 export const routes: Routes = [
   {
     path: "",
-    redirectTo: "/dashboard",
+    redirectTo: "/",
     pathMatch: "full",
   },
   {
@@ -18,7 +18,7 @@ export const routes: Routes = [
     path: "book/:title",
     component: BookComponent,
   },
-  { path: "**", redirectTo: "/dashboard", pathMatch: "full" },
+  { path: "**", redirectTo: "/", pathMatch: "full" },
 ];
 
 @NgModule({
