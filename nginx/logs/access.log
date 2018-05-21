@@ -1,2 +1,0 @@
-192.0.201.133 - - [18/May/2014:16:38:17 -0400] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/537.75.14"
-192.0.201.133 - - [18/May/2014:16:38:17 -0400] "GET /favicon.ico HTTP/1.1" 404 168 "http://greywolf.cdf.utoronto.ca:38099/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/537.75.14"

@@ -1,4 +1,0 @@
-2014/05/18 16:38:17 [error] 16498#0: *2 open() "/h/u3/t1/00/t1hassas/nginx/html/favicon.ico" failed (2: No such file or directory), client: 192.0.201.133, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "greywolf.cdf.utoronto.ca:38099", referrer: "http://greywolf.cdf.utoronto.ca:38099/"
-2014/05/18 16:38:27 [notice] 16640#0: signal process started
-2014/05/18 16:38:49 [emerg] 16676#0: bind() to 0.0.0.0:80 failed (13: Permission denied)
-2014/05/18 16:38:59 [emerg] 16694#0: bind() to 0.0.0.0:80 failed (13: Permission denied)
