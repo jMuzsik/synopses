@@ -13,6 +13,11 @@
   color: #374396;
 }
 
+.accordion .list-group .active {
+  color: #f2f3f2;
+  background-color: #5970af;
+}
+
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: calc(var(--jumbotron-padding-y) * 2);
