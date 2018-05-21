@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "index": "/index.html",
+  "index": "/./index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -9,7 +9,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.68069bce87b04c1deee0.js",
+        "/main.de3c1b52e5e52c7d9890.js",
         "/ngsw-worker.js",
         "/polyfills.477f8fce4c717835aef5.js",
         "/runtime.a66f828dca56eeb90e02.js",
@@ -98,8 +98,8 @@
     "/assets/webfonts/fa-solid-900.woff": "7b4a63abc8476f745f09775d7465f0a6c33daf85",
     "/assets/webfonts/fa-solid-900.woff2": "1ba4dd60af529d1a72d0e57467c3bc0bbb728a4d",
     "/favicon.ico": "6c0a0213210f414f5fdf0df3f9d43c66269bfa55",
-    "/index.html": "36a94e869c928c023291fdab30f91b9552f895be",
-    "/main.68069bce87b04c1deee0.js": "b19726a0231d9a6db8d76bf8fa6a6fd8c3a40b8c",
+    "/index.html": "8cf0f0389d1aee876c1740ae2f37e6cc681bdf86",
+    "/main.de3c1b52e5e52c7d9890.js": "f4a32020d8e4abb3136c4717fd446a41019edd0a",
     "/ngsw-worker.js": "c5a902eadafef027da61d8960343491e15191ab4",
     "/polyfills.477f8fce4c717835aef5.js": "b7e2a904d991459f495b427233e93871eeb45c6b",
     "/runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
