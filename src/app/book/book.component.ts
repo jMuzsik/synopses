@@ -84,11 +84,15 @@ export class BookComponent implements OnInit {
     if (type === "author") {
       this.showBook = true;
       authorInput.prop("disabled", true);
+      authorInput.css("cursor", "not-allowed");
       bookInput.prop("disabled", false);
+      bookInput.css("cursor", "pointer");
     } else {
       this.showBook = false;
       bookInput.prop("disabled", true);
+      bookInput.css("cursor", "not-allowed");
       authorInput.prop("disabled", false);
+      authorInput.css("cursor", "pointer");
     }
   }
 
