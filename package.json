@@ -5,7 +5,9 @@
   "scripts": {
     "ng": "ng serve --watch && nodemon server.js",
     "start": "nodemon server.js",
-    "build": "ng build --watch",
+    "ngsw-config": "node_modules/.bin/ngsw-config dist /ngsw-config.json",
+    "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
+    "build-prod-ngsw": "ng build --prod && npm run ngsw-config && npm run ngsw-copy",    
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
