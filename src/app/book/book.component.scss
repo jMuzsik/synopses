@@ -26,9 +26,12 @@
       color: rgb(246, 246, 246);
     }
     .fa-book {
-      background-color: black;
-      color: rgb(253, 232, 220);
+      background-color: rgb(246, 246, 246);
+      color: black;
     }
+  }
+  .author-input {
+    cursor: not-allowed;
   }
 }
 .similar-books .penguin-books .badge {

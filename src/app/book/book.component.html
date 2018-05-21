@@ -13,13 +13,13 @@
         <li class="nav-item">
           <button aria-label="Click for book info" type="button" title="Click for book info." class="author-input nav-link btn active btn-primary"
             (click)="alterView('author')" disabled>
-            <h6 class="">Book Info</h6>
+            <h6 class="mb-0">Book Info</h6>
           </button>
         </li>
         <li class="nav-item">
           <button aria-label="Click for author info" type="button" title="Click for author info." class="book-input nav-link btn active btn-primary"
             (click)="alterView('book')">
-            <h6 class="">Author Info</h6>
+            <h6 class="mb-0">Author Info</h6>
           </button>
         </li>
       </ul>
@@ -92,7 +92,7 @@
           </button>
         </li>
         <li class="nav-item">
-          <button aria-label="Similar books page" type="button" data-toggle="tooltip" title="Similar Books from multiple sources."
+          <button aria-label="Similar books page" type="button" title="Similar Books from multiple sources."
             data-placement="top" class="nav-link p-0" (click)="toggle( 'amazonSimilarBooksVisible'); toggleButton()">
             <i title="Displays similar books " class="fas fa-book fa-3x fa-fw rounded"></i>
           </button>

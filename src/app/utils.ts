@@ -24,6 +24,7 @@ export function createBookObject(data: Object): Book {
   // SET ALL THE FIELDS OF BOOK
   book["amazonReview"] = data["amazon_editorial_review"];
   // IFRAME IS LOCATED WITHIN ARRAY
+  console.log(data['amazon_reviews'])
   book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
   book["amazonSimilarProducts"] = data["amazon_similar_products"];
   book["author_name"] = data["author_name"];

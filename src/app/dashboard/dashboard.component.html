@@ -1,9 +1,34 @@
 <div class="dashboard" *ngIf="dataAvailable; else data_not_available">
 
-  <section class="jumbotron mx-auto jumbotron-fluid pb-4">
-    <div class="container">
-      <h4 class="lead text-center py-4 mb-0">Search for a synopsis or create a new one</h4>
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+          aria-controls="collapseOne">
+          Some info about the site
+        </button>
+      </div>
+
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="container">
+            <h3 class="lead text-center py-4 mb-0">Books Passed</h3>
+            <p>This was originally created as a way to keep track of books I have read in the past.</p>
+            <p>It currently can grab a lot of data about a book and display it intuitively.</p>
+            <ul class="list-group">
+              <li class="list-group-item active mx-auto btn-primary">Adding a book</li>
+              <li class="list-group-item">Click book button on top right</li>
+              <li class="list-group-item">Input author and title as accurately as possible</li>
+              <li class="list-group-item">Post it!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <section class="jumbotron mx-auto jumbotron-fluid pb-4">
+    <h4 class="lead text-center py-4 mb-0">Search for a synopsis:</h4>
     <div class="input-group w-50 mx-auto small-input">
       <input #myInputLarge type="text" class="rounded form-control w-100" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
         placeholder="Book name..." (input)="filterItem(myInputLarge?.value)" />
