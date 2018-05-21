@@ -1,12 +1,12 @@
 <div class="dashboard" *ngIf="dataAvailable; else data_not_available">
-  
+
   <section class="jumbotron mx-auto jumbotron-fluid pb-4">
     <div class="container">
       <h4 class="lead text-center py-4 mb-0">Search for a synopsis or create a new one</h4>
     </div>
     <div class="input-group w-50 mx-auto small-input">
-      <input #myInputLarge type="text" class="rounded form-control w-100" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Book name..."
-        (input)="filterItem(myInputLarge?.value)" />
+      <input #myInputLarge type="text" class="rounded form-control w-100" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+        placeholder="Book name..." (input)="filterItem(myInputLarge?.value)" />
       <label class="sr-only">Use this to search for a synopsis</label>
     </div>
   </section>

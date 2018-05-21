@@ -1,10 +1,4 @@
-import {
-  ViewEncapsulation,
-  Component,
-  OnInit,
-  Input,
-  AfterViewChecked,
-} from "@angular/core";
+import { ViewEncapsulation, Component, OnInit, Input } from "@angular/core";
 
 import { ActivatedRoute } from "@angular/router";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -31,7 +25,7 @@ interface ToggleButton {
   styleUrls: ["./book.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
-export class BookComponent implements OnInit, AfterViewChecked {
+export class BookComponent implements OnInit {
   // THE BOOK
   book: Book;
 
@@ -152,6 +146,12 @@ export class BookComponent implements OnInit, AfterViewChecked {
             this.book["amazonSimilarProducts"]
           );
         }
+        // html is only visible after data is put on the page
+        setTimeout(() => {
+          const tooltips = $('[data-toggle="tooltip"]');
+          const len = tooltips.length;
+          tooltips.slice(2, len).tooltip();
+        }, 300);
       },
       err =>
         console.log(
@@ -160,11 +160,5 @@ export class BookComponent implements OnInit, AfterViewChecked {
         ),
       () => (this.isDataAvailable = true)
     );
-  }
-
-  ngAfterViewChecked() {
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
   }
 }

@@ -1,5 +1,4 @@
 import { Book } from "./book";
-import { Observable } from "rxjs/Observable";
 
 // ALL I AM GIVEN IS A BUNCH OF UNFORMATTED TEXT, BOLD FIRST SENTENCE OF EACH PARAGRAPH
 // AND SEPARATE SECTIONS TO PUT <BR /> IN CORRECT PLACES

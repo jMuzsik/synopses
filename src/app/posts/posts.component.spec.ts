@@ -21,20 +21,18 @@ describe("PostsComponent", () => {
   let buttonElement: HTMLElement;
   let button: DebugElement;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          PostsComponent,
-          LoadingComponent,
-          DashboardComponent,
-          BookComponent,
-        ],
-        imports: [RouterModule.forRoot(routes), HttpModule, HttpClientModule],
-        providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService],
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        PostsComponent,
+        LoadingComponent,
+        DashboardComponent,
+        BookComponent,
+      ],
+      imports: [RouterModule.forRoot(routes), HttpModule, HttpClientModule],
+      providers: [{ provide: APP_BASE_HREF, useValue: "/" }, BookService],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PostsComponent);
