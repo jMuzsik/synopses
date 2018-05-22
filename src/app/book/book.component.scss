@@ -7,26 +7,39 @@
     background-color: #5970af;
     .nav-link {
       border: none;
+      i {
+        font-size: 1rem;
+      }
     }
-    .fa,
-    .fab,
-    .fas {
+    .nav-link:hover {
+      border: none;
+      opacity: .7;
+    }
+    .fontello-icon {
       line-height: 1.25;
     }
-    .fa-amazon {
+    .amazon-button {
       background-color: black;
+    }
+    .icon-amazon {
       color: #ff9900;
     }
-    .fa-goodreads {
+    .goodreads-button {
       background-color: rgb(240, 237, 228);
+    }
+    .icon-leanpub {
       color: rgb(97, 67, 54);
     }
-    .fa-wikipedia {
+    .wiki-button {
       background-color: black;
+    }
+    .icon-wikipedia-w {
       color: rgb(246, 246, 246);
     }
-    .fa-book {
+    .similarbooks-button {
       background-color: rgb(246, 246, 246);
+    }
+    .icon-space-shuttle {
       color: black;
     }
   }

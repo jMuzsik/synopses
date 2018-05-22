@@ -74,27 +74,27 @@
       <ul class="nav nav-pills card-header-pills justify-content-around">
         <li class="nav-item">
           <button aria-label="amazon reviews page" type="button" data-toggle="tooltip" title="Amazon Reviews" data-placement="top"
-            class="nav-link p-0" (click)="checkForAmazonReviews(); toggleButton()">
-            <i title="Links to amazon reviews" class="fab fa-amazon fa-3x fa-fw rounded" aria-hidden="true">
+            class="amazon-button nav-link p-1" (click)="checkForAmazonReviews(); toggleButton()">
+            <i title="Links to amazon reviews" class="icon-amazon rounded" aria-hidden="true">
             </i>
           </button>
         </li>
         <li class="nav-item">
           <button aria-label="goodreads reviews page" type="button" data-toggle="tooltip" title="Goodreads Reviews" data-placement="top"
-            class="nav-link p-0" (click)="toggle( 'goodreadsReviewVisible'); toggleButton()">
-            <i title="Links to goodreads reviews" class="fab fa-goodreads fa-3x fa-fw rounded"></i>
+            class="goodreads-button nav-link p-1" (click)="toggle( 'goodreadsReviewVisible'); toggleButton()">
+            <i title="Links to goodreads reviews" class="fontello-icon icon-leanpub rounded"></i>
           </button>
         </li>
         <li class="nav-item">
           <button aria-label="Authors wikipedia article" type="button" data-toggle="tooltip" title="Author Wikipedia Article" data-placement="top"
-            class="nav-link p-0" (click)="toggle('wikiVisible'); toggleButton()">
-            <i title="Text of author wikipedia article" class="fab fa-wikipedia-w fa-3x fa-fw rounded"></i>
+            class="wiki-button nav-link p-1" (click)="toggle('wikiVisible'); toggleButton()">
+            <i title="Text of author wikipedia article" class="fontello-icon icon-wikipedia-w rounded"></i>
           </button>
         </li>
         <li class="nav-item">
-          <button aria-label="Similar books page" type="button" title="Similar Books from multiple sources."
-            data-placement="top" class="nav-link p-0" (click)="toggle( 'amazonSimilarBooksVisible'); toggleButton()">
-            <i title="Displays similar books " class="fas fa-book fa-3x fa-fw rounded"></i>
+          <button aria-label="Similar books page" type="button" data-toggle="tooltip" title="Similar Books from multiple sources."
+            data-placement="top" class="similarbooks-button nav-link p-1" (click)="toggle( 'amazonSimilarBooksVisible'); toggleButton()">
+            <i title="Displays similar books " class="fontello-icon icon-space-shuttle rounded"></i>
           </button>
         </li>
       </ul>
