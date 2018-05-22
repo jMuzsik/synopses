@@ -15,7 +15,7 @@
         "/runtime.a66f828dca56eeb90e02.js",
         "/safety-worker.js",
         "/scripts.bc80ffcfe5c0b833eb1d.js",
-        "/styles.b815777470ca4b6ee72f.css",
+        "/styles.45ce79a7e93fc34c5f17.css",
         "/worker-basic.min.js"
       ],
       "patterns": []
@@ -54,14 +54,14 @@
     "/assets/font/fontello.woff": "0ca5fc1caa8adf27fb49ed02f5aada4c30a1257f",
     "/assets/font/fontello.woff2": "4b233870cc624a722a35124bcad2e8d2c8c9f051",
     "/favicon.ico": "6c0a0213210f414f5fdf0df3f9d43c66269bfa55",
-    "/index.html": "9de5827a7da68239f0a74db34b1d298308cbf483",
+    "/index.html": "30d5f15fc5c53476e0e0cfc5188877615af413e9",
     "/main.e07eb11817406e7618c2.js": "1317819e8139a7665fb126fb33df3d08d34b7cd5",
     "/ngsw-worker.js": "c5a902eadafef027da61d8960343491e15191ab4",
     "/polyfills.477f8fce4c717835aef5.js": "b7e2a904d991459f495b427233e93871eeb45c6b",
     "/runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
     "/safety-worker.js": "ae5c8be3955e38edeeec09ed94b63d1e57f003c9",
     "/scripts.bc80ffcfe5c0b833eb1d.js": "9257fa4ab6b4a11fa79eaf0f87322ce7bd7b8ace",
-    "/styles.b815777470ca4b6ee72f.css": "93bdbdcc73a89293f167e33b1958bd3c8cbfd058",
+    "/styles.45ce79a7e93fc34c5f17.css": "99a1140a01319493bd26abdbb18c1ca91bde76d6",
     "/worker-basic.min.js": "ae5c8be3955e38edeeec09ed94b63d1e57f003c9"
   },
   "navigationUrls": [
