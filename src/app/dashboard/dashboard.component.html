@@ -5,7 +5,7 @@
       <div class="card-header" id="headingOne">
         <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
           aria-controls="collapseOne">
-          Some info about the site
+          Dropdown of info about the site
         </button>
       </div>
 
@@ -30,7 +30,7 @@
   <section class="jumbotron mx-auto jumbotron-fluid pb-4">
     <h4 class="lead text-center py-4 mb-0">Search for a synopsis:</h4>
     <div class="input-group w-50 mx-auto small-input">
-      <input #myInputLarge type="text" class="rounded form-control w-100" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+      <input #myInputLarge type="text" class="rounded form-control w-100" aria-label="Input the name of a book"
         placeholder="Book name..." (input)="filterItem(myInputLarge?.value)" />
       <label class="sr-only">Use this to search for a synopsis</label>
     </div>

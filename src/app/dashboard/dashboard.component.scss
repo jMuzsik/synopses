@@ -18,6 +18,15 @@
   background-color: #5970af;
 }
 
+.accordion .card-header button {
+  color: #212529;
+}
+
+.accordion .card-header button:hover {
+  border: .5px solid #5970af;
+  color: #009bff;
+} 
+
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: calc(var(--jumbotron-padding-y) * 2);

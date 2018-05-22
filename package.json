@@ -7,11 +7,11 @@
     "start": "nodemon server.js",
     "ngsw-config": "node_modules/.bin/ngsw-config dist /ngsw-config.json",
     "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
-    "build-prod-ngsw": "ng build --prod && npm run ngsw-config && npm run ngsw-copy",    
+    "build-prod-ngsw": "ng build --prod && npm run ngsw-config && npm run ngsw-copy",
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "post-install": "ng build --prod"
+    "build": "ng build --watch"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +27,7 @@
     "@angular/platform-browser-dynamic": "6.0.2",
     "@angular/pwa": "0.6.3",
     "@angular/router": "6.0.2",
+    "@angular/service-worker": "6.0.2",
     "@types/fuse": "^2.5.2",
     "amazon-product-api": "^0.4.4",
     "async": "^2.6.0",
@@ -38,6 +39,7 @@
     "express": "^4.16.2",
     "express-jwt": "^5.3.0",
     "fuse.js": "^3.2.0",
+    "http2": "3.3.7",
     "isbndbjs": "^1.0.2",
     "jquery": "3.3.1",
     "jwks-rsa": "^1.2.1",
@@ -52,11 +54,11 @@
     "request-promise": "^4.2.2",
     "rxjs": "6.1.0",
     "rxjs-compat": "6.1.0",
+    "spdy": "3.4.7",
     "typescript": "2.7.2",
     "wtf_wikipedia": "^2.5.0",
     "xml2js": "^0.4.19",
-    "zone.js": "^0.8.26",
-    "@angular/service-worker": "6.0.2"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/cli": "6.0.3",
