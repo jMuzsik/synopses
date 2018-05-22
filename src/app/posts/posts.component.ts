@@ -111,6 +111,5 @@ export class PostsComponent implements OnInit {
       focus: true,
     };
     $("#postModal").modal(options);
-    console.log($("#postModal"), "no?");
   }
 }

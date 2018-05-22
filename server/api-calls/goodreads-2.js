@@ -119,7 +119,6 @@ var getGoodreadsData2 = function(secondOptions, callback) {
             },
           ]
         );
-        console.log(goodreadsData)
         callback(goodreadsData);
         return;
       });

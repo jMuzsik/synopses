@@ -13,7 +13,6 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .then(() => {
     if ("serviceWorker" in navigator) {
-      console.log(navigator)
       navigator.serviceWorker.register("/ngsw-worker.js");
     }
   })
