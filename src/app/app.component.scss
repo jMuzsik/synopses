@@ -10,6 +10,9 @@
       button {
         background-color: #2b3990;
         color: #f2f3f2;
+        i {
+          font-size: 2rem;
+        }
       }
       button:focus,
       button:hover {
@@ -24,7 +27,6 @@
   .main {
     .navbar {
       .row {
-        width: 25%;
         justify-content: space-around;
       }
     }

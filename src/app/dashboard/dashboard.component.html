@@ -16,7 +16,7 @@
             <p>This was originally created as a way to keep track of books I have read in the past.</p>
             <p>It currently can grab a lot of data about a book and display it intuitively.</p>
             <ul class="list-group">
-              <li class="list-group-item active mx-auto">Adding a book</li>
+              <li class="list-group-item bg-light mx-auto">Adding a book</li>
               <li class="list-group-item">Click book button on top right</li>
               <li class="list-group-item">Input author and title as accurately as possible</li>
               <li class="list-group-item">Post it!</li>
@@ -75,7 +75,7 @@
               <img class="card-img-top img-fluid mx-auto d-block w-75" alt="Book image" src="{{book?.front_cover}}" alt="Image of book">
               <div class="card-body px-2">
                 <p class="card-text" [innerHTML]="book?.goodreads_description"></p>
-                <button name="Route to this book's info" (click)="reroute(book?.url_title)" class="btn btn-outline-primary btn-block h-100">Synopsis</button>
+                <button name="Route to this book's info" (click)="reroute(book?.url_title)" class="btn btn-outline-primary btn-block">Synopsis</button>
               </div>
             </div>
           </div>
