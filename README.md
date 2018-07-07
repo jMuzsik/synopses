@@ -7,3 +7,5 @@ Amazon books, Goodreads, Penguin books, Wikipidia, ISBNDB are all queried instan
 Built with love over several weeks.
 
 [Link](https://bookspassed.com)
+
+Note to self, comment out http2 code in server to work in the local environment
