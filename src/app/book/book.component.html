@@ -56,7 +56,7 @@
   </div>
 
   <!-- SIMILAR TO PREVIOUS CARD BUT ONLY WITH TEXT, NOTHING ELSE -->
-  <div class="book-description card bg-light my-5 mx-auto">
+  <!-- <div class="book-description card bg-light my-5 mx-auto">
     <div class="card-body">
       <h5 class="card-title">Book Description</h5>
       <div class="card-text" [innerHTML]="book?.amazonReview"></div>
@@ -65,20 +65,20 @@
           <cite>Amazon</cite> Professional Review</p>
       </footer>
     </div>
-  </div>
+  </div> -->
 
   <!-- ---------------------------BUTTONS -------------------------- -->
 
   <div class="buttons card text-center">
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills justify-content-around">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <button aria-label="amazon reviews page" type="button" data-toggle="tooltip" title="Amazon Reviews" data-placement="top"
             class="amazon-button nav-link p-1" (click)="checkForAmazonReviews(); toggleButton()">
             <i title="Links to amazon reviews" class="icon-amazon rounded" aria-hidden="true">
             </i>
           </button>
-        </li>
+        </li> -->
         <li class="nav-item">
           <button aria-label="goodreads reviews page" type="button" data-toggle="tooltip" title="Goodreads Reviews" data-placement="top"
             class="goodreads-button nav-link p-1" (click)="toggle( 'goodreadsReviewVisible'); toggleButton()">
@@ -103,9 +103,9 @@
 
   <!-- -----------------AMAZON REVIEWS IFRAME--------------- -->
 
-  <div class="embed-responsive embed-responsive-16by9" (click)="checkForAmazonReviews()" *ngIf="buttonToggle?.amazonReviewVisible">
+  <!-- <div class="embed-responsive embed-responsive-16by9" (click)="checkForAmazonReviews()" *ngIf="buttonToggle?.amazonReviewVisible">
     <iframe class="embed-responsive-item" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.amazonCustomerReviews)"></iframe>
-  </div>
+  </div> -->
 
   <!-- GOODREADS REVIEWS IFRAME -->
 
@@ -150,7 +150,7 @@
 
       <div class="row p-4 mx-auto">
         <h4 class="mx-auto">
-          <u>Penguin, Goodreads, and Amazon Similar Books</u>
+          <u>Penguin and Goodreads Similar Books</u>
         </h4>
       </div>
 
@@ -233,9 +233,9 @@
       <br>
       <br>
       <hr>
-      <div class="amazon-books row">
+      <!-- <div class="amazon-books row"> -->
 
-        <div class="pb-3 text-center w-100">
+        <!-- <div class="pb-3 text-center w-100">
           <h5>
             <strong>Amazon Similar Books</strong>
           </h5>
@@ -252,14 +252,14 @@
               </a>
             </div>
           </ng-container>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
       <br>
       <hr>
       <footer class="card-footer bg-light text-center">
         <div class="mb-0">
           From
-          <cite>Penguin Publishing, Amazon, and Goodreads</cite>
+          <cite>Penguin Publishing, and Goodreads</cite>
         </div>
       </footer>
 

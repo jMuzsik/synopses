@@ -8,7 +8,6 @@ var getAmazonData = function(isbn) {
     awsSecret: process.env.AWS_SECRET_ACCESS_KEY,
     awsTag: process.env.AWS_ASSOCIATE_TAG,
   });
-  console.log(awsId, awsSecret, awsTag);
 
   var amazonData = {
     amazon_reviews: [],
@@ -22,7 +21,6 @@ var getAmazonData = function(isbn) {
       responseGroup: "EditorialReview,Images,Reviews,Similarities,",
     })
     .then(function(results) {
-      console.log(results);
       // Grab each data needed individually
       amazonData.amazon_reviews = findDeep(
         results,
@@ -89,7 +87,7 @@ var getAmazonData = function(isbn) {
         ],
       };
       if (Array.isArray(err.Error)) {
-        if (err.Error[0].message) {
+        if (err.Error[0].Message) {
           console.log(
             "THIS IS WHEN THE ITEM LOOKUP FAILS, AMAZON",
             err.Error[0].Message

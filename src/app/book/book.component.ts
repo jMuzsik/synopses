@@ -10,7 +10,7 @@ import { BookService } from "../book.service";
 import {
   createBookObject,
   reformatPenguinData,
-  setUpAmazonSimilarBooks,
+  // setUpAmazonSimilarBooks,
 } from "../utils";
 
 interface ToggleButton {
@@ -111,45 +111,46 @@ export class BookComponent implements OnInit {
   }
 
   // AMAZON REVIEW IFRAME ONLY LASTS FOR A SINGLE DAY, PUT REQUEST NECESSARY IF UPDATED LATER THEN A DAY AGO
-  checkForAmazonReviews(): void {
-    const now = new Date();
-    const past = new Date(this.book["updated"]);
-    const bookPath = this.route.snapshot.url[1].path;
-    const data = {};
-    data["isbn"] = this.book.isbn;
-    // CALCULATE HOW MANY DAYS HAS PASSED SINCE THIS BUTTON HAS BEEN PRESSED/DATA HAS BEEN USED
-    if (
-      Math.floor((now.getTime() - past.getTime()) / (24 * 60 * 60 * 1000)) > 0
-    ) {
-      this.bookService.putBook(bookPath, data).subscribe(
-        data => {
-          this.book["amazonCustomerReviews"] = data["IFrameURL"][0];
-        },
-        error => console.log(error),
-        () => {
-          this.toggle("amazonReviewVisible");
-          this.toggleButton();
-          console.log("PUT REQUEST SUCCESS");
-        }
-      );
-    } else {
-      this.toggle("amazonReviewVisible");
-      this.toggleButton();
-    }
-  }
+  // checkForAmazonReviews(): void {
+  //   const now = new Date();
+  //   const past = new Date(this.book["updated"]);
+  //   const bookPath = this.route.snapshot.url[1].path;
+  //   const data = {};
+  //   data["isbn"] = this.book.isbn;
+  //   // CALCULATE HOW MANY DAYS HAS PASSED SINCE THIS BUTTON HAS BEEN PRESSED/DATA HAS BEEN USED
+  //   if (
+  //     Math.floor((now.getTime() - past.getTime()) / (24 * 60 * 60 * 1000)) > 0
+  //   ) {
+  //     this.bookService.putBook(bookPath, data).subscribe(
+  //       data => {
+  //         this.book["amazonCustomerReviews"] = data["IFrameURL"][0];
+  //       },
+  //       error => console.log(error),
+  //       () => {
+  //         this.toggle("amazonReviewVisible");
+  //         this.toggleButton();
+  //         console.log("PUT REQUEST SUCCESS");
+  //       }
+  //     );
+  //   } else {
+  //     this.toggle("amazonReviewVisible");
+  //     this.toggleButton();
+  //   }
+  // }
 
   getBook(): void {
     const bookPath = this.route.snapshot.url[1].path;
     this.bookService.getBook(bookPath).subscribe(
       data => {
+        console.log(data)
         this.book = createBookObject(data);
         this.periods = data["periods"];
         this.book["penguinData"] = reformatPenguinData(this.book.penguinData);
-        if (Array.isArray(this.book["amazonSimilarProducts"])) {
-          this.book["amazonSimilarProducts"] = setUpAmazonSimilarBooks(
-            this.book["amazonSimilarProducts"]
-          );
-        }
+        // if (Array.isArray(this.book["amazonSimilarProducts"])) {
+        //   this.book["amazonSimilarProducts"] = setUpAmazonSimilarBooks(
+        //     this.book["amazonSimilarProducts"]
+        //   );
+        // }
         // html is only visible after data is put on the page
         setTimeout(() => {
           const tooltips = $('[data-toggle="tooltip"]');

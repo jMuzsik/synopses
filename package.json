@@ -11,7 +11,9 @@
     "test": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build": "ng build --watch"
+    "build": "ng build --watch",
+    "local-client": "ng serve --proxy-config proxy.config.json",
+    "local-server": "nodemon server.js --watch server"
   },
   "private": true,
   "dependencies": {

@@ -77,32 +77,32 @@ router.post("/", (req, res) => {
     .catch(error => res.status(400).end());
 });
 
-router.put("/:book", (req, res) => {
-  const url_title = req.params.book;
-  const isbn = req.body.isbn;
+// router.put("/:book", (req, res) => {
+//   const url_title = req.params.book;
+//   const isbn = req.body.isbn;
 
-  let updateBook = {};
+//   let updateBook = {};
 
-  getAmazonData(isbn)
-    .then(function(amazonData) {
-      //GRAB AMAZON IFRAME THAT SOMETIMES NEEDS TO BE REFRESHED
-      updateBook["amazon_reviews"] = amazonData["amazon_reviews"];
-      updateBook["updated_at"] = new Date();
-      Book.findOneAndUpdate({ url_title }, updateBook, function(error) {
-        if (error) {
-          console.log("IF THERE IS AN ERROR FOR PUT REQUEST, IN HERE", error);
-        } else {
-          return res
-            .status(200)
-            .send(updateBook["amazon_reviews"])
-            .end();
-        }
-      });
-    })
-    .catch(error => {
-      console.log("IF THERE IS AN ERROR FROM THE AMAZON QUERY", error);
-      res.status(401).send({ message: error });
-    });
-});
+//   getAmazonData(isbn)
+//     .then(function(amazonData) {
+//       //GRAB AMAZON IFRAME THAT SOMETIMES NEEDS TO BE REFRESHED
+//       updateBook["amazon_reviews"] = amazonData["amazon_reviews"];
+//       updateBook["updated_at"] = new Date();
+//       Book.findOneAndUpdate({ url_title }, updateBook, function(error) {
+//         if (error) {
+//           console.log("IF THERE IS AN ERROR FOR PUT REQUEST, IN HERE", error);
+//         } else {
+//           return res
+//             .status(200)
+//             .send(updateBook["amazon_reviews"])
+//             .end();
+//         }
+//       });
+//     })
+//     .catch(error => {
+//       console.log("IF THERE IS AN ERROR FROM THE AMAZON QUERY", error);
+//       res.status(401).send({ message: error });
+//     });
+// });
 
 module.exports = router;

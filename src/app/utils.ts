@@ -22,10 +22,10 @@ export function createBookObject(data: Object): Book {
   const book = new Book();
 
   // SET ALL THE FIELDS OF BOOK
-  book["amazonReview"] = data["amazon_editorial_review"];
+  // book["amazonReview"] = data["amazon_editorial_review"];
   // IFRAME IS LOCATED WITHIN ARRAY
-  book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
-  book["amazonSimilarProducts"] = data["amazon_similar_products"];
+  // book["amazonCustomerReviews"] = data["amazon_reviews"][0].IFrameURL[0];
+  // book["amazonSimilarProducts"] = data["amazon_similar_products"];
   book["author_name"] = data["author_name"];
   book["frontCover"] = data["front_cover"];
   book["authorImage"] = data["goodreads_author_image"];
@@ -76,11 +76,11 @@ export function reformatBookData(data: any): any {
   data["goodreads_reviews_widget"] = grabIframe(
     data["goodreads_reviews_widget"]
   );
-  if (data["amazon_similar_products"] !== null) {
-    data["amazon_similar_products"] = alterASINtoHREF(
-      data["amazon_similar_products"]
-    );
-  }
+  // if (data["amazon_similar_products"] !== null) {
+  //   data["amazon_similar_products"] = alterASINtoHREF(
+  //     data["amazon_similar_products"]
+  //   );
+  // }
   return data;
 }
 
@@ -129,12 +129,12 @@ export function reformatPenguinData(data: any): string[] {
   });
 }
 
-export function setUpAmazonSimilarBooks(data: any): string[] {
-  const newData = [];
-  data.forEach((book, i) => {
-    newData[i] = {};
-    newData[i]["url"] = book.ASIN[0];
-    newData[i]["title"] = book.Title[0];
-  });
-  return newData;
-}
+// export function setUpAmazonSimilarBooks(data: any): string[] {
+//   const newData = [];
+//   data.forEach((book, i) => {
+//     newData[i] = {};
+//     newData[i]["url"] = book.ASIN[0];
+//     newData[i]["title"] = book.Title[0];
+//   });
+//   return newData;
+// }

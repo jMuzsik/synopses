@@ -7,9 +7,9 @@ var getRidOfExcessGoodreadsbookData = require("./utils")
 function getAllTheData(title, author, finalCallback) {
   let allTheData = {
     front_cover: String,
-    amazon_reviews: Array,
-    amazon_editorial_review: String,
-    amazon_similar_products: Array,
+    // amazon_reviews: Array,
+    // amazon_editorial_review: String,
+    // amazon_similar_products: Array,
     goodreads_description: String,
     goodreads_reviews_widget: String,
     goodreads_author_image: String,
@@ -36,15 +36,15 @@ function getAllTheData(title, author, finalCallback) {
       if (isbnData.exact_title === "failed") {
         throw new Error("failed");
       } else {
-        return apiCalls.getAmazonData(allTheData.isbn);
+        return apiCalls.getPenguinData(allTheData.exact_title);
       }
     })
-    .then(function(amazonData) {
-      allTheData.amazon_reviews = amazonData.amazon_reviews;
-      allTheData.amazon_editorial_review = amazonData.amazon_editorial_review;
-      allTheData.amazon_similar_products = amazonData.amazon_similar_products;
-      return apiCalls.getPenguinData(allTheData.exact_title);
-    })
+    // .then(function(amazonData) {
+    //   allTheData.amazon_reviews = amazonData.amazon_reviews;
+    //   allTheData.amazon_editorial_review = amazonData.amazon_editorial_review;
+    //   allTheData.amazon_similar_products = amazonData.amazon_similar_products;
+    //   return apiCalls.getPenguinData(allTheData.exact_title);
+    // })
     .then(function(penguinData) {
       penguinData = getRidOfExcessPenguinData(penguinData);
       allTheData.penguin_data = penguinData;
