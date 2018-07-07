@@ -60,14 +60,14 @@ export class DashboardComponent implements OnInit {
     // if 5 display all
     this.filteredItems = [0, 0, 0, 0, 0, 0];
     if (result.length === 1) {
-      this.filteredItems[2] = result[0];
-    } else if (result.length === 2) {
       this.filteredItems[1] = result[0];
-      this.filteredItems[2] = result[1];
-    } else if (result.length === 3 || result.length === 4) {
-      this.filteredItems[2] = result[0];
+    } else if (result.length === 2) {
+      this.filteredItems[0] = result[0];
       this.filteredItems[1] = result[1];
-      this.filteredItems[3] = result[2];
+    } else if (result.length === 3 || result.length === 4) {
+      this.filteredItems[0] = result[0];
+      this.filteredItems[1] = result[1];
+      this.filteredItems[2] = result[2];
     } else if (result.length >= 6) {
       this.filteredItems[2] = result[0];
       this.filteredItems[0] = result[1];
