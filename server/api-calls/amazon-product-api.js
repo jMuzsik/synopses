@@ -8,6 +8,7 @@ var getAmazonData = function(isbn) {
     awsSecret: process.env.AWS_SECRET_ACCESS_KEY,
     awsTag: process.env.AWS_ASSOCIATE_TAG,
   });
+  console.log(awsId, awsSecret, awsTag);
 
   var amazonData = {
     amazon_reviews: [],
@@ -56,6 +57,28 @@ var getAmazonData = function(isbn) {
       return amazonData;
     })
     .catch(function(err) {
+      var amazonData = {
+        amazon_reviews: {
+          IFrameURL: [
+            '<iframe title="This is a wikipidia article because Amazon Iframe did not properly get scraped" src="https://en.wikipedia.org/wiki/Error"></iframe>',
+          ],
+        },
+        amazon_editorial_review: "No Amazon Editorial Review for this book.",
+        amazon_similar_products: [
+          {
+            Title: ["In Search of Lost Time, Vol. 2"],
+            ASIN: ["0143039075"],
+          },
+          {
+            Title: ["Sodom and Gomorrah"],
+            ASIN: ["0143039318"],
+          },
+          {
+            Title: ["Swann's Way"],
+            ASIN: ["0142437964"],
+          },
+        ],
+      };
       if (Array.isArray(err.Error)) {
         if (err.Error[0].message) {
           console.log(
@@ -64,7 +87,7 @@ var getAmazonData = function(isbn) {
           );
         }
       } else {
-        console.log("THIS IS WHEN THE ITEM LOOKUP FAILS, AMAZON");
+        console.log("THIS IS WHEN THE ITEM LOOKUP FAILS, AMAZON", err);
       }
       return amazonData;
     });
