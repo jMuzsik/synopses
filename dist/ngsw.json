@@ -1,0 +1,85 @@
+{
+  "configVersion": 1,
+  "index": "/./index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main.37da27b04c081331bd82.js",
+        "/ngsw-worker.js",
+        "/polyfills.477f8fce4c717835aef5.js",
+        "/runtime.a66f828dca56eeb90e02.js",
+        "/safety-worker.js",
+        "/scripts.bc80ffcfe5c0b833eb1d.js",
+        "/styles.45ce79a7e93fc34c5f17.css",
+        "/worker-basic.min.js"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/css/animation.css",
+        "/assets/css/fontello-codes.css",
+        "/assets/css/fontello-embedded.css",
+        "/assets/css/fontello-ie7-codes.css",
+        "/assets/css/fontello-ie7.css",
+        "/assets/css/fontello.css",
+        "/assets/font/fontello.eot",
+        "/assets/font/fontello.svg",
+        "/assets/font/fontello.ttf",
+        "/assets/font/fontello.woff",
+        "/assets/font/fontello.woff2"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/css/animation.css": "181bbc89ec978981bf0ef8c7239710ae5b3ad6a1",
+    "/assets/css/fontello-codes.css": "86da5a94a3b1d1fa9f879b074bc2338d876ca72f",
+    "/assets/css/fontello-embedded.css": "951ff5619fce8964bd329899abea3737eee68539",
+    "/assets/css/fontello-ie7-codes.css": "e90c3e676abcdd0f8069c7e95d767a984f655462",
+    "/assets/css/fontello-ie7.css": "4c5b7550f9d4dc3c73f1e020c2acffa7ee03cefb",
+    "/assets/css/fontello.css": "06204b6258d6a29dbe5dfbaa742de1af84ef8f5c",
+    "/assets/font/fontello.eot": "799090c24d96ccd16fd9026435ce70f8fc17bd4f",
+    "/assets/font/fontello.svg": "e28099cb4a2e0ea32f4c3f028b4861ed75075861",
+    "/assets/font/fontello.ttf": "fe5537ace42980fae701604336f489588cb649a8",
+    "/assets/font/fontello.woff": "0ca5fc1caa8adf27fb49ed02f5aada4c30a1257f",
+    "/assets/font/fontello.woff2": "4b233870cc624a722a35124bcad2e8d2c8c9f051",
+    "/favicon.ico": "6c0a0213210f414f5fdf0df3f9d43c66269bfa55",
+    "/index.html": "91ec0a6afef2519afd5ecf366c6246cb7922bb66",
+    "/main.37da27b04c081331bd82.js": "cfc2a557e0ec8c82efdcb20947192f0974fe9ce2",
+    "/ngsw-worker.js": "c5a902eadafef027da61d8960343491e15191ab4",
+    "/polyfills.477f8fce4c717835aef5.js": "b7e2a904d991459f495b427233e93871eeb45c6b",
+    "/runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
+    "/safety-worker.js": "ae5c8be3955e38edeeec09ed94b63d1e57f003c9",
+    "/scripts.bc80ffcfe5c0b833eb1d.js": "9257fa4ab6b4a11fa79eaf0f87322ce7bd7b8ace",
+    "/styles.45ce79a7e93fc34c5f17.css": "99a1140a01319493bd26abdbb18c1ca91bde76d6",
+    "/worker-basic.min.js": "ae5c8be3955e38edeeec09ed94b63d1e57f003c9"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*\\.[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*\\/.*$"
+    }
+  ]
+}

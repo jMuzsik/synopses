@@ -22,12 +22,19 @@ var getAmazonData = function(isbn) {
       responseGroup: "EditorialReview,Images,Reviews,Similarities,",
     })
     .then(function(results) {
+      console.log(results);
       // Grab each data needed individually
-      amazonData.amazon_reviews = findDeep(results, [0, "CustomerReviews"], {
-        IFrameURL: [
-          '<iframe title="This is a wikipidia article because Amazon Iframe did not properly get scraped" src="https://en.wikipedia.org/wiki/Error"></iframe>',
-        ],
-      });
+      amazonData.amazon_reviews = findDeep(
+        results,
+        [0, "CustomerReviews"],
+        [
+          {
+            IFrameURL: [
+              '<iframe title="This is a wikipidia article because Amazon Iframe did not properly get scraped" src="https://en.wikipedia.org/wiki/Error"></iframe>',
+            ],
+          },
+        ]
+      );
 
       amazonData.amazon_similar_products = findDeep(
         results,
@@ -58,11 +65,13 @@ var getAmazonData = function(isbn) {
     })
     .catch(function(err) {
       var amazonData = {
-        amazon_reviews: {
-          IFrameURL: [
-            '<iframe title="This is a wikipidia article because Amazon Iframe did not properly get scraped" src="https://en.wikipedia.org/wiki/Error"></iframe>',
-          ],
-        },
+        amazon_reviews: [
+          {
+            IFrameURL: [
+              '<iframe title="This is a wikipidia article because Amazon Iframe did not properly get scraped" src="https://en.wikipedia.org/wiki/Error"></iframe>',
+            ],
+          },
+        ],
         amazon_editorial_review: "No Amazon Editorial Review for this book.",
         amazon_similar_products: [
           {
