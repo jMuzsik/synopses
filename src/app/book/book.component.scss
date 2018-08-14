@@ -13,16 +13,10 @@
     }
     .nav-link:hover {
       border: none;
-      opacity: .7;
+      opacity: 0.7;
     }
     .fontello-icon {
       line-height: 1.25;
-    }
-    .amazon-button {
-      background-color: black;
-    }
-    .icon-amazon {
-      color: #ff9900;
     }
     .goodreads-button {
       background-color: rgb(240, 237, 228);
@@ -52,10 +46,6 @@
 }
 
 .similar-books .goodreads-books .badge {
-  white-space: normal;
-}
-
-.similar-books .amazon-books .badge {
   white-space: normal;
 }
 

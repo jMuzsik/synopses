@@ -38,7 +38,6 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-  // CLOSE THE POST MODULE AFTER USER POSTS A BOOK
   submission(closePost: boolean): void {
     this.newBook = closePost;
   }

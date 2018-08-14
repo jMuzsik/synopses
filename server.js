@@ -4,7 +4,7 @@ var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
-const spdy = require('spdy');
+const spdy = require("spdy");
 const fs = require("fs");
 
 require("dotenv").config();
@@ -14,12 +14,6 @@ var db = require("./server/mongoose.js");
 var api = require("./server/routes/api");
 
 var app = express();
-
-// http2 credentials
-const options = {
-  key: fs.readFileSync(__dirname + '/http2/server.key'),
-  cert:  fs.readFileSync(__dirname + '/http2/server.crt')
-};
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,6 +36,4 @@ app.use((err, req, res, next) => {
 var port = process.env.PORT || 8080;
 app.set("port", port);
 
-var server = spdy.createServer(options, app);
-
-server.listen(port, () => console.log("Chilling on port ", +port));
+app.listen(port, () => console.log("Chilling on port ", +port));

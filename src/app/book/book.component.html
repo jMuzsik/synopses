@@ -55,30 +55,11 @@
     </ng-template>
   </div>
 
-  <!-- SIMILAR TO PREVIOUS CARD BUT ONLY WITH TEXT, NOTHING ELSE -->
-  <!-- <div class="book-description card bg-light my-5 mx-auto">
-    <div class="card-body">
-      <h5 class="card-title">Book Description</h5>
-      <div class="card-text" [innerHTML]="book?.amazonReview"></div>
-      <footer class="card-footer bg-light">
-        <p class="mb-0">
-          <cite>Amazon</cite> Professional Review</p>
-      </footer>
-    </div>
-  </div> -->
-
   <!-- ---------------------------BUTTONS -------------------------- -->
 
   <div class="buttons card text-center">
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills justify-content-around">
-        <!-- <li class="nav-item">
-          <button aria-label="amazon reviews page" type="button" data-toggle="tooltip" title="Amazon Reviews" data-placement="top"
-            class="amazon-button nav-link p-1" (click)="checkForAmazonReviews(); toggleButton()">
-            <i title="Links to amazon reviews" class="icon-amazon rounded" aria-hidden="true">
-            </i>
-          </button>
-        </li> -->
         <li class="nav-item">
           <button aria-label="goodreads reviews page" type="button" data-toggle="tooltip" title="Goodreads Reviews" data-placement="top"
             class="goodreads-button nav-link p-1" (click)="toggle( 'goodreadsReviewVisible'); toggleButton()">
@@ -100,12 +81,6 @@
       </ul>
     </div>
   </div>
-
-  <!-- -----------------AMAZON REVIEWS IFRAME--------------- -->
-
-  <!-- <div class="embed-responsive embed-responsive-16by9" (click)="checkForAmazonReviews()" *ngIf="buttonToggle?.amazonReviewVisible">
-    <iframe class="embed-responsive-item" [src]="sanitizer?.bypassSecurityTrustResourceUrl(book?.amazonCustomerReviews)"></iframe>
-  </div> -->
 
   <!-- GOODREADS REVIEWS IFRAME -->
 
@@ -143,7 +118,7 @@
 
   </div>
 
-  <!-- AMAZON, PENGUIN, AND GOODREADS SIMILAR BOOKS DATA -->
+  <!-- PENGUIN, AND GOODREADS SIMILAR BOOKS DATA -->
 
   <div *ngIf="buttonToggle?.amazonSimilarBooksVisible">
     <div class="container-fluid similar-books">
@@ -233,27 +208,6 @@
       <br>
       <br>
       <hr>
-      <!-- <div class="amazon-books row"> -->
-
-        <!-- <div class="pb-3 text-center w-100">
-          <h5>
-            <strong>Amazon Similar Books</strong>
-          </h5>
-          <p>All titles link to Goodreads book page.</p>
-        </div>
-
-        <div class="d-flex flex-column align-items-center w-100">
-          <ng-container *ngFor="let book of book?.amazonSimilarProducts">
-            <div class="py-2">
-              <a class="btn btn-outline-primary text-justify my-4" href="{{book?.url}}" alt="Link to book at goodreads" target="_blank">
-                <h6 class="mb-0 text-center">
-                  <strong>{{book?.title}}</strong>
-                </h6>
-              </a>
-            </div>
-          </ng-container>
-        </div> -->
-      <!-- </div> -->
       <br>
       <hr>
       <footer class="card-footer bg-light text-center">
@@ -266,10 +220,7 @@
     </div>
   </div>
 
-  <!-- Close the entire page -->
 </div>
-
-<!-- DATA IS LOADING, SHOW THIS -->
 
 <ng-template #load>
   <div class="jawn"></div>

@@ -10,16 +10,14 @@ import { BookService } from "../book.service";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
-  // LOAD PAGE?
+
   dataAvailable = false;
   showDiv = false;
 
-  // ALL BOOKS
   books: any = [];
 
   filteredItems: any = [];
 
-  // LIBRARY THAT DOES FUZZY SEARCH(fuse.js) DEFAULT VALUES
   fuseOptions: any = {
     shouldSort: true,
     threshold: 0.6,
@@ -36,12 +34,10 @@ export class DashboardComponent implements OnInit {
     this.getBooks();
   }
 
-  // WHEN CLICK IMAGE IN SEARCH REROUTE
   reroute(data): void {
     this.router.navigate([`/book/${data}`]);
   }
 
-  // SEARCH RESULTS(FILTER RESULTS)
   filterItem(value: string): void {
     if (!value) {
       this.filteredItems = [];
@@ -51,13 +47,8 @@ export class DashboardComponent implements OnInit {
       this.fillOutGrid(result);
     }
   }
-  // USING CSS GRID
+
   fillOutGrid(result: any): void {
-    // if 1 item it is in the center
-    // if 2 items they are at 1 and 3
-    // if 3 items they are at 1,2,3
-    // if 4 items then do not display 4, same as 3
-    // if 5 display all
     this.filteredItems = [0, 0, 0, 0, 0, 0];
     if (result.length === 1) {
       this.filteredItems[1] = result[0];
@@ -88,7 +79,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // GET ALL THE BOOKS
   getBooks(): any {
     this.bookService.getBooks().subscribe(
       data => {

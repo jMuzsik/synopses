@@ -4,9 +4,6 @@ const Schema = mongoose.Schema;
 const bookSchema = new Schema({
   id: Number,
   front_cover: String,
-  // amazon_reviews: Array,
-  // amazon_editorial_review: String,
-  // amazon_similar_products: Array,
   goodreads_description: String,
   goodreads_reviews_widget: String,
   goodreads_author_image: String,

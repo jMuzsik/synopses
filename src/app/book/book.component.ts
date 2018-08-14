@@ -7,16 +7,11 @@ import { Book } from "../book";
 
 import { BookService } from "../book.service";
 
-import {
-  createBookObject,
-  reformatPenguinData,
-  // setUpAmazonSimilarBooks,
-} from "../utils";
+import { createBookObject, reformatPenguinData } from "../utils";
 
 interface ToggleButton {
   wikiVisible: boolean;
   goodreadsReviewVisible: boolean;
-  amazonSimilarBooksVisible: boolean;
 }
 
 @Component({
@@ -25,30 +20,23 @@ interface ToggleButton {
   styleUrls: ["./book.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class BookComponent implements OnInit {
-  // THE BOOK
   book: Book;
 
-  // DO NOT RENDER PAGE UNLESS YOU'VE GOT DATA
   isDataAvailable = false;
 
-  // DROPDOWNS
   buttonToggle: ToggleButton = {
     wikiVisible: false,
     goodreadsReviewVisible: false,
-    amazonSimilarBooksVisible: false,
   };
 
-  // UNIVERSAL BUTTON WHEN LINK IS PRESSED THAT OPENS MODAL
   buttonVisible = false;
 
-  // WIKI HAS NO TITLES, MAKE IT SOMEWHAT READABLE
   periods: number[];
 
-  // BOOK OR AUTHOR IN CARD
   showBook = true;
 
-  // IS THE DATA LOADING?
   dataLoading = true;
 
   constructor(
@@ -61,7 +49,6 @@ export class BookComponent implements OnInit {
     this.getBook();
   }
 
-  // CLOSE ANYTHING OPEN FIRST, THEN OPEN THE SPECIFIED ONE
   toggle(name: string): void {
     if (!this.buttonToggle[name]) {
       this.turnOff();
@@ -72,12 +59,10 @@ export class BookComponent implements OnInit {
     }
   }
 
-  // SHOW THE BUTTON
   toggleButton(): void {
     this.buttonVisible = true;
   }
 
-  // SHOW BOOK OR AUTHOR IF NOT SHOWING BOOK, ONE OR THE OTHER
   alterView(type): void {
     const authorInput = $(".author-input");
     const bookInput = $(".book-input");
@@ -96,12 +81,10 @@ export class BookComponent implements OnInit {
     }
   }
 
-  // CLOSE MODAL IF OPEN
   closeModal(): void {
     this.turnOff();
   }
 
-  // CLOSE ANY MODAL THAT IS OPEN
   turnOff(): void {
     const keys = Object.keys(this.buttonToggle);
     this.buttonVisible = false;
@@ -110,59 +93,22 @@ export class BookComponent implements OnInit {
     });
   }
 
-  // AMAZON REVIEW IFRAME ONLY LASTS FOR A SINGLE DAY, PUT REQUEST NECESSARY IF UPDATED LATER THEN A DAY AGO
-  // checkForAmazonReviews(): void {
-  //   const now = new Date();
-  //   const past = new Date(this.book["updated"]);
-  //   const bookPath = this.route.snapshot.url[1].path;
-  //   const data = {};
-  //   data["isbn"] = this.book.isbn;
-  //   // CALCULATE HOW MANY DAYS HAS PASSED SINCE THIS BUTTON HAS BEEN PRESSED/DATA HAS BEEN USED
-  //   if (
-  //     Math.floor((now.getTime() - past.getTime()) / (24 * 60 * 60 * 1000)) > 0
-  //   ) {
-  //     this.bookService.putBook(bookPath, data).subscribe(
-  //       data => {
-  //         this.book["amazonCustomerReviews"] = data["IFrameURL"][0];
-  //       },
-  //       error => console.log(error),
-  //       () => {
-  //         this.toggle("amazonReviewVisible");
-  //         this.toggleButton();
-  //         console.log("PUT REQUEST SUCCESS");
-  //       }
-  //     );
-  //   } else {
-  //     this.toggle("amazonReviewVisible");
-  //     this.toggleButton();
-  //   }
-  // }
-
   getBook(): void {
     const bookPath = this.route.snapshot.url[1].path;
     this.bookService.getBook(bookPath).subscribe(
       data => {
-        console.log(data)
+        console.log(data);
         this.book = createBookObject(data);
         this.periods = data["periods"];
         this.book["penguinData"] = reformatPenguinData(this.book.penguinData);
-        // if (Array.isArray(this.book["amazonSimilarProducts"])) {
-        //   this.book["amazonSimilarProducts"] = setUpAmazonSimilarBooks(
-        //     this.book["amazonSimilarProducts"]
-        //   );
-        // }
-        // html is only visible after data is put on the page
+
         setTimeout(() => {
           const tooltips = $('[data-toggle="tooltip"]');
           const len = tooltips.length;
           tooltips.slice(2, len).tooltip();
         }, 300);
       },
-      err =>
-        console.log(
-          "IF ERROR IN OBTAINING DATA FROM DB FOR INDIVIDUAL BOOK",
-          err
-        ),
+      err => console.log("Error in obtaining book from data, cause: ", err),
       () => (this.isDataAvailable = true)
     );
   }
