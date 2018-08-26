@@ -6,6 +6,6 @@ Goodreads, Penguin books, Wikipidia, ISBNDB are all queried instantly to get all
 
 Built with love over several weeks.
 
-[Link](https://bookspassed.com)
+[Link](http://bookspassed.com)
 
 Note to self, comment out http2 code in server to work in the local environment
