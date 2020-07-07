@@ -47,7 +47,7 @@
     "mongoose": "4.13.13",
     "ngx-bootstrap": "2.0.5",
     "nodemon": "1.17.4",
-    "npm": "6.0.1",
+    "npm": "6.14.6",
     "popper.js": "1.14.3",
     "redux-saga": "^0.16.0",
     "request-promise": "^4.2.2",
