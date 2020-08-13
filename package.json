@@ -40,7 +40,7 @@
     "fuse.js": "^3.2.0",
     "http2": "3.3.7",
     "isbndbjs": "^1.0.2",
-    "jquery": "3.3.1",
+    "jquery": "3.4.0",
     "jwks-rsa": "^1.2.1",
     "method-override": "^2.3.10",
     "mocha": "5.1.1",
